@@ -1,0 +1,4 @@
+pbip-inspect/
+__pycache__/
+*.py[cod]
+*.docx
