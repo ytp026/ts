@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    name="description"
+    content="Current Broadway rush, digital lottery, and standing-room ticket information."
+  >
+  <title>Rush, Lottery & SRO | Theater Spotlight</title>
+  <link rel="stylesheet" href="styles.css?v=7">
+  <script src="rush.js" defer></script>
+</head>
+<body class="theme-access">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Theater Spotlight home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span>Theater Spotlight</span>
+    </a>
+    <nav class="navigation" aria-label="Main navigation">
+      <a href="index.html">Overview</a>
+      <a href="history.html">40 Years of Broadway</a>
+      <a href="theatres.html">Theatre District</a>
+      <a href="tony-awards.html">Tony Awards Effect</a>
+      <a class="active" href="rush.html" aria-current="page">Rush & Lottery</a>
+      <a href="game.html">Be More Chill</a>
+      <a href="memories.html">Back to the Future</a>
+      <a class="nav-cta" href="#ticket-directory">Find tickets</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero access-hero">
+      <div class="hero-copy">
+        <p class="eyebrow">The same-day ticket guide</p>
+        <h1>Your ticket to the spotlight.</h1>
+        <p class="intro">
+          Search current public rush, digital lottery, and standing-room offers for
+          Broadway productions, all in one place.
+        </p>
+        <div class="hero-actions">
+          <a class="primary-button" href="#ticket-directory">Find an offer</a>
+          <a
+            class="text-link"
+            href="https://playbill.com/article/broadway-rush-lottery-and-standing-room-only-policies-com-116003"
+            target="_blank"
+            rel="noopener"
+          >
+            View source <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="data-art access-art" aria-label="Public ticket offer graphic inspired by Guys and Dolls">
+        <div class="art-topline"><span>“Luck Be a Lady Tonight”</span><span>Guys and Dolls</span></div>
+        <div class="art-number">45</div>
+        <div class="art-caption">Public low-cost ticket offers.</div>
+        <div class="capacity-list" aria-hidden="true">
+          <div><span>Rush</span><i><b style="--width: 95%"></b></i><strong>19</strong></div>
+          <div><span>Lottery</span><i><b style="--width: 100%"></b></i><strong>20</strong></div>
+          <div><span>SRO</span><i><b style="--width: 30%"></b></i><strong>6</strong></div>
+        </div>
+        <div class="art-stats"><span>Productions <b>23</b></span><span>Access <b>Same day</b></span></div>
+      </div>
+    </section>
+
+    <section class="directory" id="ticket-directory" aria-labelledby="directory-title">
+      <div class="directory-heading">
+        <div>
+          <p class="section-label">Broadway ticket access</p>
+          <h2 id="directory-title">Rush, lottery, and standing room</h2>
+        </div>
+        <p>
+          Public policies last checked <strong>August 24, 2026</strong>. Prices,
+          schedules, and availability can change without notice.
+        </p>
+      </div>
+
+      <aside class="policy-notice">
+        <strong>Check before you go.</strong>
+        Confirm the offer on its linked source page before traveling to the theatre.
+        Tickets may be partial view, split pairs, or unavailable for a performance.
+      </aside>
+
+      <div class="directory-controls">
+        <label>
+          <span>Search by show or theatre</span>
+          <input id="ticket-search" type="search" placeholder="Try Hamilton or Gershwin">
+        </label>
+        <fieldset class="ticket-type-filter">
+          <legend>Ticket type</legend>
+          <div class="filter-tags" id="ticket-category">
+            <label>
+              <input type="radio" name="ticket-category" value="All" checked>
+              <span>All offers</span>
+            </label>
+            <label>
+              <input type="radio" name="ticket-category" value="Rush">
+              <span>Rush</span>
+            </label>
+            <label>
+              <input type="radio" name="ticket-category" value="Lottery">
+              <span>Lottery</span>
+            </label>
+            <label>
+              <input type="radio" name="ticket-category" value="SRO">
+              <span>SRO</span>
+            </label>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="directory-status" aria-live="polite">
+        <strong id="ticket-count">Loading offers…</strong>
+        <span>Policies sourced from Playbill and linked ticket providers.</span>
+      </div>
+
+      <div class="ticket-grid" id="ticket-list"></div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Theater Spotlight</span>
+    <span>Ticket policies are informational and not guaranteed.</span>
+    <p class="source-credit">
+      Data sources:
+      <a href="https://playbill.com/grosses" target="_blank" rel="noopener">Playbill Grosses</a>,
+      <a href="https://www.tonyawards.com" target="_blank" rel="noopener">The Tony Awards</a>,
+      and Playbill's public rush, lottery, and standing-room policy listings.
+    </p>
+    <p class="site-disclaimer">
+      <strong>Disclaimer:</strong> Theater Spotlight is an independent, non-commercial
+      educational project and is not affiliated with or endorsed by any theatre, production,
+      ticket provider, Playbill, Microsoft, or Power BI. I do not claim ownership of
+      third-party data, names, trademarks, or source material; all rights remain with their
+      respective owners. Text and summaries were created with AI assistance and may contain
+      errors. Verify prices, eligibility, timing, and availability with the original source
+      before acting. Nothing on this site grants permission to republish, resell, or
+      commercially exploit third-party material. The site is provided without warranties and
+      is not intended for purchasing, financial, legal, or business decisions.
+    </p>
+  </footer>
+</body>
+</html>

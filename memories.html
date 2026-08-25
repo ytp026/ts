@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A personal timeline of Broadway shows, theatres, photos, and memories.">
+  <title>Broadway Memory Timeline | Theater Spotlight</title>
+  <link rel="stylesheet" href="styles.css?v=20">
+  <script src="memories.js?v=11" defer></script>
+</head>
+<body class="theme-memories">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Theater Spotlight home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span>Theater Spotlight</span>
+    </a>
+    <nav class="navigation" aria-label="Main navigation">
+      <a href="index.html">Overview</a>
+      <a href="history.html">40 Years of Broadway</a>
+      <a href="theatres.html">Theatre District</a>
+      <a href="tony-awards.html">Tony Awards Effect</a>
+      <a href="rush.html">Rush &amp; Lottery</a>
+      <a href="game.html">Be More Chill</a>
+      <a class="active" href="memories.html" aria-current="page">Back to the Future</a>
+      <a class="nav-cta" href="#memory-timeline">View timeline</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero memory-hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Broadway Memory Timeline</p>
+        <h1>Every ticket tells a story.</h1>
+        <p class="intro">A personal archive of performances, theatres, photographs, favorite moments, and the memories that stayed after the curtain fell.</p>
+        <div class="hero-actions">
+          <a class="primary-button" href="#memory-timeline">Walk the timeline</a>
+          <a class="text-link" href="#memory-stats">See the milestones <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="data-art memory-art" aria-label="Company quote about turning vision into execution">
+        <div class="execution-card">
+          <span class="execution-kicker">From vision to stage</span>
+          <blockquote>
+            <p>“Having just the vision's no solution. Everything depends upon execution.”</p>
+            <footer>— <cite>Company</cite></footer>
+          </blockquote>
+          <div class="execution-path" aria-hidden="true">
+            <span>Vision</span>
+            <i></i>
+            <strong>Execution</strong>
+          </div>
+        </div>
+        <p class="execution-caption">The idea becomes real when the curtain rises.</p>
+      </div>
+    </section>
+
+    <section class="memory-stats" id="memory-stats" aria-label="Broadway memory milestones">
+      <article><span>Performances attended</span><strong id="memory-show-count">0</strong></article>
+      <article><span>Theatres visited</span><strong id="memory-theatre-count">0</strong></article>
+      <article><span>First memory</span><strong id="memory-first-year">-</strong></article>
+      <article><span>Latest memory</span><strong id="memory-latest-year">-</strong></article>
+    </section>
+
+    <section class="memory-fun-facts" aria-labelledby="memory-facts-title">
+      <div class="memory-facts-heading">
+        <p class="section-label">Journey by the numbers</p>
+        <h2 id="memory-facts-title">The Encore Report</h2>
+        <p class="memory-facts-intro">A backstage look at where the journey went, what returned for an encore, and how the nights felt.</p>
+      </div>
+      <div class="memory-facts-infographic">
+        <article class="memory-fact fact-cities">
+          <span class="fact-symbol" aria-hidden="true">◎</span>
+          <strong id="memory-city-count">0</strong>
+          <span>Cities explored</span>
+          <small>Stops on the theatre map</small>
+        </article>
+        <article class="memory-fact fact-city">
+          <span class="fact-symbol" aria-hidden="true">⌖</span>
+          <span>Most visited city</span>
+          <strong id="memory-top-city">-</strong>
+          <small>The center of this journey</small>
+        </article>
+        <article class="memory-fact fact-show">
+          <span class="fact-symbol" aria-hidden="true">↻</span>
+          <span>Most revisited show</span>
+          <strong id="memory-top-show">-</strong>
+          <small>The production called back for an encore</small>
+        </article>
+        <article class="memory-fact fact-year">
+          <span>Busiest theatre year</span>
+          <strong id="memory-busiest-year">-</strong>
+          <small>The calendar's biggest act</small>
+        </article>
+        <article class="memory-fact fact-rating">
+          <span>Average reaction</span>
+          <strong id="memory-average-rating">-</strong>
+          <div class="fact-rating-line" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        </article>
+        <article class="memory-fact fact-loved">
+          <span class="fact-symbol" aria-hidden="true">★</span>
+          <strong id="memory-loved-count">0</strong>
+          <span>Loved-it nights</span>
+          <small>The standing-ovation shelf</small>
+        </article>
+      </div>
+    </section>
+
+    <section class="memory-section" id="memory-timeline" aria-labelledby="memory-title">
+      <div class="memory-heading">
+        <div>
+          <p class="section-label">Personal theatre archive</p>
+          <h2 id="memory-title">My Broadway journey</h2>
+        </div>
+        <p>A personal record of performances, venues, cities, and seats collected across the years.</p>
+      </div>
+
+      <div class="memory-controls">
+        <label class="memory-search-filter"><span>Search memories</span><input id="memory-search" type="search" placeholder="Show, theatre, city, or seat"></label>
+        <label><span>Year</span><select id="memory-year"><option value="">All years</option></select></label>
+        <label><span>Overall</span><select id="memory-rating-filter"><option value="">All reactions</option><option value="5">Loved it</option><option value="4">Really liked it</option><option value="3">Liked it</option><option value="2">Mixed feelings</option><option value="1">Not for me</option></select></label>
+        <label><span>Cast</span><select id="memory-cast-filter"><option value="">All cast ratings</option><option value="5">Loved it</option><option value="4">Really liked it</option><option value="3">Liked it</option><option value="2">Mixed feelings</option><option value="1">Not for me</option></select></label>
+        <label><span>Music</span><select id="memory-music-filter"><option value="">All music ratings</option><option value="5">Loved it</option><option value="4">Really liked it</option><option value="3">Liked it</option><option value="2">Mixed feelings</option><option value="1">Not for me</option></select></label>
+        <label><span>Stage</span><select id="memory-stage-filter"><option value="">All stage ratings</option><option value="5">Loved it</option><option value="4">Really liked it</option><option value="3">Liked it</option><option value="2">Mixed feelings</option><option value="1">Not for me</option></select></label>
+        <label><span>Story</span><select id="memory-story-filter"><option value="">All story ratings</option><option value="5">Loved it</option><option value="4">Really liked it</option><option value="3">Liked it</option><option value="2">Mixed feelings</option><option value="1">Not for me</option></select></label>
+        <button type="button" class="memory-clear-filters" id="memory-clear-filters">Clear filters</button>
+      </div>
+      <p class="memory-filter-status" id="memory-filter-status" aria-live="polite"></p>
+      <div class="memory-timeline" id="memory-list"></div>
+      <p class="memory-empty" id="memory-empty" hidden>No memories match these filters.</p>
+    </section>
+  </main>
+
+  <footer>
+    <span>Theater Spotlight</span>
+    <p class="source-credit">Personal photographs remain owned by their photographer. Production names and trademarks remain owned by their respective rights holders.</p>
+    <p class="site-disclaimer"><strong>Disclaimer:</strong> This personal archive is based on saved tickets, receipts, and photographs. Production names and trademarks remain the property of their respective rights holders.</p>
+  </footer>
+</body>
+</html>

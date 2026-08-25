@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore the relationship between Tony Awards recognition and Broadway performance.">
+  <title>Tony Awards Effect | Theater Spotlight</title>
+  <link rel="stylesheet" href="styles.css?v=7">
+</head>
+<body class="theme-tony">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Theater Spotlight home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span>Theater Spotlight</span>
+    </a>
+    <nav class="navigation" aria-label="Main navigation">
+      <a href="index.html">Overview</a>
+      <a href="history.html">40 Years of Broadway</a>
+      <a href="theatres.html">Theatre District</a>
+      <a class="active" href="tony-awards.html" aria-current="page">Tony Awards Effect</a>
+      <a href="rush.html">Rush & Lottery</a>
+      <a href="game.html">Be More Chill</a>
+      <a href="memories.html">Back to the Future</a>
+      <a class="nav-cta" href="#dashboard">View report</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Tony Awards Effect</p>
+        <h1>The Tony Awards effect.</h1>
+        <p class="intro">
+          Explore what happens before and after Broadway's biggest night, from
+          nominations and wins to audience and box-office momentum.
+        </p>
+        <div class="hero-actions">
+          <a class="primary-button" href="#dashboard">Measure the Tony effect</a>
+          <a class="text-link" href="#insights">Read the story <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <div class="data-art tony-art" aria-label="Tony Awards recognition graphic inspired by A Chorus Line">
+        <div class="art-topline"><span>“I Hope I Get It”</span><span>A Chorus Line</span></div>
+        <div class="nomination-art" aria-hidden="true">
+          <span>Nominee</span>
+          <strong>TONY<br>EFFECT</strong>
+          <i>★</i>
+        </div>
+        <div class="art-stats"><span>Recognition <b>Earned</b></span><span>Momentum <b>Watch next</b></span></div>
+      </div>
+    </section>
+
+    <section class="report-section" id="dashboard" aria-labelledby="report-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">Interactive JavaScript dashboard</p>
+          <h2 id="report-title">Tony Awards Effect</h2>
+        </div>
+        <p>Compare performance around nominations, wins, and awards-season attention.</p>
+      </div>
+      <div class="report-frame javascript-dashboard-frame">
+        <div class="javascript-dashboard page-dashboard tony-dashboard">
+          <div class="pbi-card-grid tony-card-grid">
+            <article class="pbi-card pbi-blue"><h3>Nominee Records</h3><strong id="tony-nominees"></strong></article>
+            <article class="pbi-card pbi-red"><h3>Total Tony Wins</h3><strong id="tony-total-wins"></strong></article>
+            <article class="pbi-card pbi-purple"><h3>Tony Award Win Rate</h3><strong id="tony-win-rate"></strong></article>
+            <article class="pbi-card pbi-teal"><h3>Winning People</h3><strong id="tony-winning-people"></strong></article>
+          </div>
+
+          <div class="pbi-filter-row tony-filter-row">
+            <label class="pbi-filter"><span>Tony Awards Year</span><select id="tony-year"><option value="">All</option></select></label>
+            <label class="pbi-filter"><span>Tony Award Category</span><input id="tony-category" type="search" list="tony-categories" placeholder="All"><datalist id="tony-categories"></datalist></label>
+            <label class="pbi-filter"><span>Shows</span><input id="tony-show" type="search" list="tony-shows" placeholder="All"><datalist id="tony-shows"></datalist></label>
+            <label class="pbi-filter"><span>Winning-Year Group</span><select id="tony-year-group"><option value="">All</option><option>1 winning year</option><option>More than 1 winning year</option></select></label>
+          </div>
+
+          <section class="tony-impact-section" aria-labelledby="tony-impact-title">
+            <div class="tony-impact-heading">
+              <h3 id="tony-impact-title">Box Office Around the Tony Awards</h3>
+              <p>Compare the four completed Broadway weeks before and after each ceremony for the current selection.</p>
+            </div>
+
+            <div class="tony-impact-comparisons">
+              <article class="impact-panel comparison-panel gross-comparison">
+                <h3>Average Weekly Gross <span>| Before vs after</span></h3>
+                <p>Revenue across the selected productions and Tony years.</p>
+                <div class="comparison-chart" id="tony-impact-gross-comparison"></div>
+              </article>
+              <article class="impact-panel comparison-panel capacity-comparison">
+                <h3>Capacity <span>| Before vs after</span></h3>
+                <p>Ticket-weighted seat utilization for the same periods.</p>
+                <div class="comparison-chart" id="tony-impact-capacity-comparison"></div>
+              </article>
+            </div>
+
+            <div class="impact-highlights tony-impact-highlights">
+              <article class="impact-card blue"><h3>Highest Gross <span>Before</span></h3><strong id="tony-highest-gross-before"></strong></article>
+              <article class="impact-card red"><h3>Highest Gross <span>After</span></h3><strong id="tony-highest-gross-after"></strong></article>
+              <article class="impact-card purple"><h3>Highest Capacity <span>Before</span></h3><strong id="tony-highest-capacity-before"></strong></article>
+              <article class="impact-card teal"><h3>Highest Capacity <span>After</span></h3><strong id="tony-highest-capacity-after"></strong></article>
+            </div>
+
+            <div class="impact-kpis tony-impact-kpis">
+              <article class="orange"><h3>Gross Change <span>After vs before</span></h3><strong id="tony-gross-change"></strong></article>
+              <article class="magenta"><h3>Capacity Change <span>Points</span></h3><strong id="tony-capacity-change"></strong></article>
+            </div>
+
+            <div class="tony-change-grid">
+              <article class="impact-panel tony-change-panel">
+                <h3>Largest Gross Increases <span>| Ranked</span></h3>
+                <p>Productions ordered by their change in average weekly gross.</p>
+                <div class="tony-change-ranking" id="tony-gross-change-ranking"></div>
+              </article>
+              <article class="impact-panel tony-change-panel">
+                <h3>Largest Capacity Increases <span>| Ranked</span></h3>
+                <p>Productions ordered by their change in capacity percentage points.</p>
+                <div class="tony-change-ranking" id="tony-capacity-change-ranking"></div>
+              </article>
+            </div>
+
+            <article class="tony-trend-summary">
+              <p class="eyebrow">What the selection suggests</p>
+              <p id="tony-trend-summary"></p>
+            </article>
+          </section>
+
+          <div class="tony-chart-grid">
+            <article class="impact-panel chart-panel"><h3>Tony Wins by Award Category</h3><div class="dashboard-bars" id="tony-category-bars"></div></article>
+            <article class="impact-panel chart-panel"><h3>Most Tony Wins by Production and Winning Years</h3><div class="dashboard-bars dual-bars" id="tony-production-bars"></div></article>
+          </div>
+
+          <div class="tony-bottom-grid">
+            <article class="impact-panel detail-panel">
+              <h3>Tony Award Nominees and Winners</h3>
+              <div class="impact-table-wrap tony-table-wrap"><table class="tony-records-table"><thead><tr><th>Year</th><th>Award Category</th><th>Nominee</th><th>Production</th><th>Winner</th></tr></thead><tbody id="tony-table-body"></tbody></table></div>
+              <p class="table-filter-hint" id="tony-table-status" aria-live="polite">Select a row to filter every visual.</p>
+            </article>
+            <article class="impact-panel chart-panel"><h3>Most Nominated Productions and Winning Years</h3><div class="dashboard-bars dual-bars" id="tony-nomination-bars"></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <article class="story" id="insights" aria-labelledby="tony-story-title">
+      <div class="story-heading">
+        <p class="section-label">Behind the numbers</p>
+        <h2 id="tony-story-title">When recognition meets the box office</h2>
+        <p class="story-lead">
+          A Tony nomination can focus attention; a win can turn that attention into momentum.
+        </p>
+      </div>
+      <div class="story-copy">
+        <p>
+          Awards season gives Broadway a shared moment of suspense. Productions campaign,
+          audiences discover unfamiliar titles, and every nominee waits through the theatrical
+          equivalent of “I Hope I Get It.” Use the report to compare performance before and
+          after nominations and wins, while remembering that timing, reviews, cast, theatre
+          size, and existing demand also shape the result.
+        </p>
+        <p>
+          The most interesting effect may not be an immediate spike. Recognition can extend a
+          run, strengthen advance sales, or introduce a production to audiences far beyond New
+          York. Compare similar shows and equivalent time windows instead of treating every
+          award alike. The goal is not to prove that one trophy guarantees success, but to see
+          when the Tony spotlight amplifies a story audiences are ready to embrace.
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <span>Theater Spotlight</span>
+    <p class="source-credit">
+      Data sources:
+      <a href="https://playbill.com/grosses" target="_blank" rel="noopener">Playbill Grosses</a>
+      and
+      <a href="https://www.tonyawards.com" target="_blank" rel="noopener">The Tony Awards</a>.
+    </p>
+    <p class="site-disclaimer">
+      <strong>Disclaimer:</strong> Theater Spotlight is an independent, non-commercial
+      educational project and is not affiliated with or endorsed by any theatre, production,
+      ticket provider, Playbill, Microsoft, or Power BI. I do not claim ownership of
+      third-party data, names, trademarks, or source material; all rights remain with their
+      respective owners. Text and summaries were created with AI assistance and may contain
+      errors. Verify information with the original sources before acting on it. Nothing on
+      this site grants permission to republish, resell, or commercially exploit third-party
+      material. The site is provided without warranties and is not intended for purchasing,
+      financial, legal, or business decisions.
+    </p>
+  </footer>
+  <script src="dashboard-utils.js"></script>
+  <script src="tony-dashboard.js?v=2"></script>
+</body>
+</html>

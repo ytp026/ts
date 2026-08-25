@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Theater Spotlight: interactive Broadway performance analytics.">
+  <title>Overview | Theater Spotlight</title>
+  <link rel="stylesheet" href="styles.css?v=11">
+</head>
+<body class="theme-overview">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Theater Spotlight home">
+      <span class="brand-mark" aria-hidden="true">
+        <i></i><i></i><i></i><i></i>
+      </span>
+      <span>Theater Spotlight</span>
+    </a>
+
+    <nav class="navigation" aria-label="Main navigation">
+      <a class="active" href="index.html" aria-current="page">Overview</a>
+      <a href="history.html">40 Years of Broadway</a>
+      <a href="theatres.html">Theatre District</a>
+      <a href="tony-awards.html">Tony Awards Effect</a>
+      <a href="rush.html">Rush & Lottery</a>
+      <a href="game.html">Be More Chill</a>
+      <a href="memories.html">Back to the Future</a>
+      <a class="nav-cta" href="#dashboard">View report</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Broadway intelligence, clearly staged</p>
+        <h1>See the business behind the curtain.</h1>
+        <p class="intro">
+          Turn weekly grosses, attendance, ticket prices, and theatre activity into a
+          story you can explore.
+        </p>
+        <div class="hero-actions">
+          <a class="primary-button" href="#dashboard">Explore the dashboard</a>
+          <a class="text-link" href="#insights">Read the insights <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="data-art" aria-label="Growing weekly grosses graphic inspired by Evita">
+        <div class="art-topline"><span>“And the Money Kept Rolling In”</span><span>Evita</span></div>
+        <div class="art-number">$42.8M</div>
+        <div class="art-caption">Weekly grosses take center stage.</div>
+        <div class="art-chart" aria-hidden="true">
+          <i style="--height: 38%"></i><i style="--height: 55%"></i>
+          <i style="--height: 48%"></i><i style="--height: 72%"></i>
+          <i style="--height: 64%"></i><i style="--height: 88%"></i>
+          <i style="--height: 78%"></i><i style="--height: 96%"></i>
+        </div>
+        <div class="art-stats"><span>Attendance <b>Up</b></span><span>Demand <b>Strong</b></span></div>
+      </div>
+    </section>
+
+    <section class="feature-strip" aria-label="What you can explore">
+      <a href="history.html"><span>01</span><strong>Travel through 40 years</strong><small>Follow Broadway across four decades</small></a>
+      <a href="theatres.html"><span>02</span><strong>Explore the district</strong><small>See how venues shape performance</small></a>
+      <a href="tony-awards.html"><span>03</span><strong>Measure the Tony effect</strong><small>Explore the impact of Broadway's biggest honors</small></a>
+    </section>
+
+    <section class="report-section" id="dashboard" aria-labelledby="report-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">Public JavaScript preview</p>
+          <h2 id="report-title">The Broadway overview</h2>
+        </div>
+        <p>Filter, compare, and follow the signals shaping the Broadway market.</p>
+      </div>
+
+      <div class="report-frame javascript-dashboard-frame">
+        <div class="javascript-dashboard">
+          <section class="impact-search" aria-labelledby="impact-search-title">
+            <h3 id="impact-search-title">BROADWAY SHOW IMPACT <span>| Select shows and type to search</span></h3>
+            <label>
+              <span class="sr-only">Search or select a Broadway show</span>
+              <input id="impact-filter" type="search" list="impact-shows" placeholder="All">
+              <datalist id="impact-shows"></datalist>
+            </label>
+          </section>
+
+          <div class="impact-top-grid">
+            <article class="impact-panel footprint-panel">
+              <h3>THEATRE FOOTPRINT <span>| Gross by venue</span></h3>
+              <p>Select a theatre to cross-filter every aligned panel on this page.</p>
+              <div class="venue-chart" id="venue-chart"></div>
+            </article>
+
+            <article class="impact-panel comparison-panel gross-comparison">
+              <h3>AVG WEEKLY GROSS <span>| Before vs after</span></h3>
+              <p>Four completed Broadway weeks on each side of the Tony Awards.</p>
+              <div class="comparison-chart" id="gross-comparison"></div>
+            </article>
+
+            <article class="impact-panel comparison-panel capacity-comparison">
+              <h3>CAPACITY <span>| Before vs after</span></h3>
+              <p>Ticket-weighted seat utilization for the same four-week periods.</p>
+              <div class="comparison-chart" id="capacity-comparison"></div>
+            </article>
+          </div>
+
+          <div class="impact-highlights">
+            <article class="impact-card blue"><h3>HIGHEST GROSS <span>Before</span></h3><strong id="highest-gross-before"></strong></article>
+            <article class="impact-card red"><h3>HIGHEST GROSS <span>After</span></h3><strong id="highest-gross-after"></strong></article>
+            <article class="impact-card purple"><h3>HIGHEST CAPACITY <span>Before</span></h3><strong id="highest-capacity-before"></strong></article>
+            <article class="impact-card teal"><h3>HIGHEST CAPACITY <span>After</span></h3><strong id="highest-capacity-after"></strong></article>
+          </div>
+
+          <div class="impact-kpis">
+            <article class="orange"><h3>GROSS CHANGE <span>After vs before</span></h3><strong id="gross-change"></strong></article>
+            <article class="magenta"><h3>CAPACITY CHANGE <span>Points</span></h3><strong id="capacity-change"></strong></article>
+            <article class="navy"><h3>BOX OFFICE <span>Total gross</span></h3><strong id="total-gross"></strong></article>
+            <article class="green"><h3>TONY <span>Wins</span></h3><strong id="tony-wins"></strong></article>
+            <article class="sky"><h3>AUDIENCE <span>Tickets sold</span></h3><strong id="total-seats"></strong></article>
+          </div>
+
+          <div class="impact-bottom-grid">
+            <div class="analysis-column">
+              <article class="insight-card">
+                <h3>INSIGHT ANALYSIS <span>| What changed after the Tonys?</span></h3>
+                <p id="impact-insight"></p>
+              </article>
+              <article class="reading-card">
+                <h3>HOW TO READ THIS ANALYSIS</h3>
+                <p>Before and after values use four completed Broadway weeks around each actual Tony ceremony date. The comparison is descriptive and may also reflect seasonality, pricing, performance schedules, and changing show mix.</p>
+              </article>
+            </div>
+
+            <article class="impact-panel detail-panel">
+              <h3>SHOW IMPACT DETAIL <span>| Theatre, revenue and awards</span></h3>
+              <div class="impact-table-wrap">
+                <table class="impact-detail-table">
+                  <thead>
+                    <tr>
+                      <th scope="col" data-impact-sort-header="show" aria-sort="none"><button type="button" class="table-sort-button" data-impact-sort="show">Show <span aria-hidden="true"></span></button></th>
+                      <th scope="col" data-impact-sort-header="theatre" aria-sort="none"><button type="button" class="table-sort-button" data-impact-sort="theatre">Theatre <span aria-hidden="true"></span></button></th>
+                      <th scope="col" data-impact-sort-header="totalGross" aria-sort="none"><button type="button" class="table-sort-button" data-impact-sort="totalGross">Gross <span aria-hidden="true"></span></button></th>
+                      <th scope="col" data-impact-sort-header="capacity" aria-sort="none"><button type="button" class="table-sort-button" data-impact-sort="capacity">Capacity <span aria-hidden="true"></span></button></th>
+                      <th scope="col" data-impact-sort-header="wins" aria-sort="none"><button type="button" class="table-sort-button" data-impact-sort="wins">Tony Wins <span aria-hidden="true"></span></button></th>
+                      <th scope="col" data-impact-sort-header="nominations" aria-sort="descending"><button type="button" class="table-sort-button" data-impact-sort="nominations">Tony Nominations <span aria-hidden="true">&#9660;</span></button></th>
+                    </tr>
+                  </thead>
+                  <tbody id="impact-table-body"></tbody>
+                  <tfoot><tr><th colspan="2">Total</th><th id="table-total-gross"></th><th id="table-total-capacity"></th><th id="table-total-wins"></th><th id="table-total-nominations"></th></tr></tfoot>
+                </table>
+              </div>
+              <p class="table-filter-hint" id="table-filter-status" aria-live="polite">
+                Select a row to filter every visual.
+              </p>
+            </article>
+          </div>
+
+          <p class="dashboard-note"><strong>Data:</strong> calculated from the PBIP model's Broadway grosses and Tony Awards source files. Use the show search, a theatre bar, or a table row to cross-filter the dashboard.</p>
+        </div>
+      </div>
+    </section>
+
+    <article class="story" id="insights" aria-labelledby="overview-story-title">
+      <div class="story-heading">
+        <p class="section-label">Behind the numbers</p>
+        <h2 id="overview-story-title">The pulse of Broadway</h2>
+        <p class="story-lead">A market where storytelling, audience enthusiasm, and economics meet eight times a week.</p>
+      </div>
+      <div class="story-copy">
+        <p>
+          Broadway is more than a collection of glowing marquees; it is a living marketplace.
+          The Overview dashboard offers a fast way to read it. Begin with the headline indicators
+          to see whether attendance and grosses are climbing, holding steady, or cooling. Then
+          look beyond the totals. A strong week can be powered by a blockbuster, a holiday surge,
+          a new opening, or broad growth across many productions, and each possibility tells a
+          different story.
+        </p>
+        <p>
+          Use the visuals as a map rather than a scoreboard. Compare recent results with earlier
+          periods, notice where ticket prices move differently from attendance, and watch for
+          shows that outperform the wider market. Tourism, awards, weather, and school calendars
+          can all change the district's rhythm. The most revealing insight may be the relationship
+          between measures, not the largest number on screen. When revenue, capacity, and demand
+          rise together, Broadway may be building momentum. When they separate, the dashboard
+          invites a deeper question. This page is your opening scene: a concise view of the
+          industry's energy and a guide to the details waiting in the other sections.
+        </p>
+      </div>
+    </article>
+
+    <section class="contact" aria-labelledby="contact-title">
+      <div>
+        <p class="section-label">Start a conversation</p>
+        <h2 id="contact-title">See something worth discussing?</h2>
+        <p>Share a question, observation, or suggestion about Theater Spotlight.</p>
+      </div>
+      <a
+        class="email-button"
+        href="mailto:tsy235711@gmail.com?subject=Theater%20Spotlight%20feedback"
+      >
+        Send feedback
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <span>Theater Spotlight</span>
+    <p class="source-credit">
+      Data sources:
+      <a href="https://playbill.com/grosses" target="_blank" rel="noopener">Playbill Grosses</a>
+      and
+      <a href="https://www.tonyawards.com" target="_blank" rel="noopener">The Tony Awards</a>.
+    </p>
+    <p class="site-disclaimer">
+      <strong>Disclaimer:</strong> Theater Spotlight is an independent, non-commercial
+      educational project and is not affiliated with or endorsed by any theatre, production,
+      ticket provider, Playbill, Microsoft, or Power BI. I do not claim ownership of
+      third-party data, names, trademarks, or source material; all rights remain with their
+      respective owners. Text and summaries were created with AI assistance and may contain
+      errors. Verify information with the original sources before acting on it. Nothing on
+      this site grants permission to republish, resell, or commercially exploit third-party
+      material. The site is provided without warranties and is not intended for purchasing,
+      financial, legal, or business decisions.
+    </p>
+  </footer>
+  <script src="dashboard.js?v=3"></script>
+</body>
+</html>

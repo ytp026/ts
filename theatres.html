@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Theatre District | Theater Spotlight</title>
+  <link rel="stylesheet" href="styles.css?v=7">
+</head>
+<body class="theme-theatres">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Theater Spotlight home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span>Theater Spotlight</span>
+    </a>
+    <nav class="navigation" aria-label="Main navigation">
+      <a href="index.html">Overview</a>
+      <a href="history.html">40 Years of Broadway</a>
+      <a class="active" href="theatres.html" aria-current="page">Theatre District</a>
+      <a href="tony-awards.html">Tony Awards Effect</a>
+      <a href="rush.html">Rush & Lottery</a>
+      <a href="game.html">Be More Chill</a>
+      <a href="memories.html">Back to the Future</a>
+      <a class="nav-cta" href="#dashboard">View report</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Theatre District</p>
+        <h1>Every house has a story.</h1>
+        <p class="intro">Explore how scale, capacity, programming, and audience demand give every Broadway theatre its own rhythm.</p>
+        <div class="hero-actions"><a class="primary-button" href="#dashboard">Explore venues</a><a class="text-link" href="#insights">Read the story <span aria-hidden="true">→</span></a></div>
+      </div>
+      <div class="data-art theatre-art" aria-label="Theatre occupancy graphic inspired by Hamilton">
+        <div class="art-topline"><span>“The Room Where It Happens”</span><span>Hamilton</span></div>
+        <div class="capacity-list" aria-hidden="true">
+          <div><span>Orchestra</span><i><b style="--width: 94%"></b></i><strong>94%</strong></div>
+          <div><span>Mezzanine</span><i><b style="--width: 88%"></b></i><strong>88%</strong></div>
+          <div><span>Balcony</span><i><b style="--width: 79%"></b></i><strong>79%</strong></div>
+        </div>
+        <div class="art-stats"><span>Overall occupancy <b>89%</b></span><span>Trend <b>Up</b></span></div>
+      </div>
+    </section>
+    <section class="report-section" id="dashboard" aria-labelledby="report-title">
+      <div class="section-heading">
+        <div><p class="section-label">Interactive JavaScript dashboard</p><h2 id="report-title">Explore the Theatre District</h2></div>
+        <p>Compare venue size, attendance, and the percentage of available seats filled.</p>
+      </div>
+      <div class="report-frame javascript-dashboard-frame">
+        <div class="javascript-dashboard page-dashboard theatres-dashboard">
+          <div class="theatre-top-grid">
+            <article class="pbi-card pbi-blue"><h3>Theatres in the Data</h3><strong id="theatre-count"></strong></article>
+            <article class="pbi-card pbi-red"><h3>Gross at Mapped Theatres</h3><strong id="theatre-total-gross"></strong></article>
+            <article class="pbi-card pbi-purple"><h3>Average Capacity</h3><strong id="theatre-capacity"></strong></article>
+            <label class="pbi-filter"><span>Year</span><select id="theatre-year"><option value="">All</option></select></label>
+            <label class="pbi-filter"><span>Theatre</span><input id="theatre-name" type="search" list="theatre-names" placeholder="All"><datalist id="theatre-names"></datalist></label>
+            <label class="pbi-filter"><span>Shows</span><input id="theatre-show" type="search" list="theatre-shows" placeholder="All"><datalist id="theatre-shows"></datalist></label>
+          </div>
+
+          <div class="theatre-main-grid">
+            <article class="impact-panel map-panel">
+              <h3>Where Broadway Gross Are</h3>
+              <p>Bubble size represents cumulative gross. Select a theatre for details.</p>
+              <div class="theatre-map" id="theatre-map" aria-label="Approximate map of Broadway theatres">
+                <div class="theatre-map-layer" id="theatre-map-layer">
+                  <span class="map-avenue">Broadway</span><span class="map-street street-1">W 55th</span><span class="map-street street-2">W 48th</span><span class="map-street street-3">W 41st</span>
+                </div>
+                <div class="map-zoom-controls" aria-label="Map zoom controls">
+                  <button id="map-zoom-in" type="button" aria-label="Zoom in">+</button>
+                  <output id="map-zoom-status" aria-live="polite">100%</output>
+                  <button id="map-zoom-out" type="button" aria-label="Zoom out" disabled>&minus;</button>
+                </div>
+              </div>
+            </article>
+            <article class="impact-panel chart-panel">
+              <h3>Highest-Grossing Theatres</h3>
+              <p>Select a bar to cross-filter the map and detail tables.</p>
+              <div class="dashboard-bars" id="theatre-bars"></div>
+            </article>
+          </div>
+
+          <div class="theatre-table-grid">
+            <article class="impact-panel detail-panel">
+              <h3>Theatre Summary</h3>
+              <div class="impact-table-wrap"><table class="theatre-summary-table"><thead><tr>
+                <th scope="col" data-theatre-sort-header="summary:theatre" aria-sort="none"><button type="button" class="table-sort-button" data-theatre-sort-table="summary" data-theatre-sort="theatre">Theatre <span aria-hidden="true"></span></button></th>
+                <th scope="col" data-theatre-sort-header="summary:gross" aria-sort="descending"><button type="button" class="table-sort-button" data-theatre-sort-table="summary" data-theatre-sort="gross">Total Gross <span aria-hidden="true">&#9660;</span></button></th>
+                <th scope="col" data-theatre-sort-header="summary:shows" aria-sort="none"><button type="button" class="table-sort-button" data-theatre-sort-table="summary" data-theatre-sort="shows">Shows Hosted <span aria-hidden="true"></span></button></th>
+                <th scope="col" data-theatre-sort-header="summary:capacity" aria-sort="none"><button type="button" class="table-sort-button" data-theatre-sort-table="summary" data-theatre-sort="capacity">Average Capacity <span aria-hidden="true"></span></button></th>
+              </tr></thead><tbody id="theatre-summary-body"></tbody></table></div>
+            </article>
+            <article class="impact-panel detail-panel">
+              <h3>Productions at Selected Theatre</h3>
+              <div class="impact-table-wrap"><table class="theatre-production-table"><thead><tr>
+                <th scope="col" data-theatre-sort-header="productions:show" aria-sort="none"><button type="button" class="table-sort-button" data-theatre-sort-table="productions" data-theatre-sort="show">Production <span aria-hidden="true"></span></button></th>
+                <th scope="col" data-theatre-sort-header="productions:gross" aria-sort="descending"><button type="button" class="table-sort-button" data-theatre-sort-table="productions" data-theatre-sort="gross">Total Gross <span aria-hidden="true">&#9660;</span></button></th>
+                <th scope="col" data-theatre-sort-header="productions:capacity" aria-sort="none"><button type="button" class="table-sort-button" data-theatre-sort-table="productions" data-theatre-sort="capacity">Average Capacity <span aria-hidden="true"></span></button></th>
+              </tr></thead><tbody id="theatre-production-body"></tbody></table></div>
+            </article>
+          </div>
+          <p class="dashboard-note"><strong>Map:</strong> theatre positions are approximate from the PBIP address source. Use filters, bubbles, bars, or table rows to cross-filter the page.</p>
+        </div>
+      </div>
+    </section>
+    <article class="story" id="insights" aria-labelledby="theatres-story-title">
+      <div class="story-heading">
+        <p class="section-label">Behind the numbers</p>
+        <h2 id="theatres-story-title">The room changes the performance</h2>
+        <p class="story-lead">Each Broadway house is a distinct creative and commercial ecosystem.</p>
+      </div>
+      <div class="story-copy"><p>
+        A Broadway theatre is not simply a container for a show. Its seating capacity, location,
+        history, sightlines, and atmosphere shape both the audience experience and the economics
+        of a production. The Theatres dashboard reveals how those venues differ. Begin by
+        comparing attendance and capacity, but remember that a sold-out intimate house and a
+        nearly full large theatre represent very different numbers of people. Gross potential
+        also changes with seat count, ticket mix, and the kind of production a stage can support.
+      </p>
+      <p>
+        Explore the venues as distinct ecosystems. Some theatres become closely associated with
+        long-running hits; others regularly welcome limited engagements and new productions.
+        Watch how performance changes when a venue hosts a new show, and compare theatres across
+        similar periods to avoid mistaking seasonality for structural differences. Capacity
+        percentage can expose demand that total attendance alone might hide, while average
+        ticket price can suggest how audiences value the experience in each house. Geography
+        adds another layer: even within the theatre district, foot traffic, nearby attractions,
+        and familiarity may influence behavior. The compelling question is not simply which
+        theatre earns the most. It is how architecture, programming, scale, and audience demand
+        combine to give every venue its own commercial rhythm and unmistakable Broadway identity.
+      </p></div>
+    </article>
+  </main>
+  <footer>
+    <span>Theater Spotlight</span>
+    <p class="source-credit">
+      Data sources:
+      <a href="https://playbill.com/grosses" target="_blank" rel="noopener">Playbill Grosses</a>
+      and
+      <a href="https://www.tonyawards.com" target="_blank" rel="noopener">The Tony Awards</a>.
+    </p>
+    <p class="site-disclaimer">
+      <strong>Disclaimer:</strong> Theater Spotlight is an independent, non-commercial
+      educational project and is not affiliated with or endorsed by any theatre, production,
+      ticket provider, Playbill, Microsoft, or Power BI. I do not claim ownership of
+      third-party data, names, trademarks, or source material; all rights remain with their
+      respective owners. Text and summaries were created with AI assistance and may contain
+      errors. Verify information with the original sources before acting on it. Nothing on
+      this site grants permission to republish, resell, or commercially exploit third-party
+      material. The site is provided without warranties and is not intended for purchasing,
+      financial, legal, or business decisions.
+    </p>
+  </footer>
+  <script src="dashboard-utils.js"></script>
+  <script src="theatres-dashboard.js?v=2"></script>
+</body>
+</html>
