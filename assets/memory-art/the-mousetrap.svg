@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-labelledby="title desc">
+  <title id="title">The Mousetrap memory artwork</title>
+  <desc id="desc">Original mystery artwork with a keyhole inside a geometric maze.</desc>
+  <rect width="600" height="800" fill="#201d2d"/>
+  <rect x="70" y="70" width="460" height="560" rx="18" fill="none" stroke="#b89955" stroke-width="8"/>
+  <path d="M110 130h300v80H190v90h260v110H145v95h325" fill="none" stroke="#6d6681" stroke-width="24" stroke-linecap="square"/>
+  <circle cx="300" cy="335" r="92" fill="#b11f35"/>
+  <circle cx="300" cy="310" r="31" fill="#f4e6c8"/>
+  <path d="M280 337h40l28 105h-96z" fill="#f4e6c8"/>
+  <path d="M95 590l85-55m325 55l-85-55" stroke="#b89955" stroke-width="7"/>
+  <text x="300" y="680" text-anchor="middle" fill="#b89955" font-family="Aptos,Segoe UI,sans-serif" font-size="21" font-weight="700" letter-spacing="5">A THEATRE MEMORY</text>
+  <text x="300" y="732" text-anchor="middle" fill="#f4e6c8" font-family="Georgia,serif" font-size="45" font-weight="700">The Mousetrap</text>
+</svg>

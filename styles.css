@@ -925,12 +925,13 @@ iframe { display: block; width: 100%; height: 100%; border: 0; }
 
 .impact-bottom-grid {
   display: grid;
-  grid-template-columns: .8fr 1.2fr;
+  grid-template-columns: 1fr;
   gap: 22px;
 }
 
 .analysis-column {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   align-content: start;
   gap: 22px;
 }
@@ -972,7 +973,8 @@ iframe { display: block; width: 100%; height: 100%; border: 0; }
 
 .impact-table-wrap {
   max-height: 285px;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .detail-panel table {
@@ -980,6 +982,16 @@ iframe { display: block; width: 100%; height: 100%; border: 0; }
   border-collapse: collapse;
   font-size: .72rem;
   table-layout: fixed;
+}
+
+.impact-detail-table {
+  min-width: 0;
+  font-size: .62rem;
+}
+
+.impact-detail-table th,
+.impact-detail-table td {
+  padding: .28rem .25rem;
 }
 
 .detail-panel th,
@@ -1023,6 +1035,36 @@ iframe { display: block; width: 100%; height: 100%; border: 0; }
   text-align: inherit;
 }
 
+.impact-detail-table .table-sort-button {
+  gap: .15rem;
+  white-space: nowrap;
+}
+
+.impact-detail-table .table-sort-button span {
+  min-width: .5rem;
+  font-size: .55rem;
+}
+
+.theatre-summary-table {
+  min-width: 500px;
+  font-size: .62rem;
+}
+
+.theatre-summary-table th,
+.theatre-summary-table td {
+  padding: .28rem .25rem;
+}
+
+.theatre-summary-table .table-sort-button {
+  gap: .15rem;
+  white-space: nowrap;
+}
+
+.theatre-summary-table .table-sort-button span {
+  min-width: .5rem;
+  font-size: .55rem;
+}
+
 .history-sort-table th:first-child .table-sort-button,
 .impact-detail-table th:nth-child(-n + 2) .table-sort-button,
 .theatre-summary-table th:first-child .table-sort-button,
@@ -1030,12 +1072,12 @@ iframe { display: block; width: 100%; height: 100%; border: 0; }
   justify-content: flex-start;
 }
 
-.impact-detail-table th:nth-child(1) { width: 22%; }
-.impact-detail-table th:nth-child(2) { width: 28%; }
-.impact-detail-table th:nth-child(3) { width: 14%; }
-.impact-detail-table th:nth-child(4) { width: 12%; }
-.impact-detail-table th:nth-child(5) { width: 11%; }
-.impact-detail-table th:nth-child(6) { width: 13%; }
+.impact-detail-table th:nth-child(1) { width: 20%; }
+.impact-detail-table th:nth-child(2) { width: 24%; }
+.impact-detail-table th:nth-child(3) { width: 12%; }
+.impact-detail-table th:nth-child(4) { width: 13%; }
+.impact-detail-table th:nth-child(5) { width: 13%; }
+.impact-detail-table th:nth-child(6) { width: 18%; }
 
 .history-sort-table th:nth-child(1) { width: 40%; }
 .history-sort-table th:nth-child(2),
@@ -1471,7 +1513,7 @@ iframe { display: block; width: 100%; height: 100%; border: 0; }
 
 .theatre-top-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(130px, 1fr)) 150px 180px minmax(190px, 1.25fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
   margin-bottom: 16px;
 }
@@ -1643,7 +1685,7 @@ iframe { display: block; width: 100%; height: 100%; border: 0; }
 
 .theatre-table-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 16px;
 }
 
@@ -2233,7 +2275,7 @@ iframe { display: block; width: 100%; height: 100%; border: 0; }
 
 .fact-show {
   grid-column: 4;
-  padding: 1.1rem 1.3rem;
+  padding: 1.1rem 1.3rem 1.1rem 4.2rem;
   color: #4e2449;
   background: #fff1d2;
   clip-path: polygon(0 0, 100% 0, 100% 38%, 94% 50%, 100% 62%, 100% 100%, 0 100%, 0 62%, 6% 50%, 0 38%);
@@ -2252,12 +2294,13 @@ iframe { display: block; width: 100%; height: 100%; border: 0; }
 
 .fact-show .fact-icon {
   position: absolute;
-  top: .7rem;
-  right: 1rem;
-  width: 2rem;
-  height: 2rem;
+  top: 50%;
+  left: 1.15rem;
+  width: 2.35rem;
+  height: 2.35rem;
   border-color: rgba(185, 129, 58, .4);
   color: #9b6630;
+  transform: translateY(-50%);
 }
 
 .fact-year {
@@ -3236,6 +3279,7 @@ body > footer {
   .impact-highlights,
   .impact-kpis,
   .tony-impact-comparisons { grid-template-columns: 1fr; }
+  .analysis-column { grid-template-columns: 1fr; }
   .game-scoreboard,
   .game-choices { grid-template-columns: 1fr; }
   .game-board-heading { align-items: flex-start; flex-direction: column; }

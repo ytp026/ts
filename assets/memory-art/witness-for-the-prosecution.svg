@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-labelledby="title desc">
+  <title id="title">Witness for the Prosecution memory artwork</title>
+  <desc id="desc">Original courtroom-inspired artwork with columns and balanced scales.</desc>
+  <rect width="600" height="800" fill="#132d34"/>
+  <path d="M80 220l220-125 220 125z" fill="#d2ad66"/>
+  <g fill="#e8dfca">
+    <rect x="105" y="245" width="62" height="325"/>
+    <rect x="205" y="245" width="62" height="325"/>
+    <rect x="333" y="245" width="62" height="325"/>
+    <rect x="433" y="245" width="62" height="325"/>
+  </g>
+  <rect x="75" y="570" width="450" height="28" fill="#d2ad66"/>
+  <path d="M300 270v185m-105-125h210M195 330l-55 105h110zm210 0l-55 105h110z" fill="none" stroke="#b4473f" stroke-width="12" stroke-linejoin="round"/>
+  <circle cx="300" cy="270" r="18" fill="#b4473f"/>
+  <text x="300" y="670" text-anchor="middle" fill="#d2ad66" font-family="Aptos,Segoe UI,sans-serif" font-size="20" font-weight="700" letter-spacing="5">A THEATRE MEMORY</text>
+  <text x="300" y="716" text-anchor="middle" fill="#fff" font-family="Georgia,serif" font-size="37" font-weight="700">Witness for the</text>
+  <text x="300" y="758" text-anchor="middle" fill="#fff" font-family="Georgia,serif" font-size="37" font-weight="700">Prosecution</text>
+</svg>

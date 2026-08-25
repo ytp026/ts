@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-labelledby="title desc">
+  <title id="title">Matilda The Musical memory artwork</title>
+  <desc id="desc">Original playful artwork with an open book and floating letter blocks.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="1" x2="1" y2="0">
+      <stop stop-color="#173e58"/>
+      <stop offset="1" stop-color="#397d89"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <g font-family="Aptos,Segoe UI,sans-serif" font-weight="800" text-anchor="middle">
+    <g transform="translate(125 140) rotate(-9)"><rect width="82" height="82" rx="8" fill="#efbf45"/><text x="41" y="57" font-size="47" fill="#173e58">M</text></g>
+    <g transform="translate(395 125) rotate(10)"><rect width="78" height="78" rx="8" fill="#e96a57"/><text x="39" y="54" font-size="43" fill="#fff">A</text></g>
+    <g transform="translate(250 215) rotate(5)"><rect width="84" height="84" rx="8" fill="#f3e8ce"/><text x="42" y="58" font-size="46" fill="#173e58">T</text></g>
+  </g>
+  <path d="M92 420c92-38 164-27 208 32 44-59 116-70 208-32v185c-91-32-161-20-208 38-47-58-117-70-208-38z" fill="#f7eedb"/>
+  <path d="M300 452v191" stroke="#c49b58" stroke-width="6"/>
+  <path d="M125 475c62-15 110-6 143 29m-143 42c62-15 110-6 143 29m207-100c-62-15-110-6-143 29m143 42c-62-15-110-6-143 29" fill="none" stroke="#7a6a63" stroke-width="7" stroke-linecap="round"/>
+  <text x="300" y="700" text-anchor="middle" fill="#efbf45" font-family="Aptos,Segoe UI,sans-serif" font-size="21" font-weight="700" letter-spacing="5">A THEATRE MEMORY</text>
+  <text x="300" y="750" text-anchor="middle" fill="#fff" font-family="Georgia,serif" font-size="45" font-weight="700">Matilda</text>
+</svg>

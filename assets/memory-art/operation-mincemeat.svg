@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-labelledby="title desc">
+  <title id="title">Operation Mincemeat memory artwork</title>
+  <desc id="desc">Original espionage-inspired artwork with a sealed envelope, waves, and route lines.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#19394a"/>
+      <stop offset="1" stop-color="#0f202b"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <g fill="none" stroke="#4d8da0" stroke-width="5" opacity=".75">
+    <path d="M0 500c80-45 150-45 230 0s150 45 230 0 150-45 230 0"/>
+    <path d="M0 545c80-45 150-45 230 0s150 45 230 0 150-45 230 0"/>
+  </g>
+  <path d="M105 220h390v250H105z" fill="#e8ddc5" transform="rotate(-5 300 345)"/>
+  <path d="M111 238l190 126 183-158" fill="none" stroke="#9d8e70" stroke-width="8" transform="rotate(-5 300 345)"/>
+  <circle cx="303" cy="365" r="42" fill="#a74734"/>
+  <path d="M285 365l14 14 27-34" fill="none" stroke="#f4dfb8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M100 150c115-74 267-65 389 18" fill="none" stroke="#d5aa55" stroke-width="6" stroke-dasharray="13 14"/>
+  <path d="M473 147l25 27-36 6" fill="none" stroke="#d5aa55" stroke-width="6"/>
+  <text x="300" y="655" text-anchor="middle" fill="#d5aa55" font-family="Aptos,Segoe UI,sans-serif" font-size="20" font-weight="700" letter-spacing="5">A THEATRE MEMORY</text>
+  <text x="300" y="707" text-anchor="middle" fill="#fff" font-family="Georgia,serif" font-size="40" font-weight="700">Operation</text>
+  <text x="300" y="753" text-anchor="middle" fill="#fff" font-family="Georgia,serif" font-size="40" font-weight="700">Mincemeat</text>
+</svg>
