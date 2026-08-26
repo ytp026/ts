@@ -5,8 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A personal timeline of Broadway shows, theatres, photos, and memories.">
   <title>Broadway Memory Timeline | Theater Spotlight</title>
-  <link rel="stylesheet" href="styles.css?v=28">
-  <script src="memories.js?v=11" defer></script>
+  <link rel="stylesheet" href="styles.css?v=34">
+  <script src="memories.js?v=28" defer></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-47RPC1XZKM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-47RPC1XZKM');
+  </script>
   <script>
     (function(c,l,a,r,i,t,y){
       c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -113,6 +121,24 @@
           <span>Loved-it nights</span>
           <small>The standing-ovation shelf</small>
         </article>
+        <article class="memory-fact fact-theatre">
+          <span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20h16M6 20V9h12v11M4 9l8-5 8 5M9 13h2M13 13h2M9 16h2M13 16h2"></path></svg></span>
+          <span>Most visited theatre</span>
+          <strong id="memory-top-theatre">-</strong>
+          <small>The house that hosted the most</small>
+        </article>
+        <article class="memory-fact fact-month">
+          <span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"></rect><path d="M8 3v4M16 3v4M4 10h16M8 14h8M8 17h5"></path></svg></span>
+          <span>Favorite theatre month</span>
+          <strong id="memory-top-month">-</strong>
+          <small>When the calendar filled fastest</small>
+        </article>
+        <article class="memory-fact fact-strength">
+          <span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.5-.8z"></path></svg></span>
+          <span>Strongest reaction</span>
+          <strong id="memory-top-dimension">-</strong>
+          <small>The category that shone brightest</small>
+        </article>
       </div>
     </section>
 
@@ -120,7 +146,7 @@
       <div class="memory-heading">
         <div>
           <p class="section-label">Personal theatre archive</p>
-          <h2 id="memory-title">My Broadway journey</h2>
+          <h2 id="memory-title">My Musical Theatre Journey</h2>
         </div>
         <p>A personal record of performances, venues, cities, and seats collected across the years.</p>
       </div>

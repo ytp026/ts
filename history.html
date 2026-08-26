@@ -5,7 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Explore four decades of Broadway performance history.">
   <title>40 Years of Broadway | Theater Spotlight</title>
-  <link rel="stylesheet" href="styles.css?v=12">
+  <link rel="stylesheet" href="styles.css?v=32">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-47RPC1XZKM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-47RPC1XZKM');
+  </script>
   <script>
     (function(c,l,a,r,i,t,y){
       c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -88,16 +96,33 @@
               <div class="chart-panel-heading">
                 <h3>Weekly Broadway Gross by Week Starting</h3>
                 <div class="chart-zoom-controls" aria-label="Line chart zoom controls">
+                  <button type="button" id="history-pan-left" aria-label="Move chart earlier" title="Move earlier">&larr;</button>
                   <button type="button" id="history-zoom-in" aria-label="Zoom in on line chart" title="Zoom in">+</button>
                   <button type="button" id="history-zoom-out" aria-label="Zoom out on line chart" title="Zoom out">&minus;</button>
+                  <button type="button" id="history-pan-right" aria-label="Move chart later" title="Move later">&rarr;</button>
                   <button type="button" id="history-zoom-reset">Reset</button>
                 </div>
               </div>
               <svg id="history-line-chart" class="dashboard-svg" viewBox="0 0 700 245" role="img" aria-label="Interactive weekly Broadway gross line chart"></svg>
+              <div class="history-chart-navigation">
+                <strong id="history-range-status"></strong>
+                <span>Zoom, then drag the chart or use the arrows to move through time.</span>
+              </div>
+            </article>
+            <article class="impact-panel chart-panel">
+              <h3>Longest-Running Shows</h3>
+              <p class="chart-definition">Reported Broadway periods plotted on a shared timeline; gaps separate distinct runs.</p>
+              <div class="history-longevity-chart" id="history-running-bars"></div>
+            </article>
+            <article class="impact-panel chart-panel">
+              <h3>Most Broadway Productions</h3>
+              <p class="chart-definition">Distinct runs of the same title, separated by a gap longer than 26 weeks.</p>
+              <div class="history-production-stairs" id="history-run-count-bars"></div>
             </article>
             <article class="impact-panel chart-panel">
               <h3>Highest-Grossing Productions</h3>
-              <div class="dashboard-bars" id="history-production-bars"></div>
+              <p class="chart-definition">Tile size emphasizes the cumulative reported gross of each leading production.</p>
+              <div class="history-gross-treemap" id="history-production-bars"></div>
             </article>
           </div>
 
@@ -126,13 +151,13 @@
                 <article class="pbi-card pbi-navy"><h3>Average Capacity</h3><strong id="history-capacity"></strong></article>
               </div>
               <article class="impact-panel history-premise-panel" aria-live="polite">
-                <p class="section-label">Selected production</p>
+                <p class="section-label" id="history-premise-label">Selected production</p>
                 <h3 id="history-premise-title">Choose a production</h3>
                 <p id="history-premise">Select a row in the table to read a short premise for that show.</p>
               </article>
             </div>
           </div>
-          <p class="dashboard-note"><strong>Data:</strong> calculated from the PBIP model source files. Use the year, show search, line chart weeks, bars, or table rows to cross-filter the page.</p>
+          <p class="dashboard-note"><strong>Data:</strong> calculated from the Broadway history source dataset. Use the year, show search, line chart weeks, bars, or table rows to cross-filter the page.</p>
         </div>
       </div>
     </section>
@@ -177,7 +202,7 @@
     <p class="site-disclaimer">
       <strong>Disclaimer:</strong> Theater Spotlight is an independent, non-commercial
       educational project and is not affiliated with or endorsed by any theatre, production,
-      ticket provider, Playbill, Microsoft, or Power BI. I do not claim ownership of
+      ticket provider, or Playbill. I do not claim ownership of
       third-party data, names, trademarks, or source material; all rights remain with their
       respective owners. Text and summaries were created with AI assistance and may contain
       errors. Verify information with the original sources before acting on it. Nothing on
@@ -187,6 +212,6 @@
     </p>
   </footer>
   <script src="dashboard-utils.js"></script>
-  <script src="history-dashboard.js?v=9"></script>
+  <script src="history-dashboard.js?v=33"></script>
 </body>
 </html>

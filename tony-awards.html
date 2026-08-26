@@ -5,7 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Explore the relationship between Tony Awards recognition and Broadway performance.">
   <title>Tony Awards Effect | Theater Spotlight</title>
-  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="styles.css?v=9">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-47RPC1XZKM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-47RPC1XZKM');
+  </script>
   <script>
     (function(c,l,a,r,i,t,y){
       c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -77,10 +85,19 @@
 
           <div class="pbi-filter-row tony-filter-row">
             <label class="pbi-filter"><span>Tony Awards Year</span><select id="tony-year"><option value="">All</option></select></label>
-            <label class="pbi-filter"><span>Tony Award Category</span><input id="tony-category" type="search" list="tony-categories" placeholder="All"><datalist id="tony-categories"></datalist></label>
+            <input id="tony-category" type="hidden">
             <label class="pbi-filter"><span>Shows</span><input id="tony-show" type="search" list="tony-shows" placeholder="All"><datalist id="tony-shows"></datalist></label>
             <label class="pbi-filter"><span>Winning-Year Group</span><select id="tony-year-group"><option value="">All</option><option>1 winning year</option><option>More than 1 winning year</option></select></label>
           </div>
+
+          <section class="tony-category-filter-panel" aria-labelledby="tony-category-filter-title">
+            <div>
+              <p class="eyebrow">Filter the full report</p>
+              <h3 id="tony-category-filter-title">Tony Award Category</h3>
+            </div>
+            <p>Choose a category to rearrange every chart and record below.</p>
+            <div class="tony-category-tags" id="tony-category-bars"></div>
+          </section>
 
           <section class="tony-impact-section" aria-labelledby="tony-impact-title">
             <div class="tony-impact-heading">
@@ -133,8 +150,8 @@
           </section>
 
           <div class="tony-chart-grid">
-            <article class="impact-panel chart-panel"><h3>Tony Wins by Award Category</h3><div class="dashboard-bars" id="tony-category-bars"></div></article>
-            <article class="impact-panel chart-panel"><h3>Most Tony Wins by Production and Winning Years</h3><div class="dashboard-bars dual-bars" id="tony-production-bars"></div></article>
+            <article class="impact-panel chart-panel tony-production-chart-wide"><h3>Most Tony Wins by Production and Winning Years</h3><div class="dashboard-bars dual-bars" id="tony-production-bars"></div></article>
+            <article class="impact-panel chart-panel"><h3>Most Nominated Productions and Winning Years</h3><div class="dashboard-bars dual-bars" id="tony-nomination-bars"></div></article>
           </div>
 
           <div class="tony-bottom-grid">
@@ -143,7 +160,6 @@
               <div class="impact-table-wrap tony-table-wrap"><table class="tony-records-table"><thead><tr><th>Year</th><th>Award Category</th><th>Nominee</th><th>Production</th><th>Winner</th></tr></thead><tbody id="tony-table-body"></tbody></table></div>
               <p class="table-filter-hint" id="tony-table-status" aria-live="polite">Select a row to filter every visual.</p>
             </article>
-            <article class="impact-panel chart-panel"><h3>Most Nominated Productions and Winning Years</h3><div class="dashboard-bars dual-bars" id="tony-nomination-bars"></div></article>
           </div>
         </div>
       </div>
@@ -197,6 +213,6 @@
     </p>
   </footer>
   <script src="dashboard-utils.js"></script>
-  <script src="tony-dashboard.js?v=2"></script>
+  <script src="tony-dashboard.js?v=4"></script>
 </body>
 </html>

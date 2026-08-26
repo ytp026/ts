@@ -1,6 +1,6 @@
 "use strict";
 
-const { createElement, formatPercent, populateDatalist, renderBars } = window.DashboardUtils;
+const { createElement, formatPercent, populateDatalist } = window.DashboardUtils;
 const tonyYear = document.querySelector("#tony-year");
 const tonyCategory = document.querySelector("#tony-category");
 const tonyShow = document.querySelector("#tony-show");
@@ -352,6 +352,39 @@ function renderDualBars(containerId, rows, primaryName, primaryColor) {
   }));
 }
 
+function renderTonyCategoryTags(rows) {
+  const container = document.querySelector("#tony-category-bars");
+  const allButton = createElement("button");
+  allButton.type = "button";
+  allButton.className = selectedTonyCategory ? "" : "selected";
+  allButton.setAttribute("aria-pressed", String(!selectedTonyCategory));
+  allButton.append(createElement("span", "All categories"), createElement("strong", "All"));
+  allButton.addEventListener("click", () => {
+    selectedTonyCategory = "";
+    selectedTonyRow = null;
+    renderTonyDashboard();
+  });
+
+  const categoryButtons = rows.map((row) => {
+    const button = createElement("button");
+    const selected = row.label === selectedTonyCategory;
+    button.type = "button";
+    button.className = selected ? "selected" : "";
+    button.setAttribute("aria-pressed", String(selected));
+    button.append(
+      createElement("span", row.label),
+      createElement("strong", `${row.wins} ${row.wins === 1 ? "win" : "wins"}`)
+    );
+    button.addEventListener("click", () => {
+      selectedTonyCategory = selected ? "" : row.label;
+      selectedTonyRow = null;
+      renderTonyDashboard();
+    });
+    return button;
+  });
+  container.replaceChildren(allButton, ...categoryButtons);
+}
+
 function renderTonyTable(rows) {
   const body = document.querySelector("#tony-table-body");
   const sorted = [...rows].sort((a, b) => b.year.localeCompare(a.year)
@@ -399,11 +432,11 @@ function renderTonyDashboard() {
   const metrics = tonyMetrics(metricRows);
   const categories = aggregateTony(baseRows, "category")
     .sort((a, b) => b.wins - a.wins || a.label.localeCompare(b.label))
-    .slice(0, 10);
-  const productions = aggregateTony(baseRows, "show")
+    .slice(0, 14);
+  const productions = aggregateTony(metricRows, "show")
     .sort((a, b) => b.wins - a.wins || a.label.localeCompare(b.label))
     .slice(0, 10);
-  const nominations = aggregateTony(baseRows, "show")
+  const nominations = aggregateTony(metricRows, "show")
     .sort((a, b) => b.nominations - a.nominations || a.label.localeCompare(b.label))
     .slice(0, 8);
 
@@ -412,18 +445,8 @@ function renderTonyDashboard() {
   document.querySelector("#tony-win-rate").textContent = formatPercent(metrics.nominations ? metrics.wins / metrics.nominations : Number.NaN);
   document.querySelector("#tony-winning-people").textContent = metrics.people.toLocaleString("en-US");
 
+  renderTonyCategoryTags(categories);
   renderTonyImpact(metricRows);
-  renderBars("tony-category-bars", categories.map((row) => ({
-    label: row.label,
-    value: row.wins,
-    display: row.wins.toLocaleString("en-US"),
-    selected: row.label === selectedTonyCategory,
-    onSelect: () => {
-      selectedTonyCategory = selectedTonyCategory === row.label ? "" : row.label;
-      selectedTonyRow = null;
-      renderTonyDashboard();
-    }
-  })));
   renderDualBars("tony-production-bars", productions.map((row) => ({
     label: row.label,
     primary: row.wins,
@@ -485,7 +508,6 @@ Promise.all([
       .filter(Boolean)
       .sort((a, b) => b.localeCompare(a))
       .forEach((year) => tonyYear.appendChild(createElement("option", year)));
-    populateDatalist("tony-categories", tonyRows.map((row) => row.category));
     populateDatalist("tony-shows", tonyRows.map((row) => row.show));
     renderTonyDashboard();
   })
