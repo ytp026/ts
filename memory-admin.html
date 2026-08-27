@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Manage the Theater Spotlight memory timeline.">
+  <title>Manage Memory Timeline | Theater Spotlight</title>
+  <link rel="stylesheet" href="styles.css?v=37">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="supabase-config.js" defer></script>
+  <script src="supabase-client.js?v=1" defer></script>
+  <script src="memory-admin.js?v=2" defer></script>
+</head>
+<body class="theme-memories">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Theater Spotlight home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span>Theater Spotlight</span>
+    </a>
+    <nav class="navigation" aria-label="Main navigation">
+      <a href="memories.html">Back to the Future</a>
+      <a class="active" href="memory-admin.html" aria-current="page">Manage archive</a>
+    </nav>
+  </header>
+
+  <main class="memory-admin-page">
+    <section class="memory-admin-hero">
+      <p class="eyebrow">Private archive controls</p>
+      <h1>Manage the timeline.</h1>
+      <p>Add, revise, or remove a performance. Saved changes appear on the public timeline automatically.</p>
+    </section>
+
+    <p class="memory-admin-status" id="admin-status" role="status" aria-live="polite"></p>
+
+    <section class="memory-admin-login" id="admin-login" aria-labelledby="login-title">
+      <div>
+        <p class="section-label">Authentication required</p>
+        <h2 id="login-title">Archive sign in</h2>
+        <p>Use the private administrator account created in Supabase.</p>
+      </div>
+      <form id="login-form">
+        <label><span>Email</span><input name="email" type="email" autocomplete="username" required></label>
+        <label><span>Password</span><input name="password" type="password" autocomplete="current-password" required></label>
+        <button class="primary-button" type="submit">Sign in</button>
+      </form>
+    </section>
+
+    <section class="memory-admin-workspace" id="admin-workspace" hidden>
+      <div class="memory-admin-toolbar">
+        <div>
+          <p class="section-label">Authenticated editor</p>
+          <h2 id="editor-title">Add a performance</h2>
+        </div>
+        <div>
+          <button type="button" class="memory-admin-secondary" id="new-memory">New row</button>
+          <button type="button" class="memory-admin-secondary" id="admin-sign-out">Sign out</button>
+        </div>
+      </div>
+
+      <form class="memory-admin-form" id="memory-form">
+        <input name="id" type="hidden">
+        <label><span>Date *</span><input name="date" type="date" required></label>
+        <label><span>Show *</span><input name="show" type="text" required></label>
+        <label><span>Theatre</span><input name="theatre" type="text"></label>
+        <label><span>City</span><input name="city" type="text"></label>
+        <label><span>Seat</span><input name="seat" type="text"></label>
+        <label><span>Price</span><input name="price" type="text" inputmode="decimal" placeholder="$49.00 or £29.50"></label>
+        <label><span>Overall rating (calculated)</span><input name="rating" type="number" min="1" max="5" step="0.01" readonly aria-describedby="rating-help"><small id="rating-help">Average of Cast, Music, Stage, and Story.</small></label>
+        <label><span>Cast vibe</span><input name="cast_vibe" type="text" placeholder="1-5 or NA"></label>
+        <label><span>Music vibe</span><input name="music_vibe" type="text" placeholder="1-5 or NA"></label>
+        <label><span>Stage magic</span><input name="stage_magic" type="text" placeholder="1-5 or NA"></label>
+        <label><span>Story feel</span><input name="story_feel" type="text" placeholder="1-5 or NA"></label>
+        <label class="memory-admin-wide"><span>Note</span><textarea name="note" rows="3"></textarea></label>
+        <label class="memory-admin-wide"><span>Photo URL or site-relative path</span><input name="photo" type="text" placeholder="https://... or assets/photo.jpg"></label>
+        <label><span>Color</span><input name="color" type="color" value="#315bcf"></label>
+        <div class="memory-admin-actions memory-admin-wide">
+          <button class="primary-button" type="submit" id="save-memory">Add performance</button>
+          <button class="memory-admin-secondary" type="button" id="cancel-edit" hidden>Cancel edit</button>
+        </div>
+      </form>
+
+      <section class="memory-admin-records" aria-labelledby="records-title">
+        <div class="memory-admin-records-heading">
+          <div>
+            <p class="section-label">Database rows</p>
+            <h2 id="records-title">Existing performances</h2>
+          </div>
+          <label><span>Find a row</span><input id="admin-search" type="search" placeholder="Show, theatre, city, or date"></label>
+        </div>
+        <div class="memory-admin-table-wrap">
+          <table class="memory-admin-table">
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Show</th>
+                <th scope="col">Theatre</th>
+                <th scope="col">City</th>
+                <th scope="col">Price</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-list"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+</body>
+</html>

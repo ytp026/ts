@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A personal timeline of Broadway shows, theatres, photos, and memories.">
   <title>Broadway Memory Timeline | Theater Spotlight</title>
-  <link rel="stylesheet" href="styles.css?v=34">
-  <script src="memories.js?v=28" defer></script>
+  <link rel="stylesheet" href="styles.css?v=37">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="supabase-config.js" defer></script>
+  <script src="supabase-client.js?v=2" defer></script>
+  <script src="memories.js?v=30" defer></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-47RPC1XZKM"></script>
   <script>
@@ -71,73 +74,78 @@
       </div>
     </section>
 
-    <section class="memory-stats" id="memory-stats" aria-label="Broadway memory milestones">
-      <article><span>Performances attended</span><strong id="memory-show-count">0</strong></article>
-      <article><span>Theatres visited</span><strong id="memory-theatre-count">0</strong></article>
-      <article><span>First memory</span><strong id="memory-first-year">-</strong></article>
-      <article><span>Latest memory</span><strong id="memory-latest-year">-</strong></article>
-    </section>
-
     <section class="memory-fun-facts" aria-labelledby="memory-facts-title">
       <div class="memory-facts-heading">
         <p class="section-label">Journey by the numbers</p>
         <h2 id="memory-facts-title">The Encore Report</h2>
         <p class="memory-facts-intro">A backstage look at where the journey went, what returned for an encore, and how the nights felt.</p>
       </div>
-      <div class="memory-facts-infographic">
-        <article class="memory-fact fact-cities">
-          <span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"></path></svg></span>
-          <strong id="memory-city-count">0</strong>
-          <span>Cities explored</span>
-          <small>Stops on the theatre map</small>
+      <dl class="encore-summary-strip">
+        <div><dt>Performances</dt><dd id="memory-encore-show-count">0</dd></div>
+        <div><dt>Theatres</dt><dd id="memory-encore-theatre-count">0</dd></div>
+        <div><dt>First memory</dt><dd id="memory-encore-first-year">-</dd></div>
+        <div><dt>Latest memory</dt><dd id="memory-encore-latest-year">-</dd></div>
+      </dl>
+      <div class="encore-infographic">
+        <article class="encore-panel encore-footprint">
+          <header class="encore-panel-heading"><span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s6-5.1 6-11a6 6 0 1 0-12 0c0 5.9 6 11 6 11z"></path><circle cx="12" cy="10" r="2"></circle></svg></span><div><h3>Footprint</h3><p>Where the journey traveled</p></div></header>
+          <div class="encore-city-total">
+            <span class="encore-globe" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"></path></svg></span>
+            <strong id="memory-city-count">0</strong>
+            <span>Cities explored</span>
+          </div>
+          <dl class="encore-data-list">
+            <div><dt>Most visited city</dt><dd id="memory-top-city">-</dd></div>
+            <div><dt>Most visited theatre</dt><dd id="memory-top-theatre">-</dd></div>
+          </dl>
         </article>
-        <article class="memory-fact fact-city">
-          <span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s6-5.1 6-11a6 6 0 1 0-12 0c0 5.9 6 11 6 11z"></path><circle cx="12" cy="10" r="2"></circle></svg></span>
-          <span>Most visited city</span>
-          <strong id="memory-top-city">-</strong>
-          <small>The center of this journey</small>
+
+        <article class="encore-panel encore-rhythm">
+          <header class="encore-panel-heading"><span aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"></rect><path d="M8 3v4M16 3v4M4 10h16M8 14h3M13 14h3M8 17h3"></path></svg></span><div><h3>Rhythm</h3><p>When the calendar came alive</p></div></header>
+          <div class="encore-timeline">
+            <div><i aria-hidden="true"></i><span>Busiest year</span><strong id="memory-busiest-year">-</strong></div>
+            <div><i aria-hidden="true"></i><span>Favorite month</span><strong id="memory-top-month">-</strong></div>
+          </div>
         </article>
-        <article class="memory-fact fact-show">
-          <span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h16v4a2 2 0 0 0 0 4v4H4v-4a2 2 0 0 0 0-4zM9 7v12"></path></svg></span>
-          <span>Most revisited show</span>
-          <strong id="memory-top-show">-</strong>
-          <small>The production called back for an encore</small>
+
+        <article class="encore-panel encore-taste">
+          <header class="encore-panel-heading"><span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 18a8 8 0 0 1 16 0M12 18l4-6M7 18h10"></path><circle cx="12" cy="18" r="1"></circle></svg></span><div><h3>Taste profile</h3><p>How the performances landed</p></div></header>
+          <div class="encore-rating">
+            <div><span>Average reaction</span><strong id="memory-average-rating">-</strong></div>
+            <div class="encore-rating-track" aria-hidden="true"><i></i></div>
+            <div class="encore-rating-scale" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+          </div>
+          <div class="encore-taste-details">
+            <div><strong id="memory-loved-count">0</strong><span>Loved-it nights</span></div>
+            <div><span>Strongest reaction</span><strong id="memory-top-dimension">-</strong></div>
+          </div>
         </article>
-        <article class="memory-fact fact-year">
-          <span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"></rect><path d="M8 3v4M16 3v4M4 10h16M8 14h3M13 14h3M8 17h3"></path></svg></span>
-          <span>Busiest theatre year</span>
-          <strong id="memory-busiest-year">-</strong>
-          <small>The calendar's biggest act</small>
-        </article>
-        <article class="memory-fact fact-rating">
-          <span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 18a8 8 0 0 1 16 0M12 18l4-6M7 18h10"></path><circle cx="12" cy="18" r="1"></circle></svg></span>
-          <span>Average reaction</span>
-          <strong id="memory-average-rating">-</strong>
-          <div class="fact-rating-line" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-        </article>
-        <article class="memory-fact fact-loved">
-          <span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20S4 15.6 4 9.5A4.5 4.5 0 0 1 12 6a4.5 4.5 0 0 1 8 3.5C20 15.6 12 20 12 20z"></path></svg></span>
-          <strong id="memory-loved-count">0</strong>
-          <span>Loved-it nights</span>
-          <small>The standing-ovation shelf</small>
-        </article>
-        <article class="memory-fact fact-theatre">
-          <span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20h16M6 20V9h12v11M4 9l8-5 8 5M9 13h2M13 13h2M9 16h2M13 16h2"></path></svg></span>
-          <span>Most visited theatre</span>
-          <strong id="memory-top-theatre">-</strong>
-          <small>The house that hosted the most</small>
-        </article>
-        <article class="memory-fact fact-month">
-          <span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"></rect><path d="M8 3v4M16 3v4M4 10h16M8 14h8M8 17h5"></path></svg></span>
-          <span>Favorite theatre month</span>
-          <strong id="memory-top-month">-</strong>
-          <small>When the calendar filled fastest</small>
-        </article>
-        <article class="memory-fact fact-strength">
-          <span class="fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.5-.8z"></path></svg></span>
-          <span>Strongest reaction</span>
-          <strong id="memory-top-dimension">-</strong>
-          <small>The category that shone brightest</small>
+
+        <article class="encore-panel encore-return">
+          <div class="encore-return-heading">
+            <div class="encore-ticket-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h16v4a2 2 0 0 0 0 4v4H4v-4a2 2 0 0 0 0-4zM9 7v12"></path></svg></div>
+            <span>Ticket spend · est. USD</span>
+          </div>
+          <dl class="encore-cost-metrics">
+            <div><dt>Total recorded</dt><dd id="memory-total-spend">-</dd></div>
+            <div><dt>Average ticket</dt><dd id="memory-average-ticket">-</dd></div>
+          </dl>
+          <div class="encore-spend-chart">
+            <div class="encore-spend-chart-heading">
+              <span>Spend by month + year</span>
+              <strong id="memory-top-spend-month">-</strong>
+            </div>
+            <svg viewBox="0 0 320 76" role="img" aria-label="Estimated ticket spending by month and year in US dollars">
+              <path id="memory-spend-area"></path>
+              <polyline id="memory-spend-line"></polyline>
+              <g id="memory-spend-points"></g>
+            </svg>
+            <div class="encore-spend-labels" aria-hidden="true">
+              <span id="memory-spend-start">-</span>
+              <span id="memory-spend-middle">-</span>
+              <span id="memory-spend-end">-</span>
+            </div>
+          </div>
         </article>
       </div>
     </section>
@@ -159,6 +167,7 @@
         <label><span>Music</span><select id="memory-music-filter"><option value="">All music ratings</option><option value="5">Loved it</option><option value="4">Really liked it</option><option value="3">Liked it</option><option value="2">Mixed feelings</option><option value="1">Not for me</option></select></label>
         <label><span>Stage</span><select id="memory-stage-filter"><option value="">All stage ratings</option><option value="5">Loved it</option><option value="4">Really liked it</option><option value="3">Liked it</option><option value="2">Mixed feelings</option><option value="1">Not for me</option></select></label>
         <label><span>Story</span><select id="memory-story-filter"><option value="">All story ratings</option><option value="5">Loved it</option><option value="4">Really liked it</option><option value="3">Liked it</option><option value="2">Mixed feelings</option><option value="1">Not for me</option></select></label>
+        <label><span>Price</span><select id="memory-price-sort"><option value="">Newest first</option><option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option></select></label>
         <button type="button" class="memory-clear-filters" id="memory-clear-filters">Clear filters</button>
       </div>
       <p class="memory-filter-status" id="memory-filter-status" aria-live="polite"></p>
@@ -171,6 +180,7 @@
     <span>Theater Spotlight</span>
     <p class="source-credit">Personal photographs remain owned by their photographer. Production names and trademarks remain owned by their respective rights holders.</p>
     <p class="site-disclaimer"><strong>Disclaimer:</strong> This personal archive is based on saved tickets, receipts, and photographs. Production names and trademarks remain the property of their respective rights holders.</p>
+    <a class="archive-admin-link" href="memory-admin.html" aria-label="Open private archive management">Backstage</a>
   </footer>
 </body>
 </html>

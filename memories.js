@@ -11,6 +11,7 @@ const castFilter = document.querySelector("#memory-cast-filter");
 const musicFilter = document.querySelector("#memory-music-filter");
 const stageFilter = document.querySelector("#memory-stage-filter");
 const storyFilter = document.querySelector("#memory-story-filter");
+const priceSort = document.querySelector("#memory-price-sort");
 const clearFilters = document.querySelector("#memory-clear-filters");
 const filterStatus = document.querySelector("#memory-filter-status");
 const empty = document.querySelector("#memory-empty");
@@ -32,6 +33,15 @@ function formatDate(value) {
     day: "numeric",
     year: "numeric"
   });
+}
+
+const usdRates = { "$": 1, "£": 1.35, "€": 1.1 };
+
+function priceInUsd(value) {
+  const match = value.match(/([£$€])\s*([\d,]+(?:\.\d{1,2})?)/);
+  if (!match) return Number.NaN;
+  const amount = Number(match[2].replaceAll(",", ""));
+  return Number.isFinite(amount) ? amount * usdRates[match[1]] : Number.NaN;
 }
 
 function initials(show) {
@@ -102,8 +112,10 @@ const artworkConcepts = {
   "Cabaret": ["cabaret-mic", "WELCOME TO THE CLUB"],
   "Carousel": ["carousel", "ROUND AND ROUND"],
   "Cats": ["cat", "EYES IN THE DARK"],
+  "Charlie and the Chocolate Factory": ["chocolate-factory", "THE GOLDEN TICKET"],
   "Chicago": ["jazz-justice", "JAZZ AND JUSTICE"],
   "Come Alive": ["circus", "THE BIG TOP"],
+  "Come Alive! The Greatest Showman Circus Spectacular": ["circus", "THE BIG TOP"],
   "Come From Away": ["airplane", "A MAP OF KINDNESS"],
   "Company": ["network", "LIVES CONNECTED"],
   "Dead Outlaw": ["wanted-poster", "THE LAST RIDE"],
@@ -132,6 +144,8 @@ const artworkConcepts = {
   "My Fair Lady": ["phonetics-flowers", "FLOWERS AND FINERY"],
   "My Neighbor Totoro": ["leaf", "A FOREST FRIEND"],
   "Old Friends": ["songbook-duet", "SONDHEIM SONGS, SHARED AGAIN"],
+  "Operation Mincemeat": ["secret-file", "A SECRET MISSION"],
+  "Operation Mincemeat: A New Musical": ["secret-file", "A SECRET MISSION"],
   "Othello": ["moon", "TRUST IN SHADOW"],
   "Parade": ["factory-justice", "LOVE STANDS AGAINST INJUSTICE"],
   "Pirates! The Penzance Musical": ["ship", "SAIL INTO SONG"],
@@ -205,6 +219,8 @@ function artworkScene(scene, accent, highlight) {
   const line = `fill="none" stroke="${highlight}" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"`;
   const thin = `fill="none" stroke="${accent}" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"`;
   const scenes = {
+    "secret-file": `<path d="M115 185h145l35-55h190v320H115z" fill="${accent}" opacity=".3" stroke="${highlight}" stroke-width="11"/><path d="M155 225h290v185H155z" fill="${highlight}" opacity=".92"/><path d="M195 265h210M195 305h150M195 345h180" fill="none" stroke="${accent}" stroke-width="9" stroke-linecap="round"/><rect x="205" y="245" width="190" height="120" rx="8" fill="none" stroke="${accent}" stroke-width="8" transform="rotate(-8 300 305)"/><text x="300" y="320" text-anchor="middle" fill="${accent}" font-family="Aptos,Segoe UI,sans-serif" font-size="30" font-weight="900" letter-spacing="3" transform="rotate(-8 300 305)">TOP SECRET</text><path d="M105 470h390M165 450l-35 55M435 450l35 55" ${line}/>`,
+    "chocolate-factory": `<path d="M115 445V250h85v-95h75v95h55V125h80v125h75v195z" fill="${accent}" opacity=".32" stroke="${highlight}" stroke-width="10"/><path d="M165 250v-70M370 125V70M455 250v-95M95 445h410" ${line}/><path d="M185 330c0-48 78-48 78 0s-78 48-78 0zm152 12c0-58 95-58 95 0s-95 58-95 0z" fill="${highlight}"/><path d="M225 155c-35-55 38-92 70-45 34-48 108-8 70 47-35 50-69 65-70 65-1 0-36-16-70-67z" fill="${highlight}" opacity=".9"/><path d="M125 485h350" ${thin}/>`,
     heart: `<path d="M300 440C105 315 150 150 265 205c20 10 35 28 35 28s15-18 35-28c115-55 160 110-35 235z" ${line}/><path d="M225 300h150" ${thin}/>`,
     microphone: `<rect x="255" y="130" width="90" height="185" rx="45" fill="${accent}"/><path d="M210 275c0 125 180 125 180 0M300 395v80M245 475h110" ${line}/><circle cx="155" cy="300" r="18" fill="${highlight}"/><circle cx="445" cy="300" r="18" fill="${highlight}"/>`,
     crown: `<path d="M150 360l-35-180 115 78 70-135 70 135 115-78-35 180z" fill="${accent}" stroke="${highlight}" stroke-width="10"/><path d="M155 400h290" ${line}/>`,
@@ -412,7 +428,15 @@ function renderMemories() {
     && matchesReaction(memory.storyFeel, storyFilter)
     && (!query || [memory.show, memory.theatre, memory.city, memory.seat]
       .some((value) => value.toLocaleLowerCase().includes(query)))
-  ));
+  )).sort((left, right) => {
+    if (!priceSort.value) return right.date.localeCompare(left.date);
+    const leftPrice = priceInUsd(left.price);
+    const rightPrice = priceInUsd(right.price);
+    if (!Number.isFinite(leftPrice)) return Number.isFinite(rightPrice) ? 1 : 0;
+    if (!Number.isFinite(rightPrice)) return -1;
+    const direction = priceSort.value === "price-asc" ? 1 : -1;
+    return (leftPrice - rightPrice) * direction || right.date.localeCompare(left.date);
+  });
 
   list.replaceChildren(...filtered.map((memory, index) => {
     const article = document.createElement("article");
@@ -445,10 +469,18 @@ function renderMemories() {
       );
     }
     copy.append(date, title, venue);
-    if (memory.seat) {
+    if (memory.seat || memory.price) {
       const seat = document.createElement("p");
       seat.className = "memory-seat";
-      seat.textContent = memory.seat;
+      const seatLabel = document.createElement("span");
+      seatLabel.textContent = memory.seat || "Seat not recorded";
+      seat.appendChild(seatLabel);
+      if (memory.price) {
+        const price = document.createElement("strong");
+        price.className = "memory-price";
+        price.textContent = memory.price;
+        seat.appendChild(price);
+      }
       copy.appendChild(seat);
     }
     if (memory.note) {
@@ -505,13 +537,17 @@ function renderMemories() {
   filterStatus.textContent = `Showing ${filtered.length.toLocaleString("en-US")} of ${memories.length.toLocaleString("en-US")} theatre memories. Filters combine.`;
   clearFilters.disabled = !search.value && !year.value
     && !ratingFilter.value && !castFilter.value && !musicFilter.value
-    && !stageFilter.value && !storyFilter.value;
+    && !stageFilter.value && !storyFilter.value && !priceSort.value;
 }
 
 function mostFrequent(values) {
+  return frequencyRanking(values)[0] || ["-", 0];
+}
+
+function frequencyRanking(values) {
   const counts = new Map();
   values.filter(Boolean).forEach((value) => counts.set(value, (counts.get(value) || 0) + 1));
-  return [...counts].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0] || ["-", 0];
+  return [...counts].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
 }
 
 function labelReactionOptions(filter, values) {
@@ -544,15 +580,61 @@ function initializeMemories() {
     year.appendChild(option);
   });
   if (years.includes(selectedYear)) year.value = selectedYear;
-  document.querySelector("#memory-show-count").textContent = memories.length.toLocaleString("en-US");
-  document.querySelector("#memory-theatre-count").textContent = new Set(
+  document.querySelector("#memory-encore-show-count").textContent = memories.length.toLocaleString("en-US");
+  document.querySelector("#memory-encore-theatre-count").textContent = new Set(
     memories.map((memory) => memory.theatre).filter(Boolean)
   ).size.toLocaleString("en-US");
-  document.querySelector("#memory-first-year").textContent = years.at(-1) || "-";
-  document.querySelector("#memory-latest-year").textContent = years[0] || "-";
+  document.querySelector("#memory-encore-first-year").textContent = years.at(-1) || "-";
+  document.querySelector("#memory-encore-latest-year").textContent = years[0] || "-";
   const cities = memories.map((memory) => memory.city).filter(Boolean);
   const [topCity, topCityCount] = mostFrequent(cities);
-  const [topShow, topShowCount] = mostFrequent(memories.map((memory) => memory.show));
+  const spendByMonth = new Map();
+  let totalSpend = 0;
+  let pricedCount = 0;
+  memories.forEach((memory) => {
+    const amountUsd = priceInUsd(memory.price);
+    if (!Number.isFinite(amountUsd)) return;
+    totalSpend += amountUsd;
+    pricedCount += 1;
+    const monthKey = memory.date.slice(0, 7);
+    spendByMonth.set(monthKey, (spendByMonth.get(monthKey) || 0) + amountUsd);
+  });
+  const formatUsd = (amount, digits = 0) => amount.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: digits,
+    maximumFractionDigits: digits
+  });
+  const recordedMonthKeys = [...spendByMonth.keys()].sort();
+  const monthlySeries = [];
+  if (recordedMonthKeys.length) {
+    const [startYear, startMonth] = recordedMonthKeys[0].split("-").map(Number);
+    const [endYear, endMonth] = recordedMonthKeys.at(-1).split("-").map(Number);
+    const cursor = new Date(startYear, startMonth - 1, 1);
+    const end = new Date(endYear, endMonth - 1, 1);
+    while (cursor <= end) {
+      const key = `${cursor.getFullYear()}-${String(cursor.getMonth() + 1).padStart(2, "0")}`;
+      monthlySeries.push({
+        key,
+        date: new Date(cursor),
+        amount: spendByMonth.get(key) || 0
+      });
+      cursor.setMonth(cursor.getMonth() + 1);
+    }
+  }
+  const chartMaximum = Math.max(...monthlySeries.map(({ amount }) => amount), 1);
+  const spendPoints = monthlySeries.map(({ amount, date }, index) => {
+    const x = index * (320 / Math.max(monthlySeries.length - 1, 1));
+    const y = 67 - (amount / chartMaximum) * 55;
+    return { amount, date, x, y };
+  });
+  const spendPointText = spendPoints.length
+    ? spendPoints.map(({ x, y }) => `${x.toFixed(1)},${y.toFixed(1)}`).join(" ")
+    : "0,67 320,67";
+  const topSpendMonth = monthlySeries.find(({ amount }) => amount === chartMaximum);
+  const formatChartMonth = (item) => item
+    ? item.date.toLocaleDateString("en-US", { month: "short", year: "2-digit" })
+    : "-";
   const [busiestYear, busiestYearCount] = mostFrequent(memories.map((memory) => memory.date.slice(0, 4)));
   const [topTheatre, topTheatreCount] = mostFrequent(memories.map((memory) => memory.theatre));
   const [topMonth, topMonthCount] = mostFrequent(memories.map((memory) => (
@@ -575,9 +657,39 @@ function initializeMemories() {
   const averageRating = rated.length
     ? rated.reduce((sum, memory) => sum + memory.rating, 0) / rated.length
     : Number.NaN;
+  const infographic = document.querySelector(".encore-infographic");
+  infographic.style.setProperty(
+    "--average-rating",
+    Number.isFinite(averageRating) ? `${(averageRating / 5) * 100}%` : "0%"
+  );
   document.querySelector("#memory-city-count").textContent = new Set(cities).size.toLocaleString("en-US");
   document.querySelector("#memory-top-city").textContent = `${topCity} (${topCityCount})`;
-  document.querySelector("#memory-top-show").textContent = `${topShow} (${topShowCount})`;
+  document.querySelector("#memory-total-spend").textContent = pricedCount ? formatUsd(totalSpend) : "-";
+  document.querySelector("#memory-average-ticket").textContent = pricedCount
+    ? formatUsd(totalSpend / pricedCount, 2)
+    : "-";
+  document.querySelector("#memory-spend-line").setAttribute("points", spendPointText);
+  document.querySelector("#memory-spend-area").setAttribute(
+    "d",
+    `M 0 67 L ${spendPointText.replaceAll(" ", " L ")} L 320 67 Z`
+  );
+  document.querySelector("#memory-spend-points").replaceChildren(...spendPoints
+    .filter(({ amount }) => amount > 0)
+    .map(({ x, y }) => {
+    const point = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    point.setAttribute("cx", x.toFixed(1));
+    point.setAttribute("cy", y.toFixed(1));
+    point.setAttribute("r", "2.2");
+    return point;
+  }));
+  document.querySelector("#memory-top-spend-month").textContent = topSpendMonth
+    ? `${formatChartMonth(topSpendMonth)} · ${formatUsd(chartMaximum)}`
+    : "-";
+  document.querySelector("#memory-spend-start").textContent = formatChartMonth(monthlySeries[0]);
+  document.querySelector("#memory-spend-middle").textContent = formatChartMonth(
+    monthlySeries[Math.floor((monthlySeries.length - 1) / 2)]
+  );
+  document.querySelector("#memory-spend-end").textContent = formatChartMonth(monthlySeries.at(-1));
   document.querySelector("#memory-busiest-year").textContent = `${busiestYear} (${busiestYearCount})`;
   document.querySelector("#memory-average-rating").textContent = Number.isFinite(averageRating)
     ? `${averageRating.toFixed(2)} / 5`
@@ -602,58 +714,87 @@ search.addEventListener("input", renderMemories);
 year.addEventListener("change", renderMemories);
 [ratingFilter, castFilter, musicFilter, stageFilter, storyFilter]
   .forEach((filter) => filter.addEventListener("change", renderMemories));
+priceSort.addEventListener("change", renderMemories);
 clearFilters.addEventListener("click", () => {
   search.value = "";
   year.value = "";
+  priceSort.value = "";
   [ratingFilter, castFilter, musicFilter, stageFilter, storyFilter]
     .forEach((filter) => { filter.value = ""; });
   renderMemories();
   search.focus();
 });
 
-function loadMemories() {
-  const csvUrl = new URL("back-to-the-future-timeline.csv", window.location.href);
-  csvUrl.searchParams.set("updated", Date.now().toString());
-  return fetch(csvUrl, { cache: "no-store" })
-    .then((response) => {
-    if (!response.ok) throw new Error(`Timeline data request failed: ${response.status}`);
-    return response.text();
-  })
-  .then((text) => {
-    if (text === lastCsvText) return;
-    lastCsvText = text;
-    memories = parseCsv(text)
-      .map((memory) => ({
+function normalizeMemoryRows(rows) {
+  return rows
+    .map((memory) => {
+      const show = (memory.show || "").trim();
+      const paletteAccent = artworkPalettes[showHash(show) % artworkPalettes.length][1];
+      const dimensionScores = [
+        memory.cast_vibe,
+        memory.music_vibe,
+        memory.stage_magic,
+        memory.story_feel
+      ].map(reactionScore).filter(Number.isFinite);
+      const rating = dimensionScores.length
+        ? dimensionScores.reduce((sum, score) => sum + score, 0) / dimensionScores.length
+        : Number.NaN;
+      return {
         ...memory,
-        date: normalizeDate(memory.date),
-        rating: reactionScore(memory.rating),
-        show: (memory.show || "").trim(),
+        date: normalizeDate(memory.date || ""),
+        rating,
+        show,
         theatre: (memory.theatre || "").trim(),
         city: (memory.city || "").trim(),
         seat: (memory.seat || "").trim(),
+        price: (memory.price || "").trim(),
         note: (memory.note || "").trim(),
         photo: (memory.photo || "").trim(),
         castVibe: (memory.cast_vibe || "").trim(),
         musicVibe: (memory.music_vibe || "").trim(),
         stageMagic: (memory.stage_magic || "").trim(),
         storyFeel: (memory.story_feel || "").trim(),
-        color: memory.color || "#315bcf"
-      }))
-      .filter((memory) => memory.date && memory.show)
-      .sort((a, b) => b.date.localeCompare(a.date) || a.show.localeCompare(b.show));
+        color: artworkColor(memory.color, paletteAccent)
+      };
+    })
+    .filter((memory) => memory.date && memory.show)
+    .sort((a, b) => b.date.localeCompare(a.date) || a.show.localeCompare(b.show));
+}
+
+async function loadCsvFallback() {
+  const csvUrl = new URL("back-to-the-future-timeline.csv", window.location.href);
+  csvUrl.searchParams.set("updated", Date.now().toString());
+  const response = await fetch(csvUrl, { cache: "no-store" });
+  if (!response.ok) throw new Error(`Timeline data request failed: ${response.status}`);
+  const text = await response.text();
+  return { fingerprint: text, rows: parseCsv(text) };
+}
+
+async function loadMemories() {
+  try {
+    const databaseRows = await fetchTimelineRows();
+    const source = databaseRows === null
+      ? await loadCsvFallback()
+      : { fingerprint: JSON.stringify(databaseRows), rows: databaseRows };
+    if (source.fingerprint === lastCsvText) return;
+    lastCsvText = source.fingerprint;
+    memories = normalizeMemoryRows(source.rows);
     initializeMemories();
-  })
-  .catch((error) => {
+  } catch (error) {
     console.error(error);
     if (!memories.length) {
       empty.hidden = false;
       empty.textContent = "The timeline data could not be loaded.";
     }
-  });
+  }
 }
 
 loadMemories();
+const unsubscribeTimeline = subscribeToTimelineRows(loadMemories);
 window.setInterval(loadMemories, 30000);
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible") loadMemories();
 });
+if (unsubscribeTimeline) {
+  window.addEventListener("pagehide", unsubscribeTimeline, { once: true });
+}
