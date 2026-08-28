@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A personal timeline of Broadway shows, theatres, photos, and memories.">
   <title>Broadway Memory Timeline | Theater Spotlight</title>
-  <link rel="stylesheet" href="styles.css?v=37">
+  <link rel="stylesheet" href="styles.css?v=59">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
   <script src="supabase-config.js" defer></script>
   <script src="supabase-client.js?v=2" defer></script>
-  <script src="memories.js?v=30" defer></script>
+  <script src="memories.js?v=46" defer></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-47RPC1XZKM"></script>
   <script>
@@ -162,16 +162,31 @@
       <div class="memory-controls">
         <label class="memory-search-filter"><span>Search memories</span><input id="memory-search" type="search" placeholder="Show, theatre, city, or seat"></label>
         <label><span>Year</span><select id="memory-year"><option value="">All years</option></select></label>
-        <label><span>Overall</span><select id="memory-rating-filter"><option value="">All reactions</option><option value="5">Loved it</option><option value="4">Really liked it</option><option value="3">Liked it</option><option value="2">Mixed feelings</option><option value="1">Not for me</option></select></label>
-        <label><span>Cast</span><select id="memory-cast-filter"><option value="">All cast ratings</option><option value="5">Loved it</option><option value="4">Really liked it</option><option value="3">Liked it</option><option value="2">Mixed feelings</option><option value="1">Not for me</option></select></label>
-        <label><span>Music</span><select id="memory-music-filter"><option value="">All music ratings</option><option value="5">Loved it</option><option value="4">Really liked it</option><option value="3">Liked it</option><option value="2">Mixed feelings</option><option value="1">Not for me</option></select></label>
-        <label><span>Stage</span><select id="memory-stage-filter"><option value="">All stage ratings</option><option value="5">Loved it</option><option value="4">Really liked it</option><option value="3">Liked it</option><option value="2">Mixed feelings</option><option value="1">Not for me</option></select></label>
-        <label><span>Story</span><select id="memory-story-filter"><option value="">All story ratings</option><option value="5">Loved it</option><option value="4">Really liked it</option><option value="3">Liked it</option><option value="2">Mixed feelings</option><option value="1">Not for me</option></select></label>
-        <label><span>Price</span><select id="memory-price-sort"><option value="">Newest first</option><option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option></select></label>
+        <label><span>Order</span><select id="memory-price-sort"><option value="">Timeline: oldest to newest</option><option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option></select></label>
+        <div class="memory-ratings-panel" id="memory-ratings-panel" aria-label="Rating thresholds">
+          <div class="memory-rating-groups">
+            <fieldset id="memory-rating-filter"><legend><span>Overall</span><output>Any</output></legend><div class="memory-rating-range"><span class="memory-rating-track" aria-hidden="true"></span><input data-range-bound="min" type="range" min="1" max="5" step="1" value="1" aria-label="Overall minimum rating"><input data-range-bound="max" type="range" min="1" max="5" step="1" value="5" aria-label="Overall maximum rating"><span class="memory-rating-endpoints" aria-hidden="true"><b>1</b><b>5</b></span></div></fieldset>
+            <fieldset id="memory-cast-filter"><legend><span>Cast</span><output>Any</output></legend><div class="memory-rating-range"><span class="memory-rating-track" aria-hidden="true"></span><input data-range-bound="min" type="range" min="1" max="5" step="1" value="1" aria-label="Cast minimum rating"><input data-range-bound="max" type="range" min="1" max="5" step="1" value="5" aria-label="Cast maximum rating"><span class="memory-rating-endpoints" aria-hidden="true"><b>1</b><b>5</b></span></div></fieldset>
+            <fieldset id="memory-music-filter"><legend><span>Music</span><output>Any</output></legend><div class="memory-rating-range"><span class="memory-rating-track" aria-hidden="true"></span><input data-range-bound="min" type="range" min="1" max="5" step="1" value="1" aria-label="Music minimum rating"><input data-range-bound="max" type="range" min="1" max="5" step="1" value="5" aria-label="Music maximum rating"><span class="memory-rating-endpoints" aria-hidden="true"><b>1</b><b>5</b></span></div></fieldset>
+            <fieldset id="memory-stage-filter"><legend><span>Stage</span><output>Any</output></legend><div class="memory-rating-range"><span class="memory-rating-track" aria-hidden="true"></span><input data-range-bound="min" type="range" min="1" max="5" step="1" value="1" aria-label="Stage minimum rating"><input data-range-bound="max" type="range" min="1" max="5" step="1" value="5" aria-label="Stage maximum rating"><span class="memory-rating-endpoints" aria-hidden="true"><b>1</b><b>5</b></span></div></fieldset>
+            <fieldset id="memory-story-filter"><legend><span>Story</span><output>Any</output></legend><div class="memory-rating-range"><span class="memory-rating-track" aria-hidden="true"></span><input data-range-bound="min" type="range" min="1" max="5" step="1" value="1" aria-label="Story minimum rating"><input data-range-bound="max" type="range" min="1" max="5" step="1" value="5" aria-label="Story maximum rating"><span class="memory-rating-endpoints" aria-hidden="true"><b>1</b><b>5</b></span></div></fieldset>
+          </div>
+        </div>
         <button type="button" class="memory-clear-filters" id="memory-clear-filters">Clear filters</button>
       </div>
       <p class="memory-filter-status" id="memory-filter-status" aria-live="polite"></p>
-      <div class="memory-timeline" id="memory-list"></div>
+      <div class="memory-timeline-toolbar">
+        <p id="memory-timeline-help">Oldest to newest; opens at latest. Swipe, scroll, or use the arrow keys to travel through time.</p>
+        <div class="memory-timeline-buttons" aria-label="Timeline navigation">
+          <button type="button" id="memory-timeline-previous" aria-label="Show previous timeline cards">
+            <span aria-hidden="true">&larr;</span> Previous
+          </button>
+          <button type="button" id="memory-timeline-next" aria-label="Show next timeline cards">
+            Next <span aria-hidden="true">&rarr;</span>
+          </button>
+        </div>
+      </div>
+      <div class="memory-timeline" id="memory-list" role="list" aria-label="Theatre memories, oldest to newest; opens at latest" aria-describedby="memory-timeline-help"></div>
       <p class="memory-empty" id="memory-empty" hidden>No memories match these filters.</p>
     </section>
   </main>

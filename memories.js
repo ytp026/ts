@@ -15,6 +15,83 @@ const priceSort = document.querySelector("#memory-price-sort");
 const clearFilters = document.querySelector("#memory-clear-filters");
 const filterStatus = document.querySelector("#memory-filter-status");
 const empty = document.querySelector("#memory-empty");
+const timelinePrevious = document.querySelector("#memory-timeline-previous");
+const timelineNext = document.querySelector("#memory-timeline-next");
+const timelineHelp = document.querySelector("#memory-timeline-help");
+const reactionFilters = [ratingFilter, castFilter, musicFilter, stageFilter, storyFilter];
+
+function reactionRange(filter) {
+  const minimum = Number(filter.querySelector('[data-range-bound="min"]').value);
+  const maximum = Number(filter.querySelector('[data-range-bound="max"]').value);
+  return { minimum, maximum, active: minimum > 1 || maximum < 5 };
+}
+
+function resetReactionFilter(filter) {
+  filter.querySelector('[data-range-bound="min"]').value = "1";
+  filter.querySelector('[data-range-bound="max"]').value = "5";
+}
+
+function timelineEntries() {
+  return [...list.querySelectorAll(".memory-entry")];
+}
+
+function updateTimelineNavigation() {
+  const maximum = Math.max(0, list.scrollWidth - list.clientWidth);
+  timelinePrevious.disabled = list.scrollLeft <= 2;
+  timelineNext.disabled = list.scrollLeft >= maximum - 2;
+}
+
+function updateTimelineRail() {
+  const rail = list.querySelector(".memory-timeline-rail");
+  const entries = timelineEntries();
+  if (!rail || !entries.length) {
+    if (rail) rail.hidden = true;
+    return;
+  }
+  const firstMarker = entries[0].offsetLeft + 22;
+  const lastMarker = entries.at(-1).offsetLeft + 22;
+  rail.hidden = false;
+  rail.style.left = `${firstMarker}px`;
+  rail.style.width = `${Math.max(4, lastMarker - firstMarker)}px`;
+}
+
+function scrollTimeline(direction) {
+  list.scrollBy({ left: direction * Math.max(260, list.clientWidth * .82), behavior: "smooth" });
+}
+
+timelinePrevious.addEventListener("click", () => scrollTimeline(-1));
+timelineNext.addEventListener("click", () => scrollTimeline(1));
+list.addEventListener("scroll", updateTimelineNavigation, { passive: true });
+window.addEventListener("resize", () => {
+  updateTimelineNavigation();
+  updateTimelineRail();
+});
+list.addEventListener("wheel", (event) => {
+  if (Math.abs(event.deltaY) <= Math.abs(event.deltaX) || list.scrollWidth <= list.clientWidth) return;
+  list.scrollLeft += event.deltaY;
+  event.preventDefault();
+}, { passive: false });
+list.addEventListener("keydown", (event) => {
+  const entries = timelineEntries();
+  const current = event.target.closest(".memory-entry");
+  const currentIndex = Math.max(0, entries.indexOf(current));
+  let nextIndex;
+  if (event.key === "ArrowRight") nextIndex = Math.min(entries.length - 1, currentIndex + 1);
+  if (event.key === "ArrowLeft") nextIndex = Math.max(0, currentIndex - 1);
+  if (event.key === "Home") nextIndex = 0;
+  if (event.key === "End") nextIndex = entries.length - 1;
+  if (nextIndex !== undefined && entries[nextIndex]) {
+    event.preventDefault();
+    entries.forEach((entry, index) => { entry.tabIndex = index === nextIndex ? 0 : -1; });
+    entries[nextIndex].focus();
+    entries[nextIndex].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    return;
+  }
+  if (event.key === "PageDown" || event.key === "PageUp") {
+    event.preventDefault();
+    scrollTimeline(event.key === "PageDown" ? 1 : -1);
+  }
+});
 
 function normalizeDate(value) {
   const text = value.trim();
@@ -56,14 +133,6 @@ const reactionLabels = {
   1: "Not for me"
 };
 
-const sampleArtwork = {
-  "Freak the Mighty": "assets/memory-art/freak-the-mighty.svg?v=2",
-  "The Mousetrap": "assets/memory-art/the-mousetrap.svg?v=2",
-  "Matilda The Musical": "assets/memory-art/matilda.svg?v=2",
-  "Witness for the Prosecution": "assets/memory-art/witness-for-the-prosecution.svg?v=2",
-  "Operation Mincemeat: A New Musical": "assets/memory-art/operation-mincemeat.svg?v=2"
-};
-
 const artworkPalettes = [
   ["#182a52", "#d65b4a", "#f5cf72"],
   ["#21453f", "#d69a45", "#f2ead8"],
@@ -91,16 +160,35 @@ function escapeXml(value) {
   })[character]);
 }
 
-function artworkTitleLines(show) {
-  const words = show.split(/\s+/);
+function wrapArtworkText(value, maximumCharacters, maximumLines) {
+  const words = value.split(/\s+/).flatMap((word) => {
+    if (word.length <= maximumCharacters) return word;
+    const parts = [];
+    for (let index = 0; index < word.length; index += maximumCharacters) {
+      parts.push(word.slice(index, index + maximumCharacters));
+    }
+    return parts;
+  });
   const lines = [];
   words.forEach((word) => {
     const current = lines.at(-1);
-    if (current && `${current} ${word}`.length <= 21) lines[lines.length - 1] = `${current} ${word}`;
-    else if (lines.length < 3) lines.push(word);
-    else lines[2] += ` ${word}`;
+    if (current && `${current} ${word}`.length <= maximumCharacters) {
+      lines[lines.length - 1] = `${current} ${word}`;
+    } else if (lines.length < maximumLines) {
+      lines.push(word);
+    } else {
+      lines[maximumLines - 1] += ` ${word}`;
+    }
   });
   return lines;
+}
+
+function artworkTitleLines(show) {
+  return wrapArtworkText(show, 18, 4);
+}
+
+function artworkSubtitleLines(subtitle) {
+  return wrapArtworkText(subtitle, 27, 2);
 }
 
 const artworkConcepts = {
@@ -109,7 +197,7 @@ const artworkConcepts = {
   "Anastasia": ["crown", "A LOST PRINCESS"],
   "Back to the Future": ["clock", "TIME IN MOTION"],
   "Broadway in the Park": ["park", "THEATRE OUTDOORS"],
-  "Cabaret": ["cabaret-mic", "WELCOME TO THE CLUB"],
+  "Cabaret": ["cabaret-hat-cane", "WELCOME TO THE CLUB"],
   "Carousel": ["carousel", "ROUND AND ROUND"],
   "Cats": ["cat", "EYES IN THE DARK"],
   "Charlie and the Chocolate Factory": ["chocolate-factory", "THE GOLDEN TICKET"],
@@ -118,13 +206,13 @@ const artworkConcepts = {
   "Come Alive! The Greatest Showman Circus Spectacular": ["circus", "THE BIG TOP"],
   "Come From Away": ["airplane", "A MAP OF KINDNESS"],
   "Company": ["network", "LIVES CONNECTED"],
-  "Dead Outlaw": ["wanted-poster", "THE LAST RIDE"],
+  "Dead Outlaw": ["coffin-hat", "THE LAST RIDE"],
   "Dear Evan Hansen": ["letter", "WORDS ON A PAGE"],
   "Death Becomes Her": ["potion", "FOREVER FABULOUS"],
   "Disney's Frozen": ["snow", "WINTER MAGIC"],
   "Disney's Hercules": ["lightning", "A HERO RISES"],
   "Fiddler on the Roof": ["rooftop-violin", "MUSIC ABOVE HOME"],
-  "Gypsy": ["vaudeville-fan", "BORN FOR THE SPOTLIGHT"],
+  "Gypsy": ["vanity-mirror", "BORN FOR THE SPOTLIGHT"],
   "Hamilton": ["quill", "HISTORY IN INK"],
   "Harry Potter and the Cursed Child": ["wand", "A CURSED CLOCK"],
   "Harry Potter and the Cursed Child: Part One": ["wand", "THE FIRST SPELL"],
@@ -134,11 +222,12 @@ const artworkConcepts = {
   "Jesus Christ Superstar": ["rock-cross", "LIGHT AND SHADOW"],
   "Just in Time": ["clock-note", "MUSIC ON THE CLOCK"],
   "Kinky Boots": ["boot", "STEP INTO YOUR TRUTH"],
-  "Les Miserables": ["prison-number-flag", "MERCY, REVOLUTION, REDEMPTION"],
+  "Les Miserables": ["revolution-barricade", "MERCY, REVOLUTION, REDEMPTION"],
   "Life of Pi": ["boat", "A BOAT ON THE HORIZON"],
   "Little Shop of Horrors": ["plant", "FEED THE BLOOM"],
   "Mamma Mia!": ["island-wedding", "THREE LETTERS, ONE WEDDING"],
   "Maybe Happy Ending": ["robot", "A SMALL MACHINE WITH HEART"],
+  "Matilda The Musical": ["telekinetic-book", "BOOKS AND BRAVERY"],
   "Monty Python's Spamalot": ["castle", "A VERY SILLY QUEST"],
   "Moulin Rouge!": ["windmill", "THE RED WINDMILL"],
   "My Fair Lady": ["phonetics-flowers", "FLOWERS AND FINERY"],
@@ -161,6 +250,7 @@ const artworkConcepts = {
   "Sunset Blvd.": ["sunset", "A CAMERA FACES WEST"],
   "The Great Gatsby": ["deco", "GOLD AFTER MIDNIGHT"],
   "The Lion King": ["lion", "THE SUN RISES"],
+  "The Mousetrap": ["keyhole-eyes", "EYES IN THE DARK"],
   "The Notebook": ["notebook", "LOVE BETWEEN THE LINES"],
   "Waitress": ["pie", "A SLICE OF A NEW LIFE"]
 };
@@ -228,6 +318,7 @@ function artworkScene(scene, accent, highlight) {
     park: `<path d="M110 460h380M180 460V300M420 460V270" ${line}/><circle cx="180" cy="235" r="85" fill="${accent}"/><circle cx="420" cy="205" r="105" fill="${highlight}" opacity=".8"/><path d="M235 400h130v60H235z" ${thin}/>`,
     chair: `<path d="M220 210h160v165H220zM200 375h200M235 375v95M365 375v95" ${line}/><path d="M250 150h100" ${thin}/><circle cx="300" cy="150" r="22" fill="${accent}"/>`,
     "cabaret-mic": `<path d="M255 145c0-70 90-70 90 0v145c0 70-90 70-90 0zM300 360v105M235 465h130" ${line}/><path d="M270 185h60M270 225h60M270 265h60M170 120l70 75M430 120l-70 75" ${thin}/><path d="M95 455L220 95h160l125 360" fill="${accent}" opacity=".18"/>`,
+    "cabaret-hat-cane": `<path d="M90 110l155 245M510 110L355 355" stroke="${highlight}" stroke-width="18" opacity=".2" stroke-linecap="round"/><g transform="rotate(-9 260 270)"><path d="M145 285h245M190 280c12-88 42-130 92-130s80 42 92 130z" fill="${accent}" stroke="${highlight}" stroke-width="11"/><path d="M205 225h140" ${thin}/></g><path d="M405 165c55 15 35 85-5 65-20-10-12-42 12-42v245M412 432c0 40-58 52-78 15" ${line}/><path d="M105 420l28 8 8 28 8-28 28-8-28-8-8-28-8 28z" fill="${highlight}"/>`,
     carousel: `<path d="M125 240Q300 85 475 240M145 240h310M180 240v220M300 240v220M420 240v220M115 460h370" ${line}/><path d="M225 330c35-45 75-5 45 32l-25 30h-55zM375 330c35-45 75-5 45 32l-25 30h-55z" fill="${accent}"/>`,
     cat: `<path d="M175 385V210l70 55c35-18 75-18 110 0l70-55v175c0 80-250 80-250 0z" ${line}/><path d="M235 350l35 20-35 20M365 350l-35 20 35 20M300 390v25" ${thin}/><circle cx="245" cy="325" r="13" fill="${accent}"/><circle cx="355" cy="325" r="13" fill="${accent}"/>`,
     skyline: `<path d="M85 455h430M110 455V280h70v175M205 455V190h85v265M315 455V245h70v210M410 455V155h80v300" ${line}/><path d="M245 190v-55M450 155V95" ${thin}/>`,
@@ -237,6 +328,7 @@ function artworkScene(scene, accent, highlight) {
     network: `<circle cx="300" cy="280" r="44" fill="${highlight}"/><circle cx="155" cy="160" r="35" fill="${accent}"/><circle cx="445" cy="160" r="35" fill="${accent}"/><circle cx="145" cy="410" r="35" fill="${accent}"/><circle cx="455" cy="410" r="35" fill="${accent}"/><path d="M180 185l85 65M420 185l-85 65M175 390l90-80M425 390l-90-80" ${line}/>`,
     western: `<path d="M145 255c75-25 235-25 310 0l-65 65H210zM190 320h220c45 0 75 30 55 55H135c-20-25 10-55 55-55z" fill="${accent}" stroke="${highlight}" stroke-width="9"/><path d="M300 375v80M245 455h110" ${line}/>`,
     "wanted-poster": `<path d="M135 105h330v365H135z" fill="${accent}" opacity=".18" stroke="${highlight}" stroke-width="11"/><path d="M185 165h230M215 220h170M205 405h190" ${line}/><circle cx="300" cy="315" r="72" fill="${highlight}" opacity=".9"/><path d="M300 245l20 43 48 6-35 33 9 48-42-23-42 23 9-48-35-33 48-6z" fill="${accent}"/><path d="M105 485l75-55M495 485l-75-55" ${thin}/>`,
+    "coffin-hat": `<path d="M115 290l80-85h235l70 85-55 175H165z" fill="${accent}" opacity=".35" stroke="${highlight}" stroke-width="11"/><path d="M190 420l235-160M155 290h315" ${thin}/><g transform="rotate(-10 300 245)"><path d="M205 240c28-55 62-82 102-82s72 27 96 82c-60 28-138 28-198 0z" fill="${highlight}" stroke="${accent}" stroke-width="9"/><path d="M150 255c85 28 215 28 300 0" ${line}/><path d="M245 205h120" ${thin}/></g><circle cx="90" cy="440" r="28" ${thin}/><path d="M62 440h56M90 412v56M70 420l40 40M110 420l-40 40" ${thin}/>` ,
     letter: `<path d="M110 155h380v290H110z" ${line}/><path d="M110 175l190 155 190-155M135 420l130-120M465 420L335 300" ${thin}/><path d="M210 115h180" ${line}/>`,
     potion: `<path d="M245 115h110M265 115v105l-95 205c-12 30 10 50 45 50h170c35 0 57-20 45-50l-95-205V115" ${line}/><path d="M205 350h190" ${thin}/><circle cx="260" cy="390" r="18" fill="${accent}"/><circle cx="335" cy="420" r="25" fill="${highlight}"/>`,
     snow: `<path d="M300 105v350M150 190l300 180M150 370l300-180M300 105l-35 45M300 105l35 45M150 190l60 5M150 190l25 55M450 190l-60 5M450 190l-25 55M150 370l60-5M150 370l25-55M450 370l-60-5M450 370l-25-55" ${line}/>`,
@@ -245,6 +337,7 @@ function artworkScene(scene, accent, highlight) {
     "rooftop-violin": `<path d="M70 430l230-190 230 190M125 430h350M165 430v65M435 430v65" ${line}/><path d="M300 80v155M280 235c-95-35-110 95-30 120 30 8 50-15 50-15s20 23 50 15c80-25 65-155-30-120z" fill="${accent}" stroke="${highlight}" stroke-width="10"/><path d="M275 75h50M255 290h90M155 105l290 250" ${thin}/>`,
     star: `<path d="M300 85l48 135 143 4-113 88 41 137-119-80-119 80 41-137-113-88 143-4z" fill="${highlight}"/><circle cx="300" cy="280" r="175" ${thin}/>`,
     "vaudeville-fan": `<path d="M300 430C145 350 120 215 170 145c70 20 115 75 130 150 15-75 60-130 130-150 50 70 25 205-130 285z" fill="${accent}" opacity=".75" stroke="${highlight}" stroke-width="10"/><path d="M300 430L170 145M300 430L235 125M300 430V105M300 430l65-305M300 430l130-285" ${line}/><path d="M95 475h410" ${thin}/><circle cx="145" cy="475" r="18" fill="${highlight}"/><circle cx="225" cy="475" r="18" fill="${highlight}"/><circle cx="305" cy="475" r="18" fill="${highlight}"/><circle cx="385" cy="475" r="18" fill="${highlight}"/><circle cx="465" cy="475" r="18" fill="${highlight}"/>`,
+    "vanity-mirror": `<path d="M155 455h290M195 455l18-58h174l18 58" ${line}/><rect x="165" y="95" width="270" height="305" rx="65" fill="${accent}" opacity=".22" stroke="${highlight}" stroke-width="13"/><rect x="205" y="135" width="190" height="225" rx="46" fill="none" stroke="${accent}" stroke-width="8"/><path d="M300 190l17 38 42 5-31 29 8 41-36-20-36 20 8-41-31-29 42-5z" fill="${highlight}" opacity=".85"/><path d="M245 330c35-18 75-18 110 0" ${thin}/>${[[165,145],[165,230],[165,315],[435,145],[435,230],[435,315],[235,95],[300,95],[365,95]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="11" fill="${highlight}"/>`).join("")}`,
     quill: `<path d="M130 440c145-18 235-130 330-320-155 30-285 115-310 285z" fill="${highlight}" opacity=".85"/><path d="M155 420L430 145M210 360l-35-85M270 300l-30-95M330 240l-20-75" ${line}/><path d="M100 465h350" ${thin}/>`,
     wand: `<path d="M145 440L430 145M390 115l15-45 15 45 45 15-45 15-15 45-15-45-45-15z" ${line}/><path d="M150 130l10-30 10 30 30 10-30 10-10 30-10-30-30-10z" fill="${accent}"/>`,
     "city-heart": `<path d="M95 455h410M130 455V270h75v185M235 455V175h95v280M360 455V240h90v215" ${line}/><path d="M300 305c-75-65-145 35 0 125 145-90 75-190 0-125z" fill="${accent}"/>`,
@@ -255,6 +348,7 @@ function artworkScene(scene, accent, highlight) {
     "clock-note": `<circle cx="250" cy="285" r="145" ${line}/><path d="M250 185v105l70 45M370 145v220c0 65-95 75-95 15 0-45 55-60 95-35M370 145l95-35v210c0 65-95 75-95 15" ${thin}/>`,
     boot: `<path d="M205 110h135v230c0 55 110 35 165 90-25 70-195 60-315 35 35-75 15-225 15-355z" fill="${accent}" stroke="${highlight}" stroke-width="11"/><path d="M205 225h135M205 285h135" ${thin}/>`,
     barricade: `<path d="M80 430h440M120 430l65-190h230l65 190M160 310h280M135 375h330" ${line}/><path d="M300 240V90l125 55-125 55" fill="${accent}"/>`,
+    "revolution-barricade": `<path d="M65 455h470M105 455l82-205h230l78 205M130 365h340M165 295h270M210 250l-55-82M390 250l55-82" ${line}/><path d="M300 250V75l150 62-150 68z" fill="${accent}" stroke="${highlight}" stroke-width="9"/><path d="M85 250l48-48M515 250l-48-48M120 125l65 55M480 125l-65 55M300 45V15" ${thin}/><path d="M235 430v-68l22-28 18 22 25-42 26 42 18-22 22 28v68" fill="${highlight}" opacity=".72"/>`,
     "candlesticks-chain": `<path d="M155 405h110M180 405l18-55h24l18 55M210 350V180M175 180h70M185 180c0-45 50-70 50-115 0 45 35 70 35 115M335 405h110M360 405l18-55h24l18 55M390 350V180M355 180h70M365 180c0-45 50-70 50-115 0 45 35 70 35 115" ${line}/><path d="M130 285c45-45 90-45 135 0M335 285c45-45 90-45 135 0" ${thin}/><path d="M265 285l40 34M335 285l-40 34" ${line}/><circle cx="265" cy="285" r="31" fill="none" stroke="${accent}" stroke-width="12"/><circle cx="335" cy="285" r="31" fill="none" stroke="${accent}" stroke-width="12"/>`,
     "prison-number-flag": `<rect x="105" y="185" width="300" height="145" rx="12" fill="${accent}" opacity=".18" stroke="${highlight}" stroke-width="11"/><text x="255" y="285" text-anchor="middle" fill="${highlight}" font-family="Georgia,serif" font-size="72" font-weight="700" letter-spacing="8">24601</text><path d="M430 105v315M430 120l115 55-115 55" fill="${accent}" stroke="${highlight}" stroke-width="9" stroke-linejoin="round"/><path d="M115 405c50-55 100-55 150 0M335 405c50-55 100-55 150 0" ${thin}/><circle cx="265" cy="405" r="34" fill="none" stroke="${accent}" stroke-width="13"/><circle cx="335" cy="405" r="34" fill="none" stroke="${accent}" stroke-width="13"/><path d="M283 382l-25-42M317 382l25-42" ${line}/>`,
     boat: `<path d="M95 355h410c-25 95-115 125-205 125S120 450 95 355z" fill="${accent}" stroke="${highlight}" stroke-width="10"/><path d="M300 355V105l140 180H300z" ${line}/><path d="M70 500c75-35 135 35 210 0s135 35 210 0" ${thin}/>`,
@@ -278,6 +372,8 @@ function artworkScene(scene, accent, highlight) {
     "camera-guitar": `<path d="M85 145h430v310H85zM300 145v310M85 300h430" ${line}/><rect x="125" y="205" width="155" height="110" rx="16" fill="${accent}" stroke="${highlight}" stroke-width="9"/><circle cx="200" cy="260" r="38" fill="none" stroke="${highlight}" stroke-width="9"/><path d="M280 230l65-35v130l-65-35z" fill="${highlight}"/><path d="M405 190v180M405 220c-70 10-75 90-20 100 65 12 85-75 20-100zM385 370l-45 90M425 370l45 90" ${line}/><path d="M405 190l55-35" ${thin}/>`,
     "double-heart": `<path d="M220 430C70 320 105 180 195 220c18 8 25 22 25 22s8-14 25-22c90-40 125 100-25 210zM380 430c-150-110-115-250-25-210 18 8 25 22 25 22s8-14 25-22c90-40 125 100-25 210z" fill="${accent}" stroke="${highlight}" stroke-width="8"/><path d="M300 105v350" ${thin}/>`,
     books: `<path d="M95 405h410v70H95zM125 315h350v70H125zM85 225h430v70H85zM145 135h310v70H145z" fill="${accent}" stroke="${highlight}" stroke-width="8"/><path d="M185 135v70M400 225v70M220 315v70M420 405v70" ${thin}/>`,
+    "telekinetic-book": `<path d="M75 410c75-25 150-10 225 45 75-55 150-70 225-45v85c-75-28-150-12-225 38-75-50-150-66-225-38z" fill="${accent}" stroke="${highlight}" stroke-width="10"/><path d="M300 455v78M110 440c60-10 115 5 165 42M490 440c-60-10-115 5-165 42" ${thin}/><text x="130" y="260" fill="${highlight}" font-family="Georgia,serif" font-size="74" font-weight="900" transform="rotate(-12 130 260)">A</text><text x="390" y="220" fill="${highlight}" font-family="Georgia,serif" font-size="66" font-weight="900" transform="rotate(9 390 220)">B</text><path d="M245 285h75v55h-75zM330 120h65v90h-65z" fill="none" stroke="${accent}" stroke-width="9"/><path d="M282 285v55M350 120v90M95 325l35-18 18 35M475 300l-28-25-24 32M210 145l20-38 22 35" ${line}/><path d="M165 340c55-65 115-90 180-75M330 260c55-45 105-55 150-25" ${thin}/>` ,
+    "keyhole-eyes": `<path d="M300 75c-95 0-160 68-160 155 0 55 25 95 65 122l-42 128h274l-42-128c40-27 65-67 65-122 0-87-65-155-160-155z" fill="${accent}" opacity=".26" stroke="${highlight}" stroke-width="12"/><path d="M300 135c-55 0-92 40-92 92 0 37 18 66 48 82l-24 95h136l-24-95c30-16 48-45 48-82 0-52-37-92-92-92z" fill="#122f35" opacity=".92"/><path d="M235 240c28-30 62-30 90 0-28 30-62 30-90 0zM325 240c28-30 62-30 90 0-28 30-62 30-90 0z" fill="${highlight}"/><circle cx="280" cy="240" r="12" fill="${accent}"/><circle cx="370" cy="240" r="12" fill="${accent}"/><path d="M70 230h45M485 230h45M105 130l38 28M495 130l-38 28M300 25v35" ${thin}/>` ,
     "lecture-boundary": `<path d="M95 165h190v245H95zM130 410v65M250 410v65M355 315h150v95H355zM380 410v65M480 410v65" ${line}/><path d="M125 220h130M125 275h95M385 345h90M300 95v390" ${thin}/><circle cx="190" cy="130" r="35" fill="${accent}"/><circle cx="430" cy="270" r="35" fill="${highlight}"/><path d="M285 450L335 120" stroke="${accent}" stroke-width="16" stroke-linecap="round"/>`,
     "six-crowns": `<path d="M55 150l18 78h74l18-78-38 27-17-52-17 52zM215 150l18 78h74l18-78-38 27-17-52-17 52zM375 150l18 78h74l18-78-38 27-17-52-17 52zM55 330l18 78h74l18-78-38 27-17-52-17 52zM215 330l18 78h74l18-78-38 27-17-52-17 52zM375 330l18 78h74l18-78-38 27-17-52-17 52z" fill="${accent}" stroke="${highlight}" stroke-width="7"/>`,
     mask: `<path d="M95 190c125-60 285-60 410 0l-45 185c-35 95-115 75-160-10-45 85-125 105-160 10z" fill="${accent}" stroke="${highlight}" stroke-width="10"/><path d="M175 270c35-35 75-35 110 0M315 270c35-35 75-35 110 0" ${line}/>`,
@@ -298,27 +394,32 @@ function generatedArtwork(memory) {
   const hash = showHash(memory.show);
   const [background, paletteAccent, highlight] = artworkPalettes[hash % artworkPalettes.length];
   const accent = artworkColor(memory.color, paletteAccent);
-  const [scene, concept] = resolveArtworkConcept(memory, hash);
+  const [scene, subtitle] = resolveArtworkConcept(memory, hash);
   const titleLines = artworkTitleLines(memory.show);
-  const titleSize = titleLines.some((line) => line.length > 24) ? 28 : titleLines.length > 2 ? 32 : 38;
+  const subtitleLines = artworkSubtitleLines(subtitle);
+  const longestTitleLine = Math.max(...titleLines.map((line) => line.length));
+  const preferredTitleSize = [31, 31, 27, 23, 20][titleLines.length] || 20;
+  const titleSize = Math.max(18, Math.min(
+    preferredTitleSize,
+    Math.floor(245 / (Math.max(longestTitleLine, 1) * .6))
+  ));
+  const titleLineHeight = titleSize + 3;
+  const titleStart = 124 - ((titleLines.length - 1) * titleLineHeight) / 2;
   const titleMarkup = titleLines.map((line, index) => (
-    `<tspan x="300" y="${635 + index * 43}">${escapeXml(line)}</tspan>`
+    `<tspan x="448" y="${titleStart + index * titleLineHeight}">${escapeXml(line)}</tspan>`
   )).join("");
-  const year = memory.date.slice(0, 4);
-  const location = [memory.city, year].filter(Boolean).join(" • ") || "THEATRE MEMORY";
-  const theatre = (memory.theatre || "Venue not recorded").slice(0, 52);
-  const dotX = 80 + (hash % 420);
-  const dotY = 80 + ((hash >>> 8) % 390);
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-label="${escapeXml(memory.show)} original memory illustration">
-    <rect width="600" height="800" fill="${background}"/>
-    ${artworkBackdrop(hash, accent, highlight)}
-    ${artworkScene(scene, accent, highlight)}
-    <circle cx="${dotX}" cy="${dotY}" r="10" fill="${accent}" opacity=".75"/>
-    <circle cx="${600 - dotX}" cy="${510 - dotY / 2}" r="6" fill="${highlight}" opacity=".65"/>
-    <text x="300" y="36" text-anchor="middle" fill="${highlight}" font-family="Aptos,Segoe UI,sans-serif" font-size="13" font-weight="700" letter-spacing="2">${escapeXml(location.toUpperCase())}</text>
-    <text x="300" y="60" text-anchor="middle" fill="#fff" opacity=".72" font-family="Aptos,Segoe UI,sans-serif" font-size="12">${escapeXml(theatre)}</text>
-    <text x="300" y="565" text-anchor="middle" fill="${accent}" font-family="Aptos,Segoe UI,sans-serif" font-size="16" font-weight="700" letter-spacing="4">${escapeXml(concept)}</text>
+  const subtitleStart = 205 - ((subtitleLines.length - 1) * 17) / 2;
+  const subtitleMarkup = subtitleLines.map((line, index) => (
+    `<tspan x="448" y="${subtitleStart + index * 17}">${escapeXml(line)}</tspan>`
+  )).join("");
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" role="img" aria-label="${escapeXml(memory.show)} original memory illustration">
+    <rect width="600" height="300" fill="${background}"/>
+    <g opacity=".5">${artworkBackdrop(hash, accent, highlight)}</g>
+    <rect x="310" width="290" height="300" fill="#000" opacity=".2"/>
+    <path d="M310 34v232" stroke="${accent}" stroke-width="3" opacity=".8"/>
+    <g transform="translate(5 18) scale(.5)">${artworkScene(scene, accent, highlight)}</g>
     <text text-anchor="middle" fill="#fff" font-family="Georgia,serif" font-size="${titleSize}" font-weight="700">${titleMarkup}</text>
+    <text text-anchor="middle" fill="${highlight}" font-family="Aptos,Segoe UI,sans-serif" font-size="15" font-weight="800" letter-spacing=".7">${subtitleMarkup}</text>
   </svg>`;
   return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
 }
@@ -381,21 +482,24 @@ function parseCsv(text) {
 }
 
 function browserPhotoSource(value) {
-  return value && !/^[A-Za-z]:\\/.test(value) ? value : "";
+  if (!value || /^[A-Za-z]:\\/.test(value)) return "";
+  if (/^data:image\/svg\+xml/i.test(value) || /^assets[\\/]memory-art[\\/]/i.test(value)) return "";
+  return value;
 }
 
 function renderPhoto(memory) {
-  const source = browserPhotoSource(memory.photo)
-    || sampleArtwork[memory.show]
-    || generatedArtwork(memory);
+  const photoSource = browserPhotoSource(memory.photo);
+  const source = photoSource || generatedArtwork(memory);
   if (source) {
     const image = document.createElement("img");
     image.src = source;
-    image.alt = browserPhotoSource(memory.photo)
+    image.className = photoSource ? "memory-photo-source" : "memory-artwork-source";
+    image.alt = photoSource
       ? `${memory.show} theatre memory photo`
       : `${memory.show} inspired illustration`;
     image.loading = "lazy";
     image.addEventListener("error", () => {
+      image.className = "memory-artwork-source";
       image.src = generatedArtwork(memory);
     }, { once: true });
     return image;
@@ -412,9 +516,14 @@ function renderPhoto(memory) {
 }
 
 function matchesReaction(value, filter) {
-  if (!filter.value) return true;
+  const range = reactionRange(filter);
+  if (!range.active) return true;
+  return meetsReactionRange(value, range);
+}
+
+function meetsReactionRange(value, range) {
   const score = reactionScore(value);
-  return Number.isFinite(score) && Math.round(score) === Number(filter.value);
+  return Number.isFinite(score) && score >= range.minimum && score <= range.maximum;
 }
 
 function renderMemories() {
@@ -429,7 +538,7 @@ function renderMemories() {
     && (!query || [memory.show, memory.theatre, memory.city, memory.seat]
       .some((value) => value.toLocaleLowerCase().includes(query)))
   )).sort((left, right) => {
-    if (!priceSort.value) return right.date.localeCompare(left.date);
+    if (!priceSort.value) return left.date.localeCompare(right.date);
     const leftPrice = priceInUsd(left.price);
     const rightPrice = priceInUsd(right.price);
     if (!Number.isFinite(leftPrice)) return Number.isFinite(rightPrice) ? 1 : 0;
@@ -437,15 +546,29 @@ function renderMemories() {
     const direction = priceSort.value === "price-asc" ? 1 : -1;
     return (leftPrice - rightPrice) * direction || right.date.localeCompare(left.date);
   });
+  const priceSorted = Boolean(priceSort.value);
+  const initialFocusIndex = priceSorted ? 0 : filtered.length - 1;
 
-  list.replaceChildren(...filtered.map((memory, index) => {
+  const rail = document.createElement("div");
+  rail.className = "memory-timeline-rail";
+  rail.setAttribute("aria-hidden", "true");
+  rail.setAttribute("role", "presentation");
+  const renderedEntries = filtered.map((memory, index) => {
     const article = document.createElement("article");
     article.className = `memory-entry ${index % 2 ? "memory-right" : "memory-left"}`;
     article.style.setProperty("--memory-color", memory.color);
+    article.setAttribute("role", "listitem");
+    article.setAttribute("aria-label", `${formatDate(memory.date)}: ${memory.show}`);
+    article.tabIndex = index === initialFocusIndex ? 0 : -1;
 
     const marker = document.createElement("div");
     marker.className = "memory-marker";
     marker.setAttribute("aria-hidden", "true");
+
+    const date = document.createElement("time");
+    date.className = "memory-rail-date";
+    date.dateTime = memory.date;
+    date.textContent = formatDate(memory.date);
 
     const card = document.createElement("div");
     card.className = "memory-card";
@@ -454,9 +577,6 @@ function renderMemories() {
     media.appendChild(renderPhoto(memory));
     const copy = document.createElement("div");
     copy.className = "memory-copy";
-    const date = document.createElement("time");
-    date.dateTime = memory.date;
-    date.textContent = formatDate(memory.date);
     const title = document.createElement("h3");
     title.textContent = memory.show;
     const venue = document.createElement("p");
@@ -468,7 +588,7 @@ function renderMemories() {
         document.createTextNode(memory.city)
       );
     }
-    copy.append(date, title, venue);
+    copy.append(title, venue);
     if (memory.seat || memory.price) {
       const seat = document.createElement("p");
       seat.className = "memory-seat";
@@ -530,14 +650,41 @@ function renderMemories() {
       copy.appendChild(review);
     }
     card.append(media, copy);
-    article.append(marker, card);
+    article.append(date, marker, card);
     return article;
-  }));
+  });
+  list.replaceChildren(rail, ...renderedEntries);
+  window.requestAnimationFrame(() => {
+    const inlineScrollBehavior = list.style.scrollBehavior;
+    list.style.scrollBehavior = "auto";
+    list.scrollLeft = priceSorted ? 0 : list.scrollWidth;
+    list.style.scrollBehavior = inlineScrollBehavior;
+    updateTimelineRail();
+    updateTimelineNavigation();
+  });
   empty.hidden = filtered.length > 0;
+  const activeCriteria = [
+    search.value.trim() ? `search "${search.value.trim()}"` : "",
+    year.value ? `year ${year.value}` : "",
+    reactionRange(ratingFilter).active ? `Overall ${reactionRangeLabel(reactionRange(ratingFilter))}` : "",
+    reactionRange(castFilter).active ? `Cast ${reactionRangeLabel(reactionRange(castFilter))}` : "",
+    reactionRange(musicFilter).active ? `Music ${reactionRangeLabel(reactionRange(musicFilter))}` : "",
+    reactionRange(stageFilter).active ? `Stage ${reactionRangeLabel(reactionRange(stageFilter))}` : "",
+    reactionRange(storyFilter).active ? `Story ${reactionRangeLabel(reactionRange(storyFilter))}` : ""
+  ].filter(Boolean);
+  empty.textContent = activeCriteria.length
+    ? `No memories match ${activeCriteria.join(", ")}. Try clearing one or more filters.`
+    : "No theatre memories are available.";
   filterStatus.textContent = `Showing ${filtered.length.toLocaleString("en-US")} of ${memories.length.toLocaleString("en-US")} theatre memories. Filters combine.`;
+  list.setAttribute("aria-label", priceSorted
+    ? `Theatre memories sorted by ticket price, ${priceSort.value === "price-asc" ? "low to high" : "high to low"}`
+    : "Theatre memories, oldest to newest; opens at latest");
+  timelineHelp.textContent = priceSorted
+    ? "Sorted by ticket price. Swipe, scroll, or use the arrow keys to move through the results."
+    : "Oldest to newest; opens at latest. Swipe, scroll, or use the arrow keys to travel through time.";
   clearFilters.disabled = !search.value && !year.value
-    && !ratingFilter.value && !castFilter.value && !musicFilter.value
-    && !stageFilter.value && !storyFilter.value && !priceSort.value;
+    && reactionFilters.every((filter) => !reactionRange(filter).active)
+    && !priceSort.value;
 }
 
 function mostFrequent(values) {
@@ -550,19 +697,28 @@ function frequencyRanking(values) {
   return [...counts].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
 }
 
-function labelReactionOptions(filter, values) {
-  const counts = new Map();
-  values.forEach((value) => {
-    const score = reactionScore(value);
-    if (!Number.isFinite(score)) return;
-    const rounded = Math.round(score);
-    counts.set(rounded, (counts.get(rounded) || 0) + 1);
-  });
-  [...filter.options].slice(1).forEach((option) => {
-    const count = counts.get(Number(option.value)) || 0;
-    option.textContent = `${reactionLabels[Number(option.value)]} (${count})`;
-    option.disabled = count === 0;
-  });
+function reactionRangeLabel(range) {
+  return range.active ? `${range.minimum}–${range.maximum}` : "Any";
+}
+
+function updateReactionRange(filter, values, changedBound = "") {
+  const minimumInput = filter.querySelector('[data-range-bound="min"]');
+  const maximumInput = filter.querySelector('[data-range-bound="max"]');
+  if (Number(minimumInput.value) > Number(maximumInput.value)) {
+    if (changedBound === "min") maximumInput.value = minimumInput.value;
+    else minimumInput.value = maximumInput.value;
+  }
+  const range = reactionRange(filter);
+  const count = range.active
+    ? values.filter((value) => meetsReactionRange(value, range)).length
+    : values.length;
+  const rangeElement = filter.querySelector(".memory-rating-range");
+  filter.classList.toggle("is-active", range.active);
+  rangeElement.style.setProperty("--range-min", `${((range.minimum - 1) / 4) * 100}%`);
+  rangeElement.style.setProperty("--range-max", `${((range.maximum - 1) / 4) * 100}%`);
+  filter.querySelector("output").textContent = `${reactionRangeLabel(range)} · ${count.toLocaleString("en-US")}`;
+  minimumInput.setAttribute("aria-valuetext", `Minimum ${range.minimum} of 5`);
+  maximumInput.setAttribute("aria-valuetext", `Maximum ${range.maximum} of 5`);
 }
 
 function initializeMemories() {
@@ -702,25 +858,34 @@ function initializeMemories() {
   document.querySelector("#memory-top-dimension").textContent = strongestDimension
     ? `${strongestDimension.label} (${strongestDimension.average.toFixed(2)}/5)`
     : "-";
-  labelReactionOptions(ratingFilter, memories.map((memory) => memory.rating));
-  labelReactionOptions(castFilter, memories.map((memory) => memory.castVibe));
-  labelReactionOptions(musicFilter, memories.map((memory) => memory.musicVibe));
-  labelReactionOptions(stageFilter, memories.map((memory) => memory.stageMagic));
-  labelReactionOptions(storyFilter, memories.map((memory) => memory.storyFeel));
+  updateReactionRange(ratingFilter, memories.map((memory) => memory.rating));
+  updateReactionRange(castFilter, memories.map((memory) => memory.castVibe));
+  updateReactionRange(musicFilter, memories.map((memory) => memory.musicVibe));
+  updateReactionRange(stageFilter, memories.map((memory) => memory.stageMagic));
+  updateReactionRange(storyFilter, memories.map((memory) => memory.storyFeel));
   renderMemories();
 }
 
 search.addEventListener("input", renderMemories);
 year.addEventListener("change", renderMemories);
-[ratingFilter, castFilter, musicFilter, stageFilter, storyFilter]
-  .forEach((filter) => filter.addEventListener("change", renderMemories));
+const reactionValues = new Map([
+  [ratingFilter, () => memories.map((memory) => memory.rating)],
+  [castFilter, () => memories.map((memory) => memory.castVibe)],
+  [musicFilter, () => memories.map((memory) => memory.musicVibe)],
+  [stageFilter, () => memories.map((memory) => memory.stageMagic)],
+  [storyFilter, () => memories.map((memory) => memory.storyFeel)]
+]);
+reactionFilters.forEach((filter) => filter.addEventListener("input", (event) => {
+  updateReactionRange(filter, reactionValues.get(filter)(), event.target.dataset.rangeBound);
+  renderMemories();
+}));
 priceSort.addEventListener("change", renderMemories);
 clearFilters.addEventListener("click", () => {
   search.value = "";
   year.value = "";
   priceSort.value = "";
-  [ratingFilter, castFilter, musicFilter, stageFilter, storyFilter]
-    .forEach((filter) => { filter.value = ""; });
+  reactionFilters.forEach(resetReactionFilter);
+  reactionFilters.forEach((filter) => updateReactionRange(filter, reactionValues.get(filter)()));
   renderMemories();
   search.focus();
 });
@@ -736,6 +901,10 @@ function normalizeMemoryRows(rows) {
         memory.stage_magic,
         memory.story_feel
       ].map(reactionScore).filter(Number.isFinite);
+      const castVibe = reactionScore(memory.cast_vibe);
+      const musicVibe = reactionScore(memory.music_vibe);
+      const stageMagic = reactionScore(memory.stage_magic);
+      const storyFeel = reactionScore(memory.story_feel);
       const rating = dimensionScores.length
         ? dimensionScores.reduce((sum, score) => sum + score, 0) / dimensionScores.length
         : Number.NaN;
@@ -750,10 +919,10 @@ function normalizeMemoryRows(rows) {
         price: (memory.price || "").trim(),
         note: (memory.note || "").trim(),
         photo: (memory.photo || "").trim(),
-        castVibe: (memory.cast_vibe || "").trim(),
-        musicVibe: (memory.music_vibe || "").trim(),
-        stageMagic: (memory.stage_magic || "").trim(),
-        storyFeel: (memory.story_feel || "").trim(),
+        castVibe,
+        musicVibe,
+        stageMagic,
+        storyFeel,
         color: artworkColor(memory.color, paletteAccent)
       };
     })

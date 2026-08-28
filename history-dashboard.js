@@ -19,6 +19,98 @@ const historySortLabels = {
   capacity: "Average Capacity"
 };
 
+function parseHistoryNumber(value, label, rowNumber) {
+  const normalized = typeof value === "string"
+    ? value.replace(/[$,%\s]/g, "").replaceAll(",", "")
+    : value;
+  const number = Number(normalized);
+  if (!Number.isFinite(number) || number < 0) {
+    throw new Error(`Row ${rowNumber} has an invalid ${label}.`);
+  }
+  return number;
+}
+
+function normalizeHistoryDate(value, rowNumber) {
+  const text = String(value || "").trim();
+  const isoMatch = text.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (isoMatch) return isoMatch[0];
+  const usMatch = text.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+  if (usMatch) {
+    return `${usMatch[3]}-${usMatch[1].padStart(2, "0")}-${usMatch[2].padStart(2, "0")}`;
+  }
+  throw new Error(`Row ${rowNumber} has an invalid date. Use YYYY-MM-DD or MM/DD/YYYY.`);
+}
+
+function normalizeHistoryRow(row, index) {
+  const rowNumber = index + 1;
+  const values = Array.isArray(row)
+    ? {
+        date: row[0],
+        year: row[1],
+        show: row[2],
+        gross: row[3],
+        seats: row[4],
+        available: row[5],
+        ticketSum: row[6],
+        ticketCount: row[7]
+      }
+    : row;
+  if (!values || typeof values !== "object") throw new Error(`Row ${rowNumber} is not a data row.`);
+  const date = normalizeHistoryDate(values.date ?? values.week_ending ?? values.week, rowNumber);
+  const show = String(values.show ?? values.title ?? "").trim();
+  if (!show) throw new Error(`Row ${rowNumber} is missing a show title.`);
+  const seats = parseHistoryNumber(values.seats ?? values.seats_sold, "seats sold", rowNumber);
+  const performances = parseHistoryNumber(values.performances ?? 1, "performances", rowNumber);
+  const availableValue = values.available ?? values.available_seats;
+  const available = availableValue === undefined
+    ? parseHistoryNumber(values.seats_in_theatre, "theatre seats", rowNumber) * performances
+    : parseHistoryNumber(availableValue, "available seats", rowNumber);
+  const ticketValue = values.ticketSum ?? values.average_ticket_price ?? values.averageTicket ?? 0;
+  const ticketCountValue = values.ticketCount ?? (ticketValue === "" || ticketValue === null ? 0 : 1);
+  return [
+    date,
+    String(values.year || date.slice(0, 4)),
+    show,
+    parseHistoryNumber(values.gross ?? values.weekly_gross, "gross", rowNumber),
+    seats,
+    available,
+    parseHistoryNumber(ticketValue || 0, "average ticket price", rowNumber),
+    parseHistoryNumber(ticketCountValue, "ticket count", rowNumber)
+  ];
+}
+
+function validateHistoryData(input) {
+  const rows = Array.isArray(input) ? input : input?.rows;
+  if (!Array.isArray(rows) || !rows.length) {
+    throw new Error("The bundled dataset does not contain any Broadway history rows.");
+  }
+  const normalizedRows = rows.map(normalizeHistoryRow);
+  const awards = !Array.isArray(input) && input?.awards && typeof input.awards === "object"
+    ? input.awards
+    : {};
+  return { rows: normalizedRows, awards };
+}
+
+function applyHistoryData(data) {
+  const normalized = validateHistoryData(data);
+  historyRows = normalized.rows.map(([date, year, show, gross, seats, available, ticketSum, ticketCount]) => (
+    { date, year, show, gross, seats, available, ticketSum, ticketCount }
+  ));
+  historyAwards = Object.keys(normalized.awards).length ? normalized.awards : historyAwards;
+  historyYear.replaceChildren(createElement("option", "All"));
+  historyYear.firstElementChild.value = "";
+  [...new Set(historyRows.map((row) => row.year))]
+    .sort((a, b) => b.localeCompare(a))
+    .forEach((year) => historyYear.appendChild(createElement("option", year)));
+  populateDatalist("history-shows", historyRows.map((row) => row.show));
+  historyYear.value = "";
+  historyShow.value = "";
+  selectedHistoryShow = "";
+  selectedHistoryWeek = "";
+  historyZoom = { start: 0, end: 1 };
+  renderHistoryDashboard();
+}
+
 const historyPremises = {
   "& Juliet": "Shakespeare's heroine imagines a new path after the ending of Romeo and Juliet. Contemporary pop songs frame a playful story about identity, friendship, and choosing one's own future.",
   "42nd Street": "A young dancer gets an unexpected chance to become a star when she steps into the leading role of a Broadway musical. Set amid the pressure and glamour of a major production, the story celebrates hard work, second chances, and the exhilaration of putting on a show.",
@@ -96,6 +188,10 @@ function normalizeHistoryTitle(title) {
     .toLocaleLowerCase();
 }
 
+function historyTitlesMatch(left, right) {
+  return normalizeHistoryTitle(left) === normalizeHistoryTitle(right);
+}
+
 const normalizedHistoryPremises = new Map(
   Object.entries(historyPremises).map(([title, premise]) => [normalizeHistoryTitle(title), premise])
 );
@@ -108,7 +204,7 @@ function addHistoryPremises(premiseGroups) {
 }
 
 function historyProductionProfile(show) {
-  const rows = historyRows.filter((row) => row.show === show);
+  const rows = historyRows.filter((row) => historyTitlesMatch(row.show, show));
   if (!rows.length) return "No Broadway performance records are available for this production in the current dashboard selection.";
 
   const totals = historyTotals(rows);
@@ -162,13 +258,13 @@ function historyWeekRows(rows) {
 function historyMetricRows(baseRows) {
   const rows = historyWeekRows(baseRows);
   return selectedHistoryShow
-    ? rows.filter((row) => row.show === selectedHistoryShow)
+    ? rows.filter((row) => historyTitlesMatch(row.show, selectedHistoryShow))
     : rows;
 }
 
 function historyLineRows(baseRows) {
   return selectedHistoryShow
-    ? baseRows.filter((row) => row.show === selectedHistoryShow)
+    ? baseRows.filter((row) => historyTitlesMatch(row.show, selectedHistoryShow))
     : baseRows;
 }
 
@@ -491,7 +587,7 @@ function renderHistoryLongevity(rows, selectShow) {
   axis.append(createElement("span", "Production"), years);
   const timelineColors = ["#356be8", "#7a5af8", "#0f8b8d", "#d94f70", "#e06b3c", "#d5a021", "#4f7f62", "#5267a8"];
   const timelineRows = rows.map((row, index) => {
-    const button = historyChartButton(row.show, row.show === selectedHistoryShow, selectShow, "history-longevity-row");
+    const button = historyChartButton(row.show, historyTitlesMatch(row.show, selectedHistoryShow), selectShow, "history-longevity-row");
     button.style.setProperty("--timeline-color", timelineColors[index % timelineColors.length]);
     button.title = `${row.show}: ${row.weeks.toLocaleString("en-US")} reported weeks from ${row.start} to ${row.end}`;
     const copy = createElement("span", undefined, "history-longevity-copy");
@@ -516,17 +612,22 @@ function renderHistoryLongevity(rows, selectShow) {
 
 function renderHistoryRunStairs(rows, selectShow) {
   const container = document.querySelector("#history-run-count-bars");
-  const topLevels = [...new Set(rows.map((row) => row.runs))].slice(0, 3);
-  container.replaceChildren(...topLevels.map((runs, index) => {
-    const step = createElement("section", undefined, `history-production-step history-production-step-${index + 1}`);
+  const topLevels = [...new Set(rows.map((row) => row.runs))].sort((a, b) => b - a).slice(0, 3);
+  container.dataset.tiers = String(topLevels.length);
+  const tiers = topLevels.map((runs, index) => ({ runs, rank: index + 1 }));
+  const visualOrder = tiers.length === 1 ? tiers : [tiers[1], tiers[0], tiers[2]].filter(Boolean);
+  container.replaceChildren(...visualOrder.map(({ runs, rank }) => {
+    const step = createElement("section", undefined, `history-production-step history-production-rank-${rank}`);
+    step.setAttribute("aria-label", `Rank ${rank}: ${runs} ${runs === 1 ? "production" : "productions"}`);
     const heading = createElement("div", undefined, "history-step-heading");
     heading.append(
       createElement("strong", String(runs)),
       createElement("span", runs === 1 ? "PRODUCTION" : "PRODUCTIONS")
     );
     const shows = createElement("div", undefined, "history-step-shows");
-    shows.append(...rows.filter((row) => row.runs === runs).map((row) => {
-      const button = historyChartButton(row.show, row.show === selectedHistoryShow, selectShow, "history-step-show");
+    const rankedShows = rows.filter((row) => row.runs === runs);
+    shows.append(...rankedShows.map((row) => {
+      const button = historyChartButton(row.show, historyTitlesMatch(row.show, selectedHistoryShow), selectShow, "history-step-show");
       button.textContent = row.show;
       button.title = `${row.show}: ${row.runs} distinct Broadway productions across ${row.weeks} reported weeks`;
       return button;
@@ -536,25 +637,25 @@ function renderHistoryRunStairs(rows, selectShow) {
   }));
 }
 
-function historyGrossArtwork(show) {
-  const motifs = {
-    "The Lion King": `<circle cx="300" cy="165" r="92" fill="#f2b84b"/><path d="M80 365h440M115 365l80-105 55 65 75-145 160 185M250 365c35-70 75-70 110 0" fill="none" stroke="#fff6dd" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>`,
-    Wicked: `<path d="M135 365h330M190 315l115-220 110 220zM245 220h135" fill="none" stroke="#f2ead8" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/><path d="M305 95l95 70-55 15z" fill="#9fe870"/><circle cx="470" cy="105" r="14" fill="#9fe870"/>`,
-    "The Phantom of the Opera": `<path d="M300 75c130 0 205 85 180 205-20 92-85 145-180 160-95-15-160-68-180-160C95 160 170 75 300 75z" fill="#f6efe2" opacity=".92"/><path d="M300 75v365M300 120c70 20 95 80 70 145-15 40-35 70-70 95M180 230h75M345 230h75" fill="none" stroke="#34213f" stroke-width="17" stroke-linecap="round"/>`,
-    Hamilton: `<path d="M300 70l55 112 125 18-90 88 22 124-112-59-112 59 22-124-90-88 125-18z" fill="none" stroke="#f4d06f" stroke-width="17" stroke-linejoin="round"/><path d="M190 395c100-70 170-155 225-285" fill="none" stroke="#fff8e9" stroke-width="15" stroke-linecap="round"/>`,
-    "The Book of Mormon": `<path d="M105 125c75-25 140-5 195 45v230c-55-45-120-60-195-35zM495 125c-75-25-140-5-195 45v230c55-45 120-60 195-35z" fill="none" stroke="#fff7df" stroke-width="17" stroke-linejoin="round"/><path d="M175 210h75M350 210h75M175 260h75M350 260h75" stroke="#f4c95d" stroke-width="12" stroke-linecap="round"/>`,
-    Chicago: `<path d="M300 95v285M205 155h190M205 155l-85 145h170zM395 155l-85 145h170zM210 390h180" fill="none" stroke="#f8e8d0" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/><path d="M105 95l70 45M425 330l70 45" stroke="#e05858" stroke-width="13" stroke-linecap="round"/>`
-  };
-  const palette = {
-    "The Lion King": "#7b3518",
-    Wicked: "#173d2e",
-    "The Phantom of the Opera": "#30213f",
-    Hamilton: "#253753",
-    "The Book of Mormon": "#365871",
-    Chicago: "#4a1720"
-  };
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 460"><rect width="600" height="460" fill="${palette[show] || "#243047"}"/><circle cx="300" cy="235" r="205" fill="none" stroke="#fff" opacity=".08" stroke-width="5"/>${motifs[show] || ""}</svg>`;
-  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+const historyGrossIcons = new Map(Object.entries({
+  "the lion king": `<path d="M3 15a9 9 0 0 1 18 0M5 11l-2-2M8 7 7 4M12 6V3M16 7l2-3M19 10l2-1"/><path d="M6 20c1-5 2-9 6-11l3 1 2 3-2 1 1 3-3 3H6z" fill="currentColor" stroke="none"/><path d="M12 10l-2-2-2 2M14 12h.1M16 16l2 1-3 1"/>`,
+  wicked: `<path d="M5 20L16 9M17 3v4M15 5h4M7 4v3M5.5 5.5h3M19 13v3M17.5 14.5h3"/>`,
+  "the phantom of the opera": `<path d="M12 3c5 0 8 3 8 8 0 5-3 8-8 10V3z" fill="currentColor" stroke="none"/><path d="M12 3C7 3 4 6 4 11c0 5 3 8 8 10M7 10h2M7 15c1 1 2 1 3 1"/>`,
+  "phantom of the opera": `<path d="M12 3c5 0 8 3 8 8 0 5-3 8-8 10V3z" fill="currentColor" stroke="none"/><path d="M12 3C7 3 4 6 4 11c0 5 3 8 8 10M7 10h2M7 15c1 1 2 1 3 1"/>`,
+  hamilton: `<path d="M12 3l2.2 4.5 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5-3.6-3.5 5-.7z"/><path d="M5 20c5-2 9-7 13-15"/>`,
+  "hell's kitchen": `<path d="M3 6h18v12H3zM7 6v7M11 6v7M15 6v7M19 6v7M3 13h18"/>`,
+  cabaret: `<path d="M5 9h14M8 9l2-5h4l2 5M7 12h10M12 12v7M9 19h6"/>`,
+  aladdin: `<path d="M5 14c2 4 10 4 13 0-3 0-4-2-5-4H7c0 2-1 3-2 4zM13 10c1-2 3-3 5-2M18 8c3 0 3 3 1 4M7 10V7h6M8 5h4"/>`,
+  "the book of mormon": `<path d="M3 6c3-1 6 0 9 2v11c-3-2-6-3-9-2zM21 6c-3-1-6 0-9 2v11c3-2 6-3 9-2zM12 8v11"/>`,
+  chicago: `<path d="M14 4v10c0 5-7 7-9 2-1-3 2-6 5-4M14 7h4l2 3-3 2M10 17h7M7 6v4M5 8h4"/>`
+}).map(([title, icon]) => [normalizeHistoryTitle(title), icon]));
+
+function historyGrossIcon(show) {
+  const fallback = `<path d="M4 9h16v11H4zM2 9l10-6 10 6M8 13h8M8 16h8"/>`;
+  const icon = createElement("span", undefined, "history-gross-icon");
+  icon.setAttribute("aria-hidden", "true");
+  icon.innerHTML = `<svg viewBox="0 0 24 24" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${historyGrossIcons.get(normalizeHistoryTitle(show)) || fallback}</g></svg>`;
+  return icon;
 }
 
 function renderHistoryGrossTreemap(rows, selectShow) {
@@ -564,16 +665,18 @@ function renderHistoryGrossTreemap(rows, selectShow) {
   container.replaceChildren(...rows.map((row, index) => {
     const button = historyChartButton(
       row.show,
-      row.show === selectedHistoryShow,
+      historyTitlesMatch(row.show, selectedHistoryShow),
       selectShow,
       `history-gross-tile history-gross-tile-${index + 1}`
     );
     button.title = `${row.show}: ${formatCompact(row.gross, true)} (${((row.gross / total) * 100).toFixed(1)}%)`;
     button.style.setProperty("--tile-color", colors[index]);
-    button.append(
+    const copy = createElement("span", undefined, "history-gross-copy");
+    copy.append(
       createElement("strong", row.show),
       createElement("span", formatCompact(row.gross, true))
     );
+    button.append(historyGrossIcon(row.show), copy);
     return button;
   }));
 }
@@ -619,7 +722,7 @@ function renderHistoryTable(rows) {
   const body = document.querySelector("#history-table-body");
   body.replaceChildren(...sortHistoryShows(rows).map((row) => {
     const tr = document.createElement("tr");
-    const selected = row.show === selectedHistoryShow;
+    const selected = historyTitlesMatch(row.show, selectedHistoryShow);
     tr.className = selected ? "selected" : "";
     tr.tabIndex = 0;
     tr.setAttribute("aria-selected", String(selected));
@@ -655,7 +758,10 @@ function renderHistoryDashboard() {
   const metricRows = historyMetricRows(baseRows);
   const totals = historyTotals(metricRows);
   const awards = historyAwardTotals(totals.shows);
-  const showRows = aggregateHistoryShows(historyWeekRows(baseRows));
+  const canonicalShowRows = aggregateHistoryShows(historyWeekRows(baseRows));
+  const filteredShowRows = selectedHistoryShow
+    ? canonicalShowRows.filter((row) => historyTitlesMatch(row.show, selectedHistoryShow))
+    : canonicalShowRows;
 
   document.querySelector("#history-total-gross").textContent = formatCompact(totals.gross, true);
   document.querySelector("#history-total-seats").textContent = formatCompact(totals.seats);
@@ -671,15 +777,15 @@ function renderHistoryDashboard() {
 
   renderHistoryLine(historyLineRows(baseRows));
   const selectShow = (show) => {
-    selectedHistoryShow = selectedHistoryShow === show ? "" : show;
+    selectedHistoryShow = historyTitlesMatch(selectedHistoryShow, show) ? "" : show;
     renderHistoryDashboard();
   };
-  const runningShows = aggregateHistoryRunningWeeks(baseRows).slice(0, 8);
+  const runningShows = aggregateHistoryRunningWeeks(historyLineRows(baseRows)).slice(0, 8);
   renderHistoryLongevity(runningShows, selectShow);
   const productionRuns = aggregateHistoryRuns(baseRows);
   renderHistoryRunStairs(productionRuns, selectShow);
-  renderHistoryGrossTreemap(showRows.slice(0, 6), selectShow);
-  renderHistoryTable(showRows);
+  renderHistoryGrossTreemap(canonicalShowRows.slice(0, 6), selectShow);
+  renderHistoryTable(filteredShowRows);
 }
 
 historyYear.addEventListener("change", () => {
@@ -740,8 +846,7 @@ document.querySelectorAll("[data-history-sort]").forEach((button) => {
   });
 });
 
-Promise.all([
-  fetch("history-dashboard-data.json"),
+const historyPremiseUrls = [
   fetch("premise-work/output-01.json"),
   fetch("premise-work/output-03.json"),
   fetch("premise-work/output-04.json"),
@@ -765,23 +870,38 @@ Promise.all([
   fetch("premise-work/final-output-2.json"),
   fetch("premise-work/final-output-3.json"),
   fetch("premise-work/final-output-4.json")
-])
-  .then(async (responses) => {
-    const failedResponse = responses.find((response) => !response.ok);
-    if (failedResponse) throw new Error(`History data request failed: ${failedResponse.status}`);
-    const [data, ...premiseGroups] = await Promise.all(responses.map((response) => response.json()));
-    return { data, premiseGroups };
-  })
-  .then(({ data, premiseGroups }) => {
-    addHistoryPremises(premiseGroups);
-    historyRows = data.rows.map(([date, year, show, gross, seats, available, ticketSum, ticketCount]) => (
-      { date, year, show, gross, seats, available, ticketSum, ticketCount }
-    ));
-    historyAwards = data.awards;
-    [...new Set(historyRows.map((row) => row.year))]
-      .sort((a, b) => b.localeCompare(a))
-      .forEach((year) => historyYear.appendChild(createElement("option", year)));
-    populateDatalist("history-shows", historyRows.map((row) => row.show));
-    renderHistoryDashboard();
-  })
-  .catch((error) => console.error(error));
+];
+
+async function loadHistoryPremises() {
+  const results = await Promise.allSettled(historyPremiseUrls.map(async (request) => {
+    const response = await request;
+    if (!response.ok) throw new Error(`Premise request failed: ${response.status}`);
+    return response.json();
+  }));
+  const premiseGroups = results
+    .filter((result) => result.status === "fulfilled")
+    .map((result) => result.value);
+  if (premiseGroups.length) addHistoryPremises(premiseGroups);
+  const failedCount = results.length - premiseGroups.length;
+  if (failedCount) console.warn(`${failedCount} optional production premise file(s) could not be loaded.`);
+}
+
+async function fetchBundledHistoryData() {
+  const response = await fetch("history-dashboard-data.json", { cache: "no-store" });
+  if (!response.ok) throw new Error(`Broadway history data request failed: ${response.status}.`);
+  return validateHistoryData(await response.json());
+}
+
+async function initializeHistoryDashboard() {
+  loadHistoryPremises().catch((error) => console.warn("Production premises could not be loaded.", error));
+  try {
+    applyHistoryData(await fetchBundledHistoryData());
+  } catch (error) {
+    console.error(error);
+    const status = document.querySelector("#history-table-status");
+    status.textContent = `Broadway history data could not be loaded: ${error.message}`;
+    status.classList.add("is-error");
+  }
+}
+
+initializeHistoryDashboard();
