@@ -451,8 +451,8 @@ nextButton.addEventListener("click", () => {
 });
 
 Promise.all([
-  fetch("broadway-overview-data.json"),
-  fetch("history-dashboard-data.json")
+  BroadwayData.fetch("broadway-overview-data.json"),
+  BroadwayData.fetch("history-dashboard-data.json")
 ])
   .then(async ([overviewResponse, historyResponse]) => {
     if (!overviewResponse.ok || !historyResponse.ok) {
@@ -461,6 +461,7 @@ Promise.all([
     return Promise.all([overviewResponse.json(), historyResponse.json()]);
   })
   .then(([data, historyData]) => {
+    BroadwayData.freshness(data);
     const historyStats = new Map();
     historyData.rows.forEach(([date, , show]) => {
       const key = normalizeShow(show);
@@ -510,6 +511,7 @@ Promise.all([
     startRound();
   })
   .catch((error) => {
+    BroadwayData.error(error);
     feedbackElement.textContent = "The game data could not be loaded.";
     console.error(error);
   });

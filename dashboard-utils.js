@@ -22,6 +22,55 @@ window.DashboardUtils = {
     return Number.isFinite(value) ? `${(value * 100).toFixed(1)}%` : "N/A";
   },
 
+  formatYearRuns(years) {
+    if (!Array.isArray(years) || years.some((year) => !Number.isInteger(year) || year < 1 || year > 9999)) {
+      throw new Error("Year ranges require valid calendar years.");
+    }
+    const sorted = [...new Set(years)].sort((left, right) => left - right);
+    const runs = [];
+    sorted.forEach((year) => {
+      const current = runs.at(-1);
+      if (current && year === current.end + 1) {
+        current.end = year;
+      } else {
+        runs.push({ start: year, end: year });
+      }
+    });
+    return runs.map(({ start, end }) => start === end ? String(start) : `${start}\u2013${end}`).join(", ");
+  },
+
+  formatRunPeriods(segments, exact = false) {
+    if (!Array.isArray(segments)) throw new Error("Reported runs require date segments.");
+    segments.forEach(({ start, end }, index) => {
+      for (const value of [start, end]) {
+        const date = new Date(`${value}T00:00:00Z`);
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(value || "") || !Number.isFinite(date.getTime())
+          || date.toISOString().slice(0, 10) !== value) {
+          throw new Error("Reported runs contain invalid dates.");
+        }
+      }
+      if (start > end || (index > 0 && start <= segments[index - 1].end)) {
+        throw new Error("Reported runs must be ordered, nonoverlapping date segments.");
+      }
+    });
+    const overlappingYears = segments.some((segment, index) => index > 0
+      && segment.start.slice(0, 4) === segments[index - 1].end.slice(0, 4));
+    const monthYear = (value) => new Date(`${value}T00:00:00Z`).toLocaleDateString("en-US", {
+      month: "short", year: "numeric", timeZone: "UTC"
+    });
+    return segments.map(({ start, end }) => {
+      if (exact) return start === end ? start : `${start}\u2013${end}`;
+      if (overlappingYears) {
+        const first = monthYear(start);
+        const last = monthYear(end);
+        return first === last ? first : `${first}\u2013${last}`;
+      }
+      const first = start.slice(0, 4);
+      const last = end.slice(0, 4);
+      return first === last ? first : `${first}\u2013${last}`;
+    }).join(", ");
+  },
+
   populateDatalist(id, values) {
     const list = document.querySelector(`#${id}`);
     list.replaceChildren(...[...new Set(values)]

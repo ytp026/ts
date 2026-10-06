@@ -482,8 +482,8 @@ function renderTonyDashboard() {
 });
 
 Promise.all([
-  fetch("tony-dashboard-data.json"),
-  fetch("broadway-overview-data.json")
+  BroadwayData.fetch("tony-dashboard-data.json"),
+  BroadwayData.fetch("broadway-overview-data.json")
 ])
   .then(async ([tonyResponse, impactResponse]) => {
     if (!tonyResponse.ok) throw new Error(`Tony data request failed: ${tonyResponse.status}`);
@@ -491,6 +491,7 @@ Promise.all([
     return [await tonyResponse.json(), await impactResponse.json()];
   })
   .then(([data, impactData]) => {
+    BroadwayData.freshness(impactData);
     tonyImpactProductions = impactData.productions;
     tonyRows = data.rows
       .filter(([year]) => /^(19|20)\d{2}$/.test(String(year)))
@@ -511,4 +512,7 @@ Promise.all([
     populateDatalist("tony-shows", tonyRows.map((row) => row.show));
     renderTonyDashboard();
   })
-  .catch((error) => console.error(error));
+  .catch((error) => {
+    BroadwayData.error(error);
+    console.error(error);
+  });

@@ -296,6 +296,118 @@ function svgElement(tag, attributes, text) {
   return element;
 }
 
+function renderHistorySeasonality(rows) {
+  const svg = document.querySelector("#history-seasonality-chart");
+  const definition = document.querySelector("#history-seasonality-definition");
+  const coverage = document.querySelector("#history-seasonality-coverage");
+  const detail = document.querySelector("#history-seasonality-detail");
+  const highlights = document.querySelector("#history-seasonality-highlights");
+  const legend = document.querySelector("#history-seasonality-legend");
+  const averageLegend = document.querySelector("#history-seasonality-average-legend");
+  const methodology = document.querySelector("#history-seasonality-methodology");
+  const exclusionsNote = document.querySelector("#history-seasonality-exclusions");
+  const decemberContext = document.querySelector("#history-seasonality-dec-context");
+  const aprilContext = document.querySelector("#history-seasonality-apr-context");
+  svg.replaceChildren();
+  coverage.classList.remove("is-error");
+  definition.textContent = "100 = each year's average weekly gross. Higher or lower values compare gross revenue, not ticket counts.";
+  detail.textContent = "Hover or focus a month to compare it with the yearly average.";
+  highlights.textContent = "";
+  legend.hidden = true;
+  averageLegend.hidden = true;
+  decemberContext.hidden = true;
+  aprilContext.hidden = true;
+  methodology.textContent = "Sum the filtered shows' gross by week. Divide each weekly total by its calendar year's average weekly gross and multiply by 100. Average these indices within each month, then average the year-month means with equal weight for every eligible year. Month/year follow the reported week-ending date, not the older line chart's Week Starting title. Only years with every Sunday reporting week (52 or 53) and positive gross and available seats qualify. Year, show search and selected-production filters apply; selected week and line zoom do not. Month/week counts vary, so the simple average of the 12 monthly indices need not be 100.";
+  exclusionsNote.textContent = "";
+  let summary;
+  try {
+    summary = HistorySeasonality.summarize(rows);
+  } catch (error) {
+    console.error(error);
+    coverage.textContent = `Seasonal analysis could not be calculated: ${error.message}`;
+    coverage.classList.add("is-error");
+    detail.textContent = "No monthly comparison is available.";
+    return;
+  }
+  const excluded = summary.excludedYears.map(({ year, missingWeeks, inactiveWeeks }) => (
+    `${year} (${[
+      missingWeeks ? `${missingWeeks} missing weeks` : "",
+      inactiveWeeks ? `${inactiveWeeks} zero-gross/no-performance weeks` : ""
+    ].filter(Boolean).join(", ")})`
+  ));
+  const includedRange = window.DashboardUtils.formatYearRuns(summary.includedYears);
+  exclusionsNote.textContent = `Included years: ${includedRange || "none"}. ${
+    excluded.length ? `Excluded: ${excluded.join("; ")}.` : "No years excluded."
+  } Missing weeks are never filled with zeros; incomplete closure/reopening years are excluded.`;
+  if (!summary.includedYears.length) {
+    coverage.textContent = "No complete years for this selection. Try All years or another show.";
+    detail.textContent = "See How this is calculated for missing weeks and excluded years.";
+    return;
+  }
+  coverage.textContent = `Based on ${summary.includedYears.length} complete ${
+    summary.includedYears.length === 1 ? "year" : "years"
+  } (${includedRange}).`;
+  legend.hidden = false;
+  const aboveAverage = (month) => HistorySeasonality.category(month.index) === "above";
+  const above = [...summary.months].filter(aboveAverage)
+    .sort((left, right) => right.index - left.index);
+  averageLegend.hidden = !summary.months.some((month) => HistorySeasonality.category(month.index) === "average");
+  highlights.textContent = above.length
+    ? `Above average: ${above.map((month) => {
+      const difference = month.index - 100;
+      return `${month.month} (${difference < .1 ? "<0.1% above" : `+${difference.toFixed(1)}%`})`;
+    }).join(", ")}.`
+    : "No month is above the yearly average in this selection.";
+  decemberContext.hidden = !above.some((month) => month.month === "Dec");
+  aprilContext.hidden = !above.some((month) => month.month === "Apr");
+
+  const maximum = Math.max(120, ...summary.months.map((month) => month.index)) * 1.08;
+  const margin = { left: 124, right: 12, top: 22, bottom: 32 };
+  const plotWidth = 700 - margin.left - margin.right;
+  const plotHeight = 245 - margin.top - margin.bottom;
+  const y = (index) => margin.top + (1 - index / maximum) * plotHeight;
+  [0, 50, 100, ...(maximum >= 150 ? [150] : [])].forEach((index) => {
+    svg.appendChild(svgElement("line", {
+      x1: margin.left, x2: 700 - margin.right, y1: y(index), y2: y(index),
+      class: index === 100 ? "history-seasonality-baseline" : "pbi-grid-line"
+    }));
+    svg.appendChild(svgElement("text", {
+      x: margin.left - 8, y: y(index) + 4, "text-anchor": "end",
+      class: index === 100 ? "pbi-axis-text history-seasonality-baseline-label" : "pbi-axis-text"
+    }, index === 100 ? "Average = 100" : String(index)));
+  });
+  summary.months.forEach((month, index) => {
+    const x = margin.left + (index + .5) * plotWidth / 12;
+    const category = HistorySeasonality.category(month.index);
+    const difference = Math.abs(month.index - 100);
+    const percentage = difference < .1 ? "less than 0.1%" : `${difference.toFixed(1)}%`;
+    const comparison = category === "average"
+      ? "at the yearly average weekly gross"
+      : `${percentage} ${category} average weekly gross`;
+    const label = `${month.month}: ${comparison}. Index ${month.index.toFixed(1)}; ${
+      month.years
+    } ${month.years === 1 ? "year" : "years"}, ${month.weeks} reported weeks.`;
+    const group = svgElement("g", {
+      tabindex: 0, role: "img", "aria-label": label, class: "history-seasonality-month"
+    });
+    group.appendChild(svgElement("title", {}, label));
+    group.appendChild(svgElement("rect", {
+      x: x - plotWidth / 12 * .32, y: y(month.index),
+      width: plotWidth / 12 * .64, height: y(0) - y(month.index),
+      class: `history-seasonality-${category}`
+    }));
+    group.appendChild(svgElement("text", {
+      x, y: y(month.index) - 6, "text-anchor": "middle", class: "pbi-axis-text"
+    }, month.index.toFixed(1)));
+    group.appendChild(svgElement("text", {
+      x, y: 237, "text-anchor": "middle", class: "pbi-axis-text"
+    }, month.month));
+    group.addEventListener("mouseenter", () => { detail.textContent = label; });
+    group.addEventListener("focus", () => { detail.textContent = label; });
+    svg.appendChild(group);
+  });
+}
+
 function renderHistoryLine(rows) {
   const weekly = new Map();
   rows.forEach((row) => weekly.set(row.date, (weekly.get(row.date) || 0) + row.gross));
@@ -533,7 +645,11 @@ function aggregateHistoryRunningWeeks(rows) {
         }
       });
       if (dates.length) segments.push({ start: segmentStart, end: dates.at(-1) });
-      return { show, weeks: dates.length, start: dates[0], end: dates.at(-1), segments };
+      return {
+        show, weeks: dates.length, start: dates[0], end: dates.at(-1), segments,
+        runPeriods: window.DashboardUtils.formatRunPeriods(segments),
+        runDates: window.DashboardUtils.formatRunPeriods(segments, true)
+      };
     })
     .sort((a, b) => b.weeks - a.weeks || a.show.localeCompare(b.show));
 }
@@ -589,11 +705,11 @@ function renderHistoryLongevity(rows, selectShow) {
   const timelineRows = rows.map((row, index) => {
     const button = historyChartButton(row.show, historyTitlesMatch(row.show, selectedHistoryShow), selectShow, "history-longevity-row");
     button.style.setProperty("--timeline-color", timelineColors[index % timelineColors.length]);
-    button.title = `${row.show}: ${row.weeks.toLocaleString("en-US")} reported weeks from ${row.start} to ${row.end}`;
+    button.title = `${row.show}: reported periods ${row.runDates} · ${row.weeks.toLocaleString("en-US")} reported weeks`;
     const copy = createElement("span", undefined, "history-longevity-copy");
     copy.append(
       createElement("strong", row.show),
-      createElement("small", `${row.start.slice(0, 4)}–${row.end.slice(0, 4)} · ${row.weeks.toLocaleString("en-US")} weeks`)
+      createElement("small", `${row.runPeriods} · ${row.weeks.toLocaleString("en-US")} weeks`)
     );
     const track = createElement("i", undefined, "history-longevity-track");
     track.append(...row.segments.map((segment) => {
@@ -776,6 +892,7 @@ function renderHistoryDashboard() {
   renderHistoryPremise();
 
   renderHistoryLine(historyLineRows(baseRows));
+  renderHistorySeasonality(historyLineRows(baseRows));
   const selectShow = (show) => {
     selectedHistoryShow = historyTitlesMatch(selectedHistoryShow, show) ? "" : show;
     renderHistoryDashboard();
@@ -887,9 +1004,12 @@ async function loadHistoryPremises() {
 }
 
 async function fetchBundledHistoryData() {
-  const response = await fetch("history-dashboard-data.json", { cache: "no-store" });
+  const response = await BroadwayData.fetch("history-dashboard-data.json");
   if (!response.ok) throw new Error(`Broadway history data request failed: ${response.status}.`);
-  return validateHistoryData(await response.json());
+  const data = await response.json();
+  const validated = validateHistoryData(data);
+  BroadwayData.freshness(data);
+  return validated;
 }
 
 async function initializeHistoryDashboard() {
@@ -897,7 +1017,10 @@ async function initializeHistoryDashboard() {
   try {
     applyHistoryData(await fetchBundledHistoryData());
   } catch (error) {
+    BroadwayData.error(error);
     console.error(error);
+    document.querySelector("#history-seasonality-coverage").textContent = "Seasonal analysis is unavailable because history data could not be loaded.";
+    document.querySelector("#history-seasonality-coverage").classList.add("is-error");
     const status = document.querySelector("#history-table-status");
     status.textContent = `Broadway history data could not be loaded: ${error.message}`;
     status.classList.add("is-error");

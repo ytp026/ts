@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Explore four decades of Broadway performance history.">
   <title>40 Years of Broadway | Theater Spotlight</title>
-  <link rel="stylesheet" href="styles.css?v=48">
+  <link rel="stylesheet" href="styles.css?v=51">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-47RPC1XZKM"></script>
   <script>
@@ -108,10 +108,35 @@
                 <strong id="history-range-status"></strong>
                 <span>Zoom, then drag the chart or use the arrows to move through time.</span>
               </div>
+              <section class="history-seasonality-panel" aria-labelledby="history-seasonality-title">
+                <h3 id="history-seasonality-title">Stronger Months for Broadway Gross</h3>
+                <p class="chart-definition" id="history-seasonality-definition">
+                  100 = each year's average weekly gross. Higher or lower values compare gross revenue, not ticket counts.
+                </p>
+                <div class="history-seasonality-legend" id="history-seasonality-legend" aria-label="Seasonal index legend" hidden>
+                  <span><i class="history-seasonality-above-key" aria-hidden="true"></i>Above average (&gt;100)</span>
+                  <span><i class="history-seasonality-below-key" aria-hidden="true"></i>Below average (&lt;100)</span>
+                  <span id="history-seasonality-average-legend" hidden><i class="history-seasonality-average-key" aria-hidden="true"></i>Average (=100)</span>
+                </div>
+                <div class="history-seasonality-chart-wrap" tabindex="0" role="region" aria-label="Monthly seasonal gross chart; scroll horizontally on smaller screens">
+                  <svg id="history-seasonality-chart" class="dashboard-svg" viewBox="0 0 700 245" role="group" aria-label="Monthly gross indices relative to each calendar year's weekly average" aria-describedby="history-seasonality-definition history-seasonality-coverage"></svg>
+                </div>
+                <p class="history-seasonality-highlights" id="history-seasonality-highlights" aria-live="polite"></p>
+                <p class="chart-definition" id="history-seasonality-coverage" aria-live="polite">Loading history.</p>
+                <p class="chart-definition history-seasonality-detail" id="history-seasonality-detail" aria-live="polite">Hover or focus a month to compare it with the yearly average.</p>
+                <details class="history-seasonality-method" id="history-seasonality-method">
+                  <summary>How this is calculated</summary>
+                  <p id="history-seasonality-methodology"></p>
+                  <p id="history-seasonality-exclusions"></p>
+                  <p>These are descriptive patterns, not proof of a cause. Show mix, pricing and performance schedules may also contribute. Complete weekly coverage does not guarantee every production reported.</p>
+                  <p id="history-seasonality-dec-context" hidden>December: Christmas-week demand may be a contributor. <a href="https://www.broadwaynews.com/grosses-analysis-broadway-does-big-business-during-christmas-2025/" target="_blank" rel="noopener">Broadway News describes a strong Christmas week</a>, but that does not establish why this long-run index is higher.</p>
+                  <p id="history-seasonality-apr-context" hidden>April: spring breaks and added performances may be contributors. <a href="https://www.broadwaynews.com/grosses-analysis-broadway-welcomes-highest-number-of-admissions-since-2018/" target="_blank" rel="noopener">Broadway News discusses a spring-break/Easter week</a>; this is context, not an explanation proven by these data.</p>
+                </details>
+              </section>
             </article>
             <article class="impact-panel chart-panel">
               <h3>Longest-Running Shows</h3>
-              <p class="chart-definition">Reported Broadway periods plotted on a shared timeline; gaps separate distinct runs.</p>
+              <p class="chart-definition">Labels follow the plotted reporting periods; gaps longer than 26 weeks separate runs. Hover for exact reported dates.</p>
               <div class="history-longevity-chart" id="history-running-bars"></div>
             </article>
             <article class="impact-panel chart-panel history-runs-panel">
@@ -211,7 +236,9 @@
       financial, legal, or business decisions.
     </p>
   </footer>
-  <script src="dashboard-utils.js"></script>
-  <script src="history-dashboard.js?v=40"></script>
+  <script src="dashboard-utils.js?v=3"></script>
+  <script src="broadway-data.js"></script>
+  <script src="history-seasonality.js?v=2"></script>
+  <script src="history-dashboard.js?v=46"></script>
 </body>
 </html>

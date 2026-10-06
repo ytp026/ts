@@ -245,12 +245,13 @@ document.querySelectorAll("[data-theatre-sort]").forEach((button) => {
 });
 setTheatreMapZoom(theatreMapZoom);
 
-fetch("theatres-dashboard-data.json")
+BroadwayData.fetch("theatres-dashboard-data.json")
   .then((response) => {
     if (!response.ok) throw new Error(`Theatre data request failed: ${response.status}`);
     return response.json();
   })
   .then((data) => {
+    BroadwayData.freshness(data);
     theatreRows = data.rows.map(([year, show, theatre, gross, seats, available]) => (
       { year, show, theatre, gross, seats, available }
     ));
@@ -264,4 +265,7 @@ fetch("theatres-dashboard-data.json")
     populateDatalist("theatre-shows", theatreRows.map((row) => row.show));
     renderTheatreDashboard();
   })
-  .catch((error) => console.error(error));
+  .catch((error) => {
+    BroadwayData.error(error);
+    console.error(error);
+  });

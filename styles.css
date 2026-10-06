@@ -2474,6 +2474,104 @@ iframe { display: block; width: 100%; height: 100%; border: 0; }
   line-height: 1.25;
 }
 
+.history-seasonality-panel {
+  --seasonality-above: #6366f1;
+  --seasonality-below: #94a3b8;
+  --seasonality-average: #e2e8f0;
+  --seasonality-outline: #64748b;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #d7deea;
+}
+
+.history-seasonality-panel .chart-definition {
+  min-height: 0;
+  font-size: .8rem;
+  line-height: 1.5;
+}
+
+.history-seasonality-panel h3 { font-size: .95rem; }
+.history-seasonality-chart-wrap { overflow-x: auto; }
+#history-seasonality-chart { min-width: 560px; }
+#history-seasonality-chart .pbi-axis-text { font-size: 13px; }
+
+.history-seasonality-detail {
+  min-height: 2em;
+}
+
+.history-seasonality-highlights {
+  margin: .55rem 0 .25rem;
+  color: #243047;
+  font-size: .85rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.history-seasonality-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem 1rem;
+  margin: .6rem 0 .2rem;
+  color: #344054;
+  font-size: .78rem;
+}
+
+.history-seasonality-legend[hidden] { display: none; }
+.history-seasonality-legend span { display: inline-flex; align-items: center; gap: .35rem; }
+.history-seasonality-legend span[hidden] { display: none; }
+.history-seasonality-legend i {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 1rem;
+  border: 1px solid var(--seasonality-outline);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+#history-seasonality-legend .history-seasonality-above-key { background: var(--seasonality-above); }
+#history-seasonality-legend .history-seasonality-below-key { background: var(--seasonality-below); }
+#history-seasonality-legend .history-seasonality-average-key { background: var(--seasonality-average); }
+
+.history-seasonality-method {
+  margin-top: .5rem;
+  color: #4b5563;
+  font-size: .8rem;
+  line-height: 1.5;
+}
+
+.history-seasonality-method summary {
+  color: #243047;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.history-seasonality-method summary:focus-visible {
+  outline: 2px solid #356be8;
+  outline-offset: 3px;
+}
+
+#history-seasonality-chart .history-seasonality-above { fill: var(--seasonality-above); }
+#history-seasonality-chart .history-seasonality-below { fill: var(--seasonality-below); }
+#history-seasonality-chart .history-seasonality-average { fill: var(--seasonality-average); }
+#history-seasonality-chart .history-seasonality-month rect {
+  stroke: var(--seasonality-outline);
+  stroke-width: .8;
+}
+.history-seasonality-baseline-label { font-weight: 700; }
+.history-seasonality-baseline {
+  stroke: #344054;
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+}
+
+.history-seasonality-month:focus { outline: none; }
+#history-seasonality-chart .history-seasonality-month:focus rect,
+#history-seasonality-chart .history-seasonality-month:hover rect {
+  stroke: #172b4d;
+  stroke-width: 2;
+}
+
+#history-seasonality-coverage.is-error { color: #9f2f27; }
+
 .history-longevity-chart {
   display: grid;
   gap: .28rem;
@@ -4717,7 +4815,8 @@ iframe { display: block; width: 100%; height: 100%; border: 0; }
   font-weight: 700;
 }
 
-.memory-admin-status.is-error { color: #9f2f27; }
+.memory-admin-status.is-error,
+#broadway-data-status.is-error { color: #9f2f27; }
 .memory-admin-status.is-success { color: #147267; }
 
 .memory-admin-login,

@@ -453,9 +453,9 @@ document.querySelectorAll("[data-impact-sort]").forEach((button) => {
 });
 
 Promise.all([
-  fetch("broadway-overview-data.json"),
-  fetch("broadway-production-dates.json"),
-  fetch("tony-dashboard-data.json")
+  BroadwayData.fetch("broadway-overview-data.json"),
+  BroadwayData.fetch("broadway-production-dates.json"),
+  BroadwayData.fetch("tony-dashboard-data.json")
 ])
   .then(async ([dashboardResponse, datesResponse, tonyResponse]) => {
     if (!dashboardResponse.ok) throw new Error(`Dashboard data request failed: ${dashboardResponse.status}`);
@@ -469,6 +469,7 @@ Promise.all([
   })
   .then(([data, datesData, tonyData]) => {
     dashboardData = data;
+    BroadwayData.freshness(data);
     productionDates = new Map(Object.entries(datesData.productions));
     tonyAwardRows = tonyData.rows
       .filter(([year, category, , show, , competitive]) => (
@@ -494,6 +495,7 @@ Promise.all([
     renderDashboard();
   })
   .catch((error) => {
+    BroadwayData.error(error);
     setText("impact-insight", "The dashboard data could not be loaded.");
     console.error(error);
   });
