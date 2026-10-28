@@ -5829,6 +5829,10 @@ body > footer {
   text-decoration: underline;
 }
 
+.ticket-link + .ticket-link {
+  display: block;
+}
+
 .empty-state {
   grid-column: 1 / -1;
   padding: 3rem;

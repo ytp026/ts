@@ -8,8 +8,8 @@
     content="Current Broadway rush, digital lottery, and standing-room ticket information."
   >
   <title>Rush, Lottery & SRO | Theater Spotlight</title>
-  <link rel="stylesheet" href="styles.css?v=7">
-  <script src="rush.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=52">
+  <script src="rush.js?v=3" defer></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-47RPC1XZKM"></script>
   <script>
@@ -68,14 +68,14 @@
 
       <div class="data-art access-art" aria-label="Public ticket offer graphic inspired by Guys and Dolls">
         <div class="art-topline"><span>“Luck Be a Lady Tonight”</span><span>Guys and Dolls</span></div>
-        <div class="art-number">45</div>
-        <div class="art-caption">Public low-cost ticket offers.</div>
+        <div class="art-number" id="ticket-total">—</div>
+        <div class="art-caption">Listed low-cost ticket offers.</div>
         <div class="capacity-list" aria-hidden="true">
-          <div><span>Rush</span><i><b style="--width: 95%"></b></i><strong>19</strong></div>
-          <div><span>Lottery</span><i><b style="--width: 100%"></b></i><strong>20</strong></div>
-          <div><span>SRO</span><i><b style="--width: 30%"></b></i><strong>6</strong></div>
+          <div><span>Rush</span><i><b id="ticket-rush-bar" style="--width: 0%"></b></i><strong id="ticket-rush-total">—</strong></div>
+          <div><span>Lottery</span><i><b id="ticket-lottery-bar" style="--width: 0%"></b></i><strong id="ticket-lottery-total">—</strong></div>
+          <div><span>SRO</span><i><b id="ticket-sro-bar" style="--width: 0%"></b></i><strong id="ticket-sro-total">—</strong></div>
         </div>
-        <div class="art-stats"><span>Productions <b>23</b></span><span>Access <b>Same day</b></span></div>
+        <div class="art-stats"><span>Productions <b id="ticket-show-total">—</b></span><span>Entry <b>Times vary</b></span></div>
       </div>
     </section>
 
@@ -86,7 +86,7 @@
           <h2 id="directory-title">Rush, lottery, and standing room</h2>
         </div>
         <p>
-          Public policies last checked <strong>August 24, 2026</strong>. Prices,
+          <span id="ticket-freshness" role="status">Loading guide review date…</span> Prices,
           schedules, and availability can change without notice.
         </p>
       </div>
@@ -95,14 +95,19 @@
         <strong>Check before you go.</strong>
         Confirm the offer on its linked source page before traveling to the theatre.
         Tickets may be partial view, split pairs, or unavailable for a performance.
+        All times are New York time; lottery entry often closes before the performance day.
+        <details>
+          <summary>About this directory and its sources</summary>
+          <p id="ticket-source-note">Source coverage will appear when the directory loads.</p>
+        </details>
       </aside>
 
       <div class="directory-controls">
         <label>
           <span>Search by show or theatre</span>
-          <input id="ticket-search" type="search" placeholder="Try Hamilton or Gershwin">
+          <input id="ticket-search" type="search" placeholder="Try Hamilton or Gershwin" disabled>
         </label>
-        <fieldset class="ticket-type-filter">
+        <fieldset class="ticket-type-filter" id="ticket-filters" disabled>
           <legend>Ticket type</legend>
           <div class="filter-tags" id="ticket-category">
             <label>
@@ -131,6 +136,7 @@
       </div>
 
       <div class="ticket-grid" id="ticket-list"></div>
+      <noscript><p>Enable JavaScript to view offers, or follow the Playbill source link above for ticket policies.</p></noscript>
     </section>
   </main>
 
