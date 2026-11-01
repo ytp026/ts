@@ -1,0 +1,2 @@
+# Optional: local file-based MLflow experiment tracking (forecast.py logs to ./mlruns when present)
+mlflow-skinny>=2.10

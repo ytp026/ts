@@ -1,0 +1,142 @@
+{
+ "dataThrough": "2026-10-25",
+ "trainingSnapshot": {
+  "file": "grosses_snapshot_20261101.csv",
+  "through": "2026-10-25",
+  "rows": 54404
+ },
+ "model": "Gradient-boosted trees (scikit-learn HistGradientBoosting)",
+ "split": {
+  "trainBefore": "2023-01-01",
+  "validation": "2023-01-01 to 2024-01-01",
+  "testFrom": "2024-01-01",
+  "testThrough": "2026-10-25",
+  "excludedShutdown": [
+   "2020-01-01",
+   "2021-12-31"
+  ]
+ },
+ "nextWeekGross": {
+  "model": {
+   "mape": 11.838,
+   "medianApe": 7.901,
+   "wape": 11.52
+  },
+  "persistence": {
+   "mape": 13.362,
+   "medianApe": 8.66,
+   "wape": 12.76
+  },
+  "seasonalPersistence": {
+   "mape": 12.937,
+   "medianApe": 8.021,
+   "wape": 12.333
+  },
+  "mapeDiffVsSeasonalCi95": [
+   -1.7922,
+   -0.4325
+  ],
+  "mapeDiffVsPersistenceCi95": [
+   -2.4115,
+   -0.7269
+  ],
+  "rounds": 800,
+  "rows": 4536
+ },
+ "closingWithin8Weeks": {
+  "model": {
+   "rocAuc": 0.8913,
+   "averagePrecision": 0.7057,
+   "brier": 0.09399
+  },
+  "logisticBaseline": {
+   "rocAuc": 0.8646,
+   "averagePrecision": 0.5839,
+   "brier": 0.1202
+  },
+  "lowCapacityRule": {
+   "rocAuc": 0.643,
+   "averagePrecision": 0.3544,
+   "brier": 0.1488
+  },
+  "aucDiffVsLogisticCi95": [
+   0.0006,
+   0.06
+  ],
+  "positiveRate": 0.1849,
+  "rounds": 200,
+  "rows": 4387,
+  "shows": 126
+ },
+ "topGrossFeatures": [
+  {
+   "feature": "log_available",
+   "importance": 0.2017
+  },
+  {
+   "feature": "target_woy",
+   "importance": 0.1581
+  },
+  {
+   "feature": "chg_1",
+   "importance": 0.105
+  },
+  {
+   "feature": "chg_4",
+   "importance": 0.047
+  },
+  {
+   "feature": "from_peak",
+   "importance": 0.0249
+  },
+  {
+   "feature": "log_run_age",
+   "importance": 0.0208
+  },
+  {
+   "feature": "market_chg_1",
+   "importance": 0.015
+  },
+  {
+   "feature": "capacity",
+   "importance": 0.0061
+  },
+  {
+   "feature": "log_gross_l2",
+   "importance": 0.0057
+  },
+  {
+   "feature": "weeks_since_tony",
+   "importance": 0.0042
+  }
+ ],
+ "features": [
+  "log_gross",
+  "log_gross_l1",
+  "log_gross_l2",
+  "log_gross_l3",
+  "chg_1",
+  "chg_4",
+  "roll4",
+  "roll8",
+  "std8",
+  "from_peak",
+  "capacity",
+  "capacity_l1",
+  "capacity_chg4",
+  "avg_ticket",
+  "log_available",
+  "log_run_age",
+  "target_woy",
+  "market_log_gross",
+  "market_chg_1",
+  "shows_running",
+  "tony_noms",
+  "tony_wins",
+  "weeks_since_tony"
+ ],
+ "trainingRows": {
+  "gross": 51922,
+  "closing": 53439
+ }
+}

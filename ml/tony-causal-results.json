@@ -1,0 +1,338 @@
+{
+ "dataThrough": "2026-10-25",
+ "trainingSnapshot": "grosses_snapshot_20261101.csv",
+ "question": "How much does winning a Tony production award (Best Musical, Play or Revival) change weekly gross, versus nominees that lost?",
+ "interpretation": {
+  "label": "association",
+  "checksPass": true,
+  "preWeeksMeanPercent": -3.99,
+  "postWeeksMeanPercent": 22.1,
+  "summary": "Winning is associated with 30.8% higher weekly gross in weeks 1-8 (95% CI 19.6% to 43.1%) relative to same-season losing nominees. Pre-trend joint test p = 0.39; placebo ceremony +3.6% (95% CI -4.9% to 13.0%). These checks are consistent with a causal effect under parallel trends, but winners' grosses were already rising relative to losing nominees in the four weeks before the ceremony (about 4% below their week-0 level), and winners are often the frontrunners, so this is reported as an association, not a clean causal estimate."
+ },
+ "design": {
+  "treated": "Production-category Tony winners running on Tony night",
+  "control": "Same-year, same-award-season nominees that lost and were running",
+  "estimator": "Difference-in-differences on mean log weekly gross, weeks 1-8 after vs weeks -7..0 (ceremony week = 0), OLS with year fixed effects and show-mix controls; HC1 robust and unit-bootstrap 95% CIs",
+  "controls": [
+   "musical",
+   "revival",
+   "pre_capacity",
+   "pre_log_gross",
+   "log_run_age",
+   "year fixed effects (seasonality, market shocks)"
+  ],
+  "eventStudy": "Unit fixed effects + year-by-event-week fixed effects; standard errors clustered by production; reference week 0",
+  "placebo": "Fake ceremony 8 weeks early (weeks -7..0 vs -15..-8)"
+ },
+ "sample": {
+  "productionNominationsSince1986": 278,
+  "matchedRunningOnTonyNight": 220,
+  "analyzed": 188,
+  "winners": 121,
+  "losingNominees": 67,
+  "ceremonies": 39,
+  "firstCeremony": 1986,
+  "lastCeremony": 2026
+ },
+ "rawDifferenceInDifferences": {
+  "winnersLogGrossChange": 0.20705,
+  "losersLogGrossChange": -0.002478
+ },
+ "effects": {
+  "weeklyGross": {
+   "estimate": 0.268539,
+   "se": 0.045686,
+   "ci95": [
+    0.178995,
+    0.358082
+   ],
+   "bootstrapCi95": [
+    0.177054,
+    0.362945
+   ],
+   "pValue": 0.0,
+   "n": 188,
+   "treated": 121,
+   "percent": 30.81,
+   "percentCi95": [
+    19.6,
+    43.06
+   ]
+  },
+  "capacityPoints": {
+   "estimate": 7.576997,
+   "se": 1.457791,
+   "ci95": [
+    4.71978,
+    10.434214
+   ],
+   "bootstrapCi95": [
+    4.591524,
+    10.567192
+   ],
+   "pValue": 0.0,
+   "n": 188,
+   "treated": 121
+  },
+  "closedWithin26Weeks": {
+   "estimate": -0.021836,
+   "se": 0.09091,
+   "ci95": [
+    -0.200016,
+    0.156345
+   ],
+   "bootstrapCi95": [
+    -0.207367,
+    0.160486
+   ],
+   "pValue": 0.810183,
+   "n": 178,
+   "treated": 118
+  },
+  "placeboWeeklyGross": {
+   "estimate": 0.035826,
+   "se": 0.043884,
+   "ci95": [
+    -0.050185,
+    0.121836
+   ],
+   "bootstrapCi95": [
+    -0.048912,
+    0.131419
+   ],
+   "pValue": 0.414285,
+   "n": 178,
+   "treated": 107,
+   "percent": 3.65,
+   "percentCi95": [
+    -4.89,
+    12.96
+   ]
+  },
+  "byType": {
+   "musicals": {
+    "estimate": 0.223363,
+    "se": 0.055669,
+    "ci95": [
+     0.114254,
+     0.332472
+    ],
+    "bootstrapCi95": [
+     0.122416,
+     0.346045
+    ],
+    "pValue": 6e-05,
+    "n": 115,
+    "treated": 69,
+    "percent": 25.03,
+    "percentCi95": [
+     12.1,
+     39.44
+    ]
+   },
+   "plays": {
+    "estimate": 0.316486,
+    "se": 0.125189,
+    "ci95": [
+     0.07112,
+     0.561852
+    ],
+    "bootstrapCi95": [
+     0.082193,
+     0.67072
+    ],
+    "pValue": 0.011469,
+    "n": 73,
+    "treated": 52,
+    "percent": 37.23,
+    "percentCi95": [
+     7.37,
+     75.39
+    ]
+   }
+  }
+ },
+ "eventStudy": {
+  "outcome": "log weekly gross",
+  "units": 188,
+  "preTrendJointPValue": 0.389905,
+  "coefficients": [
+   {
+    "week": -8,
+    "estimate": -0.075042,
+    "ci95": [
+     -0.222773,
+     0.072689
+    ]
+   },
+   {
+    "week": -7,
+    "estimate": -0.100344,
+    "ci95": [
+     -0.234842,
+     0.034153
+    ]
+   },
+   {
+    "week": -6,
+    "estimate": -0.053871,
+    "ci95": [
+     -0.158525,
+     0.050783
+    ]
+   },
+   {
+    "week": -5,
+    "estimate": -0.036274,
+    "ci95": [
+     -0.131869,
+     0.059322
+    ]
+   },
+   {
+    "week": -4,
+    "estimate": -0.055438,
+    "ci95": [
+     -0.120359,
+     0.009483
+    ]
+   },
+   {
+    "week": -3,
+    "estimate": -0.044692,
+    "ci95": [
+     -0.100376,
+     0.010991
+    ]
+   },
+   {
+    "week": -2,
+    "estimate": -0.055632,
+    "ci95": [
+     -0.112208,
+     0.000943
+    ]
+   },
+   {
+    "week": -1,
+    "estimate": -0.007022,
+    "ci95": [
+     -0.04076,
+     0.026715
+    ]
+   },
+   {
+    "week": 0,
+    "estimate": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "week": 1,
+    "estimate": 0.101613,
+    "ci95": [
+     0.05803,
+     0.145196
+    ]
+   },
+   {
+    "week": 2,
+    "estimate": 0.130966,
+    "ci95": [
+     0.066393,
+     0.195539
+    ]
+   },
+   {
+    "week": 3,
+    "estimate": 0.200877,
+    "ci95": [
+     0.085471,
+     0.316283
+    ]
+   },
+   {
+    "week": 4,
+    "estimate": 0.227726,
+    "ci95": [
+     0.114449,
+     0.341002
+    ]
+   },
+   {
+    "week": 5,
+    "estimate": 0.232011,
+    "ci95": [
+     0.126826,
+     0.337195
+    ]
+   },
+   {
+    "week": 6,
+    "estimate": 0.23562,
+    "ci95": [
+     0.125988,
+     0.345251
+    ]
+   },
+   {
+    "week": 7,
+    "estimate": 0.245937,
+    "ci95": [
+     0.128156,
+     0.363718
+    ]
+   },
+   {
+    "week": 8,
+    "estimate": 0.222736,
+    "ci95": [
+     0.078419,
+     0.367053
+    ]
+   },
+   {
+    "week": 9,
+    "estimate": 0.183343,
+    "ci95": [
+     0.090895,
+     0.27579
+    ]
+   },
+   {
+    "week": 10,
+    "estimate": 0.208632,
+    "ci95": [
+     0.107568,
+     0.309696
+    ]
+   },
+   {
+    "week": 11,
+    "estimate": 0.179088,
+    "ci95": [
+     0.069561,
+     0.288615
+    ]
+   },
+   {
+    "week": 12,
+    "estimate": 0.184795,
+    "ci95": [
+     0.086142,
+     0.283447
+    ]
+   }
+  ]
+ },
+ "limitations": [
+  "Winning is not randomly assigned; frontrunners may differ in unobserved buzz. The placebo and pre-trend tests check for diverging trends but cannot rule out all confounding, so the estimate is reported as an association.",
+  "Event-study pre-period coefficients are jointly insignificant but mostly negative, meaning winners were already gaining slightly before the ceremony; part of the post-ceremony gap may be pre-existing momentum.",
+  "Many losing nominees had already closed by Tony night, so the control group is smaller and made of surviving productions.",
+  "Gross is only observed while a show runs; losers that close drop out, which likely biases the gross effect toward zero. Closure is analyzed separately.",
+  "Nominees that closed before Tony night, and titles that could not be matched unambiguously to the weekly grosses, are excluded.",
+  "Gross is box-office revenue, not profit."
+ ]
+}

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Explore the relationship between Tony Awards recognition and Broadway performance.">
   <title>Tony Awards Effect | Theater Spotlight</title>
-  <link rel="stylesheet" href="styles.css?v=9">
+  <link rel="stylesheet" href="styles.css?v=10">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-47RPC1XZKM"></script>
   <script>
@@ -36,6 +36,7 @@
       <a href="rush.html">Rush & Lottery</a>
       <a href="game.html">Be More Chill</a>
       <a href="memories.html">Back to the Future</a>
+      <a href="models.html">ML Models</a>
       <a class="nav-cta" href="#dashboard">View report</a>
     </nav>
   </header>
@@ -165,6 +166,40 @@
       </div>
     </section>
 
+    <section class="report-section ml-section" id="causal-results" aria-labelledby="causal-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">Quasi-experimental study</p>
+          <h2 id="causal-title">Do winners pull ahead after Tony night?</h2>
+        </div>
+        <p>
+          The dashboard above is descriptive. This study compares production-award winners with
+          same-season nominees that lost, using difference-in-differences and an event study.
+          Winning is not random, so results are reported as associations, alongside the
+          pre-trend and placebo checks.
+        </p>
+      </div>
+      <p class="ml-headline" id="causal-headline" aria-live="polite">Loading causal estimates…</p>
+      <div class="ml-card-grid" id="causal-cards"></div>
+      <article class="ml-panel">
+        <h3>Event study: winners minus losing nominees, by week around Tony night</h3>
+        <p class="ml-note">Log weekly gross, unit and year-by-week fixed effects, 95% CIs clustered by production. Week 0 is the reference week.</p>
+        <div id="causal-event-chart"></div>
+      </article>
+      <div class="ml-two-col">
+        <article class="ml-panel">
+          <h3>Sample and checks</h3>
+          <p id="causal-sample"></p>
+          <p class="ml-note">Controls: musical vs play, revival, pre-ceremony capacity and gross, run age, and year fixed effects for seasonality and market shocks. The placebo moves the ceremony 8 weeks earlier and should show no effect.</p>
+        </article>
+        <article class="ml-panel">
+          <h3>Limitations</h3>
+          <ul class="ml-list" id="causal-limits"></ul>
+        </article>
+      </div>
+      <p class="ml-note">Method, code and full results: <a href="models.html">ML Models</a> · <a href="https://github.com/ytp026/ts/blob/main/scripts/tony_causal.py" target="_blank" rel="noopener">scripts/tony_causal.py</a> · <a href="ml/tony-causal-results.json">JSON</a>.</p>
+    </section>
+
     <article class="story" id="insights" aria-labelledby="tony-story-title">
       <div class="story-heading">
         <p class="section-label">Behind the numbers</p>
@@ -199,6 +234,9 @@
       <a href="https://playbill.com/grosses" target="_blank" rel="noopener">Playbill Grosses</a>
       and
       <a href="https://www.tonyawards.com" target="_blank" rel="noopener">The Tony Awards</a>.
+      Weekly grosses are reported by The Broadway League; only factual figures are used, and
+      data will be removed on request via
+      <a href="https://github.com/ytp026/ts/issues" target="_blank" rel="noopener">GitHub issues</a>.
     </p>
     <p class="site-disclaimer">
       <strong>Disclaimer:</strong> Theater Spotlight is an independent, non-commercial
@@ -215,5 +253,6 @@
   <script src="dashboard-utils.js"></script>
   <script src="broadway-data.js"></script>
   <script src="tony-dashboard.js?v=5"></script>
+  <script src="models.js?v=3"></script>
 </body>
 </html>

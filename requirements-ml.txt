@@ -1,0 +1,5 @@
+# Modeling stack for scripts/tony_causal.py, forecast.py, nlp_lift.py and score_review_sentiment.py
+numpy>=1.26
+pandas>=2.1
+scikit-learn>=1.4
+vaderSentiment>=3.3.2

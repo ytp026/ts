@@ -1,0 +1,52 @@
+{
+ "dataThrough": "2026-10-25",
+ "drift": [
+  {
+   "feature": "log_gross",
+   "psi": 0.0897,
+   "status": "stable"
+  },
+  {
+   "feature": "capacity",
+   "psi": 0.1163,
+   "status": "moderate",
+   "note": "Capacity rises in the fall and holiday season, so a moderate shift versus the prior year can be seasonal."
+  },
+  {
+   "feature": "avg_ticket",
+   "psi": 0.0645,
+   "status": "stable"
+  },
+  {
+   "feature": "chg_1",
+   "psi": 0.0788,
+   "status": "stable"
+  },
+  {
+   "feature": "log_run_age",
+   "psi": 0.6212,
+   "status": "major",
+   "note": "Run age shifts when the slate is dominated by long-running hits or by a wave of new openings; this is a real change in the show mix that the model sees as an input, so it is flagged rather than suppressed."
+  }
+ ],
+ "marketCheck": {
+  "weeks": 8,
+  "priorYearWeeks": 8,
+  "percentChange": -11.73,
+  "status": "moderate"
+ },
+ "driftReference": "Last 52 snapshot (training) weeks before the current window, 2025-09-07 to 2026-08-30",
+ "driftWindow": "Most recent 8 weeks of live dashboard data",
+ "trainingSnapshot": {
+  "file": "grosses_snapshot_20261101.csv",
+  "through": "2026-10-25",
+  "rows": 54404
+ },
+ "liveForecasts": {
+  "maturedForecasts": 0
+ },
+ "backtestMape": 11.838,
+ "alerts": [
+  "log_run_age drift PSI 0.6212"
+ ]
+}

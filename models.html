@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Broadway gross forecasting, closing-risk model, monitoring and review-sentiment NLP, retrained weekly with GitHub Actions.">
+  <title>ML Models | Theater Spotlight</title>
+  <link rel="stylesheet" href="styles.css?v=10">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-47RPC1XZKM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-47RPC1XZKM');
+  </script>
+  <script>
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "y83snmaz05");
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Theater Spotlight home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span>Theater Spotlight</span>
+    </a>
+    <nav class="navigation" aria-label="Main navigation">
+      <a href="index.html">Overview</a>
+      <a href="history.html">40 Years of Broadway</a>
+      <a href="theatres.html">Theatre District</a>
+      <a href="tony-awards.html">Tony Awards Effect</a>
+      <a href="rush.html">Rush & Lottery</a>
+      <a href="game.html">Be More Chill</a>
+      <a href="memories.html">Back to the Future</a>
+      <a class="active" href="models.html" aria-current="page">ML Models</a>
+      <a class="nav-cta" href="#forecast">View models</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="report-section ml-section ml-intro">
+      <p class="eyebrow">Machine learning · MLOps · NLP</p>
+      <h1>Forecasting Broadway, honestly.</h1>
+      <p class="intro">
+        Gradient-boosted models predict next week's gross and the chance a production closes
+        within 8 weeks. They are evaluated on a time-based holdout against simple baselines,
+        retrained every week by GitHub Actions on a frozen data snapshot, tracked with MLflow,
+        and monitored for drift and live error.
+      </p>
+      <p class="ml-note">
+        Every number below is loaded from JSON written by the pipeline in
+        <a href="https://github.com/ytp026/ts/tree/main/scripts" target="_blank" rel="noopener">scripts/</a>;
+        nothing is hand-entered.
+      </p>
+    </section>
+
+    <section class="report-section ml-section" id="forecast" aria-labelledby="forecast-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">1 · Holdout evaluation</p>
+          <h2 id="forecast-title">Model vs baselines</h2>
+        </div>
+        <p id="ml-split">Loading evaluation…</p>
+      </div>
+      <div class="ml-card-grid" id="ml-metric-cards"></div>
+      <article class="ml-panel">
+        <h3>Total weekly Broadway gross on the test period: forecast vs actual</h3>
+        <div id="ml-market-chart"></div>
+      </article>
+      <div class="ml-two-col">
+        <article class="ml-panel">
+          <h3>One production, last 26 test weeks</h3>
+          <label class="ml-select">Production <select id="ml-show-select"></select></label>
+          <div id="ml-show-chart"></div>
+        </article>
+        <article class="ml-panel">
+          <h3>Most important gross features</h3>
+          <p class="ml-note">Permutation importance on the test set (increase in error when shuffled).</p>
+          <ol class="ml-features" id="ml-features"></ol>
+        </article>
+      </div>
+    </section>
+
+    <section class="report-section ml-section" id="predictions" aria-labelledby="predictions-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">2 · Batch scoring</p>
+          <h2 id="predictions-title">Forecasts for the week ending <span id="ml-target-week">…</span></h2>
+        </div>
+        <p>Scored weekly from the latest reported week. Closing risk is the predicted probability that the production's final performance falls within the next 8 weeks.</p>
+      </div>
+      <article class="ml-panel">
+        <div class="ml-table-wrap">
+          <table class="ml-table">
+            <thead><tr><th>Production</th><th>Last week</th><th>Forecast</th><th>Capacity</th><th>Closing risk</th></tr></thead>
+            <tbody id="ml-predictions"></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <section class="report-section ml-section" id="monitoring" aria-labelledby="monitoring-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">3 · Monitoring</p>
+          <h2 id="monitoring-title">Drift and live error</h2>
+        </div>
+        <p>Population stability index (PSI): below 0.1 stable, 0.1–0.25 moderate, above 0.25 major. Live error compares logged forecasts with reported grosses.</p>
+      </div>
+      <div class="ml-two-col">
+        <article class="ml-panel">
+          <h3>Feature drift</h3>
+          <div class="ml-table-wrap">
+            <table class="ml-table">
+              <thead><tr><th>Feature</th><th>PSI</th><th>Status</th></tr></thead>
+              <tbody id="ml-drift"></tbody>
+            </table>
+          </div>
+        </article>
+        <article class="ml-panel">
+          <h3>Live forecasts and alerts</h3>
+          <div id="ml-live"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="report-section ml-section" id="nlp" aria-labelledby="nlp-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">4 · NLP experiment</p>
+          <h2 id="nlp-title">Do critics' reviews add signal?</h2>
+        </div>
+        <p>Sentiment of each production's Wikipedia "Critical reception" section, scored with VADER, added to the same models on the same rows and split.</p>
+      </div>
+      <p class="ml-headline" id="ml-nlp-verdict" aria-live="polite">Loading NLP results…</p>
+      <div class="ml-card-grid" id="ml-nlp-cards"></div>
+      <article class="ml-panel">
+        <h3>Limitations</h3>
+        <ul class="ml-list" id="ml-nlp-limits"></ul>
+        <p class="ml-note">
+          Review text is from <a href="https://en.wikipedia.org" target="_blank" rel="noopener">Wikipedia</a>
+          contributors, used under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.
+          Only derived scores, article titles and revision links are stored, in
+          <a href="ml/review-sentiment.json">ml/review-sentiment.json</a>.
+        </p>
+      </article>
+    </section>
+
+    <section class="report-section ml-section" id="methods" aria-labelledby="methods-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">Method</p>
+          <h2 id="methods-title">How the pipeline works</h2>
+        </div>
+      </div>
+      <div class="ml-two-col">
+        <article class="ml-panel">
+          <h3>Training and evaluation</h3>
+          <ul class="ml-list">
+            <li>Training data is a frozen, numbers-only snapshot of historical weekly grosses (<code>data/snapshots/</code>); new weeks are never added to training.</li>
+            <li>Train before 2023, tune the number of boosting iterations on 2023, test on 2024 onward; the 2020–2021 shutdown is excluded.</li>
+            <li>Baselines: last week's gross, seasonal persistence, logistic regression, and a low-capacity rule.</li>
+            <li>95% intervals come from paired bootstraps (by week for gross, by production for closing).</li>
+          </ul>
+        </article>
+        <article class="ml-panel">
+          <h3>Deployment</h3>
+          <ul class="ml-list">
+            <li>A weekly GitHub Actions workflow runs the tests, retrains, logs the run to MLflow (artifact), batch-scores the latest week, and commits static JSON.</li>
+            <li>GitHub Pages serves the JSON; there is no server or external host.</li>
+            <li>Code: <a href="https://github.com/ytp026/ts/blob/main/.github/workflows/ml-weekly.yml" target="_blank" rel="noopener">ml-weekly.yml</a>, <a href="https://github.com/ytp026/ts/blob/main/scripts/forecast.py" target="_blank" rel="noopener">forecast.py</a>, <a href="https://github.com/ytp026/ts/blob/main/scripts/nlp_lift.py" target="_blank" rel="noopener">nlp_lift.py</a>.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Theater Spotlight</span>
+    <p class="source-credit">
+      Weekly grosses are reported by The Broadway League and collected from
+      <a href="https://playbill.com/grosses" target="_blank" rel="noopener">Playbill Grosses</a>;
+      only factual figures are used. Review sentiment is derived from
+      <a href="https://en.wikipedia.org" target="_blank" rel="noopener">Wikipedia</a> (CC BY-SA).
+      Non-commercial portfolio project; data will be removed on request via
+      <a href="https://github.com/ytp026/ts/issues" target="_blank" rel="noopener">GitHub issues</a>.
+    </p>
+    <p class="site-disclaimer">
+      <strong>Disclaimer:</strong> Theater Spotlight is an independent, non-commercial
+      educational project and is not affiliated with or endorsed by any theatre, production,
+      ticket provider, Playbill, The Broadway League, Wikipedia, or Microsoft. Model outputs
+      are statistical estimates, may be wrong, and are not intended for purchasing, financial,
+      legal, or business decisions.
+    </p>
+  </footer>
+  <script src="models.js?v=3"></script>
+</body>
+</html>

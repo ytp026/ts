@@ -1,0 +1,263 @@
+{
+ "entries": [
+  {
+   "targetWeek": "2026-11-01",
+   "show": "& Juliet",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 859134,
+   "baselineGross": 934066,
+   "closeProbability": 0.0303
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "860",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 1186081,
+   "baselineGross": 1212055,
+   "closeProbability": 0.0741
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "A Few Good Men",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 1347011,
+   "baselineGross": 1371447,
+   "closeProbability": 0.0754
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "Aladdin",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 990960,
+   "baselineGross": 1067484,
+   "closeProbability": 0.008
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "Buena Vista Social Club",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 814967,
+   "baselineGross": 891279,
+   "closeProbability": 0.0161
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "Chicago",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 955555,
+   "baselineGross": 1016483,
+   "closeProbability": 0.0054
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "Downstate",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 358130,
+   "baselineGross": 264437,
+   "closeProbability": 0.1729
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "Hadestown",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 907594,
+   "baselineGross": 975669,
+   "closeProbability": 0.0035
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "Hamilton",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 2483280,
+   "baselineGross": 2524951,
+   "closeProbability": 0.0027
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "Harry Potter and the Cursed Child",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 1914143,
+   "baselineGross": 1990388,
+   "closeProbability": 0.0081
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "Just in Time",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 677636,
+   "baselineGross": 683992,
+   "closeProbability": 0.0433
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "MJ The Musical",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 1608488,
+   "baselineGross": 1736241,
+   "closeProbability": 0.0159
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "Maybe Happy Ending",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 653629,
+   "baselineGross": 753224,
+   "closeProbability": 0.0247
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "Oh, Mary!",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 1425879,
+   "baselineGross": 1523740,
+   "closeProbability": 0.0232
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "Operation Mincemeat",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 736038,
+   "baselineGross": 803338,
+   "closeProbability": 0.1045
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "Other Desert Cities",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 2235486,
+   "baselineGross": 2262442,
+   "closeProbability": 0.0922
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "Paranormal Activity",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 1001603,
+   "baselineGross": 1072921,
+   "closeProbability": 0.1249
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "SIX: The Musical",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 599029,
+   "baselineGross": 629131,
+   "closeProbability": 0.0202
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "Schmigadoon!",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 940368,
+   "baselineGross": 1044549,
+   "closeProbability": 0.0235
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "School Girls; Or, The African Mean Girls Play",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 375440,
+   "baselineGross": 411613,
+   "closeProbability": 0.7811
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "Stranger Things: The First Shadow",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 603876,
+   "baselineGross": 641366,
+   "closeProbability": 0.1413
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "The Book of Mormon",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 824758,
+   "baselineGross": 919343,
+   "closeProbability": 0.003
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "The Fantasticks",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 578558,
+   "baselineGross": 254610,
+   "closeProbability": 0.1179
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "The Great Gatsby",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 996674,
+   "baselineGross": 1117290,
+   "closeProbability": 0.0688
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "The Imaginary Invalid",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 391446,
+   "baselineGross": 419673,
+   "closeProbability": 0.485
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "The Lion King",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 1782432,
+   "baselineGross": 1869464,
+   "closeProbability": 0.0027
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "The Lost Boys",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 1178347,
+   "baselineGross": 1292930,
+   "closeProbability": 0.0115
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "The Outsiders",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 869940,
+   "baselineGross": 924517,
+   "closeProbability": 0.0424
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "The Rocky Horror Show",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 839703,
+   "baselineGross": 890964,
+   "closeProbability": 0.1903
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "Two Strangers (Carry a Cake Across New York)",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 505020,
+   "baselineGross": 590166,
+   "closeProbability": 0.225
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "Wanted",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 613944,
+   "baselineGross": 624088,
+   "closeProbability": 0.0881
+  },
+  {
+   "targetWeek": "2026-11-01",
+   "show": "Wicked",
+   "issuedForWeek": "2026-10-25",
+   "predictedGross": 1193638,
+   "baselineGross": 1252155,
+   "closeProbability": 0.0039
+  }
+ ],
+ "summary": {
+  "maturedForecasts": 0
+ }
+}

@@ -1,0 +1,22 @@
+{
+ "file": "grosses_snapshot_20261101.csv",
+ "frozenOn": "2026-11-01",
+ "weeks": [
+  "1985-06-09",
+  "2026-10-25"
+ ],
+ "rows": 54529,
+ "shows": 1259,
+ "columns": [
+  "week",
+  "show",
+  "gross",
+  "seats_sold",
+  "seats_available",
+  "capacity",
+  "avg_ticket"
+ ],
+ "sha256": "3dc0bf547017ae075b1f4e8c28e5cd80329c3a01c02c1724d1d34caa0c01ca72",
+ "source": "Weekly grosses reported by The Broadway League, collected from Playbill's public grosses page (https://playbill.com/grosses). Factual figures only.",
+ "use": "Non-commercial portfolio and educational modeling only. Training reads this file; new weekly data is used only for scoring and drift monitoring."
+}
