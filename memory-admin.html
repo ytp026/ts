@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Manage the Theater Spotlight memory timeline.">
   <title>Manage Memory Timeline | Theater Spotlight</title>
-  <link rel="stylesheet" href="styles.css?v=37">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=119">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
   <script src="supabase-config.js" defer></script>
   <script src="supabase-client.js?v=1" defer></script>
-  <script src="memory-admin.js?v=2" defer></script>
+  <script src="memory-admin.js?v=3" defer></script>
 </head>
 <body class="theme-memories">
   <header class="site-header">
@@ -18,8 +19,10 @@
       <span>Theater Spotlight</span>
     </a>
     <nav class="navigation" aria-label="Main navigation">
-      <a href="memories.html">Back to the Future</a>
-      <a class="active" href="memory-admin.html" aria-current="page">Manage archive</a>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a class="nav-link" href="memories.html">Back to the Future</a></li>
+        <li><a class="nav-link active" href="memory-admin.html" aria-current="page">Manage archive</a></li>
+      </ul>
     </nav>
   </header>
 

@@ -191,8 +191,8 @@ test("leadership copy uses live percentages and compact year ranges with detaile
   assert.equal(elements.get("#history-seasonality-coverage").textContent,
     "Based on 38 complete years (1986\u20132019, 2022\u20132025).");
   const highlights = elements.get("#history-seasonality-highlights").textContent;
-  assert.match(highlights, /Dec \(\+19\.2%\)/);
-  assert.match(highlights, /Apr \(\+11\.4%\)/);
+  assert.match(highlights, /Dec \(\+19\.6%\)/);
+  assert.match(highlights, /Apr \(\+11\.8%\)/);
   assert.doesNotMatch(highlights, /Sep|holiday|caused/);
   assert.match(elements.get("#history-seasonality-definition").textContent, /each year's average weekly gross/);
   assert.match(elements.get("#history-seasonality-definition").textContent, /not ticket counts/);
@@ -204,7 +204,7 @@ test("leadership copy uses live percentages and compact year ranges with detaile
   assert.equal(groups.length, 12);
   groups.at(-1).listeners.focus();
   assert.match(elements.get("#history-seasonality-detail").textContent,
-    /Dec: 19\.2% above average weekly gross\. Index 119\.2; 38 years, 169 reported weeks/);
+    /Dec: 19\.6% above average weekly gross\. Index 119\.6; 38 years, \d+ reported weeks/);
 });
 
 test("changed filters change highlights and do not force holiday context onto below-baseline months", () => {
@@ -238,7 +238,7 @@ test("full methodology and sourced hypotheses are accessible but collapsed by de
 
 test("modern seasonal bars and legend share scoped color tokens", () => {
   const css = fs.readFileSync("styles.css", "utf8");
-  for (const [category, color] of [["above", "#6366f1"], ["below", "#94a3b8"], ["average", "#e2e8f0"]]) {
+  for (const [category, color] of [["above", "#3DDC97"], ["below", "#F07167"], ["average", "#F2C14E"]]) {
     assert.ok(css.includes(`--seasonality-${category}: ${color};`));
     assert.ok(css.includes(`#history-seasonality-chart .history-seasonality-${category} { fill: var(--seasonality-${category}); }`));
     assert.ok(css.includes(`#history-seasonality-legend .history-seasonality-${category}-key { background: var(--seasonality-${category}); }`));

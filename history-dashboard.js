@@ -701,10 +701,8 @@ function renderHistoryLongevity(rows, selectShow) {
     createElement("span", String(new Date(domainEnd).getFullYear()))
   );
   axis.append(createElement("span", "Production"), years);
-  const timelineColors = ["#356be8", "#7a5af8", "#0f8b8d", "#d94f70", "#e06b3c", "#d5a021", "#4f7f62", "#5267a8"];
-  const timelineRows = rows.map((row, index) => {
+  const timelineRows = rows.map((row) => {
     const button = historyChartButton(row.show, historyTitlesMatch(row.show, selectedHistoryShow), selectShow, "history-longevity-row");
-    button.style.setProperty("--timeline-color", timelineColors[index % timelineColors.length]);
     button.title = `${row.show}: reported periods ${row.runDates} · ${row.weeks.toLocaleString("en-US")} reported weeks`;
     const copy = createElement("span", undefined, "history-longevity-copy");
     copy.append(
@@ -776,7 +774,7 @@ function historyGrossIcon(show) {
 
 function renderHistoryGrossTreemap(rows, selectShow) {
   const container = document.querySelector("#history-production-bars");
-  const colors = ["#f5e7b5", "#e8bd4a", "#dce8f3", "#a7bbcf", "#5f82ad", "#254a7a"];
+  const colors = ["#3EC6E0", "#F2C14E", "#F07167", "#B18CFF", "#3DDC97", "#F8F0C0"];
   const total = Math.max(rows.reduce((sum, row) => sum + row.gross, 0), 1);
   container.replaceChildren(...rows.map((row, index) => {
     const button = historyChartButton(

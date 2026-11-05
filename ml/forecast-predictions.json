@@ -1,294 +1,535 @@
 {
- "dataThrough": "2026-10-25",
- "targetWeek": "2026-11-01",
+ "dataThrough": "2026-11-01",
+ "targetWeek": "2026-11-08",
  "predictions": [
   {
    "show": "School Girls; Or, The African Mean Girls Play",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 411613,
-   "predictedGross": 375440,
-   "capacity": 0.9561,
-   "closeProbability": 0.7811
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 373275,
+   "predictedGross": 409528,
+   "capacity": 0.9357,
+   "closeProbability": 0.6498,
+   "riskDrivers": [
+    {
+     "factor": "age",
+     "direction": "raises",
+     "points": 46.7,
+     "text": "New run: 7 weeks in (typical 88)"
+    },
+    {
+     "factor": "size",
+     "direction": "raises",
+     "points": 36.9,
+     "text": "Small house: 5.1K seats on sale a week (typical 8.4K)"
+    }
+   ]
   },
   {
    "show": "The Imaginary Invalid",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 419673,
-   "predictedGross": 391446,
-   "capacity": 0.8202,
-   "closeProbability": 0.485
-  },
-  {
-   "show": "Two Strangers (Carry a Cake Across New York)",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 590166,
-   "predictedGross": 505020,
-   "capacity": 0.7467,
-   "closeProbability": 0.225
-  },
-  {
-   "show": "The Rocky Horror Show",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 890964,
-   "predictedGross": 839703,
-   "capacity": 0.95,
-   "closeProbability": 0.1903
-  },
-  {
-   "show": "Downstate",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 264437,
-   "predictedGross": 358130,
-   "capacity": 0.9483,
-   "closeProbability": 0.1729
-  },
-  {
-   "show": "Stranger Things: The First Shadow",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 641366,
-   "predictedGross": 603876,
-   "capacity": 0.7038,
-   "closeProbability": 0.1413
-  },
-  {
-   "show": "Paranormal Activity",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 1072921,
-   "predictedGross": 1001603,
-   "capacity": 0.9841,
-   "closeProbability": 0.1249
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 363031,
+   "predictedGross": 443045,
+   "capacity": 0.8978,
+   "closeProbability": 0.5303,
+   "riskDrivers": [
+    {
+     "factor": "age",
+     "direction": "raises",
+     "points": 33.8,
+     "text": "New run: 5 weeks in (typical 88)"
+    },
+    {
+     "factor": "size",
+     "direction": "raises",
+     "points": 28.4,
+     "text": "Small house: 5.9K seats on sale a week (typical 8.4K)"
+    }
+   ]
   },
   {
    "show": "The Fantasticks",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 254610,
-   "predictedGross": 578558,
-   "capacity": 1.0,
-   "closeProbability": 0.1179
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 305307,
+   "predictedGross": 316976,
+   "capacity": 0.9272,
+   "closeProbability": 0.1912,
+   "riskDrivers": [
+    {
+     "factor": "size",
+     "direction": "raises",
+     "points": 7.0,
+     "text": "Small house: 4.1K seats on sale a week (typical 8.4K)"
+    }
+   ]
   },
   {
-   "show": "Operation Mincemeat",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 803338,
-   "predictedGross": 736038,
-   "capacity": 0.9601,
-   "closeProbability": 0.1045
+   "show": "Downstate",
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 275084,
+   "predictedGross": 282948,
+   "capacity": 0.872,
+   "closeProbability": 0.1648,
+   "riskDrivers": [
+    {
+     "factor": "size",
+     "direction": "raises",
+     "points": 3.3,
+     "text": "Small house: 6.0K seats on sale a week (typical 8.4K)"
+    }
+   ]
   },
   {
    "show": "Other Desert Cities",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 2262442,
-   "predictedGross": 2235486,
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 2347158,
+   "predictedGross": 2388016,
    "capacity": 1.0,
-   "closeProbability": 0.0922
+   "closeProbability": 0.1608,
+   "riskDrivers": [
+    {
+     "factor": "tony",
+     "direction": "raises",
+     "points": 6.4,
+     "text": "No Tony nominations"
+    },
+    {
+     "factor": "age",
+     "direction": "raises",
+     "points": 2.4,
+     "text": "New run: 4 weeks in (typical 88)"
+    }
+   ]
   },
   {
-   "show": "Wanted",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 624088,
-   "predictedGross": 613944,
-   "capacity": 0.9342,
-   "closeProbability": 0.0881
-  },
-  {
-   "show": "A Few Good Men",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 1371447,
-   "predictedGross": 1347011,
-   "capacity": 1.0,
-   "closeProbability": 0.0754
+   "show": "Two Strangers (Carry a Cake Across New York)",
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 396769,
+   "predictedGross": 504813,
+   "capacity": 0.5671,
+   "closeProbability": 0.1567,
+   "riskDrivers": [
+    {
+     "factor": "gross",
+     "direction": "raises",
+     "points": 10.4,
+     "text": "Low weekly gross: $397K (typical $759K)"
+    },
+    {
+     "factor": "capacity",
+     "direction": "raises",
+     "points": 8.8,
+     "text": "57% of seats filled"
+    }
+   ]
   },
   {
    "show": "860",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 1212055,
-   "predictedGross": 1186081,
-   "capacity": 0.9811,
-   "closeProbability": 0.0741
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 1353611,
+   "predictedGross": 1427981,
+   "capacity": 0.9901,
+   "closeProbability": 0.156,
+   "riskDrivers": [
+    {
+     "factor": "tony",
+     "direction": "raises",
+     "points": 5.9,
+     "text": "No Tony nominations"
+    },
+    {
+     "factor": "capacity",
+     "direction": "raises",
+     "points": 4.2,
+     "text": "99% of seats filled"
+    }
+   ]
   },
   {
-   "show": "The Great Gatsby",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 1117290,
-   "predictedGross": 996674,
-   "capacity": 0.9209,
-   "closeProbability": 0.0688
+   "show": "Paranormal Activity",
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 1094504,
+   "predictedGross": 1101073,
+   "capacity": 0.9862,
+   "closeProbability": 0.1517,
+   "riskDrivers": [
+    {
+     "factor": "age",
+     "direction": "raises",
+     "points": 6.7,
+     "text": "New run: 11 weeks in (typical 88)"
+    },
+    {
+     "factor": "tony",
+     "direction": "raises",
+     "points": 3.0,
+     "text": "No Tony nominations"
+    }
+   ]
+  },
+  {
+   "show": "Much Ado About Nothing",
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 358262,
+   "predictedGross": 1256003,
+   "capacity": 1.0,
+   "closeProbability": 0.1511,
+   "riskDrivers": [
+    {
+     "factor": "size",
+     "direction": "raises",
+     "points": 3.0,
+     "text": "Small house: 1.5K seats on sale a week (typical 8.4K)"
+    }
+   ]
+  },
+  {
+   "show": "The Rocky Horror Show",
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 970052,
+   "predictedGross": 1005915,
+   "capacity": 0.9654,
+   "closeProbability": 0.1473,
+   "riskDrivers": [
+    {
+     "factor": "trend",
+     "direction": "raises",
+     "points": 8.0,
+     "text": "Sales rising: +25% vs 4 weeks ago"
+    },
+    {
+     "factor": "tony",
+     "direction": "raises",
+     "points": 4.4,
+     "text": "No Tony nominations"
+    }
+   ]
+  },
+  {
+   "show": "Wanted",
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 508919,
+   "predictedGross": 619869,
+   "capacity": 0.8161,
+   "closeProbability": 0.1252,
+   "riskDrivers": [
+    {
+     "factor": "gross",
+     "direction": "raises",
+     "points": 2.7,
+     "text": "Low weekly gross: $509K (typical $759K)"
+    }
+   ]
+  },
+  {
+   "show": "Stranger Things: The First Shadow",
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 568595,
+   "predictedGross": 703903,
+   "capacity": 0.7699,
+   "closeProbability": 0.1008,
+   "riskDrivers": [
+    {
+     "factor": "capacity",
+     "direction": "raises",
+     "points": 5.9,
+     "text": "77% of seats filled"
+    },
+    {
+     "factor": "gross",
+     "direction": "raises",
+     "points": 5.6,
+     "text": "Low weekly gross: $569K (typical $759K)"
+    }
+   ]
   },
   {
    "show": "Just in Time",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 683992,
-   "predictedGross": 677636,
-   "capacity": 0.9259,
-   "closeProbability": 0.0433
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 480804,
+   "predictedGross": 730961,
+   "capacity": 0.819,
+   "closeProbability": 0.0948,
+   "riskDrivers": [
+    {
+     "factor": "gross",
+     "direction": "raises",
+     "points": 4.0,
+     "text": "Low weekly gross: $481K (typical $759K)"
+    },
+    {
+     "factor": "size",
+     "direction": "raises",
+     "points": 3.9,
+     "text": "Small house: 5.5K seats on sale a week (typical 8.4K)"
+    }
+   ]
   },
   {
-   "show": "The Outsiders",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 924517,
-   "predictedGross": 869940,
-   "capacity": 0.9248,
-   "closeProbability": 0.0424
+   "show": "A Few Good Men",
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 1277792,
+   "predictedGross": 1382496,
+   "capacity": 1.0,
+   "closeProbability": 0.092,
+   "riskDrivers": [
+    {
+     "factor": "age",
+     "direction": "lowers",
+     "points": -10.7,
+     "text": "New run: 3 weeks in (typical 88)"
+    },
+    {
+     "factor": "trend",
+     "direction": "lowers",
+     "points": -5.6,
+     "text": "Sales trend"
+    }
+   ]
   },
   {
-   "show": "& Juliet",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 934066,
-   "predictedGross": 859134,
-   "capacity": 0.9516,
-   "closeProbability": 0.0303
-  },
-  {
-   "show": "Maybe Happy Ending",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 753224,
-   "predictedGross": 653629,
-   "capacity": 0.9012,
-   "closeProbability": 0.0247
-  },
-  {
-   "show": "Schmigadoon!",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 1044549,
-   "predictedGross": 940368,
-   "capacity": 0.9033,
-   "closeProbability": 0.0235
+   "show": "Operation Mincemeat",
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 550216,
+   "predictedGross": 688470,
+   "capacity": 0.8006,
+   "closeProbability": 0.0708,
+   "riskDrivers": []
   },
   {
    "show": "Oh, Mary!",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 1523740,
-   "predictedGross": 1425879,
-   "capacity": 0.9946,
-   "closeProbability": 0.0232
-  },
-  {
-   "show": "SIX: The Musical",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 629131,
-   "predictedGross": 599029,
-   "capacity": 0.7289,
-   "closeProbability": 0.0202
-  },
-  {
-   "show": "Buena Vista Social Club",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 891279,
-   "predictedGross": 814967,
-   "capacity": 0.9755,
-   "closeProbability": 0.0161
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 1309171,
+   "predictedGross": 1408884,
+   "capacity": 0.9895,
+   "closeProbability": 0.0497,
+   "riskDrivers": []
   },
   {
    "show": "MJ The Musical",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 1736241,
-   "predictedGross": 1608488,
-   "capacity": 0.993,
-   "closeProbability": 0.0159
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 1616111,
+   "predictedGross": 1712669,
+   "capacity": 0.9754,
+   "closeProbability": 0.035,
+   "riskDrivers": []
+  },
+  {
+   "show": "Buena Vista Social Club",
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 678878,
+   "predictedGross": 808305,
+   "capacity": 0.8948,
+   "closeProbability": 0.0333,
+   "riskDrivers": [
+    {
+     "factor": "tony",
+     "direction": "lowers",
+     "points": -2.0,
+     "text": "Tony-nominated (10 nominations)"
+    }
+   ]
+  },
+  {
+   "show": "The Great Gatsby",
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 860019,
+   "predictedGross": 1037204,
+   "capacity": 0.7901,
+   "closeProbability": 0.0296,
+   "riskDrivers": []
+  },
+  {
+   "show": "Maybe Happy Ending",
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 616480,
+   "predictedGross": 756471,
+   "capacity": 0.8046,
+   "closeProbability": 0.0265,
+   "riskDrivers": [
+    {
+     "factor": "tony",
+     "direction": "lowers",
+     "points": -3.9,
+     "text": "Tony-nominated (10 nominations)"
+    }
+   ]
+  },
+  {
+   "show": "& Juliet",
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 610232,
+   "predictedGross": 785569,
+   "capacity": 0.8174,
+   "closeProbability": 0.0215,
+   "riskDrivers": []
+  },
+  {
+   "show": "SIX: The Musical",
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 443545,
+   "predictedGross": 608412,
+   "capacity": 0.6,
+   "closeProbability": 0.0209,
+   "riskDrivers": [
+    {
+     "factor": "age",
+     "direction": "lowers",
+     "points": -4.5,
+     "text": "Long-running: 7 years in"
+    },
+    {
+     "factor": "tony",
+     "direction": "lowers",
+     "points": -2.0,
+     "text": "Tony-nominated (8 nominations)"
+    }
+   ]
+  },
+  {
+   "show": "The Outsiders",
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 605946,
+   "predictedGross": 809683,
+   "capacity": 0.7521,
+   "closeProbability": 0.0202,
+   "riskDrivers": []
+  },
+  {
+   "show": "Schmigadoon!",
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 760089,
+   "predictedGross": 901362,
+   "capacity": 0.9022,
+   "closeProbability": 0.0188,
+   "riskDrivers": []
   },
   {
    "show": "The Lost Boys",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 1292930,
-   "predictedGross": 1178347,
-   "capacity": 0.923,
-   "closeProbability": 0.0115
-  },
-  {
-   "show": "Harry Potter and the Cursed Child",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 1990388,
-   "predictedGross": 1914143,
-   "capacity": 0.9943,
-   "closeProbability": 0.0081
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 1110151,
+   "predictedGross": 1236234,
+   "capacity": 0.9204,
+   "closeProbability": 0.0159,
+   "riskDrivers": []
   },
   {
    "show": "Aladdin",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 1067484,
-   "predictedGross": 990960,
-   "capacity": 0.8942,
-   "closeProbability": 0.008
-  },
-  {
-   "show": "Chicago",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 1016483,
-   "predictedGross": 955555,
-   "capacity": 0.9866,
-   "closeProbability": 0.0054
-  },
-  {
-   "show": "Wicked",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 1252155,
-   "predictedGross": 1193638,
-   "capacity": 0.9047,
-   "closeProbability": 0.0039
-  },
-  {
-   "show": "Hadestown",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 975669,
-   "predictedGross": 907594,
-   "capacity": 0.9971,
-   "closeProbability": 0.0035
-  },
-  {
-   "show": "The Book of Mormon",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 919343,
-   "predictedGross": 824758,
-   "capacity": 0.9654,
-   "closeProbability": 0.003
-  },
-  {
-   "show": "The Lion King",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 1869464,
-   "predictedGross": 1782432,
-   "capacity": 0.9262,
-   "closeProbability": 0.0027
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 883171,
+   "predictedGross": 1077076,
+   "capacity": 0.8354,
+   "closeProbability": 0.0118,
+   "riskDrivers": []
   },
   {
    "show": "Hamilton",
-   "lastWeek": "2026-10-25",
-   "targetWeek": "2026-11-01",
-   "lastGross": 2524951,
-   "predictedGross": 2483280,
-   "capacity": 1.0119,
-   "closeProbability": 0.0027
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 2317475,
+   "predictedGross": 2601876,
+   "capacity": 1.0035,
+   "closeProbability": 0.0097,
+   "riskDrivers": [
+    {
+     "factor": "tony",
+     "direction": "lowers",
+     "points": -2.6,
+     "text": "Tony-nominated (15 nominations)"
+    }
+   ]
+  },
+  {
+   "show": "The Book of Mormon",
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 726212,
+   "predictedGross": 883265,
+   "capacity": 0.8629,
+   "closeProbability": 0.0096,
+   "riskDrivers": [
+    {
+     "factor": "tony",
+     "direction": "lowers",
+     "points": -3.0,
+     "text": "Tony-nominated (13 nominations)"
+    }
+   ]
+  },
+  {
+   "show": "Harry Potter and the Cursed Child",
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 1629103,
+   "predictedGross": 1857479,
+   "capacity": 0.9859,
+   "closeProbability": 0.0092,
+   "riskDrivers": []
+  },
+  {
+   "show": "Wicked",
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 1064328,
+   "predictedGross": 1306890,
+   "capacity": 0.8786,
+   "closeProbability": 0.0085,
+   "riskDrivers": []
+  },
+  {
+   "show": "Hadestown",
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 758925,
+   "predictedGross": 914198,
+   "capacity": 0.9502,
+   "closeProbability": 0.0076,
+   "riskDrivers": []
+  },
+  {
+   "show": "Chicago",
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 787225,
+   "predictedGross": 921789,
+   "capacity": 0.8005,
+   "closeProbability": 0.0075,
+   "riskDrivers": []
+  },
+  {
+   "show": "The Lion King",
+   "lastWeek": "2026-11-01",
+   "targetWeek": "2026-11-08",
+   "lastGross": 1571842,
+   "predictedGross": 1814751,
+   "capacity": 0.8944,
+   "closeProbability": 0.0071,
+   "riskDrivers": []
   }
  ]
 }

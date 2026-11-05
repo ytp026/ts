@@ -97,7 +97,7 @@ window.DashboardUtils = {
       const track = window.DashboardUtils.createElement("i");
       const fill = window.DashboardUtils.createElement("b");
       fill.style.width = `${Math.max(0, (row.value / maximum) * 100)}%`;
-      fill.style.background = row.color || options.color || "#356be8";
+      fill.style.background = row.color || options.color || "var(--data-1)";
       track.appendChild(fill);
       const value = window.DashboardUtils.createElement("strong", row.display);
       button.append(label, track, value);

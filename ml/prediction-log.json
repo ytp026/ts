@@ -6,7 +6,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 859134,
    "baselineGross": 934066,
-   "closeProbability": 0.0303
+   "closeProbability": 0.0303,
+   "actualGross": 610232.1
   },
   {
    "targetWeek": "2026-11-01",
@@ -14,7 +15,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 1186081,
    "baselineGross": 1212055,
-   "closeProbability": 0.0741
+   "closeProbability": 0.0741,
+   "actualGross": 1353611.0
   },
   {
    "targetWeek": "2026-11-01",
@@ -22,7 +24,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 1347011,
    "baselineGross": 1371447,
-   "closeProbability": 0.0754
+   "closeProbability": 0.0754,
+   "actualGross": 1277792.0
   },
   {
    "targetWeek": "2026-11-01",
@@ -30,7 +33,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 990960,
    "baselineGross": 1067484,
-   "closeProbability": 0.008
+   "closeProbability": 0.008,
+   "actualGross": 883171.4
   },
   {
    "targetWeek": "2026-11-01",
@@ -38,7 +42,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 814967,
    "baselineGross": 891279,
-   "closeProbability": 0.0161
+   "closeProbability": 0.0161,
+   "actualGross": 678878.42
   },
   {
    "targetWeek": "2026-11-01",
@@ -46,7 +51,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 955555,
    "baselineGross": 1016483,
-   "closeProbability": 0.0054
+   "closeProbability": 0.0054,
+   "actualGross": 787224.95
   },
   {
    "targetWeek": "2026-11-01",
@@ -54,7 +60,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 358130,
    "baselineGross": 264437,
-   "closeProbability": 0.1729
+   "closeProbability": 0.1729,
+   "actualGross": 275084.5
   },
   {
    "targetWeek": "2026-11-01",
@@ -62,7 +69,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 907594,
    "baselineGross": 975669,
-   "closeProbability": 0.0035
+   "closeProbability": 0.0035,
+   "actualGross": 758925.0
   },
   {
    "targetWeek": "2026-11-01",
@@ -70,7 +78,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 2483280,
    "baselineGross": 2524951,
-   "closeProbability": 0.0027
+   "closeProbability": 0.0027,
+   "actualGross": 2317475.0
   },
   {
    "targetWeek": "2026-11-01",
@@ -78,7 +87,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 1914143,
    "baselineGross": 1990388,
-   "closeProbability": 0.0081
+   "closeProbability": 0.0081,
+   "actualGross": 1629102.96
   },
   {
    "targetWeek": "2026-11-01",
@@ -86,7 +96,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 677636,
    "baselineGross": 683992,
-   "closeProbability": 0.0433
+   "closeProbability": 0.0433,
+   "actualGross": 480804.3
   },
   {
    "targetWeek": "2026-11-01",
@@ -94,7 +105,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 1608488,
    "baselineGross": 1736241,
-   "closeProbability": 0.0159
+   "closeProbability": 0.0159,
+   "actualGross": 1616111.2
   },
   {
    "targetWeek": "2026-11-01",
@@ -102,7 +114,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 653629,
    "baselineGross": 753224,
-   "closeProbability": 0.0247
+   "closeProbability": 0.0247,
+   "actualGross": 616479.67
   },
   {
    "targetWeek": "2026-11-01",
@@ -110,7 +123,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 1425879,
    "baselineGross": 1523740,
-   "closeProbability": 0.0232
+   "closeProbability": 0.0232,
+   "actualGross": 1309171.0
   },
   {
    "targetWeek": "2026-11-01",
@@ -118,7 +132,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 736038,
    "baselineGross": 803338,
-   "closeProbability": 0.1045
+   "closeProbability": 0.1045,
+   "actualGross": 550216.14
   },
   {
    "targetWeek": "2026-11-01",
@@ -126,7 +141,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 2235486,
    "baselineGross": 2262442,
-   "closeProbability": 0.0922
+   "closeProbability": 0.0922,
+   "actualGross": 2347158.16
   },
   {
    "targetWeek": "2026-11-01",
@@ -134,7 +150,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 1001603,
    "baselineGross": 1072921,
-   "closeProbability": 0.1249
+   "closeProbability": 0.1249,
+   "actualGross": 1094503.63
   },
   {
    "targetWeek": "2026-11-01",
@@ -142,7 +159,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 599029,
    "baselineGross": 629131,
-   "closeProbability": 0.0202
+   "closeProbability": 0.0202,
+   "actualGross": 443545.48
   },
   {
    "targetWeek": "2026-11-01",
@@ -150,7 +168,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 940368,
    "baselineGross": 1044549,
-   "closeProbability": 0.0235
+   "closeProbability": 0.0235,
+   "actualGross": 760089.04
   },
   {
    "targetWeek": "2026-11-01",
@@ -158,7 +177,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 375440,
    "baselineGross": 411613,
-   "closeProbability": 0.7811
+   "closeProbability": 0.7811,
+   "actualGross": 373275.0
   },
   {
    "targetWeek": "2026-11-01",
@@ -166,7 +186,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 603876,
    "baselineGross": 641366,
-   "closeProbability": 0.1413
+   "closeProbability": 0.1413,
+   "actualGross": 568594.97
   },
   {
    "targetWeek": "2026-11-01",
@@ -174,7 +195,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 824758,
    "baselineGross": 919343,
-   "closeProbability": 0.003
+   "closeProbability": 0.003,
+   "actualGross": 726211.69
   },
   {
    "targetWeek": "2026-11-01",
@@ -182,7 +204,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 578558,
    "baselineGross": 254610,
-   "closeProbability": 0.1179
+   "closeProbability": 0.1179,
+   "actualGross": 305306.6
   },
   {
    "targetWeek": "2026-11-01",
@@ -190,7 +213,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 996674,
    "baselineGross": 1117290,
-   "closeProbability": 0.0688
+   "closeProbability": 0.0688,
+   "actualGross": 860019.18
   },
   {
    "targetWeek": "2026-11-01",
@@ -198,7 +222,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 391446,
    "baselineGross": 419673,
-   "closeProbability": 0.485
+   "closeProbability": 0.485,
+   "actualGross": 363031.0
   },
   {
    "targetWeek": "2026-11-01",
@@ -206,7 +231,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 1782432,
    "baselineGross": 1869464,
-   "closeProbability": 0.0027
+   "closeProbability": 0.0027,
+   "actualGross": 1571842.25
   },
   {
    "targetWeek": "2026-11-01",
@@ -214,7 +240,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 1178347,
    "baselineGross": 1292930,
-   "closeProbability": 0.0115
+   "closeProbability": 0.0115,
+   "actualGross": 1110150.8
   },
   {
    "targetWeek": "2026-11-01",
@@ -222,7 +249,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 869940,
    "baselineGross": 924517,
-   "closeProbability": 0.0424
+   "closeProbability": 0.0424,
+   "actualGross": 605946.35
   },
   {
    "targetWeek": "2026-11-01",
@@ -230,7 +258,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 839703,
    "baselineGross": 890964,
-   "closeProbability": 0.1903
+   "closeProbability": 0.1903,
+   "actualGross": 970052.5
   },
   {
    "targetWeek": "2026-11-01",
@@ -238,7 +267,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 505020,
    "baselineGross": 590166,
-   "closeProbability": 0.225
+   "closeProbability": 0.225,
+   "actualGross": 396768.9
   },
   {
    "targetWeek": "2026-11-01",
@@ -246,7 +276,8 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 613944,
    "baselineGross": 624088,
-   "closeProbability": 0.0881
+   "closeProbability": 0.0881,
+   "actualGross": 508919.3
   },
   {
    "targetWeek": "2026-11-01",
@@ -254,10 +285,277 @@
    "issuedForWeek": "2026-10-25",
    "predictedGross": 1193638,
    "baselineGross": 1252155,
-   "closeProbability": 0.0039
+   "closeProbability": 0.0039,
+   "actualGross": 1064327.5
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "& Juliet",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 785569,
+   "baselineGross": 610232,
+   "closeProbability": 0.0215
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "860",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 1427981,
+   "baselineGross": 1353611,
+   "closeProbability": 0.156
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "A Few Good Men",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 1382496,
+   "baselineGross": 1277792,
+   "closeProbability": 0.092
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "Aladdin",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 1077076,
+   "baselineGross": 883171,
+   "closeProbability": 0.0118
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "Buena Vista Social Club",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 808305,
+   "baselineGross": 678878,
+   "closeProbability": 0.0333
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "Chicago",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 921789,
+   "baselineGross": 787225,
+   "closeProbability": 0.0075
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "Downstate",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 282948,
+   "baselineGross": 275084,
+   "closeProbability": 0.1648
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "Hadestown",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 914198,
+   "baselineGross": 758925,
+   "closeProbability": 0.0076
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "Hamilton",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 2601876,
+   "baselineGross": 2317475,
+   "closeProbability": 0.0097
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "Harry Potter and the Cursed Child",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 1857479,
+   "baselineGross": 1629103,
+   "closeProbability": 0.0092
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "Just in Time",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 730961,
+   "baselineGross": 480804,
+   "closeProbability": 0.0948
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "MJ The Musical",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 1712669,
+   "baselineGross": 1616111,
+   "closeProbability": 0.035
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "Maybe Happy Ending",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 756471,
+   "baselineGross": 616480,
+   "closeProbability": 0.0265
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "Much Ado About Nothing",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 1256003,
+   "baselineGross": 358262,
+   "closeProbability": 0.1511
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "Oh, Mary!",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 1408884,
+   "baselineGross": 1309171,
+   "closeProbability": 0.0497
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "Operation Mincemeat",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 688470,
+   "baselineGross": 550216,
+   "closeProbability": 0.0708
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "Other Desert Cities",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 2388016,
+   "baselineGross": 2347158,
+   "closeProbability": 0.1608
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "Paranormal Activity",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 1101073,
+   "baselineGross": 1094504,
+   "closeProbability": 0.1517
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "SIX: The Musical",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 608412,
+   "baselineGross": 443545,
+   "closeProbability": 0.0209
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "Schmigadoon!",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 901362,
+   "baselineGross": 760089,
+   "closeProbability": 0.0188
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "School Girls; Or, The African Mean Girls Play",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 409528,
+   "baselineGross": 373275,
+   "closeProbability": 0.6498
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "Stranger Things: The First Shadow",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 703903,
+   "baselineGross": 568595,
+   "closeProbability": 0.1008
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "The Book of Mormon",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 883265,
+   "baselineGross": 726212,
+   "closeProbability": 0.0096
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "The Fantasticks",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 316976,
+   "baselineGross": 305307,
+   "closeProbability": 0.1912
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "The Great Gatsby",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 1037204,
+   "baselineGross": 860019,
+   "closeProbability": 0.0296
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "The Imaginary Invalid",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 443045,
+   "baselineGross": 363031,
+   "closeProbability": 0.5303
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "The Lion King",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 1814751,
+   "baselineGross": 1571842,
+   "closeProbability": 0.0071
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "The Lost Boys",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 1236234,
+   "baselineGross": 1110151,
+   "closeProbability": 0.0159
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "The Outsiders",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 809683,
+   "baselineGross": 605946,
+   "closeProbability": 0.0202
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "The Rocky Horror Show",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 1005915,
+   "baselineGross": 970052,
+   "closeProbability": 0.1473
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "Two Strangers (Carry a Cake Across New York)",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 504813,
+   "baselineGross": 396769,
+   "closeProbability": 0.1567
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "Wanted",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 619869,
+   "baselineGross": 508919,
+   "closeProbability": 0.1252
+  },
+  {
+   "targetWeek": "2026-11-08",
+   "show": "Wicked",
+   "issuedForWeek": "2026-11-01",
+   "predictedGross": 1306890,
+   "baselineGross": 1064328,
+   "closeProbability": 0.0085
   }
  ],
  "summary": {
-  "maturedForecasts": 0
+  "maturedForecasts": 32,
+  "modelMape": 19.343,
+  "persistenceMape": 22.867
  }
 }

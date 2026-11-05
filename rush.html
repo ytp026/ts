@@ -8,7 +8,8 @@
     content="Current Broadway rush, digital lottery, and standing-room ticket information."
   >
   <title>Rush, Lottery & SRO | Theater Spotlight</title>
-  <link rel="stylesheet" href="styles.css?v=52">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=119">
   <script src="rush.js?v=3" defer></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-47RPC1XZKM"></script>
@@ -25,6 +26,7 @@
       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "y83snmaz05");
   </script>
+  <script src="nav.js?v=3" defer></script>
 </head>
 <body class="theme-access">
   <header class="site-header">
@@ -33,14 +35,36 @@
       <span>Theater Spotlight</span>
     </a>
     <nav class="navigation" aria-label="Main navigation">
-      <a href="index.html">Overview</a>
-      <a href="history.html">40 Years of Broadway</a>
-      <a href="theatres.html">Theatre District</a>
-      <a href="tony-awards.html">Tony Awards Effect</a>
-      <a class="active" href="rush.html" aria-current="page">Rush & Lottery</a>
-      <a href="game.html">Be More Chill</a>
-      <a href="memories.html">Back to the Future</a>
-      <a href="models.html">ML Models</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+        <span class="nav-toggle-label">Menu</span>
+      </button>
+            <ul class="nav-menu" id="nav-menu">
+        <li class="nav-group">
+          <button class="nav-link nav-trigger" type="button" aria-expanded="false" aria-controls="nav-viz">Explore Broadway</button>
+          <ul class="nav-dropdown" id="nav-viz">
+            <li><a href="index.html"><strong>Broadway at a Glance</strong><small>Current market snapshot</small></a></li>
+            <li><a href="history.html"><strong>Forty Years of Grosses</strong><small>Long-run Broadway performance</small></a></li>
+            <li><a href="theatres.html"><strong>Inside the Houses</strong><small>Venue scale, demand, and capacity</small></a></li>
+            <li><a href="tony-awards.html"><strong>Tony by the Numbers</strong><small>Winners, nominees, and box office</small></a></li>
+          </ul>
+        </li>
+        <li class="nav-group">
+          <button class="nav-link nav-trigger" type="button" aria-expanded="false" aria-controls="nav-study">Behind the Numbers</button>
+          <ul class="nav-dropdown" id="nav-study">
+            <li><a href="tony-study.html"><strong>The Tony Effect</strong><small>Causal effect of a win</small></a></li>
+            <li><a href="models.html"><strong>Forecasts &amp; Closing Risk</strong><small>Model performance, risk, and drift</small></a></li>
+          </ul>
+        </li>
+        <li class="nav-group">
+          <button class="nav-link nav-trigger active" type="button" aria-expanded="false" aria-controls="nav-fun">Just for fun</button>
+          <ul class="nav-dropdown" id="nav-fun">
+            <li><a href="rush.html" aria-current="page"><strong>Rush & lottery</strong><small>Discount tickets by show</small></a></li>
+            <li><a href="game.html"><strong>Be More Chill</strong><small>Guess the show from the clues</small></a></li>
+            <li><a href="memories.html"><strong>Back to the Future</strong><small>A personal Broadway timeline</small></a></li>
+          </ul>
+        </li>
+      </ul>
       <a class="nav-cta" href="#ticket-directory">Find tickets</a>
     </nav>
   </header>

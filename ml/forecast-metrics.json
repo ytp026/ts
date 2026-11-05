@@ -1,9 +1,9 @@
 {
- "dataThrough": "2026-10-25",
+ "dataThrough": "2026-11-01",
  "trainingSnapshot": {
-  "file": "grosses_snapshot_20261101.csv",
+  "file": "grosses_snapshot_20261102.csv",
   "through": "2026-10-25",
-  "rows": 54404
+  "rows": 54415
  },
  "model": "Gradient-boosted trees (scikit-learn HistGradientBoosting)",
  "split": {
@@ -18,96 +18,96 @@
  },
  "nextWeekGross": {
   "model": {
-   "mape": 11.838,
-   "medianApe": 7.901,
-   "wape": 11.52
+   "mape": 10.659,
+   "medianApe": 7.42,
+   "wape": 9.658
   },
   "persistence": {
-   "mape": 13.362,
-   "medianApe": 8.66,
-   "wape": 12.76
+   "mape": 12.824,
+   "medianApe": 8.559,
+   "wape": 11.937
   },
   "seasonalPersistence": {
-   "mape": 12.937,
-   "medianApe": 8.021,
-   "wape": 12.333
+   "mape": 12.095,
+   "medianApe": 7.847,
+   "wape": 11.052
   },
   "mapeDiffVsSeasonalCi95": [
-   -1.7922,
-   -0.4325
+   -2.0098,
+   -0.9355
   ],
   "mapeDiffVsPersistenceCi95": [
-   -2.4115,
-   -0.7269
+   -2.9887,
+   -1.4445
   ],
   "rounds": 800,
-  "rows": 4536
+  "rows": 4557
  },
  "closingWithin8Weeks": {
   "model": {
-   "rocAuc": 0.8913,
-   "averagePrecision": 0.7057,
-   "brier": 0.09399
+   "rocAuc": 0.8943,
+   "averagePrecision": 0.7073,
+   "brier": 0.09579
   },
   "logisticBaseline": {
-   "rocAuc": 0.8646,
-   "averagePrecision": 0.5839,
-   "brier": 0.1202
+   "rocAuc": 0.8629,
+   "averagePrecision": 0.5822,
+   "brier": 0.11983
   },
   "lowCapacityRule": {
-   "rocAuc": 0.643,
-   "averagePrecision": 0.3544,
-   "brier": 0.1488
+   "rocAuc": 0.6425,
+   "averagePrecision": 0.3539,
+   "brier": 0.14867
   },
   "aucDiffVsLogisticCi95": [
-   0.0006,
-   0.06
+   0.0068,
+   0.0616
   ],
-  "positiveRate": 0.1849,
-  "rounds": 200,
-  "rows": 4387,
+  "positiveRate": 0.1846,
+  "rounds": 100,
+  "rows": 4398,
   "shows": 126
  },
  "topGrossFeatures": [
   {
-   "feature": "log_available",
-   "importance": 0.2017
+   "feature": "target_woy",
+   "importance": 0.2198
   },
   {
-   "feature": "target_woy",
-   "importance": 0.1581
+   "feature": "log_available",
+   "importance": 0.2023
   },
   {
    "feature": "chg_1",
-   "importance": 0.105
+   "importance": 0.1252
   },
   {
    "feature": "chg_4",
-   "importance": 0.047
+   "importance": 0.0716
   },
   {
    "feature": "from_peak",
-   "importance": 0.0249
+   "importance": 0.0277
   },
   {
    "feature": "log_run_age",
-   "importance": 0.0208
+   "importance": 0.0249
   },
   {
-   "feature": "market_chg_1",
-   "importance": 0.015
+   "feature": "market_log_gross",
+   "importance": 0.0114
   },
   {
-   "feature": "capacity",
-   "importance": 0.0061
+   "feature": "log_gross",
+   "importance": 0.0085
+  },
+  {
+   "feature": "log_gross_l1",
+   "importance": 0.0079
   },
   {
    "feature": "log_gross_l2",
-   "importance": 0.0057
-  },
-  {
-   "feature": "weeks_since_tony",
-   "importance": 0.0042
+   "importance": 0.0055
   }
  ],
  "features": [
@@ -136,7 +136,7 @@
   "weeks_since_tony"
  ],
  "trainingRows": {
-  "gross": 51922,
-  "closing": 53439
+  "gross": 51943,
+  "closing": 53450
  }
 }

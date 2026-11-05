@@ -235,7 +235,7 @@ function renderVenueChart(productions) {
   chart.replaceChildren(...buttons, axis);
 }
 
-function renderComparison(containerId, values, maximum, color, scaleLabels) {
+function renderComparison(containerId, values, maximum, scaleLabels) {
   const chart = document.querySelector(`#${containerId}`);
   const scale = createElement("div", undefined, "comparison-scale");
   scaleLabels.forEach((label) => scale.appendChild(createElement("span", label)));
@@ -246,7 +246,7 @@ function renderComparison(containerId, values, maximum, color, scaleLabels) {
     const value = createElement("strong", item.display);
     const bar = createElement("i");
     bar.style.height = `${Math.max(0, Math.min((item.value / maximum) * 100, 100))}%`;
-    bar.style.background = color;
+    bar.style.background = item.color;
     const label = createElement("span", item.label.replace(" weeks ", " weeks\n"));
     column.append(value, bar, label);
     bars.appendChild(column);
@@ -404,21 +404,19 @@ function renderDashboard() {
   renderComparison(
     "gross-comparison",
     [
-      { label: "4 weeks before", value: before.averageGross || 0, display: formatMillions(before.averageGross) },
-      { label: "4 weeks after", value: after.averageGross || 0, display: formatMillions(after.averageGross) }
+      { label: "4 weeks before", value: before.averageGross || 0, display: formatMillions(before.averageGross), color: "var(--data-3)" },
+      { label: "4 weeks after", value: after.averageGross || 0, display: formatMillions(after.averageGross), color: "var(--data-1)" }
     ],
     grossScale,
-    "#db9148",
     [formatCompact(grossScale, true), formatCompact(grossScale / 2, true), "$0"]
   );
   renderComparison(
     "capacity-comparison",
     [
-      { label: "4 weeks before", value: before.capacity || 0, display: formatPercent(before.capacity) },
-      { label: "4 weeks after", value: after.capacity || 0, display: formatPercent(after.capacity) }
+      { label: "4 weeks before", value: before.capacity || 0, display: formatPercent(before.capacity), color: "var(--data-3)" },
+      { label: "4 weeks after", value: after.capacity || 0, display: formatPercent(after.capacity), color: "var(--data-1)" }
     ],
     1,
-    "#65a29a",
     ["100%", "50%", "0%"]
   );
 
@@ -428,6 +426,8 @@ function renderDashboard() {
 
   setText("gross-change", formatPercent(grossChange, true));
   setText("capacity-change", formatPercent(capacityChange, true));
+  document.querySelector("#gross-change")?.parentElement?.classList.toggle("is-negative", grossChange < 0);
+  document.querySelector("#capacity-change")?.parentElement?.classList.toggle("is-negative", capacityChange < 0);
   setText("total-gross", formatCompact(totals.gross, true));
   setText("tony-wins", awards.wins.toLocaleString("en-US"));
   setText("total-seats", formatCompact(totals.seats));

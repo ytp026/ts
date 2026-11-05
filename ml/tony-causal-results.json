@@ -1,13 +1,13 @@
 {
  "dataThrough": "2026-10-25",
- "trainingSnapshot": "grosses_snapshot_20261101.csv",
+ "trainingSnapshot": "grosses_snapshot_20261102.csv",
  "question": "How much does winning a Tony production award (Best Musical, Play or Revival) change weekly gross, versus nominees that lost?",
  "interpretation": {
   "label": "association",
-  "checksPass": true,
-  "preWeeksMeanPercent": -3.99,
-  "postWeeksMeanPercent": 22.1,
-  "summary": "Winning is associated with 30.8% higher weekly gross in weeks 1-8 (95% CI 19.6% to 43.1%) relative to same-season losing nominees. Pre-trend joint test p = 0.39; placebo ceremony +3.6% (95% CI -4.9% to 13.0%). These checks are consistent with a causal effect under parallel trends, but winners' grosses were already rising relative to losing nominees in the four weeks before the ceremony (about 4% below their week-0 level), and winners are often the frontrunners, so this is reported as an association, not a clean causal estimate."
+  "checksPass": false,
+  "preWeeksMeanPercent": -4.4,
+  "postWeeksMeanPercent": 11.36,
+  "summary": "Winning is associated with 21.4% higher weekly gross in weeks 1-8 (95% CI 16.4% to 26.6%) relative to same-season losing nominees. Pre-trend joint test p = 0.00; placebo ceremony +8.3% (95% CI 3.0% to 13.8%). The design checks do not fully support a causal reading, but winners' grosses were already rising relative to losing nominees in the four weeks before the ceremony (about 4% below their week-0 level), and winners are often the frontrunners, so this is reported as an association, not a clean causal estimate."
  },
  "design": {
   "treated": "Production-category Tony winners running on Tony night",
@@ -25,200 +25,200 @@
   "placebo": "Fake ceremony 8 weeks early (weeks -7..0 vs -15..-8)"
  },
  "sample": {
-  "productionNominationsSince1986": 278,
-  "matchedRunningOnTonyNight": 220,
-  "analyzed": 188,
-  "winners": 121,
-  "losingNominees": 67,
+  "productionNominationsSince1986": 589,
+  "matchedRunningOnTonyNight": 435,
+  "analyzed": 348,
+  "winners": 119,
+  "losingNominees": 229,
   "ceremonies": 39,
   "firstCeremony": 1986,
   "lastCeremony": 2026
  },
  "rawDifferenceInDifferences": {
-  "winnersLogGrossChange": 0.20705,
-  "losersLogGrossChange": -0.002478
+  "winnersLogGrossChange": 0.2021,
+  "losersLogGrossChange": 0.043896
  },
  "effects": {
   "weeklyGross": {
-   "estimate": 0.268539,
-   "se": 0.045686,
+   "estimate": 0.193617,
+   "se": 0.02153,
    "ci95": [
-    0.178995,
-    0.358082
+    0.151418,
+    0.235815
    ],
    "bootstrapCi95": [
-    0.177054,
-    0.362945
+    0.150124,
+    0.238781
    ],
    "pValue": 0.0,
-   "n": 188,
-   "treated": 121,
-   "percent": 30.81,
+   "n": 348,
+   "treated": 119,
+   "percent": 21.36,
    "percentCi95": [
-    19.6,
-    43.06
+    16.35,
+    26.59
    ]
   },
   "capacityPoints": {
-   "estimate": 7.576997,
-   "se": 1.457791,
+   "estimate": 5.846977,
+   "se": 0.870672,
    "ci95": [
-    4.71978,
-    10.434214
+    4.140491,
+    7.553462
    ],
    "bootstrapCi95": [
-    4.591524,
-    10.567192
+    4.02906,
+    7.64249
    ],
    "pValue": 0.0,
-   "n": 188,
-   "treated": 121
+   "n": 348,
+   "treated": 119
   },
   "closedWithin26Weeks": {
-   "estimate": -0.021836,
-   "se": 0.09091,
+   "estimate": -0.148182,
+   "se": 0.046182,
    "ci95": [
-    -0.200016,
-    0.156345
+    -0.238697,
+    -0.057667
    ],
    "bootstrapCi95": [
-    -0.207367,
-    0.160486
+    -0.246018,
+    -0.054525
    ],
-   "pValue": 0.810183,
-   "n": 178,
-   "treated": 118
+   "pValue": 0.001334,
+   "n": 338,
+   "treated": 116
   },
   "placeboWeeklyGross": {
-   "estimate": 0.035826,
-   "se": 0.043884,
+   "estimate": 0.079564,
+   "se": 0.025592,
    "ci95": [
-    -0.050185,
-    0.121836
+    0.029405,
+    0.129724
    ],
    "bootstrapCi95": [
-    -0.048912,
-    0.131419
+    0.030021,
+    0.133426
    ],
-   "pValue": 0.414285,
-   "n": 178,
-   "treated": 107,
-   "percent": 3.65,
+   "pValue": 0.001877,
+   "n": 338,
+   "treated": 105,
+   "percent": 8.28,
    "percentCi95": [
-    -4.89,
-    12.96
+    2.98,
+    13.85
    ]
   },
   "byType": {
    "musicals": {
-    "estimate": 0.223363,
-    "se": 0.055669,
+    "estimate": 0.132562,
+    "se": 0.025783,
     "ci95": [
-     0.114254,
-     0.332472
+     0.082029,
+     0.183095
     ],
     "bootstrapCi95": [
-     0.122416,
-     0.346045
+     0.081121,
+     0.184744
     ],
-    "pValue": 6e-05,
-    "n": 115,
-    "treated": 69,
-    "percent": 25.03,
+    "pValue": 0.0,
+    "n": 203,
+    "treated": 67,
+    "percent": 14.17,
     "percentCi95": [
-     12.1,
-     39.44
+     8.55,
+     20.09
     ]
    },
    "plays": {
-    "estimate": 0.316486,
-    "se": 0.125189,
+    "estimate": 0.298026,
+    "se": 0.043574,
     "ci95": [
-     0.07112,
-     0.561852
+     0.212623,
+     0.383429
     ],
     "bootstrapCi95": [
-     0.082193,
-     0.67072
+     0.204666,
+     0.391915
     ],
-    "pValue": 0.011469,
-    "n": 73,
+    "pValue": 0.0,
+    "n": 145,
     "treated": 52,
-    "percent": 37.23,
+    "percent": 34.72,
     "percentCi95": [
-     7.37,
-     75.39
+     23.69,
+     46.73
     ]
    }
   }
  },
  "eventStudy": {
   "outcome": "log weekly gross",
-  "units": 188,
-  "preTrendJointPValue": 0.389905,
+  "units": 348,
+  "preTrendJointPValue": 0.000884,
   "coefficients": [
    {
     "week": -8,
-    "estimate": -0.075042,
+    "estimate": -0.077026,
     "ci95": [
-     -0.222773,
-     0.072689
+     -0.16611,
+     0.012058
     ]
    },
    {
     "week": -7,
-    "estimate": -0.100344,
+    "estimate": -0.087969,
     "ci95": [
-     -0.234842,
-     0.034153
+     -0.162016,
+     -0.013922
     ]
    },
    {
     "week": -6,
-    "estimate": -0.053871,
+    "estimate": -0.07101,
     "ci95": [
-     -0.158525,
-     0.050783
+     -0.137255,
+     -0.004764
     ]
    },
    {
     "week": -5,
-    "estimate": -0.036274,
+    "estimate": -0.039843,
     "ci95": [
-     -0.131869,
-     0.059322
+     -0.090598,
+     0.010912
     ]
    },
    {
     "week": -4,
-    "estimate": -0.055438,
+    "estimate": -0.062295,
     "ci95": [
-     -0.120359,
-     0.009483
+     -0.098488,
+     -0.026103
     ]
    },
    {
     "week": -3,
-    "estimate": -0.044692,
+    "estimate": -0.04886,
     "ci95": [
-     -0.100376,
-     0.010991
+     -0.077342,
+     -0.020378
     ]
    },
    {
     "week": -2,
-    "estimate": -0.055632,
+    "estimate": -0.052275,
     "ci95": [
-     -0.112208,
-     0.000943
+     -0.080331,
+     -0.024219
     ]
    },
    {
     "week": -1,
-    "estimate": -0.007022,
+    "estimate": -0.016634,
     "ci95": [
-     -0.04076,
-     0.026715
+     -0.039054,
+     0.005786
     ]
    },
    {
@@ -231,106 +231,1876 @@
    },
    {
     "week": 1,
-    "estimate": 0.101613,
+    "estimate": 0.052387,
     "ci95": [
-     0.05803,
-     0.145196
+     0.024634,
+     0.08014
     ]
    },
    {
     "week": 2,
-    "estimate": 0.130966,
+    "estimate": 0.073876,
     "ci95": [
-     0.066393,
-     0.195539
+     0.038755,
+     0.108997
     ]
    },
    {
     "week": 3,
-    "estimate": 0.200877,
+    "estimate": 0.091147,
     "ci95": [
-     0.085471,
-     0.316283
+     0.040904,
+     0.141391
     ]
    },
    {
     "week": 4,
-    "estimate": 0.227726,
+    "estimate": 0.134626,
     "ci95": [
-     0.114449,
-     0.341002
+     0.08312,
+     0.186132
     ]
    },
    {
     "week": 5,
-    "estimate": 0.232011,
+    "estimate": 0.133326,
     "ci95": [
-     0.126826,
-     0.337195
+     0.086495,
+     0.180157
     ]
    },
    {
     "week": 6,
-    "estimate": 0.23562,
+    "estimate": 0.126072,
     "ci95": [
-     0.125988,
-     0.345251
+     0.078963,
+     0.173182
     ]
    },
    {
     "week": 7,
-    "estimate": 0.245937,
+    "estimate": 0.126606,
     "ci95": [
-     0.128156,
-     0.363718
+     0.074776,
+     0.178437
     ]
    },
    {
     "week": 8,
-    "estimate": 0.222736,
+    "estimate": 0.122653,
     "ci95": [
-     0.078419,
-     0.367053
+     0.065307,
+     0.179999
     ]
    },
    {
     "week": 9,
-    "estimate": 0.183343,
+    "estimate": 0.093901,
     "ci95": [
-     0.090895,
-     0.27579
+     0.041207,
+     0.146596
     ]
    },
    {
     "week": 10,
-    "estimate": 0.208632,
+    "estimate": 0.110386,
     "ci95": [
-     0.107568,
-     0.309696
+     0.058143,
+     0.162629
     ]
    },
    {
     "week": 11,
-    "estimate": 0.179088,
+    "estimate": 0.098442,
     "ci95": [
-     0.069561,
-     0.288615
+     0.042565,
+     0.154319
     ]
    },
    {
     "week": 12,
-    "estimate": 0.184795,
+    "estimate": 0.093983,
     "ci95": [
-     0.086142,
-     0.283447
+     0.038072,
+     0.149893
     ]
    }
   ]
  },
+ "nomination": {
+  "question": "Do shows nominated for Best Musical, Play or Revival gain more between the nomination announcement and Tony night than same-season shows that were not nominated?",
+  "design": {
+   "treated": "New-this-season productions nominated in a production category",
+   "control": "New-this-season productions running in nomination week with no Tony nomination in any category",
+   "estimator": "Change in mean log weekly gross from the 4 weeks before the announcement week to the weeks after it, up to Tony night; OLS with year fixed effects and pre-period gross, capacity and run age",
+   "placebo": "Fake announcement 5 weeks early (weeks -4..-1 vs -9..-6)",
+   "dates": "14 announcement dates verified from Wikipedia; other years assume the median gap of 5 weeks before the ceremony week",
+   "newThisSeason": "Run began within 52 weeks of the announcement"
+  },
+  "sample": {
+   "analyzed": 521,
+   "nominated": 406,
+   "notNominated": 115,
+   "seasons": 39,
+   "verifiedDateSeasons": 14,
+   "medianWeeksFromNominationToTony": 5
+  },
+  "effects": {
+   "weeklyGross": {
+    "estimate": 0.171388,
+    "se": 0.026584,
+    "ci95": [
+     0.119284,
+     0.223493
+    ],
+    "bootstrapCi95": [
+     0.117553,
+     0.219517
+    ],
+    "pValue": 0.0,
+    "n": 521,
+    "treated": 406,
+    "percent": 18.7,
+    "percentCi95": [
+     12.67,
+     25.04
+    ]
+   },
+   "placeboWeeklyGross": {
+    "estimate": 0.076699,
+    "se": 0.039539,
+    "ci95": [
+     -0.000796,
+     0.154194
+    ],
+    "bootstrapCi95": [
+     0.00126,
+     0.160816
+    ],
+    "pValue": 0.052401,
+    "n": 338,
+    "treated": 257,
+    "percent": 7.97,
+    "percentCi95": [
+     -0.08,
+     16.67
+    ]
+   },
+   "verifiedDatesOnly": {
+    "estimate": 0.130429,
+    "se": 0.037245,
+    "ci95": [
+     0.05743,
+     0.203428
+    ],
+    "bootstrapCi95": [
+     0.056909,
+     0.203835
+    ],
+    "pValue": 0.000462,
+    "n": 212,
+    "treated": 171,
+    "percent": 13.93,
+    "percentCi95": [
+     5.91,
+     22.56
+    ]
+   }
+  },
+  "lifecycle": {
+   "notNominated": {
+    "shows": 150,
+    "beforeNomination": 100.0,
+    "afterNomination": 97.2,
+    "afterNominationShows": 115,
+    "afterNominationSpread": {
+     "p10": 70.9,
+     "p25": 86.6,
+     "p50": 97.2,
+     "p75": 110.5,
+     "p90": 130.0
+    },
+    "afterTony": 90.2,
+    "afterTonyShows": 79,
+    "afterTonySpread": {
+     "p10": 68.3,
+     "p25": 80.6,
+     "p50": 90.2,
+     "p75": 106.1,
+     "p90": 137.2
+    }
+   },
+   "nominatedLost": {
+    "shows": 292,
+    "beforeNomination": 100.0,
+    "afterNomination": 114.0,
+    "afterNominationShows": 282,
+    "afterNominationSpread": {
+     "p10": 80.9,
+     "p25": 96.8,
+     "p50": 114.0,
+     "p75": 135.8,
+     "p90": 157.9
+    },
+    "afterTony": 118.1,
+    "afterTonyShows": 228,
+    "afterTonySpread": {
+     "p10": 80.4,
+     "p25": 102.0,
+     "p50": 118.1,
+     "p75": 141.5,
+     "p90": 176.8
+    }
+   },
+   "won": {
+    "shows": 125,
+    "beforeNomination": 100.0,
+    "afterNomination": 122.3,
+    "afterNominationShows": 124,
+    "afterNominationSpread": {
+     "p10": 95.2,
+     "p25": 108.4,
+     "p50": 122.3,
+     "p75": 147.2,
+     "p90": 167.9
+    },
+    "afterTony": 145.5,
+    "afterTonyShows": 118,
+    "afterTonySpread": {
+     "p10": 103.4,
+     "p25": 118.1,
+     "p50": 145.5,
+     "p75": 169.5,
+     "p90": 208.5
+    }
+   }
+  },
+  "runLength": {
+   "groups": {
+    "notNominated": {
+     "shows": 91,
+     "stillOpen": 1,
+     "medianWeeksAfterTony": 8,
+     "curve": [
+      97.8,
+      86.8,
+      82.4,
+      71.4,
+      61.5,
+      59.3,
+      54.9,
+      52.7,
+      46.2,
+      44.0,
+      42.9,
+      41.8,
+      40.7,
+      39.6,
+      38.5,
+      38.5,
+      37.4,
+      36.3,
+      36.3,
+      35.2,
+      35.2,
+      35.2,
+      35.2,
+      34.1,
+      34.1,
+      33.0,
+      33.0,
+      31.9,
+      31.9,
+      30.8,
+      26.4,
+      23.1,
+      23.1,
+      23.1,
+      23.1,
+      23.1,
+      23.1,
+      23.1,
+      23.1,
+      22.0,
+      22.0,
+      22.0,
+      20.9,
+      20.9,
+      18.7,
+      18.7,
+      17.6,
+      17.6,
+      17.6,
+      17.6,
+      17.6,
+      16.5,
+      16.5,
+      16.5,
+      16.5,
+      15.4,
+      15.4,
+      15.4,
+      15.4,
+      15.4,
+      14.3,
+      14.3,
+      14.3,
+      13.2,
+      12.1,
+      12.1,
+      12.1,
+      12.1,
+      11.0,
+      11.0,
+      11.0,
+      11.0,
+      11.0,
+      11.0,
+      11.0,
+      11.0,
+      9.9,
+      9.9,
+      9.9,
+      9.9,
+      9.9,
+      9.9,
+      9.9,
+      9.9,
+      7.7,
+      7.7,
+      7.7,
+      7.7,
+      7.7,
+      7.7,
+      7.7,
+      7.7,
+      7.7,
+      7.7,
+      7.7,
+      7.7,
+      7.7,
+      7.7,
+      7.7,
+      7.7,
+      7.7,
+      7.7,
+      7.7,
+      7.7,
+      7.7
+     ],
+     "stillRunning": {
+      "13": 39.6,
+      "26": 33.0,
+      "52": 16.5
+     }
+    },
+    "nominatedLost": {
+     "shows": 270,
+     "stillOpen": 12,
+     "medianWeeksAfterTony": 12,
+     "curve": [
+      97.4,
+      84.4,
+      78.5,
+      72.2,
+      67.8,
+      64.1,
+      61.5,
+      58.5,
+      57.0,
+      55.6,
+      53.3,
+      52.2,
+      48.5,
+      45.6,
+      44.1,
+      43.0,
+      43.0,
+      43.0,
+      42.6,
+      42.6,
+      42.2,
+      42.2,
+      41.8,
+      41.8,
+      41.8,
+      41.0,
+      40.7,
+      40.7,
+      40.7,
+      37.5,
+      33.6,
+      32.1,
+      31.3,
+      30.5,
+      29.7,
+      29.7,
+      29.7,
+      29.3,
+      29.3,
+      28.1,
+      27.8,
+      27.8,
+      27.8,
+      27.8,
+      27.8,
+      27.4,
+      27.0,
+      26.6,
+      26.6,
+      26.2,
+      26.2,
+      25.4,
+      25.0,
+      24.2,
+      23.8,
+      23.1,
+      21.5,
+      21.5,
+      20.7,
+      20.7,
+      20.3,
+      20.3,
+      19.9,
+      19.5,
+      19.5,
+      18.4,
+      17.6,
+      17.2,
+      17.2,
+      17.2,
+      16.8,
+      16.8,
+      16.8,
+      16.8,
+      16.8,
+      16.8,
+      16.8,
+      16.8,
+      16.8,
+      16.8,
+      16.8,
+      16.4,
+      14.7,
+      13.0,
+      12.2,
+      11.8,
+      11.8,
+      11.8,
+      11.3,
+      10.9,
+      10.9,
+      10.1,
+      10.1,
+      10.1,
+      10.1,
+      10.1,
+      10.1,
+      10.1,
+      10.1,
+      10.1,
+      10.1,
+      10.1,
+      10.1,
+      10.1,
+      10.1
+     ],
+     "stillRunning": {
+      "13": 45.6,
+      "26": 40.7,
+      "52": 25.0
+     }
+    },
+    "won": {
+     "shows": 122,
+     "stillOpen": 11,
+     "medianWeeksAfterTony": 52,
+     "curve": [
+      98.4,
+      96.7,
+      92.6,
+      88.5,
+      86.1,
+      84.4,
+      83.6,
+      82.8,
+      81.1,
+      81.1,
+      80.3,
+      79.5,
+      76.2,
+      75.4,
+      75.4,
+      73.8,
+      73.0,
+      72.1,
+      72.1,
+      72.1,
+      72.1,
+      69.6,
+      68.7,
+      68.7,
+      68.7,
+      68.7,
+      68.7,
+      67.0,
+      66.2,
+      65.3,
+      59.4,
+      56.0,
+      55.2,
+      54.3,
+      54.3,
+      54.3,
+      54.3,
+      54.3,
+      54.3,
+      54.3,
+      54.3,
+      54.3,
+      54.3,
+      53.5,
+      53.5,
+      53.5,
+      51.8,
+      51.8,
+      51.8,
+      51.8,
+      50.1,
+      50.1,
+      49.2,
+      49.2,
+      48.4,
+      45.8,
+      42.4,
+      42.4,
+      42.4,
+      42.4,
+      42.4,
+      41.6,
+      41.6,
+      40.7,
+      40.7,
+      39.0,
+      37.3,
+      37.3,
+      37.3,
+      37.3,
+      37.3,
+      37.3,
+      37.3,
+      37.3,
+      37.3,
+      37.3,
+      37.3,
+      37.3,
+      37.3,
+      37.3,
+      37.3,
+      37.3,
+      34.7,
+      32.1,
+      31.3,
+      29.5,
+      28.7,
+      28.7,
+      28.7,
+      28.7,
+      27.8,
+      27.8,
+      27.8,
+      27.8,
+      26.9,
+      26.1,
+      26.1,
+      26.1,
+      26.1,
+      26.1,
+      26.1,
+      26.1,
+      26.1,
+      26.1,
+      26.1
+     ],
+     "stillRunning": {
+      "13": 75.4,
+      "26": 68.7,
+      "52": 49.2
+     }
+    }
+   },
+   "horizons": [
+    13,
+    26,
+    52
+   ],
+   "logRankP": {
+    "allGroups": 0.0,
+    "wonVsLost": 0.0,
+    "lostVsNotNominated": 0.135211
+   },
+   "regression": {
+    "13": {
+     "n": 483,
+     "nominatedLost": {
+      "points": 12.4,
+      "ci95": [
+       0.8,
+       24.0
+      ],
+      "pValue": 0.0364
+     },
+     "won": {
+      "points": 30.0,
+      "ci95": [
+       17.2,
+       42.8
+      ],
+      "pValue": 0.0
+     }
+    },
+    "26": {
+     "n": 474,
+     "nominatedLost": {
+      "points": 9.5,
+      "ci95": [
+       -1.5,
+       20.6
+      ],
+      "pValue": 0.0919
+     },
+     "won": {
+      "points": 28.2,
+      "ci95": [
+       15.6,
+       40.8
+      ],
+      "pValue": 0.0
+     }
+    },
+    "52": {
+     "n": 474,
+     "nominatedLost": {
+      "points": 12.3,
+      "ci95": [
+       3.0,
+       21.6
+      ],
+      "pValue": 0.0097
+     },
+     "won": {
+      "points": 27.7,
+      "ci95": [
+       16.3,
+       39.0
+      ],
+      "pValue": 0.0
+     }
+    }
+   },
+   "winnersVsLosers": {
+    "13": {
+     "n": 392,
+     "won": {
+      "points": 22.4,
+      "ci95": [
+       13.5,
+       31.3
+      ],
+      "pValue": 0.0
+     }
+    },
+    "26": {
+     "n": 383,
+     "won": {
+      "points": 24.3,
+      "ci95": [
+       15.5,
+       33.0
+      ],
+      "pValue": 0.0
+     }
+    },
+    "52": {
+     "n": 383,
+     "won": {
+      "points": 19.5,
+      "ci95": [
+       11.1,
+       28.0
+      ],
+      "pValue": 0.0
+     }
+    }
+   },
+   "playsOnly": {
+    "13": {
+     "n": 176,
+     "won": {
+      "points": 29.7,
+      "ci95": [
+       13.9,
+       45.4
+      ],
+      "pValue": 0.0002
+     }
+    },
+    "26": {
+     "n": 174,
+     "won": {
+      "points": 27.4,
+      "ci95": [
+       13.3,
+       41.6
+      ],
+      "pValue": 0.0001
+     }
+    },
+    "52": {
+     "n": 174,
+     "won": {
+      "points": 15.8,
+      "ci95": [
+       5.0,
+       26.6
+      ],
+      "pValue": 0.0042
+     }
+    }
+   },
+   "method": "Kaplan-Meier curves of weeks running after Tony night (shows still open are censored), log-rank tests, and linear regressions of 'still running after H weeks' on Tony outcome with pre-nomination gross and capacity, weeks already running on Tony night and season fixed effects; HC1 CIs."
+  }
+ },
+ "categories": {
+  "question": "Does the Tony category matter? Production awards (Best Musical, Play, Revival), acting, and creative/design awards are compared, and acting is split into Actor vs Actress categories.",
+  "groups": {
+   "production": "Best Musical, Best Play, Best Revival",
+   "acting": "Lead and featured Actor/Actress, play and musical",
+   "creative": "Direction, choreography, score, book, orchestrations and scenic/costume/lighting/sound design"
+  },
+  "sample": {
+   "shows": 787,
+   "seasons": 39,
+   "nominationPeriod": 677,
+   "afterTony": 526,
+   "runLength": 605
+  },
+  "byGroup": {
+   "nominationSales": {
+    "n": 677,
+    "nom_production": {
+     "percent": 7.3,
+     "percentCi95": [
+      3.2,
+      11.7
+     ],
+     "pValue": 0.0004,
+     "shows": 406,
+     "doubleML": {
+      "percent": 9.9,
+      "percentCi95": [
+       5.7,
+       14.2
+      ],
+      "pValue": 0.0
+     }
+    },
+    "nom_acting": {
+     "percent": 4.0,
+     "percentCi95": [
+      -0.9,
+      9.2
+     ],
+     "pValue": 0.1105,
+     "shows": 504,
+     "doubleML": {
+      "percent": 2.9,
+      "percentCi95": [
+       -1.6,
+       7.7
+      ],
+      "pValue": 0.2137
+     }
+    },
+    "nom_creative": {
+     "percent": 12.4,
+     "percentCi95": [
+      7.4,
+      17.6
+     ],
+     "pValue": 0.0,
+     "shows": 411,
+     "doubleML": {
+      "percent": 9.3,
+      "percentCi95": [
+       4.9,
+       13.8
+      ],
+      "pValue": 0.0
+     }
+    },
+    "nom_production_vs_nom_acting_p": 0.3686,
+    "nom_production_vs_nom_acting_p_doubleML": 0.0708,
+    "nom_production_vs_nom_creative_p": 0.2069,
+    "nom_production_vs_nom_creative_p_doubleML": 0.8705,
+    "nom_acting_vs_nom_creative_p": 0.0507,
+    "nom_acting_vs_nom_creative_p_doubleML": 0.0887
+   },
+   "afterTonySales": {
+    "n": 526,
+    "nom_production": {
+     "percent": 6.1,
+     "percentCi95": [
+      1.0,
+      11.5
+     ],
+     "pValue": 0.0195,
+     "shows": 343,
+     "doubleML": {
+      "percent": 5.3,
+      "percentCi95": [
+       0.8,
+       10.0
+      ],
+      "pValue": 0.0218
+     }
+    },
+    "nom_acting": {
+     "percent": -4.2,
+     "percentCi95": [
+      -9.5,
+      1.4
+     ],
+     "pValue": 0.1366,
+     "shows": 402,
+     "doubleML": {
+      "percent": -3.1,
+      "percentCi95": [
+       -8.1,
+       2.1
+      ],
+      "pValue": 0.2332
+     }
+    },
+    "nom_creative": {
+     "percent": 7.1,
+     "percentCi95": [
+      1.5,
+      12.9
+     ],
+     "pValue": 0.0117,
+     "shows": 352,
+     "doubleML": {
+      "percent": 7.5,
+      "percentCi95": [
+       2.1,
+       13.1
+      ],
+      "pValue": 0.0057
+     }
+    },
+    "won_production": {
+     "percent": 13.3,
+     "percentCi95": [
+      8.0,
+      18.9
+     ],
+     "pValue": 0.0,
+     "shows": 118,
+     "doubleML": {
+      "percent": 10.5,
+      "percentCi95": [
+       5.5,
+       15.8
+      ],
+      "pValue": 0.0
+     }
+    },
+    "won_acting": {
+     "percent": 5.7,
+     "percentCi95": [
+      1.3,
+      10.4
+     ],
+     "pValue": 0.0113,
+     "shows": 177,
+     "doubleML": {
+      "percent": 8.0,
+      "percentCi95": [
+       3.1,
+       13.2
+      ],
+      "pValue": 0.0012
+     }
+    },
+    "won_creative": {
+     "percent": 5.1,
+     "percentCi95": [
+      0.5,
+      9.9
+     ],
+     "pValue": 0.0307,
+     "shows": 158,
+     "doubleML": {
+      "percent": 4.7,
+      "percentCi95": [
+       0.4,
+       9.2
+      ],
+      "pValue": 0.0309
+     }
+    },
+    "won_production_vs_won_acting_p": 0.0609,
+    "won_production_vs_won_acting_p_doubleML": 0.5521,
+    "won_production_vs_won_creative_p": 0.0543,
+    "won_production_vs_won_creative_p_doubleML": 0.1504,
+    "won_acting_vs_won_creative_p": 0.848,
+    "won_acting_vs_won_creative_p_doubleML": 0.3225
+   },
+   "stillOpen26": {
+    "n": 605,
+    "nom_production": {
+     "points": 5.4,
+     "pointsCi95": [
+      -3.2,
+      14.0
+     ],
+     "pValue": 0.2169,
+     "shows": 383,
+     "doubleML": {
+      "points": 7.5,
+      "pointsCi95": [
+       -0.5,
+       15.5
+      ],
+      "pValue": 0.0657
+     }
+    },
+    "nom_acting": {
+     "points": -10.2,
+     "pointsCi95": [
+      -20.0,
+      -0.5
+     ],
+     "pValue": 0.0398,
+     "shows": 464,
+     "doubleML": {
+      "points": -11.3,
+      "pointsCi95": [
+       -20.1,
+       -2.5
+      ],
+      "pValue": 0.0121
+     }
+    },
+    "nom_creative": {
+     "points": 15.9,
+     "pointsCi95": [
+      7.3,
+      24.5
+     ],
+     "pValue": 0.0003,
+     "shows": 387,
+     "doubleML": {
+      "points": 12.6,
+      "pointsCi95": [
+       4.1,
+       21.2
+      ],
+      "pValue": 0.0038
+     }
+    },
+    "won_production": {
+     "points": 6.2,
+     "pointsCi95": [
+      -4.9,
+      17.2
+     ],
+     "pValue": 0.275,
+     "shows": 119,
+     "doubleML": {
+      "points": 9.6,
+      "pointsCi95": [
+       -0.9,
+       20.1
+      ],
+      "pValue": 0.0733
+     }
+    },
+    "won_acting": {
+     "points": 6.3,
+     "pointsCi95": [
+      -3.3,
+      16.0
+     ],
+     "pValue": 0.2006,
+     "shows": 180,
+     "doubleML": {
+      "points": 5.3,
+      "pointsCi95": [
+       -3.9,
+       14.5
+      ],
+      "pValue": 0.2556
+     }
+    },
+    "won_creative": {
+     "points": 22.6,
+     "pointsCi95": [
+      12.2,
+      33.0
+     ],
+     "pValue": 0.0,
+     "shows": 160,
+     "doubleML": {
+      "points": 20.5,
+      "pointsCi95": [
+       10.6,
+       30.4
+      ],
+      "pValue": 0.0001
+     }
+    },
+    "won_production_vs_won_acting_p": 0.9871,
+    "won_production_vs_won_acting_p_doubleML": 0.5452,
+    "won_production_vs_won_creative_p": 0.0688,
+    "won_production_vs_won_creative_p_doubleML": 0.2472,
+    "won_acting_vs_won_creative_p": 0.0298,
+    "won_acting_vs_won_creative_p_doubleML": 0.053
+   },
+   "boxes": {
+    "nominationSales": [
+     {
+      "group": "none",
+      "status": "none",
+      "shows": 118,
+      "p10": -22.3,
+      "p25": -14.8,
+      "p50": -1.0,
+      "p75": 10.0,
+      "p90": 25.1
+     },
+     {
+      "group": "production",
+      "status": "nominated",
+      "shows": 406,
+      "p10": -12.4,
+      "p25": -1.3,
+      "p50": 9.8,
+      "p75": 27.0,
+      "p90": 56.8
+     },
+     {
+      "group": "acting",
+      "status": "nominated",
+      "shows": 504,
+      "p10": -13.8,
+      "p25": -2.2,
+      "p50": 7.5,
+      "p75": 25.4,
+      "p90": 48.8
+     },
+     {
+      "group": "creative",
+      "status": "nominated",
+      "shows": 411,
+      "p10": -11.0,
+      "p25": -0.9,
+      "p50": 10.0,
+      "p75": 28.2,
+      "p90": 56.8
+     }
+    ],
+    "afterTonySales": [
+     {
+      "group": "none",
+      "status": "none",
+      "shows": 83,
+      "p10": -23.9,
+      "p25": -14.3,
+      "p50": -1.0,
+      "p75": 9.4,
+      "p90": 25.1
+     },
+     {
+      "group": "production",
+      "status": "lost",
+      "shows": 225,
+      "p10": -17.0,
+      "p25": -7.7,
+      "p50": 5.9,
+      "p75": 18.4,
+      "p90": 35.2
+     },
+     {
+      "group": "production",
+      "status": "won",
+      "shows": 118,
+      "p10": 1.6,
+      "p25": 7.1,
+      "p50": 19.8,
+      "p75": 35.6,
+      "p90": 52.5
+     },
+     {
+      "group": "acting",
+      "status": "lost",
+      "shows": 225,
+      "p10": -25.1,
+      "p25": -8.9,
+      "p50": 4.1,
+      "p75": 16.5,
+      "p90": 35.8
+     },
+     {
+      "group": "acting",
+      "status": "won",
+      "shows": 177,
+      "p10": -8.4,
+      "p25": 2.9,
+      "p50": 13.1,
+      "p75": 26.0,
+      "p90": 42.7
+     },
+     {
+      "group": "creative",
+      "status": "lost",
+      "shows": 194,
+      "p10": -20.9,
+      "p25": -8.2,
+      "p50": 6.5,
+      "p75": 17.9,
+      "p90": 35.2
+     },
+     {
+      "group": "creative",
+      "status": "won",
+      "shows": 158,
+      "p10": -5.0,
+      "p25": 2.9,
+      "p50": 14.0,
+      "p75": 27.7,
+      "p90": 47.9
+     }
+    ],
+    "weeksOpen": [
+     {
+      "group": "none",
+      "status": "none",
+      "shows": 93,
+      "p10": 1.0,
+      "p25": 3.0,
+      "p50": 8.0,
+      "p75": 31.0,
+      "p90": 52.0
+     },
+     {
+      "group": "production",
+      "status": "lost",
+      "shows": 264,
+      "p10": 1.0,
+      "p25": 3.0,
+      "p50": 12.0,
+      "p75": 51.0,
+      "p90": 52.0
+     },
+     {
+      "group": "production",
+      "status": "won",
+      "shows": 119,
+      "p10": 3.0,
+      "p25": 14.0,
+      "p50": 50.0,
+      "p75": 52.0,
+      "p90": 52.0
+     },
+     {
+      "group": "acting",
+      "status": "lost",
+      "shows": 284,
+      "p10": 1.0,
+      "p25": 2.0,
+      "p50": 8.0,
+      "p75": 31.0,
+      "p90": 52.0
+     },
+     {
+      "group": "acting",
+      "status": "won",
+      "shows": 180,
+      "p10": 3.0,
+      "p25": 10.0,
+      "p50": 31.5,
+      "p75": 52.0,
+      "p90": 52.0
+     },
+     {
+      "group": "creative",
+      "status": "lost",
+      "shows": 227,
+      "p10": 1.0,
+      "p25": 3.0,
+      "p50": 10.0,
+      "p75": 32.0,
+      "p90": 52.0
+     },
+     {
+      "group": "creative",
+      "status": "won",
+      "shows": 160,
+      "p10": 3.0,
+      "p25": 14.8,
+      "p50": 52.0,
+      "p75": 52.0,
+      "p90": 52.0
+     }
+    ],
+    "weeksCap": 52
+   }
+  },
+  "byGender": {
+   "nominationSales": {
+    "n": 677,
+    "nom_production": {
+     "percent": 5.1,
+     "percentCi95": [
+      0.9,
+      9.3
+     ],
+     "pValue": 0.0153,
+     "shows": 406,
+     "doubleML": {
+      "percent": 7.2,
+      "percentCi95": [
+       2.9,
+       11.8
+      ],
+      "pValue": 0.001
+     }
+    },
+    "nom_creative": {
+     "percent": 10.0,
+     "percentCi95": [
+      5.2,
+      15.0
+     ],
+     "pValue": 0.0,
+     "shows": 411,
+     "doubleML": {
+      "percent": 7.6,
+      "percentCi95": [
+       3.3,
+       12.0
+      ],
+      "pValue": 0.0004
+     }
+    },
+    "nom_actor": {
+     "percent": 5.6,
+     "percentCi95": [
+      1.6,
+      9.7
+     ],
+     "pValue": 0.0054,
+     "shows": 362,
+     "doubleML": {
+      "percent": 5.7,
+      "percentCi95": [
+       1.8,
+       9.7
+      ],
+      "pValue": 0.0037
+     }
+    },
+    "nom_actress": {
+     "percent": 7.8,
+     "percentCi95": [
+      4.1,
+      11.6
+     ],
+     "pValue": 0.0,
+     "shows": 355,
+     "doubleML": {
+      "percent": 5.3,
+      "percentCi95": [
+       1.7,
+       8.9
+      ],
+      "pValue": 0.0031
+     }
+    },
+    "nom_actor_vs_nom_actress_p": 0.3949,
+    "nom_actor_vs_nom_actress_p_doubleML": 0.735
+   },
+   "afterTonySales": {
+    "n": 526,
+    "nom_production": {
+     "percent": 4.6,
+     "percentCi95": [
+      -0.5,
+      9.9
+     ],
+     "pValue": 0.0758,
+     "shows": 343,
+     "doubleML": {
+      "percent": 4.5,
+      "percentCi95": [
+       -0.0,
+       9.3
+      ],
+      "pValue": 0.0506
+     }
+    },
+    "nom_creative": {
+     "percent": 5.3,
+     "percentCi95": [
+      0.0,
+      10.8
+     ],
+     "pValue": 0.0485,
+     "shows": 352,
+     "doubleML": {
+      "percent": 6.1,
+      "percentCi95": [
+       1.0,
+       11.4
+      ],
+      "pValue": 0.0187
+     }
+    },
+    "nom_actor": {
+     "percent": 1.2,
+     "percentCi95": [
+      -3.2,
+      5.7
+     ],
+     "pValue": 0.6032,
+     "shows": 307,
+     "doubleML": {
+      "percent": 1.4,
+      "percentCi95": [
+       -2.6,
+       5.7
+      ],
+      "pValue": 0.4911
+     }
+    },
+    "nom_actress": {
+     "percent": -0.1,
+     "percentCi95": [
+      -4.4,
+      4.4
+     ],
+     "pValue": 0.9728,
+     "shows": 293,
+     "doubleML": {
+      "percent": -0.7,
+      "percentCi95": [
+       -5.0,
+       3.8
+      ],
+      "pValue": 0.756
+     }
+    },
+    "won_production": {
+     "percent": 12.9,
+     "percentCi95": [
+      7.5,
+      18.6
+     ],
+     "pValue": 0.0,
+     "shows": 118,
+     "doubleML": {
+      "percent": 10.7,
+      "percentCi95": [
+       5.7,
+       16.0
+      ],
+      "pValue": 0.0
+     }
+    },
+    "won_creative": {
+     "percent": 5.6,
+     "percentCi95": [
+      0.9,
+      10.5
+     ],
+     "pValue": 0.0184,
+     "shows": 158,
+     "doubleML": {
+      "percent": 5.2,
+      "percentCi95": [
+       0.8,
+       9.8
+      ],
+      "pValue": 0.0189
+     }
+    },
+    "won_actor": {
+     "percent": 4.9,
+     "percentCi95": [
+      0.1,
+      10.0
+     ],
+     "pValue": 0.0449,
+     "shows": 107,
+     "doubleML": {
+      "percent": 5.3,
+      "percentCi95": [
+       0.7,
+       10.2
+      ],
+      "pValue": 0.0249
+     }
+    },
+    "won_actress": {
+     "percent": 2.3,
+     "percentCi95": [
+      -2.5,
+      7.3
+     ],
+     "pValue": 0.355,
+     "shows": 106,
+     "doubleML": {
+      "percent": 4.5,
+      "percentCi95": [
+       -0.9,
+       10.1
+      ],
+      "pValue": 0.1023
+     }
+    },
+    "won_actor_vs_won_actress_p": 0.439,
+    "won_actor_vs_won_actress_p_doubleML": 0.8364
+   },
+   "stillOpen26": {
+    "n": 605,
+    "nom_production": {
+     "points": 4.2,
+     "pointsCi95": [
+      -4.6,
+      13.0
+     ],
+     "pValue": 0.3486,
+     "shows": 383,
+     "doubleML": {
+      "points": 6.3,
+      "pointsCi95": [
+       -1.7,
+       14.4
+      ],
+      "pValue": 0.1239
+     }
+    },
+    "nom_creative": {
+     "points": 14.3,
+     "pointsCi95": [
+      5.7,
+      22.8
+     ],
+     "pValue": 0.0011,
+     "shows": 387,
+     "doubleML": {
+      "points": 11.6,
+      "pointsCi95": [
+       3.6,
+       19.7
+      ],
+      "pValue": 0.0046
+     }
+    },
+    "nom_actor": {
+     "points": -4.5,
+     "pointsCi95": [
+      -13.1,
+      4.0
+     ],
+     "pValue": 0.3013,
+     "shows": 336,
+     "doubleML": {
+      "points": -5.2,
+      "pointsCi95": [
+       -13.1,
+       2.8
+      ],
+      "pValue": 0.2032
+     }
+    },
+    "nom_actress": {
+     "points": 1.7,
+     "pointsCi95": [
+      -6.3,
+      9.6
+     ],
+     "pValue": 0.6811,
+     "shows": 330,
+     "doubleML": {
+      "points": 1.2,
+      "pointsCi95": [
+       -6.1,
+       8.5
+      ],
+      "pValue": 0.7439
+     }
+    },
+    "won_production": {
+     "points": 6.7,
+     "pointsCi95": [
+      -4.6,
+      17.9
+     ],
+     "pValue": 0.2457,
+     "shows": 119,
+     "doubleML": {
+      "points": 9.5,
+      "pointsCi95": [
+       -1.1,
+       20.2
+      ],
+      "pValue": 0.0792
+     }
+    },
+    "won_creative": {
+     "points": 22.7,
+     "pointsCi95": [
+      12.2,
+      33.1
+     ],
+     "pValue": 0.0,
+     "shows": 160,
+     "doubleML": {
+      "points": 20.8,
+      "pointsCi95": [
+       10.7,
+       31.0
+      ],
+      "pValue": 0.0001
+     }
+    },
+    "won_actor": {
+     "points": 1.2,
+     "pointsCi95": [
+      -9.4,
+      11.9
+     ],
+     "pValue": 0.8211,
+     "shows": 109,
+     "doubleML": {
+      "points": 1.1,
+      "pointsCi95": [
+       -10.1,
+       12.3
+      ],
+      "pValue": 0.8454
+     }
+    },
+    "won_actress": {
+     "points": 5.5,
+     "pointsCi95": [
+      -5.8,
+      16.8
+     ],
+     "pValue": 0.3437,
+     "shows": 102,
+     "doubleML": {
+      "points": 5.9,
+      "pointsCi95": [
+       -5.2,
+       16.9
+      ],
+      "pValue": 0.3005
+     }
+    },
+    "won_actor_vs_won_actress_p": 0.593,
+    "won_actor_vs_won_actress_p_doubleML": 0.4345
+   },
+   "afterTonyBox": [
+    {
+     "key": "none",
+     "label": "No acting nomination",
+     "shows": 124,
+     "p10": -24.1,
+     "p25": -14.2,
+     "p50": 0.5,
+     "p75": 11.2,
+     "p90": 29.2
+    },
+    {
+     "key": "actorLost",
+     "label": "Actor nominated, lost",
+     "shows": 200,
+     "p10": -18.7,
+     "p25": -6.6,
+     "p50": 7.1,
+     "p75": 21.5,
+     "p90": 39.2
+    },
+    {
+     "key": "actorWon",
+     "label": "Actor won",
+     "shows": 107,
+     "p10": -7.2,
+     "p25": 3.6,
+     "p50": 13.1,
+     "p75": 27.3,
+     "p90": 44.4
+    },
+    {
+     "key": "actressLost",
+     "label": "Actress nominated, lost",
+     "shows": 187,
+     "p10": -18.8,
+     "p25": -5.7,
+     "p50": 7.1,
+     "p75": 20.8,
+     "p90": 38.5
+    },
+    {
+     "key": "actressWon",
+     "label": "Actress won",
+     "shows": 106,
+     "p10": -10.2,
+     "p25": 2.1,
+     "p50": 11.8,
+     "p75": 23.3,
+     "p90": 40.7
+    }
+   ]
+  },
+  "method": "Shows new this season and running in nomination week. Each outcome is regressed on nominated/won flags for every category group at once, plus pre-period gross, capacity, run age and season, two ways: OLS with year fixed effects (HC1 CIs), and cross-fitted double machine learning (5 folds, median of 3 splits) where gradient boosting removes any non-linear influence of the controls from the outcome and from each flag before the final regression. 'won_' effects are on top of being nominated in that group. Nomination sales: 4 weeks before the announcement vs announcement to Tony night. After-Tony sales: weeks 1-8 vs weeks -7..0. Still open: running 26 weeks after Tony night. Pairwise p-values test whether two groups' effects differ."
+ },
+ "modelComparison": {
+  "won": [
+   {
+    "model": "Linear regression (OLS)",
+    "kind": "linear",
+    "estimate": 0.193617,
+    "se": 0.02153,
+    "ci95": [
+     0.151417,
+     0.235816
+    ],
+    "pValue": 0.0,
+    "n": 348,
+    "percent": 21.36,
+    "percentCi95": [
+     16.35,
+     26.59
+    ],
+    "outcomeR2": -0.179
+   },
+   {
+    "model": "Lasso (double selection)",
+    "kind": "lasso",
+    "estimate": 0.158204,
+    "se": 0.021086,
+    "ci95": [
+     0.116874,
+     0.199533
+    ],
+    "pValue": 0.0,
+    "n": 348,
+    "percent": 17.14,
+    "percentCi95": [
+     12.4,
+     22.08
+    ],
+    "controlsKept": 0,
+    "controlsOffered": 43
+   },
+   {
+    "model": "Gradient boosting (double ML)",
+    "kind": "ml",
+    "estimate": 0.188025,
+    "se": 0.020686,
+    "ci95": [
+     0.14748,
+     0.22857
+    ],
+    "pValue": 0.0,
+    "n": 348,
+    "percent": 20.69,
+    "percentCi95": [
+     15.89,
+     25.68
+    ],
+    "outcomeR2": -0.059
+   },
+   {
+    "model": "Random forest (double ML)",
+    "kind": "ml",
+    "estimate": 0.183659,
+    "se": 0.020541,
+    "ci95": [
+     0.143399,
+     0.223918
+    ],
+    "pValue": 0.0,
+    "n": 348,
+    "percent": 20.16,
+    "percentCi95": [
+     15.42,
+     25.1
+    ],
+    "outcomeR2": -0.006
+   }
+  ],
+  "wonPlacebo": [
+   {
+    "model": "Linear regression (OLS)",
+    "kind": "linear",
+    "estimate": 0.079564,
+    "se": 0.025592,
+    "ci95": [
+     0.029404,
+     0.129725
+    ],
+    "pValue": 0.001877,
+    "n": 338,
+    "percent": 8.28,
+    "percentCi95": [
+     2.98,
+     13.85
+    ],
+    "outcomeR2": 0.259
+   },
+   {
+    "model": "Lasso (double selection)",
+    "kind": "lasso",
+    "estimate": 0.066387,
+    "se": 0.025226,
+    "ci95": [
+     0.016944,
+     0.115831
+    ],
+    "pValue": 0.008497,
+    "n": 338,
+    "percent": 6.86,
+    "percentCi95": [
+     1.71,
+     12.28
+    ],
+    "controlsKept": 6,
+    "controlsOffered": 43
+   },
+   {
+    "model": "Gradient boosting (double ML)",
+    "kind": "ml",
+    "estimate": 0.055381,
+    "se": 0.020265,
+    "ci95": [
+     0.015661,
+     0.095101
+    ],
+    "pValue": 0.00628,
+    "n": 338,
+    "percent": 5.69,
+    "percentCi95": [
+     1.58,
+     9.98
+    ],
+    "outcomeR2": 0.385
+   },
+   {
+    "model": "Random forest (double ML)",
+    "kind": "ml",
+    "estimate": 0.063081,
+    "se": 0.02071,
+    "ci95": [
+     0.02249,
+     0.103672
+    ],
+    "pValue": 0.002319,
+    "n": 338,
+    "percent": 6.51,
+    "percentCi95": [
+     2.27,
+     10.92
+    ],
+    "outcomeR2": 0.428
+   }
+  ],
+  "nominated": [
+   {
+    "model": "Linear regression (OLS)",
+    "kind": "linear",
+    "estimate": 0.171388,
+    "se": 0.026584,
+    "ci95": [
+     0.119283,
+     0.223494
+    ],
+    "pValue": 0.0,
+    "n": 521,
+    "percent": 18.7,
+    "percentCi95": [
+     12.67,
+     25.04
+    ],
+    "outcomeR2": 0.115
+   },
+   {
+    "model": "Lasso (double selection)",
+    "kind": "lasso",
+    "estimate": 0.158175,
+    "se": 0.02533,
+    "ci95": [
+     0.108528,
+     0.207823
+    ],
+    "pValue": 0.0,
+    "n": 521,
+    "percent": 17.14,
+    "percentCi95": [
+     11.46,
+     23.1
+    ],
+    "controlsKept": 5,
+    "controlsOffered": 41
+   },
+   {
+    "model": "Gradient boosting (double ML)",
+    "kind": "ml",
+    "estimate": 0.167057,
+    "se": 0.02619,
+    "ci95": [
+     0.115724,
+     0.218389
+    ],
+    "pValue": 0.0,
+    "n": 521,
+    "percent": 18.18,
+    "percentCi95": [
+     12.27,
+     24.41
+    ],
+    "outcomeR2": 0.132
+   },
+   {
+    "model": "Random forest (double ML)",
+    "kind": "ml",
+    "estimate": 0.165788,
+    "se": 0.026086,
+    "ci95": [
+     0.11466,
+     0.216915
+    ],
+    "pValue": 0.0,
+    "n": 521,
+    "percent": 18.03,
+    "percentCi95": [
+     12.15,
+     24.22
+    ],
+    "outcomeR2": 0.172
+   }
+  ],
+  "method": "The same before/after change is estimated four ways: OLS; post-double-selection lasso (lasso picks controls that predict the outcome or the treatment, then OLS on the union); and cross-fitted double machine learning (5 folds, median of 5 splits) with gradient boosting or random forest nuisance models, which allow non-linear control effects. outcomeR2 is the out-of-fold R2 of the outcome on the controls alone."
+ },
  "limitations": [
   "Winning is not randomly assigned; frontrunners may differ in unobserved buzz. The placebo and pre-trend tests check for diverging trends but cannot rule out all confounding, so the estimate is reported as an association.",
-  "Event-study pre-period coefficients are jointly insignificant but mostly negative, meaning winners were already gaining slightly before the ceremony; part of the post-ceremony gap may be pre-existing momentum.",
-  "Many losing nominees had already closed by Tony night, so the control group is smaller and made of surviving productions.",
+  "Check the reported pre-trend test and placebo confidence intervals before interpreting the post-ceremony gap; pre-existing momentum can violate the parallel-trends assumption.",
+  "Nominees closed by Tony night are excluded, so the comparison concerns surviving productions rather than all nominees.",
   "Gross is only observed while a show runs; losers that close drop out, which likely biases the gross effect toward zero. Closure is analyzed separately.",
   "Nominees that closed before Tony night, and titles that could not be matched unambiguously to the weekly grosses, are excluded.",
   "Gross is box-office revenue, not profit."

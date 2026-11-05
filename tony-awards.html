@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Explore the relationship between Tony Awards recognition and Broadway performance.">
   <title>Tony Awards Effect | Theater Spotlight</title>
-  <link rel="stylesheet" href="styles.css?v=10">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=119">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-47RPC1XZKM"></script>
   <script>
@@ -21,6 +22,7 @@
       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "y83snmaz05");
   </script>
+  <script src="nav.js?v=3" defer></script>
 </head>
 <body class="theme-tony">
   <header class="site-header">
@@ -29,14 +31,36 @@
       <span>Theater Spotlight</span>
     </a>
     <nav class="navigation" aria-label="Main navigation">
-      <a href="index.html">Overview</a>
-      <a href="history.html">40 Years of Broadway</a>
-      <a href="theatres.html">Theatre District</a>
-      <a class="active" href="tony-awards.html" aria-current="page">Tony Awards Effect</a>
-      <a href="rush.html">Rush & Lottery</a>
-      <a href="game.html">Be More Chill</a>
-      <a href="memories.html">Back to the Future</a>
-      <a href="models.html">ML Models</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+        <span class="nav-toggle-label">Menu</span>
+      </button>
+            <ul class="nav-menu" id="nav-menu">
+        <li class="nav-group">
+          <button class="nav-link nav-trigger active" type="button" aria-expanded="false" aria-controls="nav-viz">Explore Broadway</button>
+          <ul class="nav-dropdown" id="nav-viz">
+            <li><a href="index.html"><strong>Broadway at a Glance</strong><small>Current market snapshot</small></a></li>
+            <li><a href="history.html"><strong>Forty Years of Grosses</strong><small>Long-run Broadway performance</small></a></li>
+            <li><a href="theatres.html"><strong>Inside the Houses</strong><small>Venue scale, demand, and capacity</small></a></li>
+            <li><a href="tony-awards.html" aria-current="page"><strong>Tony by the Numbers</strong><small>Winners, nominees, and box office</small></a></li>
+          </ul>
+        </li>
+        <li class="nav-group">
+          <button class="nav-link nav-trigger" type="button" aria-expanded="false" aria-controls="nav-study">Behind the Numbers</button>
+          <ul class="nav-dropdown" id="nav-study">
+            <li><a href="tony-study.html"><strong>The Tony Effect</strong><small>Causal effect of a win</small></a></li>
+            <li><a href="models.html"><strong>Forecasts &amp; Closing Risk</strong><small>Model performance, risk, and drift</small></a></li>
+          </ul>
+        </li>
+        <li class="nav-group">
+          <button class="nav-link nav-trigger" type="button" aria-expanded="false" aria-controls="nav-fun">Just for fun</button>
+          <ul class="nav-dropdown" id="nav-fun">
+            <li><a href="rush.html"><strong>Rush & lottery</strong><small>Discount tickets by show</small></a></li>
+            <li><a href="game.html"><strong>Be More Chill</strong><small>Guess the show from the clues</small></a></li>
+            <li><a href="memories.html"><strong>Back to the Future</strong><small>A personal Broadway timeline</small></a></li>
+          </ul>
+        </li>
+      </ul>
       <a class="nav-cta" href="#dashboard">View report</a>
     </nav>
   </header>
@@ -51,8 +75,8 @@
           nominations and wins to audience and box-office momentum.
         </p>
         <div class="hero-actions">
-          <a class="primary-button" href="#dashboard">Measure the Tony effect</a>
-          <a class="text-link" href="#insights">Read the story <span aria-hidden="true">→</span></a>
+          <a class="primary-button" href="#study-callout-title">Start with the question</a>
+          <a class="text-link" href="#dashboard">Explore award records <span aria-hidden="true">→</span></a>
         </div>
       </div>
 
@@ -66,6 +90,24 @@
         <div class="art-stats"><span>Recognition <b>Earned</b></span><span>Momentum <b>Watch next</b></span></div>
       </div>
     </section>
+
+    <section class="report-section ml-callout" aria-labelledby="study-callout-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">Decision question</p>
+          <h2 id="study-callout-title">Did recognition move sales, or did strong shows get recognized?</h2>
+        </div>
+        <p>
+          This page describes records and performance around Tony night. The companion study
+          separates nomination from winning and tests whether the patterns survive stronger comparisons.
+          <a class="text-link" href="tony-study.html">Read the Tony Effect Study <span aria-hidden="true">→</span></a>
+        </p>
+      </div>
+    </section>
+
+    <div class="editorial-intro">
+      <p><strong>How to use this page:</strong> choose a category and time window, inspect before/after movement, then read the causal study before interpreting a change as an award effect.</p>
+    </div>
 
     <section class="report-section" id="dashboard" aria-labelledby="report-title">
       <div class="section-heading">
@@ -166,40 +208,6 @@
       </div>
     </section>
 
-    <section class="report-section ml-section" id="causal-results" aria-labelledby="causal-title">
-      <div class="section-heading">
-        <div>
-          <p class="section-label">Quasi-experimental study</p>
-          <h2 id="causal-title">Do winners pull ahead after Tony night?</h2>
-        </div>
-        <p>
-          The dashboard above is descriptive. This study compares production-award winners with
-          same-season nominees that lost, using difference-in-differences and an event study.
-          Winning is not random, so results are reported as associations, alongside the
-          pre-trend and placebo checks.
-        </p>
-      </div>
-      <p class="ml-headline" id="causal-headline" aria-live="polite">Loading causal estimates…</p>
-      <div class="ml-card-grid" id="causal-cards"></div>
-      <article class="ml-panel">
-        <h3>Event study: winners minus losing nominees, by week around Tony night</h3>
-        <p class="ml-note">Log weekly gross, unit and year-by-week fixed effects, 95% CIs clustered by production. Week 0 is the reference week.</p>
-        <div id="causal-event-chart"></div>
-      </article>
-      <div class="ml-two-col">
-        <article class="ml-panel">
-          <h3>Sample and checks</h3>
-          <p id="causal-sample"></p>
-          <p class="ml-note">Controls: musical vs play, revival, pre-ceremony capacity and gross, run age, and year fixed effects for seasonality and market shocks. The placebo moves the ceremony 8 weeks earlier and should show no effect.</p>
-        </article>
-        <article class="ml-panel">
-          <h3>Limitations</h3>
-          <ul class="ml-list" id="causal-limits"></ul>
-        </article>
-      </div>
-      <p class="ml-note">Method, code and full results: <a href="models.html">ML Models</a> · <a href="https://github.com/ytp026/ts/blob/main/scripts/tony_causal.py" target="_blank" rel="noopener">scripts/tony_causal.py</a> · <a href="ml/tony-causal-results.json">JSON</a>.</p>
-    </section>
-
     <article class="story" id="insights" aria-labelledby="tony-story-title">
       <div class="story-heading">
         <p class="section-label">Behind the numbers</p>
@@ -250,9 +258,8 @@
       financial, legal, or business decisions.
     </p>
   </footer>
-  <script src="dashboard-utils.js"></script>
+  <script src="dashboard-utils.js?v=4"></script>
   <script src="broadway-data.js"></script>
-  <script src="tony-dashboard.js?v=5"></script>
-  <script src="models.js?v=3"></script>
+  <script src="tony-dashboard.js?v=6"></script>
 </body>
 </html>

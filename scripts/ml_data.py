@@ -104,11 +104,46 @@ def ceremony_weeks(overview):
     return {int(y): pd.Timestamp(w) for y, w in weeks.items()}
 
 
+NOMINATION_DATES = Path("data") / "tony-nomination-dates.json"
+SHUTDOWN_CEREMONIES = {2020, 2021}
+
+
+def week_ending(date):
+    """Sunday that ends the Broadway reporting week containing `date`."""
+    date = pd.Timestamp(date)
+    return date + pd.Timedelta(days=(6 - date.weekday()) % 7)
+
+
+def nomination_weeks(ceremonies, verified):
+    """Year -> (week containing the nomination announcement, 'verified'|'approximate').
+
+    Verified years use sourced announcement dates. Other years use the median
+    verified gap (in weeks) before the ceremony week. Shutdown-era ceremonies,
+    whose nominations came months earlier, are skipped.
+    """
+    known = {int(y): week_ending(v["date"]) for y, v in verified.items()
+             if int(y) in ceremonies}
+    gaps = [(ceremonies[y] - w).days // 7 for y, w in known.items()]
+    gap = int(np.median(gaps)) if gaps else 5
+    weeks = {}
+    for year, ceremony in ceremonies.items():
+        if year in SHUTDOWN_CEREMONIES:
+            continue
+        if year in known:
+            weeks[year] = (known[year], "verified")
+        else:
+            weeks[year] = (ceremony - pd.Timedelta(weeks=gap), "approximate")
+    return weeks, gap
+
+
 def production_nominees(tony_rows):
     """(year, title, won) for production categories; header row is skipped."""
     nominees = {}
     for row in tony_rows[1:]:
         year, category, _, show, won, nominated = row[:6]
+        if category in PRODUCTION_CATEGORIES and nominated and not show:
+            raise ValueError(f"Missing production nominee title: {year}, {category}. "
+                             "Repair the source data before running the study.")
         if category in PRODUCTION_CATEGORIES and nominated and show:
             ident = (int(year), show, category)
             nominees[ident] = max(nominees.get(ident, 0), int(won))

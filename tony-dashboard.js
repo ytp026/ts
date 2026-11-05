@@ -123,7 +123,7 @@ function formatTonySignedPoints(value) {
   return `${value > 0 ? "+" : ""}${(value * 100).toFixed(1)} pts`;
 }
 
-function renderTonyImpactComparison(containerId, values, maximum, color, scaleLabels) {
+function renderTonyImpactComparison(containerId, values, maximum, scaleLabels) {
   const chart = document.querySelector(`#${containerId}`);
   const scale = createElement("div", undefined, "comparison-scale");
   scaleLabels.forEach((label) => scale.appendChild(createElement("span", label)));
@@ -132,7 +132,7 @@ function renderTonyImpactComparison(containerId, values, maximum, color, scaleLa
     const column = createElement("div", undefined, "comparison-column");
     const bar = createElement("i");
     bar.style.height = `${Math.max(0, Math.min((item.value / maximum) * 100, 100))}%`;
-    bar.style.background = color;
+    bar.style.background = item.color;
     column.append(
       createElement("strong", item.display),
       bar,
@@ -275,26 +275,26 @@ function renderTonyImpact(rows) {
   renderTonyImpactComparison(
     "tony-impact-gross-comparison",
     [
-      { label: "4 weeks\nbefore", value: before.averageGross || 0, display: formatTonyMillions(before.averageGross) },
-      { label: "4 weeks\nafter", value: after.averageGross || 0, display: formatTonyMillions(after.averageGross) }
+      { label: "4 weeks\nbefore", value: before.averageGross || 0, display: formatTonyMillions(before.averageGross), color: "var(--data-3)" },
+      { label: "4 weeks\nafter", value: after.averageGross || 0, display: formatTonyMillions(after.averageGross), color: "var(--data-1)" }
     ],
     grossScale,
-    "#db9148",
     [formatTonyMillions(grossScale), formatTonyMillions(grossScale / 2), "$0"]
   );
   renderTonyImpactComparison(
     "tony-impact-capacity-comparison",
     [
-      { label: "4 weeks\nbefore", value: before.capacity || 0, display: formatPercent(before.capacity) },
-      { label: "4 weeks\nafter", value: after.capacity || 0, display: formatPercent(after.capacity) }
+      { label: "4 weeks\nbefore", value: before.capacity || 0, display: formatPercent(before.capacity), color: "var(--data-3)" },
+      { label: "4 weeks\nafter", value: after.capacity || 0, display: formatPercent(after.capacity), color: "var(--data-1)" }
     ],
     1,
-    "#65a29a",
     ["100%", "50%", "0%"]
   );
   renderTonyHighestCards(productions);
   document.querySelector("#tony-gross-change").textContent = formatTonySignedPercent(grossChange);
   document.querySelector("#tony-capacity-change").textContent = formatTonySignedPoints(capacityChange);
+  document.querySelector("#tony-gross-change").parentElement?.classList.toggle("is-negative", grossChange < 0);
+  document.querySelector("#tony-capacity-change").parentElement?.classList.toggle("is-negative", capacityChange < 0);
   const changes = tonyChangeRows(productions);
   renderTonyChangeRanking("tony-gross-change-ranking", changes, "grossChange");
   renderTonyChangeRanking("tony-capacity-change-ranking", changes, "capacityChange");
@@ -340,7 +340,7 @@ function renderDualBars(containerId, rows, primaryName, primaryColor) {
     const yearTrack = createElement("i");
     const yearFill = createElement("b");
     yearFill.style.width = `${(row.winningYears / Math.max(row.primary, 1)) * (row.primary / maximum) * 100}%`;
-    yearFill.style.background = row.winningYears >= 2 ? "#14b8a6" : "#f4b942";
+    yearFill.style.background = row.winningYears >= 2 ? "var(--data-2)" : "var(--data-3)";
     yearTrack.title = `Winning years: ${row.winningYears}`;
     yearTrack.appendChild(yearFill);
     tracks.append(primaryTrack, yearTrack);
@@ -457,7 +457,7 @@ function renderTonyDashboard() {
       selectedTonyRow = null;
       renderTonyDashboard();
     }
-  })), "Tony wins", "#356be8");
+  })), "Tony wins", "var(--data-1)");
   renderDualBars("tony-nomination-bars", nominations.map((row) => ({
     label: row.label,
     primary: row.nominations,
@@ -468,7 +468,7 @@ function renderTonyDashboard() {
       selectedTonyRow = null;
       renderTonyDashboard();
     }
-  })), "Nominations", "#6b5bef");
+  })), "Nominations", "var(--data-1)");
   renderTonyTable(metricRows);
 }
 

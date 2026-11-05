@@ -1,0 +1,10684 @@
+{
+ "retrievedAt": "2026-11-04T22:28:46.112763+00:00",
+ "source": "Official Tony Awards winners and nominees archive",
+ "originalSha256": "09bab2a2c4fdce743468a47b70989d82954797aa9004458c7ce4f4feab964ed4",
+ "method": "Replace production-category rows with complete official records; preserve other categories. Read italicized title separately from producer credits; honor explicit winner icons, including historical ties.",
+ "originalProductionRows": 1005,
+ "originalMissingTitles": 543,
+ "correctedProductionRows": 891,
+ "remainingMissingProductionTitles": 0,
+ "duplicateSourceEntriesCollapsed": [
+  {
+   "year": "2004",
+   "category": "Play",
+   "title": "I Am My Own Wife",
+   "winnerFlags": [
+    1,
+    0
+   ]
+  },
+  {
+   "year": "1949",
+   "category": "Play",
+   "title": "Death of a Salesman",
+   "winnerFlags": [
+    1,
+    1
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://www.tonyawards.com/nominees/year/any/category/musical/show/any/?partial",
+   "sha256": "3522c9db814fd339ecf1daf3644ab7968f704bcde89fd5909748e817883fd0a4",
+   "records": 285
+  },
+  {
+   "url": "https://www.tonyawards.com/nominees/year/any/category/play/show/any/?partial",
+   "sha256": "8608bc1f77b08094c53b70428b76e74a83ffccd00f92bdc114727221a0fa32d3",
+   "records": 307
+  },
+  {
+   "url": "https://www.tonyawards.com/nominees/year/any/category/revival-musical/show/any/?partial",
+   "sha256": "90729cdf9bf04e38783bbd495ae48e03bf507aa5e7d6e13cb4d8ebd62f3553c8",
+   "records": 107
+  },
+  {
+   "url": "https://www.tonyawards.com/nominees/year/any/category/revival-play/show/any/?partial",
+   "sha256": "4fcc2d0f44de2f3838b8e66b2e981ccc2ca9321aabbd483de23d4e36bdcc699e",
+   "records": 131
+  },
+  {
+   "url": "https://www.tonyawards.com/nominees/year/1977/category/any/show/any/?partial",
+   "sha256": "0aa4f5850c5fb0b598e16c2f998475447bc2dd1712ff860623e3508d4728d541",
+   "records": 4
+  },
+  {
+   "url": "https://www.tonyawards.com/nominees/year/1978/category/any/show/any/?partial",
+   "sha256": "50494f6cb79d4a52394fa61e4722307735a98f551d364d0405cee209e30a4cc6",
+   "records": 4
+  },
+  {
+   "url": "https://www.tonyawards.com/nominees/year/1980/category/any/show/any/?partial",
+   "sha256": "379b6679de465546e3fc32c25a3882cada5bbbc18c066ff2babc090e21dd6b27",
+   "records": 4
+  },
+  {
+   "url": "https://www.tonyawards.com/nominees/year/1981/category/any/show/any/?partial",
+   "sha256": "37dd6907d26ddb90e69192e56c51552e7fb23f9f246f02904079c7b3ece39de3",
+   "records": 4
+  },
+  {
+   "url": "https://www.tonyawards.com/nominees/year/1982/category/any/show/any/?partial",
+   "sha256": "8bafcb68c02276b618b950f2cff67d7f8e5c2027dcf910368c37f0a6a04481c6",
+   "records": 4
+  },
+  {
+   "url": "https://www.tonyawards.com/nominees/year/1983/category/any/show/any/?partial",
+   "sha256": "2b1aeef74b0364c45b520c579470aa4eb29e13f803e7063ed1ec897160c1cdb7",
+   "records": 4
+  },
+  {
+   "url": "https://www.tonyawards.com/nominees/year/1984/category/any/show/any/?partial",
+   "sha256": "82510d6dd17b63f3e4a207c2ba7ad81447819777ee55ca985a0092b997bf163c",
+   "records": 4
+  },
+  {
+   "url": "https://www.tonyawards.com/nominees/year/1985/category/any/show/any/?partial",
+   "sha256": "db96fefd211300e7a684793714a075f342483e34faec0ecacfaf5e033f5775fa",
+   "records": 4
+  },
+  {
+   "url": "https://www.tonyawards.com/nominees/year/1986/category/any/show/any/?partial",
+   "sha256": "a53b2ec51eb5af09b1e23519e14d8163abf1b534c025fae96633d6ae0f299934",
+   "records": 4
+  },
+  {
+   "url": "https://www.tonyawards.com/nominees/year/1987/category/any/show/any/?partial",
+   "sha256": "6182d3eccc6a26480240b0f74e29fc8a688a02c0134d3925f7842c1e27d57be8",
+   "records": 4
+  },
+  {
+   "url": "https://www.tonyawards.com/nominees/year/1988/category/any/show/any/?partial",
+   "sha256": "dec02fc45eaaf1049a489a383daeab684ac450f838fb06f56659d9dc810ccf05",
+   "records": 4
+  },
+  {
+   "url": "https://www.tonyawards.com/nominees/year/1989/category/any/show/any/?partial",
+   "sha256": "2a30266a35a02311c73f26e5ccdbcb067163c85ace99ce59f7df3992642c22b8",
+   "records": 4
+  },
+  {
+   "url": "https://www.tonyawards.com/nominees/year/1990/category/any/show/any/?partial",
+   "sha256": "b4342702c9a7208c579288cecf136397db2f91e578d7781a5250ebba73d4a314",
+   "records": 4
+  },
+  {
+   "url": "https://www.tonyawards.com/nominees/year/1991/category/any/show/any/?partial",
+   "sha256": "d6974ae34358a84c3371f4b40dcb4b34f2f1194f2a98a0bf27fca19b4a5de2b4",
+   "records": 3
+  },
+  {
+   "url": "https://www.tonyawards.com/nominees/year/1992/category/any/show/any/?partial",
+   "sha256": "cfe49a8161fcb571187867b514c67aa1ebf9678a1a063dcc22568a5400f4220a",
+   "records": 4
+  },
+  {
+   "url": "https://www.tonyawards.com/nominees/year/1993/category/any/show/any/?partial",
+   "sha256": "6285b4aa34ccb0944381ac3834dace4aee80c9eabc4080da677638a71a06d37f",
+   "records": 4
+  }
+ ],
+ "categoryYearCounts": [
+  {
+   "year": 1948,
+   "category": "Play",
+   "nominees": 1,
+   "winners": 1,
+   "nonWinners": 0
+  },
+  {
+   "year": 1949,
+   "category": "Musical",
+   "nominees": 1,
+   "winners": 1,
+   "nonWinners": 0
+  },
+  {
+   "year": 1949,
+   "category": "Play",
+   "nominees": 1,
+   "winners": 1,
+   "nonWinners": 0
+  },
+  {
+   "year": 1950,
+   "category": "Musical",
+   "nominees": 1,
+   "winners": 1,
+   "nonWinners": 0
+  },
+  {
+   "year": 1950,
+   "category": "Play",
+   "nominees": 1,
+   "winners": 1,
+   "nonWinners": 0
+  },
+  {
+   "year": 1951,
+   "category": "Musical",
+   "nominees": 1,
+   "winners": 1,
+   "nonWinners": 0
+  },
+  {
+   "year": 1951,
+   "category": "Play",
+   "nominees": 1,
+   "winners": 1,
+   "nonWinners": 0
+  },
+  {
+   "year": 1952,
+   "category": "Musical",
+   "nominees": 1,
+   "winners": 1,
+   "nonWinners": 0
+  },
+  {
+   "year": 1952,
+   "category": "Play",
+   "nominees": 1,
+   "winners": 1,
+   "nonWinners": 0
+  },
+  {
+   "year": 1953,
+   "category": "Musical",
+   "nominees": 1,
+   "winners": 1,
+   "nonWinners": 0
+  },
+  {
+   "year": 1953,
+   "category": "Play",
+   "nominees": 1,
+   "winners": 1,
+   "nonWinners": 0
+  },
+  {
+   "year": 1954,
+   "category": "Musical",
+   "nominees": 1,
+   "winners": 1,
+   "nonWinners": 0
+  },
+  {
+   "year": 1954,
+   "category": "Play",
+   "nominees": 1,
+   "winners": 1,
+   "nonWinners": 0
+  },
+  {
+   "year": 1955,
+   "category": "Musical",
+   "nominees": 1,
+   "winners": 1,
+   "nonWinners": 0
+  },
+  {
+   "year": 1955,
+   "category": "Play",
+   "nominees": 1,
+   "winners": 1,
+   "nonWinners": 0
+  },
+  {
+   "year": 1956,
+   "category": "Musical",
+   "nominees": 2,
+   "winners": 1,
+   "nonWinners": 1
+  },
+  {
+   "year": 1956,
+   "category": "Play",
+   "nominees": 5,
+   "winners": 1,
+   "nonWinners": 4
+  },
+  {
+   "year": 1957,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1957,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1958,
+   "category": "Musical",
+   "nominees": 5,
+   "winners": 1,
+   "nonWinners": 4
+  },
+  {
+   "year": 1958,
+   "category": "Play",
+   "nominees": 8,
+   "winners": 1,
+   "nonWinners": 7
+  },
+  {
+   "year": 1959,
+   "category": "Musical",
+   "nominees": 3,
+   "winners": 1,
+   "nonWinners": 2
+  },
+  {
+   "year": 1959,
+   "category": "Play",
+   "nominees": 5,
+   "winners": 1,
+   "nonWinners": 4
+  },
+  {
+   "year": 1960,
+   "category": "Musical",
+   "nominees": 5,
+   "winners": 2,
+   "nonWinners": 3
+  },
+  {
+   "year": 1960,
+   "category": "Play",
+   "nominees": 5,
+   "winners": 1,
+   "nonWinners": 4
+  },
+  {
+   "year": 1961,
+   "category": "Musical",
+   "nominees": 3,
+   "winners": 1,
+   "nonWinners": 2
+  },
+  {
+   "year": 1961,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1962,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1962,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1963,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1963,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1964,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1964,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1965,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1965,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1966,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1966,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1967,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1967,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1968,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1968,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1969,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1969,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1970,
+   "category": "Musical",
+   "nominees": 3,
+   "winners": 1,
+   "nonWinners": 2
+  },
+  {
+   "year": 1970,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1971,
+   "category": "Musical",
+   "nominees": 3,
+   "winners": 1,
+   "nonWinners": 2
+  },
+  {
+   "year": 1971,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1972,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1972,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1973,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1973,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1974,
+   "category": "Musical",
+   "nominees": 3,
+   "winners": 1,
+   "nonWinners": 2
+  },
+  {
+   "year": 1974,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1975,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1975,
+   "category": "Play",
+   "nominees": 6,
+   "winners": 1,
+   "nonWinners": 5
+  },
+  {
+   "year": 1976,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1976,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1977,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1977,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1977,
+   "category": "Revival",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1978,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1978,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1978,
+   "category": "Revival",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1979,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1979,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1980,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1980,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1980,
+   "category": "Revival",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1981,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1981,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1981,
+   "category": "Revival",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1982,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1982,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1982,
+   "category": "Revival",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1983,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1983,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1983,
+   "category": "Revival",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1984,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1984,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1984,
+   "category": "Revival",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1985,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1985,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1985,
+   "category": "Revival",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1986,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1986,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1986,
+   "category": "Revival",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1987,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1987,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1987,
+   "category": "Revival",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1988,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1988,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1988,
+   "category": "Revival",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1989,
+   "category": "Musical",
+   "nominees": 3,
+   "winners": 1,
+   "nonWinners": 2
+  },
+  {
+   "year": 1989,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1989,
+   "category": "Revival",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1990,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1990,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1990,
+   "category": "Revival",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1991,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1991,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1991,
+   "category": "Revival",
+   "nominees": 3,
+   "winners": 1,
+   "nonWinners": 2
+  },
+  {
+   "year": 1992,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1992,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1992,
+   "category": "Revival",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1993,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1993,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1993,
+   "category": "Revival",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1994,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1994,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1994,
+   "category": "Revival of a Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1994,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1995,
+   "category": "Musical",
+   "nominees": 2,
+   "winners": 1,
+   "nonWinners": 1
+  },
+  {
+   "year": 1995,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1995,
+   "category": "Revival of a Musical",
+   "nominees": 2,
+   "winners": 1,
+   "nonWinners": 1
+  },
+  {
+   "year": 1995,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1996,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1996,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1996,
+   "category": "Revival of a Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1996,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1997,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1997,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1997,
+   "category": "Revival of a Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1997,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1998,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1998,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1998,
+   "category": "Revival of a Musical",
+   "nominees": 3,
+   "winners": 1,
+   "nonWinners": 2
+  },
+  {
+   "year": 1998,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1999,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1999,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1999,
+   "category": "Revival of a Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 1999,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2000,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2000,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2000,
+   "category": "Revival of a Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2000,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2001,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2001,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2001,
+   "category": "Revival of a Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2001,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2002,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2002,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2002,
+   "category": "Revival of a Musical",
+   "nominees": 2,
+   "winners": 1,
+   "nonWinners": 1
+  },
+  {
+   "year": 2002,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2003,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2003,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2003,
+   "category": "Revival of a Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2003,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2004,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2004,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2004,
+   "category": "Revival of a Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2004,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2005,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2005,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2005,
+   "category": "Revival of a Musical",
+   "nominees": 3,
+   "winners": 1,
+   "nonWinners": 2
+  },
+  {
+   "year": 2005,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2006,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2006,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2006,
+   "category": "Revival of a Musical",
+   "nominees": 3,
+   "winners": 1,
+   "nonWinners": 2
+  },
+  {
+   "year": 2006,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2007,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2007,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2007,
+   "category": "Revival of a Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2007,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2008,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2008,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2008,
+   "category": "Revival of a Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2008,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2009,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2009,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2009,
+   "category": "Revival of a Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2009,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2010,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2010,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2010,
+   "category": "Revival of a Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2010,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2011,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2011,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2011,
+   "category": "Revival of a Musical",
+   "nominees": 2,
+   "winners": 1,
+   "nonWinners": 1
+  },
+  {
+   "year": 2011,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2012,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2012,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2012,
+   "category": "Revival of a Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2012,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2013,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2013,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2013,
+   "category": "Revival of a Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2013,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2014,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2014,
+   "category": "Play",
+   "nominees": 5,
+   "winners": 1,
+   "nonWinners": 4
+  },
+  {
+   "year": 2014,
+   "category": "Revival of a Musical",
+   "nominees": 3,
+   "winners": 1,
+   "nonWinners": 2
+  },
+  {
+   "year": 2014,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2015,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2015,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2015,
+   "category": "Revival of a Musical",
+   "nominees": 3,
+   "winners": 1,
+   "nonWinners": 2
+  },
+  {
+   "year": 2015,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2016,
+   "category": "Musical",
+   "nominees": 5,
+   "winners": 1,
+   "nonWinners": 4
+  },
+  {
+   "year": 2016,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2016,
+   "category": "Revival of a Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2016,
+   "category": "Revival of a Play",
+   "nominees": 5,
+   "winners": 1,
+   "nonWinners": 4
+  },
+  {
+   "year": 2017,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2017,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2017,
+   "category": "Revival of a Musical",
+   "nominees": 3,
+   "winners": 1,
+   "nonWinners": 2
+  },
+  {
+   "year": 2017,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2018,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2018,
+   "category": "Play",
+   "nominees": 5,
+   "winners": 1,
+   "nonWinners": 4
+  },
+  {
+   "year": 2018,
+   "category": "Revival of a Musical",
+   "nominees": 3,
+   "winners": 1,
+   "nonWinners": 2
+  },
+  {
+   "year": 2018,
+   "category": "Revival of a Play",
+   "nominees": 5,
+   "winners": 1,
+   "nonWinners": 4
+  },
+  {
+   "year": 2019,
+   "category": "Musical",
+   "nominees": 5,
+   "winners": 1,
+   "nonWinners": 4
+  },
+  {
+   "year": 2019,
+   "category": "Play",
+   "nominees": 5,
+   "winners": 1,
+   "nonWinners": 4
+  },
+  {
+   "year": 2019,
+   "category": "Revival of a Musical",
+   "nominees": 2,
+   "winners": 1,
+   "nonWinners": 1
+  },
+  {
+   "year": 2019,
+   "category": "Revival of a Play",
+   "nominees": 5,
+   "winners": 1,
+   "nonWinners": 4
+  },
+  {
+   "year": 2020,
+   "category": "Musical",
+   "nominees": 3,
+   "winners": 1,
+   "nonWinners": 2
+  },
+  {
+   "year": 2020,
+   "category": "Play",
+   "nominees": 5,
+   "winners": 1,
+   "nonWinners": 4
+  },
+  {
+   "year": 2020,
+   "category": "Revival of a Play",
+   "nominees": 3,
+   "winners": 1,
+   "nonWinners": 2
+  },
+  {
+   "year": 2022,
+   "category": "Musical",
+   "nominees": 6,
+   "winners": 1,
+   "nonWinners": 5
+  },
+  {
+   "year": 2022,
+   "category": "Play",
+   "nominees": 5,
+   "winners": 1,
+   "nonWinners": 4
+  },
+  {
+   "year": 2022,
+   "category": "Revival of a Musical",
+   "nominees": 3,
+   "winners": 1,
+   "nonWinners": 2
+  },
+  {
+   "year": 2022,
+   "category": "Revival of a Play",
+   "nominees": 5,
+   "winners": 1,
+   "nonWinners": 4
+  },
+  {
+   "year": 2023,
+   "category": "Musical",
+   "nominees": 5,
+   "winners": 1,
+   "nonWinners": 4
+  },
+  {
+   "year": 2023,
+   "category": "Play",
+   "nominees": 5,
+   "winners": 1,
+   "nonWinners": 4
+  },
+  {
+   "year": 2023,
+   "category": "Revival of a Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2023,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2024,
+   "category": "Musical",
+   "nominees": 5,
+   "winners": 1,
+   "nonWinners": 4
+  },
+  {
+   "year": 2024,
+   "category": "Play",
+   "nominees": 5,
+   "winners": 1,
+   "nonWinners": 4
+  },
+  {
+   "year": 2024,
+   "category": "Revival of a Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2024,
+   "category": "Revival of a Play",
+   "nominees": 3,
+   "winners": 1,
+   "nonWinners": 2
+  },
+  {
+   "year": 2025,
+   "category": "Musical",
+   "nominees": 5,
+   "winners": 1,
+   "nonWinners": 4
+  },
+  {
+   "year": 2025,
+   "category": "Play",
+   "nominees": 5,
+   "winners": 1,
+   "nonWinners": 4
+  },
+  {
+   "year": 2025,
+   "category": "Revival of a Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2025,
+   "category": "Revival of a Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2026,
+   "category": "Musical",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2026,
+   "category": "Play",
+   "nominees": 4,
+   "winners": 1,
+   "nonWinners": 3
+  },
+  {
+   "year": 2026,
+   "category": "Revival of a Musical",
+   "nominees": 3,
+   "winners": 1,
+   "nonWinners": 2
+  },
+  {
+   "year": 2026,
+   "category": "Revival of a Play",
+   "nominees": 5,
+   "winners": 1,
+   "nonWinners": 4
+  }
+ ],
+ "productionRecords": [
+  [
+   "2026",
+   "Musical",
+   "",
+   "Schmigadoon!",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2026",
+   "Musical",
+   "",
+   "The Lost Boys",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2026",
+   "Musical",
+   "",
+   "Titan\u00edque",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2026",
+   "Musical",
+   "",
+   "Two Strangers (Carry a Cake Across New York)",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2025",
+   "Musical",
+   "",
+   "Maybe Happy Ending",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2025",
+   "Musical",
+   "",
+   "Buena Vista Social Club",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2025",
+   "Musical",
+   "",
+   "Dead Outlaw",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2025",
+   "Musical",
+   "",
+   "Death Becomes Her",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2025",
+   "Musical",
+   "",
+   "Operation Mincemeat: A New Musical",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2024",
+   "Musical",
+   "",
+   "The Outsiders",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2024",
+   "Musical",
+   "",
+   "Hell's Kitchen",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2024",
+   "Musical",
+   "",
+   "Illinoise",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2024",
+   "Musical",
+   "",
+   "Suffs",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2024",
+   "Musical",
+   "",
+   "Water for Elephants",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2023",
+   "Musical",
+   "",
+   "Kimberly Akimbo",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2023",
+   "Musical",
+   "",
+   "& Juliet",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2023",
+   "Musical",
+   "",
+   "New York, New York",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2023",
+   "Musical",
+   "",
+   "Shucked",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2023",
+   "Musical",
+   "",
+   "Some Like It Hot",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2022",
+   "Musical",
+   "",
+   "A Strange Loop",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2022",
+   "Musical",
+   "",
+   "Girl from the North Country",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2022",
+   "Musical",
+   "",
+   "MJ",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2022",
+   "Musical",
+   "",
+   "Mr. Saturday Night",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2022",
+   "Musical",
+   "",
+   "Paradise Square",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2022",
+   "Musical",
+   "",
+   "SIX: The Musical",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2020",
+   "Musical",
+   "",
+   "Moulin Rouge! The Musical",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2020",
+   "Musical",
+   "",
+   "Jagged Little Pill",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2020",
+   "Musical",
+   "",
+   "Tina - The Tina Turner Musical",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2019",
+   "Musical",
+   "",
+   "Hadestown",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2019",
+   "Musical",
+   "",
+   "Ain\u2019t Too Proud - The Life and Times of the Temptations",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2019",
+   "Musical",
+   "",
+   "Beetlejuice",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2019",
+   "Musical",
+   "",
+   "The Prom",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2019",
+   "Musical",
+   "",
+   "Tootsie",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2018",
+   "Musical",
+   "",
+   "The Band's Visit",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2018",
+   "Musical",
+   "",
+   "Frozen",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2018",
+   "Musical",
+   "",
+   "Mean Girls",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2018",
+   "Musical",
+   "",
+   "SpongeBob SquarePants: The Musical",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2017",
+   "Musical",
+   "",
+   "Dear Evan Hansen",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2017",
+   "Musical",
+   "",
+   "Come From Away",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2017",
+   "Musical",
+   "",
+   "Groundhog Day The Musical",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2017",
+   "Musical",
+   "",
+   "Natasha, Pierre & The Great Comet of 1812",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2016",
+   "Musical",
+   "",
+   "Hamilton",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2016",
+   "Musical",
+   "",
+   "Bright Star",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2016",
+   "Musical",
+   "",
+   "School of Rock - The Musical",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2016",
+   "Musical",
+   "",
+   "Shuffle Along, Or the Making of the Musical Sensation of 1921 and All That Followed",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2016",
+   "Musical",
+   "",
+   "Waitress",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2015",
+   "Musical",
+   "",
+   "Fun Home",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2015",
+   "Musical",
+   "",
+   "An American in Paris",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2015",
+   "Musical",
+   "",
+   "Something Rotten!",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2015",
+   "Musical",
+   "",
+   "The Visit",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2014",
+   "Musical",
+   "",
+   "A Gentleman's Guide to Love & Murder",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2014",
+   "Musical",
+   "",
+   "After Midnight",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2014",
+   "Musical",
+   "",
+   "Aladdin",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2014",
+   "Musical",
+   "",
+   "Beautiful - The Carole King Musical",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2013",
+   "Musical",
+   "",
+   "Kinky Boots",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2013",
+   "Musical",
+   "",
+   "Bring It On: The Musical",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2013",
+   "Musical",
+   "",
+   "A Christmas Story, The Musical",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2013",
+   "Musical",
+   "",
+   "Matilda The Musical",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2012",
+   "Musical",
+   "",
+   "Once",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2012",
+   "Musical",
+   "",
+   "Leap of Faith",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2012",
+   "Musical",
+   "",
+   "Newsies",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2012",
+   "Musical",
+   "",
+   "Nice Work If You Can Get It",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2011",
+   "Musical",
+   "",
+   "The Book of Mormon",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2011",
+   "Musical",
+   "",
+   "Catch Me If You Can",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2011",
+   "Musical",
+   "",
+   "The Scottsboro Boys",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2011",
+   "Musical",
+   "",
+   "Sister Act",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2010",
+   "Musical",
+   "",
+   "Memphis",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2010",
+   "Musical",
+   "",
+   "American Idiot",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2010",
+   "Musical",
+   "",
+   "Fela!",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2010",
+   "Musical",
+   "",
+   "Million Dollar Quartet",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2009",
+   "Musical",
+   "",
+   "Billy Elliot, The Musical",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2009",
+   "Musical",
+   "",
+   "Next to Normal",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2009",
+   "Musical",
+   "",
+   "Rock of Ages",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2009",
+   "Musical",
+   "",
+   "Shrek The Musical",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2008",
+   "Musical",
+   "",
+   "In The Heights",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2008",
+   "Musical",
+   "",
+   "Cry-Baby",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2008",
+   "Musical",
+   "",
+   "Passing Strange",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2008",
+   "Musical",
+   "",
+   "Xanadu",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2007",
+   "Musical",
+   "",
+   "Spring Awakening",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2007",
+   "Musical",
+   "",
+   "Curtains",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2007",
+   "Musical",
+   "",
+   "Grey Gardens",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2007",
+   "Musical",
+   "",
+   "Mary Poppins",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2006",
+   "Musical",
+   "",
+   "Jersey Boys",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2006",
+   "Musical",
+   "",
+   "The Color Purple",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2006",
+   "Musical",
+   "",
+   "The Drowsy Chaperone",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2006",
+   "Musical",
+   "",
+   "The Wedding Singer",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2005",
+   "Musical",
+   "",
+   "Monty Python's Spamalot",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2005",
+   "Musical",
+   "",
+   "Dirty Rotten Scoundrels",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2005",
+   "Musical",
+   "",
+   "The Light in the Piazza",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2005",
+   "Musical",
+   "",
+   "The 25th Annual Putnam County Spelling Bee",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2004",
+   "Musical",
+   "",
+   "Avenue Q",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2004",
+   "Musical",
+   "",
+   "Caroline, or Change",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2004",
+   "Musical",
+   "",
+   "The Boy from Oz",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2004",
+   "Musical",
+   "",
+   "Wicked",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2003",
+   "Musical",
+   "",
+   "Hairspray",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2003",
+   "Musical",
+   "",
+   "Amour",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2003",
+   "Musical",
+   "",
+   "A Year with Frog and Toad",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2003",
+   "Musical",
+   "",
+   "Movin' Out",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2002",
+   "Musical",
+   "",
+   "Thoroughly Modern Millie",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2002",
+   "Musical",
+   "",
+   "Mamma Mia!",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2002",
+   "Musical",
+   "",
+   "Sweet Smell of Success",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2002",
+   "Musical",
+   "",
+   "Urinetown The Musical",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2001",
+   "Musical",
+   "",
+   "The Producers, the new Mel Brooks musical",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2001",
+   "Musical",
+   "",
+   "A Class Act",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2001",
+   "Musical",
+   "",
+   "The Full Monty",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2001",
+   "Musical",
+   "",
+   "Jane Eyre",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2000",
+   "Musical",
+   "",
+   "Contact",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2000",
+   "Musical",
+   "",
+   "James Joyce's The Dead",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2000",
+   "Musical",
+   "",
+   "Swing!",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2000",
+   "Musical",
+   "",
+   "The Wild Party",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1999",
+   "Musical",
+   "",
+   "Fosse.",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1999",
+   "Musical",
+   "",
+   "The Civil War.",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1999",
+   "Musical",
+   "",
+   "It Ain't Nothin' But the Blues.",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1999",
+   "Musical",
+   "",
+   "Parade.",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1998",
+   "Musical",
+   "",
+   "The Lion King",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1998",
+   "Musical",
+   "",
+   "Ragtime",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1998",
+   "Musical",
+   "",
+   "Side Show",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1998",
+   "Musical",
+   "",
+   "The Scarlet Pimpernel",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1997",
+   "Musical",
+   "",
+   "Titanic",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1997",
+   "Musical",
+   "",
+   "Juan Darien",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1997",
+   "Musical",
+   "",
+   "Steel Pier",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1997",
+   "Musical",
+   "",
+   "The Life",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1996",
+   "Musical",
+   "",
+   "Rent",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1996",
+   "Musical",
+   "",
+   "Bring in 'da Noise/Bring in 'da Funk",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1996",
+   "Musical",
+   "",
+   "Chronicle of a Death Foretold",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1996",
+   "Musical",
+   "",
+   "Swinging on a Star",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1995",
+   "Musical",
+   "",
+   "Sunset Boulevard",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1995",
+   "Musical",
+   "",
+   "Smokey Joe's Cafe",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1994",
+   "Musical",
+   "",
+   "Passion",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1994",
+   "Musical",
+   "",
+   "A Grand Night for Singing",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1994",
+   "Musical",
+   "",
+   "Beauty and the Beast",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1994",
+   "Musical",
+   "",
+   "Cyrano: The Musical",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1993",
+   "Musical",
+   "",
+   "Kiss of the Spider Woman--The Musical",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1993",
+   "Musical",
+   "",
+   "Blood Brothers",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1993",
+   "Musical",
+   "",
+   "The Goodbye Girl",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1993",
+   "Musical",
+   "",
+   "The Who's Tommy",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1992",
+   "Musical",
+   "",
+   "Crazy for You",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1992",
+   "Musical",
+   "",
+   "Falsettos",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1992",
+   "Musical",
+   "",
+   "Five Guys Named Moe",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1992",
+   "Musical",
+   "",
+   "Jelly's Last Jam",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1991",
+   "Musical",
+   "",
+   "The Will Rogers Follies",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1991",
+   "Musical",
+   "",
+   "Miss Saigon",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1991",
+   "Musical",
+   "",
+   "Once on this Island",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1991",
+   "Musical",
+   "",
+   "The Secret Garden",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1990",
+   "Musical",
+   "",
+   "City of Angels",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1990",
+   "Musical",
+   "",
+   "Aspects of Love",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1990",
+   "Musical",
+   "",
+   "Grand Hotel, The Musical",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1990",
+   "Musical",
+   "",
+   "Meet Me in St. Louis",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1989",
+   "Musical",
+   "",
+   "Jerome  Robbins' Broadway",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1989",
+   "Musical",
+   "",
+   "Black and Blue",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1989",
+   "Musical",
+   "",
+   "Starmites",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1988",
+   "Musical",
+   "",
+   "The Phantom of the Opera",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1988",
+   "Musical",
+   "",
+   "Into the Woods",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1988",
+   "Musical",
+   "",
+   "Romance/Romance",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1988",
+   "Musical",
+   "",
+   "Sarafina!",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1987",
+   "Musical",
+   "",
+   "Les Mis\u00e9rables",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1987",
+   "Musical",
+   "",
+   "Me and My Girl",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1987",
+   "Musical",
+   "",
+   "Rags",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1987",
+   "Musical",
+   "",
+   "Starlight Express",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1986",
+   "Musical",
+   "",
+   "The Mystery of Edwin Drood",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1986",
+   "Musical",
+   "",
+   "Big Deal",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1986",
+   "Musical",
+   "",
+   "Song & Dance",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1986",
+   "Musical",
+   "",
+   "Tango Argentino",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1985",
+   "Musical",
+   "",
+   "Big River",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1985",
+   "Musical",
+   "",
+   "Grind",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1985",
+   "Musical",
+   "",
+   "Leader of the Pack",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1985",
+   "Musical",
+   "",
+   "Quilters",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1984",
+   "Musical",
+   "",
+   "La Cage aux Folles",
+   1,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "1984",
+   "Musical",
+   "",
+   "Baby",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1984",
+   "Musical",
+   "",
+   "Sunday in the Park with George",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1984",
+   "Musical",
+   "",
+   "The Tap Dance Kid",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1983",
+   "Musical",
+   "",
+   "Cats",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1983",
+   "Musical",
+   "",
+   "Blues in the Night",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1983",
+   "Musical",
+   "",
+   "Merlin",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1983",
+   "Musical",
+   "",
+   "My One and Only",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1982",
+   "Musical",
+   "",
+   "Nine",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1982",
+   "Musical",
+   "",
+   "Dreamgirls",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1982",
+   "Musical",
+   "",
+   "Joseph and the Amazing Technicolor Dreamcoat",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1982",
+   "Musical",
+   "",
+   "Pump Boys and Dinettes",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1981",
+   "Musical",
+   "",
+   "42nd Street",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1981",
+   "Musical",
+   "",
+   "Sophisticated Ladies",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1981",
+   "Musical",
+   "",
+   "Tintypes",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1981",
+   "Musical",
+   "",
+   "Woman of the Year",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1980",
+   "Musical",
+   "",
+   "Evita",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1980",
+   "Musical",
+   "",
+   "A Day in Hollywood/A Night in the Ukraine",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1980",
+   "Musical",
+   "",
+   "Barnum",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1980",
+   "Musical",
+   "",
+   "Sugar Babies",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1979",
+   "Musical",
+   "",
+   "Sweeney Todd",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1979",
+   "Musical",
+   "",
+   "Ballroom",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1979",
+   "Musical",
+   "",
+   "The Best Little Whorehouse in Texas",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1979",
+   "Musical",
+   "",
+   "They're Playing Our Song",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1978",
+   "Musical",
+   "",
+   "Ain't Misbehavin'",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1978",
+   "Musical",
+   "",
+   "Dancin'",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1978",
+   "Musical",
+   "",
+   "On the Twentieth Century",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1978",
+   "Musical",
+   "",
+   "Runaways",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1977",
+   "Musical",
+   "",
+   "Annie",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1977",
+   "Musical",
+   "",
+   "Happy End",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1977",
+   "Musical",
+   "",
+   "I Love My Wife",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1977",
+   "Musical",
+   "",
+   "Side by Side by Sondheim",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1976",
+   "Musical",
+   "",
+   "A Chorus Line",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1976",
+   "Musical",
+   "",
+   "Bubbling Brown Sugar",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1976",
+   "Musical",
+   "",
+   "Chicago",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1976",
+   "Musical",
+   "",
+   "Pacific Overtures",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1975",
+   "Musical",
+   "",
+   "The Wiz",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1975",
+   "Musical",
+   "",
+   "Mack and Mabel",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1975",
+   "Musical",
+   "",
+   "The Lieutenant",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1975",
+   "Musical",
+   "",
+   "Shenandoah",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1974",
+   "Musical",
+   "",
+   "Raisin",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1974",
+   "Musical",
+   "",
+   "Over Here!",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1974",
+   "Musical",
+   "",
+   "Seesaw",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1973",
+   "Musical",
+   "",
+   "A Little Night Music",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1973",
+   "Musical",
+   "",
+   "Don't Bother Me, I Can't Cope",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1973",
+   "Musical",
+   "",
+   "Pippin",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1973",
+   "Musical",
+   "",
+   "Sugar",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1972",
+   "Musical",
+   "",
+   "Two Gentleman of Verona",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1972",
+   "Musical",
+   "",
+   "Ain't Supposed to Die a Natural Death",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1972",
+   "Musical",
+   "",
+   "Follies",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1972",
+   "Musical",
+   "",
+   "Grease",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1971",
+   "Musical",
+   "",
+   "Company",
+   1,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "1971",
+   "Musical",
+   "",
+   "The Me Nobody Knows",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1971",
+   "Musical",
+   "",
+   "The Rothschilds",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1970",
+   "Musical",
+   "",
+   "Applause",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1970",
+   "Musical",
+   "",
+   "Coco",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1970",
+   "Musical",
+   "",
+   "Purlie",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1969",
+   "Musical",
+   "",
+   "1776",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1969",
+   "Musical",
+   "",
+   "Hair",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1969",
+   "Musical",
+   "",
+   "Promises, Promises",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1969",
+   "Musical",
+   "",
+   "Zorba",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1968",
+   "Musical",
+   "",
+   "Hallelujah, Baby!",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1968",
+   "Musical",
+   "",
+   "The Happy Time",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1968",
+   "Musical",
+   "",
+   "How Now, Dow Jones",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1968",
+   "Musical",
+   "",
+   "Illya, Darling",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1967",
+   "Musical",
+   "",
+   "Cabaret",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1967",
+   "Musical",
+   "",
+   "I Do! I Do!",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1967",
+   "Musical",
+   "",
+   "The Apple Tree",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1967",
+   "Musical",
+   "",
+   "Walking Happy",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1966",
+   "Musical",
+   "",
+   "Man of La Mancha",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1966",
+   "Musical",
+   "",
+   "Mame",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1966",
+   "Musical",
+   "",
+   "Skyscraper",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1966",
+   "Musical",
+   "",
+   "Sweet Charity",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1965",
+   "Musical",
+   "",
+   "Fiddler on the Roof",
+   1,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "1965",
+   "Musical",
+   "",
+   "Golden Boy",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1965",
+   "Musical",
+   "",
+   "Half a Sixpence",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1965",
+   "Musical",
+   "",
+   "Oh, What a Lovely War",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1964",
+   "Musical",
+   "",
+   "Hello, Dolly!",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1964",
+   "Musical",
+   "",
+   "Funny Girl",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1964",
+   "Musical",
+   "",
+   "High Spirits",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1964",
+   "Musical",
+   "",
+   "She Loves Me",
+   0,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "1963",
+   "Musical",
+   "",
+   "A Funny Thing Happened on the Way to the Forum",
+   1,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "1963",
+   "Musical",
+   "",
+   "Little Me",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1963",
+   "Musical",
+   "",
+   "Oliver!",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1963",
+   "Musical",
+   "",
+   "Stop the World - I Want to Get off",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1962",
+   "Musical",
+   "",
+   "How to Succeed in Business Without Really Trying",
+   1,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "1962",
+   "Musical",
+   "",
+   "Carnival",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1962",
+   "Musical",
+   "",
+   "Milk and Honey",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1962",
+   "Musical",
+   "",
+   "No Strings",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1961",
+   "Musical",
+   "",
+   "Bye, Bye Birdie",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1961",
+   "Musical",
+   "",
+   "Do Re Mi",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1961",
+   "Musical",
+   "",
+   "Irma La Douce",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1960",
+   "Musical",
+   "",
+   "The Sound of Music",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1960",
+   "Musical",
+   "",
+   "Fiorello!",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1960",
+   "Musical",
+   "",
+   "Gypsy",
+   0,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "1960",
+   "Musical",
+   "",
+   "Once Upon a Mattress",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1960",
+   "Musical",
+   "",
+   "Take Me Along",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1959",
+   "Musical",
+   "",
+   "Redhead",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1959",
+   "Musical",
+   "",
+   "Flower Drum Song",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1959",
+   "Musical",
+   "",
+   "La Plume de Ma Tante",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1958",
+   "Musical",
+   "",
+   "The Music Man",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1958",
+   "Musical",
+   "",
+   "West Side Story",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1958",
+   "Musical",
+   "",
+   "New Girl In Town",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1958",
+   "Musical",
+   "",
+   "Oh, Captain!",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1958",
+   "Musical",
+   "",
+   "Jamaica",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1957",
+   "Musical",
+   "",
+   "My Fair Lady",
+   1,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "1957",
+   "Musical",
+   "",
+   "Bells Are Ringing",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1957",
+   "Musical",
+   "",
+   "Candide",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1957",
+   "Musical",
+   "",
+   "The Most Happy Fella",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1956",
+   "Musical",
+   "",
+   "Damn Yankees",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1956",
+   "Musical",
+   "",
+   "Pipe Dream",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1955",
+   "Musical",
+   "",
+   "The Pajama Game",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1954",
+   "Musical",
+   "",
+   "Kismet",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1953",
+   "Musical",
+   "",
+   "Wonderful Town",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1952",
+   "Musical",
+   "",
+   "The King and I",
+   1,
+   1,
+   4,
+   "More than 1 winning year"
+  ],
+  [
+   "1951",
+   "Musical",
+   "",
+   "Guys and Dolls",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1950",
+   "Musical",
+   "",
+   "South Pacific",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1949",
+   "Musical",
+   "",
+   "Kiss Me Kate",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2026",
+   "Play",
+   "",
+   "Liberation",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2026",
+   "Play",
+   "",
+   "The Balusters",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2026",
+   "Play",
+   "",
+   "Giant",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2026",
+   "Play",
+   "",
+   "Little Bear Ridge Road",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2025",
+   "Play",
+   "",
+   "Purpose",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2025",
+   "Play",
+   "",
+   "English",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2025",
+   "Play",
+   "",
+   "The Hills of California",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2025",
+   "Play",
+   "",
+   "John Proctor is the Villain",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2025",
+   "Play",
+   "",
+   "Oh, Mary!",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2024",
+   "Play",
+   "",
+   "Stereophonic",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2024",
+   "Play",
+   "",
+   "Jaja's African Hair Braiding",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2024",
+   "Play",
+   "",
+   "Mary Jane",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2024",
+   "Play",
+   "",
+   "Mother Play",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2024",
+   "Play",
+   "",
+   "Prayer for the French Republic",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2023",
+   "Play",
+   "",
+   "Leopoldstadt",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2023",
+   "Play",
+   "",
+   "Ain't No Mo'",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2023",
+   "Play",
+   "",
+   "Between Riverside and Crazy",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2023",
+   "Play",
+   "",
+   "Cost of Living",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2023",
+   "Play",
+   "",
+   "Fat Ham",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2022",
+   "Play",
+   "",
+   "The Lehman Trilogy",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2022",
+   "Play",
+   "",
+   "Clyde's",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2022",
+   "Play",
+   "",
+   "Hangmen",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2022",
+   "Play",
+   "",
+   "The Minutes",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2022",
+   "Play",
+   "",
+   "Skeleton Crew",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2020",
+   "Play",
+   "",
+   "The Inheritance",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2020",
+   "Play",
+   "",
+   "Grand Horizons",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2020",
+   "Play",
+   "",
+   "Sea Wall/A Life",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2020",
+   "Play",
+   "",
+   "Slave Play",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2020",
+   "Play",
+   "",
+   "The Sound Inside",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2019",
+   "Play",
+   "",
+   "The Ferryman",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2019",
+   "Play",
+   "",
+   "Choir Boy",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2019",
+   "Play",
+   "",
+   "Gary: A Sequel to Titus Andronicus",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2019",
+   "Play",
+   "",
+   "Ink",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2019",
+   "Play",
+   "",
+   "What the Constitution Means to Me",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2018",
+   "Play",
+   "",
+   "Harry Potter and the Cursed Child, Parts One and Two",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2018",
+   "Play",
+   "",
+   "The Children",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2018",
+   "Play",
+   "",
+   "Farinelli and the King",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2018",
+   "Play",
+   "",
+   "Junk",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2018",
+   "Play",
+   "",
+   "Latin History for Morons",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2017",
+   "Play",
+   "",
+   "Oslo",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2017",
+   "Play",
+   "",
+   "A Doll's House, Part 2",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2017",
+   "Play",
+   "",
+   "Indecent",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2017",
+   "Play",
+   "",
+   "Sweat",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2016",
+   "Play",
+   "",
+   "The Humans",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2016",
+   "Play",
+   "",
+   "Eclipsed",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2016",
+   "Play",
+   "",
+   "The Father",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2016",
+   "Play",
+   "",
+   "King Charles III",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2015",
+   "Play",
+   "",
+   "The Curious Incident of the Dog in the Night-Time",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2015",
+   "Play",
+   "",
+   "Disgraced",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2015",
+   "Play",
+   "",
+   "Hand to God",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2015",
+   "Play",
+   "",
+   "Wolf Hall Parts One & Two",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2014",
+   "Play",
+   "",
+   "All The Way",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2014",
+   "Play",
+   "",
+   "Act One",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2014",
+   "Play",
+   "",
+   "Casa Valentina",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2014",
+   "Play",
+   "",
+   "Mothers and Sons",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2014",
+   "Play",
+   "",
+   "Outside Mullingar",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2013",
+   "Play",
+   "",
+   "Vanya and Sonia and Masha and Spike",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2013",
+   "Play",
+   "",
+   "The Assembled Parties",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2013",
+   "Play",
+   "",
+   "Lucky Guy",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2013",
+   "Play",
+   "",
+   "The Testament of Mary",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2012",
+   "Play",
+   "",
+   "Clybourne Park",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2012",
+   "Play",
+   "",
+   "Other Desert Cities",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2012",
+   "Play",
+   "",
+   "Peter and the Starcatcher",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2012",
+   "Play",
+   "",
+   "Venus in Fur",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2011",
+   "Play",
+   "",
+   "War Horse",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2011",
+   "Play",
+   "",
+   "Good People",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2011",
+   "Play",
+   "",
+   "Jerusalem",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2011",
+   "Play",
+   "",
+   "The Motherf**ker with the Hat",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2010",
+   "Play",
+   "",
+   "Red",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2010",
+   "Play",
+   "",
+   "In the Next Room or the vibrator play",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2010",
+   "Play",
+   "",
+   "Next Fall",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2010",
+   "Play",
+   "",
+   "Time Stands Still",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2009",
+   "Play",
+   "",
+   "God of Carnage",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2009",
+   "Play",
+   "",
+   "Dividing the Estate",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2009",
+   "Play",
+   "",
+   "Reasons to Be Pretty",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2009",
+   "Play",
+   "",
+   "33 Variations",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2008",
+   "Play",
+   "",
+   "August: Osage County",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2008",
+   "Play",
+   "",
+   "Rock 'n' Roll",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2008",
+   "Play",
+   "",
+   "The Seafarer",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2008",
+   "Play",
+   "",
+   "The 39 Steps",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2007",
+   "Play",
+   "",
+   "The Coast of Utopia",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2007",
+   "Play",
+   "",
+   "Frost/Nixon",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2007",
+   "Play",
+   "",
+   "The Little Dog Laughed",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2007",
+   "Play",
+   "",
+   "Radio Golf",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2006",
+   "Play",
+   "",
+   "The History Boys",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2006",
+   "Play",
+   "",
+   "The Lieutenant of Inishmore",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2006",
+   "Play",
+   "",
+   "Rabbit Hole",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2006",
+   "Play",
+   "",
+   "Shining City",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2005",
+   "Play",
+   "",
+   "Doubt",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2005",
+   "Play",
+   "",
+   "Democracy",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2005",
+   "Play",
+   "",
+   "Gem of the Ocean",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2005",
+   "Play",
+   "",
+   "The Pillowman",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2004",
+   "Play",
+   "",
+   "I Am My Own Wife",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2004",
+   "Play",
+   "",
+   "Anna in the Tropics",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2004",
+   "Play",
+   "",
+   "Frozen",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2004",
+   "Play",
+   "",
+   "The Retreat from Moscow",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2003",
+   "Play",
+   "",
+   "Take Me Out",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2003",
+   "Play",
+   "",
+   "Enchanted April",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2003",
+   "Play",
+   "",
+   "Say Goodnight Gracie",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2003",
+   "Play",
+   "",
+   "Vincent in Brixton",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2002",
+   "Play",
+   "",
+   "Edward Albee's The Goat or Who Is Sylvia?",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2002",
+   "Play",
+   "",
+   "Fortune's Fool",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2002",
+   "Play",
+   "",
+   "Metamorphoses",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2002",
+   "Play",
+   "",
+   "Topdog/Underdog",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2001",
+   "Play",
+   "",
+   "Proof",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2001",
+   "Play",
+   "",
+   "The Invention of Love",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2001",
+   "Play",
+   "",
+   "King Hedley II",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2001",
+   "Play",
+   "",
+   "The Tale of the Allergist's Wife",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2000",
+   "Play",
+   "",
+   "Copenhagen",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2000",
+   "Play",
+   "",
+   "Dirty Blonde",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2000",
+   "Play",
+   "",
+   "The Ride Down Mt. Morgan",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2000",
+   "Play",
+   "",
+   "True West",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1999",
+   "Play",
+   "",
+   "Side Man",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1999",
+   "Play",
+   "",
+   "Closer",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1999",
+   "Play",
+   "",
+   "The Lonesome West",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1999",
+   "Play",
+   "",
+   "Not About Nightingales",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1998",
+   "Play",
+   "",
+   "Art",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1998",
+   "Play",
+   "",
+   "Freak",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1998",
+   "Play",
+   "",
+   "Golden Child",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1998",
+   "Play",
+   "",
+   "The Beauty Queen of Leenane",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1997",
+   "Play",
+   "",
+   "The Last Night of Ballyhoo",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1997",
+   "Play",
+   "",
+   "Skylight",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1997",
+   "Play",
+   "",
+   "Stanley",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1997",
+   "Play",
+   "",
+   "The Young Man From Atlanta",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1996",
+   "Play",
+   "",
+   "Master Class",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1996",
+   "Play",
+   "",
+   "Buried Child",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1996",
+   "Play",
+   "",
+   "Racing Demon",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1996",
+   "Play",
+   "",
+   "Seven Guitars",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1995",
+   "Play",
+   "",
+   "Love! Valour! Compassion!",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1995",
+   "Play",
+   "",
+   "Arcadia",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1995",
+   "Play",
+   "",
+   "Having Our Say",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1995",
+   "Play",
+   "",
+   "Indiscretions",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1994",
+   "Play",
+   "",
+   "Angels in America: Perestroika",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1994",
+   "Play",
+   "",
+   "Broken Glass",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1994",
+   "Play",
+   "",
+   "The Kentucky Cycle",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1994",
+   "Play",
+   "",
+   "Twilight: Los Angeles, 1992",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1993",
+   "Play",
+   "",
+   "Angels in America: Millennium Approaches",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1993",
+   "Play",
+   "",
+   "The Sisters Rosensweig",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1993",
+   "Play",
+   "",
+   "Someone Who'll Watch Over Me",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1993",
+   "Play",
+   "",
+   "The Song of Jacob Zulu",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1992",
+   "Play",
+   "",
+   "Dancing at Lughnasa",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1992",
+   "Play",
+   "",
+   "Four Baboons Adoring the Sun",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1992",
+   "Play",
+   "",
+   "Two Shakespearean Actors",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1992",
+   "Play",
+   "",
+   "Two Trains Running",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1991",
+   "Play",
+   "",
+   "Lost in Yonkers",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1991",
+   "Play",
+   "",
+   "Our Country's Good",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1991",
+   "Play",
+   "",
+   "Shadowlands",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1991",
+   "Play",
+   "",
+   "Six Degrees of Separation",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1990",
+   "Play",
+   "",
+   "The Grapes of Wrath",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1990",
+   "Play",
+   "",
+   "Lettice and Lovage",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1990",
+   "Play",
+   "",
+   "Prelude to a Kiss",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1990",
+   "Play",
+   "",
+   "The Piano Lesson",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1989",
+   "Play",
+   "",
+   "The Heidi Chronicles",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1989",
+   "Play",
+   "",
+   "Largely New York",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1989",
+   "Play",
+   "",
+   "Lend Me a Tenor",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1989",
+   "Play",
+   "",
+   "Shirley Valentine",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1988",
+   "Play",
+   "",
+   "M. Butterfly",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1988",
+   "Play",
+   "",
+   "A Walk in the Woods",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1988",
+   "Play",
+   "",
+   "Joe Turner's Come and Gone",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1988",
+   "Play",
+   "",
+   "Speed-the-Plow",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1987",
+   "Play",
+   "",
+   "Fences",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1987",
+   "Play",
+   "",
+   "Broadway Bound",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1987",
+   "Play",
+   "",
+   "Coastal Disturbances",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1987",
+   "Play",
+   "",
+   "Les Liaisons Dangereuses",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1986",
+   "Play",
+   "",
+   "I'm Not Rappaport",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1986",
+   "Play",
+   "",
+   "Benefactors",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1986",
+   "Play",
+   "",
+   "Blood Knot",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1986",
+   "Play",
+   "",
+   "The House of Blue Leaves",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1985",
+   "Play",
+   "",
+   "Biloxi Blues",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1985",
+   "Play",
+   "",
+   "As Is",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1985",
+   "Play",
+   "",
+   "Hurlyburly",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1985",
+   "Play",
+   "",
+   "Ma Rainey's Black Bottom",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1984",
+   "Play",
+   "",
+   "The Real Thing",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1984",
+   "Play",
+   "",
+   "Glengarry Glen Ross",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1984",
+   "Play",
+   "",
+   "Noises Off",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1984",
+   "Play",
+   "",
+   "Play Memory",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1983",
+   "Play",
+   "",
+   "Torch Song Trilogy",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1983",
+   "Play",
+   "",
+   "Angels Fall",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1983",
+   "Play",
+   "",
+   "Night, Mother",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1983",
+   "Play",
+   "",
+   "Plenty",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1982",
+   "Play",
+   "",
+   "The Life and Adventures of Nicholas Nickleby",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1982",
+   "Play",
+   "",
+   "Crimes of the Heart",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1982",
+   "Play",
+   "",
+   "The Dresser",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1982",
+   "Play",
+   "",
+   "'Master Harold'...and the Boys",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1981",
+   "Play",
+   "",
+   "Amadeus",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1981",
+   "Play",
+   "",
+   "A Lesson From Aloes",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1981",
+   "Play",
+   "",
+   "A Life",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1981",
+   "Play",
+   "",
+   "Fifth of July",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1980",
+   "Play",
+   "",
+   "Children of a Lesser God",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1980",
+   "Play",
+   "",
+   "Bent",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1980",
+   "Play",
+   "",
+   "Home",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1980",
+   "Play",
+   "",
+   "Talley's Folly",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1979",
+   "Play",
+   "",
+   "The Elephant Man",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1979",
+   "Play",
+   "",
+   "Bedroom Farce",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1979",
+   "Play",
+   "",
+   "Whose Life Is It Anyway?",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1979",
+   "Play",
+   "",
+   "Wings",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1978",
+   "Play",
+   "",
+   "Da",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1978",
+   "Play",
+   "",
+   "Chapter Two",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1978",
+   "Play",
+   "",
+   "Deathtrap",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1978",
+   "Play",
+   "",
+   "The Gin Game",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1977",
+   "Play",
+   "",
+   "The Shadow Box",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1977",
+   "Play",
+   "",
+   "For Colored Girls Who Have Considered Suicide/When the Rainbow is Enuf",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1977",
+   "Play",
+   "",
+   "Otherwise Engaged",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1977",
+   "Play",
+   "",
+   "Streamers",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1976",
+   "Play",
+   "",
+   "Travesties",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1976",
+   "Play",
+   "",
+   "The First Breeze of Summer",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1976",
+   "Play",
+   "",
+   "Knock Knock",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1976",
+   "Play",
+   "",
+   "Lamppost Reunion",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1975",
+   "Play",
+   "",
+   "Equus",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1975",
+   "Play",
+   "",
+   "Same Time, Next Year",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1975",
+   "Play",
+   "",
+   "Seascape",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1975",
+   "Play",
+   "",
+   "Short Eyes",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1975",
+   "Play",
+   "",
+   "Sizwe Banzi is Dead and The Island",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1975",
+   "Play",
+   "",
+   "The National Health",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1974",
+   "Play",
+   "",
+   "The River Niger",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1974",
+   "Play",
+   "",
+   "Boom Boom Room",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1974",
+   "Play",
+   "",
+   "The Au Pair Man",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1974",
+   "Play",
+   "",
+   "Ulysses in Nighttown",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1973",
+   "Play",
+   "",
+   "That Championship Season",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1973",
+   "Play",
+   "",
+   "Butley",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1973",
+   "Play",
+   "",
+   "The Changing Room",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1973",
+   "Play",
+   "",
+   "The Sunshine Boys",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1972",
+   "Play",
+   "",
+   "Sticks and Bones",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1972",
+   "Play",
+   "",
+   "Old Times",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1972",
+   "Play",
+   "",
+   "The Prisoner of Second Avenue",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1972",
+   "Play",
+   "",
+   "Vivat! Vivat Regina!",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1971",
+   "Play",
+   "",
+   "Sleuth",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1971",
+   "Play",
+   "",
+   "Home",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1971",
+   "Play",
+   "",
+   "The Philanthropist",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1971",
+   "Play",
+   "",
+   "Story Theatre",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1970",
+   "Play",
+   "",
+   "Borstal Boy",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1970",
+   "Play",
+   "",
+   "Child's Play",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1970",
+   "Play",
+   "",
+   "Indians",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1970",
+   "Play",
+   "",
+   "Last of the Red Hot Lovers",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1969",
+   "Play",
+   "",
+   "The Great White Hope",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1969",
+   "Play",
+   "",
+   "Hadrian VII",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1969",
+   "Play",
+   "",
+   "Lovers",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1969",
+   "Play",
+   "",
+   "The Man in the Glass Booth",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1968",
+   "Play",
+   "",
+   "Rosencrantz and Guildenstern Are Dead",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1968",
+   "Play",
+   "",
+   "Joe Egg",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1968",
+   "Play",
+   "",
+   "Plaza Suite",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1968",
+   "Play",
+   "",
+   "The Price",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1967",
+   "Play",
+   "",
+   "The Homecoming",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1967",
+   "Play",
+   "",
+   "A Delicate Balance",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1967",
+   "Play",
+   "",
+   "Black Comedy",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1967",
+   "Play",
+   "",
+   "The Killing of Sister George",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1966",
+   "Play",
+   "",
+   "Marat/Sade",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1966",
+   "Play",
+   "",
+   "Inadmissible Evidence",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1966",
+   "Play",
+   "",
+   "Philadelphia, Here I Come!",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1966",
+   "Play",
+   "",
+   "The Right Honourable Gentleman",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1965",
+   "Play",
+   "",
+   "The Subject Was Roses",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1965",
+   "Play",
+   "",
+   "Luv",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1965",
+   "Play",
+   "",
+   "The Odd Couple",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1965",
+   "Play",
+   "",
+   "Tiny Alice",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1964",
+   "Play",
+   "",
+   "Luther",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1964",
+   "Play",
+   "",
+   "The Ballad of the Sad Caf\u00e9",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1964",
+   "Play",
+   "",
+   "Barefoot in the Park",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1964",
+   "Play",
+   "",
+   "Dylan",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1963",
+   "Play",
+   "",
+   "Who's Afraid of Virginia Woolf?",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1963",
+   "Play",
+   "",
+   "A Thousand Clowns",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1963",
+   "Play",
+   "",
+   "Mother Courage and Her Children",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1963",
+   "Play",
+   "",
+   "Tchin-Tchin",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1962",
+   "Play",
+   "",
+   "A Man for All Seasons",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1962",
+   "Play",
+   "",
+   "Gideon",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1962",
+   "Play",
+   "",
+   "The Caretaker",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1962",
+   "Play",
+   "",
+   "The Night of the Iguana",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1961",
+   "Play",
+   "",
+   "Becket",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1961",
+   "Play",
+   "",
+   "All the Way Home",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1961",
+   "Play",
+   "",
+   "The Devil's Advocate",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1961",
+   "Play",
+   "",
+   "The Hostage",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1960",
+   "Play",
+   "",
+   "The Miracle Worker",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1960",
+   "Play",
+   "",
+   "A Raisin in the Sun",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1960",
+   "Play",
+   "",
+   "The Best Man",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1960",
+   "Play",
+   "",
+   "The Tenth Man",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1960",
+   "Play",
+   "",
+   "Toys in the Attic",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1959",
+   "Play",
+   "",
+   "J.B.",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1959",
+   "Play",
+   "",
+   "A Touch of the Poet",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1959",
+   "Play",
+   "",
+   "Epitaph for George Dillon",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1959",
+   "Play",
+   "",
+   "The Disenchanted",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1959",
+   "Play",
+   "",
+   "The Visit by Friedrich Duerrenmatt",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1958",
+   "Play",
+   "",
+   "Sunrise At Campobello",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1958",
+   "Play",
+   "",
+   "The Rope Dancers",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1958",
+   "Play",
+   "",
+   "Two For The Seesaw",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1958",
+   "Play",
+   "",
+   "Time Remembered",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1958",
+   "Play",
+   "",
+   "The Dark at the Top of the Stairs",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1958",
+   "Play",
+   "",
+   "Look Back In Anger",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1958",
+   "Play",
+   "",
+   "Look Homeward, Angel",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1958",
+   "Play",
+   "",
+   "Romanoff and Juliet",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1957",
+   "Play",
+   "",
+   "Long Day's Journey Into Night",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1957",
+   "Play",
+   "",
+   "Separate Tables",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1957",
+   "Play",
+   "",
+   "The Potting Shed",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1957",
+   "Play",
+   "",
+   "The Waltz Of The Toreadors",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1956",
+   "Play",
+   "",
+   "The Diary of Anne Frank",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1956",
+   "Play",
+   "",
+   "Bus Stop",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1956",
+   "Play",
+   "",
+   "Cat on a Hot Tin Roof",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1956",
+   "Play",
+   "",
+   "Tiger at the Gates",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1956",
+   "Play",
+   "",
+   "The Chalk Garden",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1955",
+   "Play",
+   "",
+   "The Desperate Hours",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1954",
+   "Play",
+   "",
+   "The Teahouse of the August Moon",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1953",
+   "Play",
+   "",
+   "The Crucible",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1952",
+   "Play",
+   "",
+   "The Fourposter",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1951",
+   "Play",
+   "",
+   "The Rose Tattoo",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1950",
+   "Play",
+   "",
+   "The Cocktail Party",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1949",
+   "Play",
+   "",
+   "Death of a Salesman",
+   1,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "1948",
+   "Play",
+   "",
+   "Mister Roberts",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2026",
+   "Revival of a Musical",
+   "",
+   "Ragtime",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2026",
+   "Revival of a Musical",
+   "",
+   "Cats: The Jellicle Ball",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2026",
+   "Revival of a Musical",
+   "",
+   "Richard O'Brien's The Rocky Horror Show",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2025",
+   "Revival of a Musical",
+   "",
+   "Sunset Blvd.",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2025",
+   "Revival of a Musical",
+   "",
+   "Floyd Collins",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2025",
+   "Revival of a Musical",
+   "",
+   "Gypsy",
+   0,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "2025",
+   "Revival of a Musical",
+   "",
+   "Pirates! The Penzance Musical",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2024",
+   "Revival of a Musical",
+   "",
+   "Merrily We Roll Along",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2024",
+   "Revival of a Musical",
+   "",
+   "Cabaret at the Kit Kat Club",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2024",
+   "Revival of a Musical",
+   "",
+   "Gutenberg! The Musical!",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2024",
+   "Revival of a Musical",
+   "",
+   "The Who's Tommy",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2023",
+   "Revival of a Musical",
+   "",
+   "Parade",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2023",
+   "Revival of a Musical",
+   "",
+   "Into the Woods",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2023",
+   "Revival of a Musical",
+   "",
+   "Lerner & Loewe\u2019s Camelot",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2023",
+   "Revival of a Musical",
+   "",
+   "Sweeney Todd: The Demon Barber of Fleet Street",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2022",
+   "Revival of a Musical",
+   "",
+   "Company",
+   1,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "2022",
+   "Revival of a Musical",
+   "",
+   "Caroline, or Change",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2022",
+   "Revival of a Musical",
+   "",
+   "The Music Man",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2019",
+   "Revival of a Musical",
+   "",
+   "Rodgers & Hammerstein\u2019s Oklahoma!",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2019",
+   "Revival of a Musical",
+   "",
+   "Kiss Me, Kate",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2018",
+   "Revival of a Musical",
+   "",
+   "Once On This Island",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2018",
+   "Revival of a Musical",
+   "",
+   "My Fair Lady",
+   0,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "2018",
+   "Revival of a Musical",
+   "",
+   "Rodgers & Hammerstein's Carousel",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2017",
+   "Revival of a Musical",
+   "",
+   "Hello, Dolly!",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2017",
+   "Revival of a Musical",
+   "",
+   "Falsettos",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2017",
+   "Revival of a Musical",
+   "",
+   "Miss Saigon",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2016",
+   "Revival of a Musical",
+   "",
+   "The Color Purple",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2016",
+   "Revival of a Musical",
+   "",
+   "Fiddler on the Roof",
+   0,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "2016",
+   "Revival of a Musical",
+   "",
+   "She Loves Me",
+   0,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "2016",
+   "Revival of a Musical",
+   "",
+   "Spring Awakening",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2015",
+   "Revival of a Musical",
+   "",
+   "The King and I",
+   1,
+   1,
+   4,
+   "More than 1 winning year"
+  ],
+  [
+   "2015",
+   "Revival of a Musical",
+   "",
+   "On the Town",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2015",
+   "Revival of a Musical",
+   "",
+   "On the Twentieth Century",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2014",
+   "Revival of a Musical",
+   "",
+   "Hedwig and the Angry Inch",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2014",
+   "Revival of a Musical",
+   "",
+   "Les Mis\u00e9rables",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2014",
+   "Revival of a Musical",
+   "",
+   "Violet",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2013",
+   "Revival of a Musical",
+   "",
+   "Pippin",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2013",
+   "Revival of a Musical",
+   "",
+   "Annie",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2013",
+   "Revival of a Musical",
+   "",
+   "The Mystery of Edwin Drood",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2013",
+   "Revival of a Musical",
+   "",
+   "Rodgers + Hammerstein's Cinderella",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2012",
+   "Revival of a Musical",
+   "",
+   "The Gershwins' Porgy and Bess",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2012",
+   "Revival of a Musical",
+   "",
+   "Evita",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2012",
+   "Revival of a Musical",
+   "",
+   "Follies",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2012",
+   "Revival of a Musical",
+   "",
+   "Jesus Christ Superstar",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2011",
+   "Revival of a Musical",
+   "",
+   "Anything Goes",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2011",
+   "Revival of a Musical",
+   "",
+   "How to Succeed in Business Without Really Trying",
+   0,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "2010",
+   "Revival of a Musical",
+   "",
+   "La Cage aux Folles",
+   1,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "2010",
+   "Revival of a Musical",
+   "",
+   "Finian's Rainbow",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2010",
+   "Revival of a Musical",
+   "",
+   "A Little Night Music",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2010",
+   "Revival of a Musical",
+   "",
+   "Ragtime",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2009",
+   "Revival of a Musical",
+   "",
+   "Hair",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2009",
+   "Revival of a Musical",
+   "",
+   "Guys and Dolls",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2009",
+   "Revival of a Musical",
+   "",
+   "Pal Joey",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2009",
+   "Revival of a Musical",
+   "",
+   "West Side Story",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2008",
+   "Revival of a Musical",
+   "",
+   "Rodgers & Hammerstein's South Pacific",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2008",
+   "Revival of a Musical",
+   "",
+   "Grease",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2008",
+   "Revival of a Musical",
+   "",
+   "Gypsy",
+   0,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "2008",
+   "Revival of a Musical",
+   "",
+   "Sunday in the Park with George",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2007",
+   "Revival of a Musical",
+   "",
+   "Company",
+   1,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "2007",
+   "Revival of a Musical",
+   "",
+   "The Apple Tree",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2007",
+   "Revival of a Musical",
+   "",
+   "A Chorus Line",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2007",
+   "Revival of a Musical",
+   "",
+   "110 in the Shade",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2006",
+   "Revival of a Musical",
+   "",
+   "The Pajama Game",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2006",
+   "Revival of a Musical",
+   "",
+   "Sweeney Todd",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2006",
+   "Revival of a Musical",
+   "",
+   "The Threepenny Opera",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2005",
+   "Revival of a Musical",
+   "",
+   "La Cage aux Folles",
+   1,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "2005",
+   "Revival of a Musical",
+   "",
+   "Pacific Overtures",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2005",
+   "Revival of a Musical",
+   "",
+   "Sweet Charity",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2004",
+   "Revival of a Musical",
+   "",
+   "Assassins",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2004",
+   "Revival of a Musical",
+   "",
+   "Big River",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2004",
+   "Revival of a Musical",
+   "",
+   "Fiddler on the Roof",
+   0,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "2004",
+   "Revival of a Musical",
+   "",
+   "Wonderful Town",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2003",
+   "Revival of a Musical",
+   "",
+   "Nine The Musical",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2003",
+   "Revival of a Musical",
+   "",
+   "Gypsy",
+   0,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "2003",
+   "Revival of a Musical",
+   "",
+   "La Boh\u00e8me",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2003",
+   "Revival of a Musical",
+   "",
+   "Man of La Mancha",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2002",
+   "Revival of a Musical",
+   "",
+   "Into the Woods",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2002",
+   "Revival of a Musical",
+   "",
+   "Oklahoma!",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2001",
+   "Revival of a Musical",
+   "",
+   "42nd Street",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2001",
+   "Revival of a Musical",
+   "",
+   "Bells Are Ringing",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2001",
+   "Revival of a Musical",
+   "",
+   "Follies",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2001",
+   "Revival of a Musical",
+   "",
+   "The Rocky Horror Show",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2000",
+   "Revival of a Musical",
+   "",
+   "Kiss Me, Kate",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2000",
+   "Revival of a Musical",
+   "",
+   "Jesus Christ Superstar",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2000",
+   "Revival of a Musical",
+   "",
+   "The Music Man",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2000",
+   "Revival of a Musical",
+   "",
+   "Tango Argentino",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1999",
+   "Revival of a Musical",
+   "",
+   "Annie Get Your Gun.",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1999",
+   "Revival of a Musical",
+   "",
+   "Little Me",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1999",
+   "Revival of a Musical",
+   "",
+   "You're a Good Man, Charlie Brown.",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1999",
+   "Revival of a Musical",
+   "",
+   "Peter Pan",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1998",
+   "Revival of a Musical",
+   "",
+   "Cabaret",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1998",
+   "Revival of a Musical",
+   "",
+   "1776",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1998",
+   "Revival of a Musical",
+   "",
+   "The Sound of Music",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1997",
+   "Revival of a Musical",
+   "",
+   "Chicago",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1997",
+   "Revival of a Musical",
+   "",
+   "Annie",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1997",
+   "Revival of a Musical",
+   "",
+   "Candide",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1997",
+   "Revival of a Musical",
+   "",
+   "Once Upon a Mattress",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1996",
+   "Revival of a Musical",
+   "",
+   "The King and I",
+   1,
+   1,
+   4,
+   "More than 1 winning year"
+  ],
+  [
+   "1996",
+   "Revival of a Musical",
+   "",
+   "A Funny Thing Happened on the Way to the Forum",
+   0,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "1996",
+   "Revival of a Musical",
+   "",
+   "Company",
+   0,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "1996",
+   "Revival of a Musical",
+   "",
+   "Hello, Dolly!",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1995",
+   "Revival of a Musical",
+   "",
+   "Show Boat",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1995",
+   "Revival of a Musical",
+   "",
+   "How to Succeed in Business Without Really Trying",
+   0,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "1994",
+   "Revival of a Musical",
+   "",
+   "Carousel",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1994",
+   "Revival of a Musical",
+   "",
+   "Damn Yankees",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1994",
+   "Revival of a Musical",
+   "",
+   "Grease",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1994",
+   "Revival of a Musical",
+   "",
+   "She Loves Me",
+   0,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "2026",
+   "Revival of a Play",
+   "",
+   "Arthur Miller's Death of a Salesman",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2026",
+   "Revival of a Play",
+   "",
+   "Becky Shaw",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2026",
+   "Revival of a Play",
+   "",
+   "Every Brilliant Thing",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2026",
+   "Revival of a Play",
+   "",
+   "Fallen Angels",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2026",
+   "Revival of a Play",
+   "",
+   "Oedipus",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2025",
+   "Revival of a Play",
+   "",
+   "Eureka Day",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2025",
+   "Revival of a Play",
+   "",
+   "Thornton Wilder's Our Town",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2025",
+   "Revival of a Play",
+   "",
+   "Romeo + Juliet",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2025",
+   "Revival of a Play",
+   "",
+   "Yellow Face",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2024",
+   "Revival of a Play",
+   "",
+   "Appropriate",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2024",
+   "Revival of a Play",
+   "",
+   "An Enemy of the People",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2024",
+   "Revival of a Play",
+   "",
+   "Purlie Victorious: A Non-Confederate Romp Through the Cotton Patch",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2023",
+   "Revival of a Play",
+   "",
+   "Suzan-Lori Parks' Topdog/ Underdog",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2023",
+   "Revival of a Play",
+   "",
+   "A Doll's House",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2023",
+   "Revival of a Play",
+   "",
+   "August Wilson\u2019s The Piano Lesson",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2023",
+   "Revival of a Play",
+   "",
+   "The Sign in Sidney Brustein's Window",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2022",
+   "Revival of a Play",
+   "",
+   "Take Me Out",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2022",
+   "Revival of a Play",
+   "",
+   "American Buffalo",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2022",
+   "Revival of a Play",
+   "",
+   "for colored girls who have considered suicide/when the rainbow is enuf",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2022",
+   "Revival of a Play",
+   "",
+   "How I Learned to Drive",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2022",
+   "Revival of a Play",
+   "",
+   "Trouble in Mind",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2020",
+   "Revival of a Play",
+   "",
+   "A Soldier's Play",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2020",
+   "Revival of a Play",
+   "",
+   "Betrayal",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2020",
+   "Revival of a Play",
+   "",
+   "Frankie and Johnny in the Clair de Lune",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2019",
+   "Revival of a Play",
+   "",
+   "The Boys in the Band",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2019",
+   "Revival of a Play",
+   "",
+   "Arthur Miller\u2019s All My Sons",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2019",
+   "Revival of a Play",
+   "",
+   "Burn This",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2019",
+   "Revival of a Play",
+   "",
+   "Torch Song",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2019",
+   "Revival of a Play",
+   "",
+   "The Waverly Gallery",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2018",
+   "Revival of a Play",
+   "",
+   "Angels in America",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2018",
+   "Revival of a Play",
+   "",
+   "Edward Albee's Three Tall Women",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2018",
+   "Revival of a Play",
+   "",
+   "Eugene O'Neill's The Iceman Cometh",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2018",
+   "Revival of a Play",
+   "",
+   "Lobby Hero",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2018",
+   "Revival of a Play",
+   "",
+   "Travesties",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2017",
+   "Revival of a Play",
+   "",
+   "August Wilson's Jitney",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2017",
+   "Revival of a Play",
+   "",
+   "John Guare's Six Degrees of Separation",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2017",
+   "Revival of a Play",
+   "",
+   "Lillian Hellman's The Little Foxes",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2017",
+   "Revival of a Play",
+   "",
+   "Present Laughter",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2016",
+   "Revival of a Play",
+   "",
+   "Arthur Miller's A View from the Bridge",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2016",
+   "Revival of a Play",
+   "",
+   "Arthur Miller's The Crucible",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2016",
+   "Revival of a Play",
+   "",
+   "Blackbird",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2016",
+   "Revival of a Play",
+   "",
+   "Long Day's Journey Into Night",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2016",
+   "Revival of a Play",
+   "",
+   "Noises Off",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2015",
+   "Revival of a Play",
+   "",
+   "Skylight",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2015",
+   "Revival of a Play",
+   "",
+   "The Elephant Man",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2015",
+   "Revival of a Play",
+   "",
+   "This Is Our Youth",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2015",
+   "Revival of a Play",
+   "",
+   "You Can't Take It with You",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2014",
+   "Revival of a Play",
+   "",
+   "A Raisin in the Sun",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2014",
+   "Revival of a Play",
+   "",
+   "The Cripple of Inishmaan",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2014",
+   "Revival of a Play",
+   "",
+   "The Glass Menagerie",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2014",
+   "Revival of a Play",
+   "",
+   "Twelfth Night",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2013",
+   "Revival of a Play",
+   "",
+   "Who's Afraid of Virginia Woolf?",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2013",
+   "Revival of a Play",
+   "",
+   "Golden Boy",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2013",
+   "Revival of a Play",
+   "",
+   "Orphans",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2013",
+   "Revival of a Play",
+   "",
+   "The Trip to Bountiful",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2012",
+   "Revival of a Play",
+   "",
+   "Arthur Miller's Death of a Salesman",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2012",
+   "Revival of a Play",
+   "",
+   "Gore Vidal's The Best Man",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2012",
+   "Revival of a Play",
+   "",
+   "Master Class",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2012",
+   "Revival of a Play",
+   "",
+   "Wit",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2011",
+   "Revival of a Play",
+   "",
+   "The Normal Heart",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2011",
+   "Revival of a Play",
+   "",
+   "Arcadia",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2011",
+   "Revival of a Play",
+   "",
+   "The Importance of Being Earnest",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2011",
+   "Revival of a Play",
+   "",
+   "The Merchant of Venice",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2010",
+   "Revival of a Play",
+   "",
+   "Fences",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2010",
+   "Revival of a Play",
+   "",
+   "Lend Me a Tenor",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2010",
+   "Revival of a Play",
+   "",
+   "The Royal Family",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2010",
+   "Revival of a Play",
+   "",
+   "A View from the Bridge",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2009",
+   "Revival of a Play",
+   "",
+   "The Norman Conquests",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2009",
+   "Revival of a Play",
+   "",
+   "Joe Turner's Come and Gone",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2009",
+   "Revival of a Play",
+   "",
+   "Mary Stuart",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2009",
+   "Revival of a Play",
+   "",
+   "Waiting for Godot",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2008",
+   "Revival of a Play",
+   "",
+   "Boeing-Boeing",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2008",
+   "Revival of a Play",
+   "",
+   "The Homecoming",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2008",
+   "Revival of a Play",
+   "",
+   "Les Liaisons Dangereuses",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2008",
+   "Revival of a Play",
+   "",
+   "Macbeth",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2007",
+   "Revival of a Play",
+   "",
+   "Journey's End",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2007",
+   "Revival of a Play",
+   "",
+   "Inherit the Wind",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2007",
+   "Revival of a Play",
+   "",
+   "Talk Radio",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2007",
+   "Revival of a Play",
+   "",
+   "Translations",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2006",
+   "Revival of a Play",
+   "",
+   "Awake and Sing!",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2006",
+   "Revival of a Play",
+   "",
+   "The Constant Wife",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2006",
+   "Revival of a Play",
+   "",
+   "Edward Albee's Seascape",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2006",
+   "Revival of a Play",
+   "",
+   "Faith Healer",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2005",
+   "Revival of a Play",
+   "",
+   "Glengarry Glen Ross",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2005",
+   "Revival of a Play",
+   "",
+   "Edward Albee's Who's Afraid of Virginia Woolf?",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2005",
+   "Revival of a Play",
+   "",
+   "On Golden Pond",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2005",
+   "Revival of a Play",
+   "",
+   "Twelve Angry Men",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2004",
+   "Revival of a Play",
+   "",
+   "Henry IV",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2004",
+   "Revival of a Play",
+   "",
+   "Jumpers",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2004",
+   "Revival of a Play",
+   "",
+   "King Lear",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2004",
+   "Revival of a Play",
+   "",
+   "A Raisin in the Sun",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2003",
+   "Revival of a Play",
+   "",
+   "Long Day's Journey into Night",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2003",
+   "Revival of a Play",
+   "",
+   "A Day in the Death of Joe Egg",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2003",
+   "Revival of a Play",
+   "",
+   "Dinner at Eight",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2003",
+   "Revival of a Play",
+   "",
+   "Frankie and Johnny in the Clair de Lune",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2002",
+   "Revival of a Play",
+   "",
+   "Private Lives",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2002",
+   "Revival of a Play",
+   "",
+   "The Crucible",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2002",
+   "Revival of a Play",
+   "",
+   "Morning's at Seven",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2002",
+   "Revival of a Play",
+   "",
+   "Noises Off",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2001",
+   "Revival of a Play",
+   "",
+   "One Flew Over the Cuckoo's Nest",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2001",
+   "Revival of a Play",
+   "",
+   "Betrayal",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2001",
+   "Revival of a Play",
+   "",
+   "Gore Vidal's The Best Man",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "2001",
+   "Revival of a Play",
+   "",
+   "The Search for Signs of Intelligent Life in the Universe",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2000",
+   "Revival of a Play",
+   "",
+   "The Real Thing",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2000",
+   "Revival of a Play",
+   "",
+   "Amadeus",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "2000",
+   "Revival of a Play",
+   "",
+   "A Moon for the Misbegotten",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "2000",
+   "Revival of a Play",
+   "",
+   "The Price",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1999",
+   "Revival of a Play",
+   "",
+   "Death of a Salesman",
+   1,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "1999",
+   "Revival of a Play",
+   "",
+   "Electra.",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1999",
+   "Revival of a Play",
+   "",
+   "The Iceman Cometh",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1999",
+   "Revival of a Play",
+   "",
+   "Twelfth Night.",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1998",
+   "Revival of a Play",
+   "",
+   "A View From the Bridge",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1998",
+   "Revival of a Play",
+   "",
+   "Ah, Wilderness!",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1998",
+   "Revival of a Play",
+   "",
+   "The Chairs",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1998",
+   "Revival of a Play",
+   "",
+   "The Diary of Anne Frank",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1997",
+   "Revival of a Play",
+   "",
+   "A Doll's House",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1997",
+   "Revival of a Play",
+   "",
+   "London Assurance",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1997",
+   "Revival of a Play",
+   "",
+   "Present Laughter",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1997",
+   "Revival of a Play",
+   "",
+   "The Gin Game",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1996",
+   "Revival of a Play",
+   "",
+   "A Delicate Balance",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1996",
+   "Revival of a Play",
+   "",
+   "A Midsummer Night's Dream",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1996",
+   "Revival of a Play",
+   "",
+   "An Ideal Husband",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1996",
+   "Revival of a Play",
+   "",
+   "Inherit the Wind",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1995",
+   "Revival of a Play",
+   "",
+   "The Heiress",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1995",
+   "Revival of a Play",
+   "",
+   "Hamlet",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1995",
+   "Revival of a Play",
+   "",
+   "The Moliere Comedies",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1995",
+   "Revival of a Play",
+   "",
+   "The Rose Tattoo",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1994",
+   "Revival of a Play",
+   "",
+   "An Inspector Calls",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1994",
+   "Revival of a Play",
+   "",
+   "Abe Lincoln in Illinois",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1994",
+   "Revival of a Play",
+   "",
+   "Medea",
+   0,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "1994",
+   "Revival of a Play",
+   "",
+   "Timon of Athens",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1977",
+   "Revival",
+   "",
+   "Porgy and Bess",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1977",
+   "Revival",
+   "",
+   "Guys and Dolls",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1977",
+   "Revival",
+   "",
+   "The Cherry Orchard",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1977",
+   "Revival",
+   "",
+   "Threepenny Opera",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1978",
+   "Revival",
+   "",
+   "Dracula",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1978",
+   "Revival",
+   "",
+   "Tartuffe",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1978",
+   "Revival",
+   "",
+   "Timbuktu!",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1978",
+   "Revival",
+   "",
+   "A Touch of the Poet",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1980",
+   "Revival",
+   "",
+   "Morning's at Seven",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1980",
+   "Revival",
+   "",
+   "Major Barbara",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1980",
+   "Revival",
+   "",
+   "Peter Pan",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1980",
+   "Revival",
+   "",
+   "West Side Story",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1981",
+   "Revival",
+   "",
+   "The Pirates of Penzance",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1981",
+   "Revival",
+   "",
+   "Brigadoon",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1981",
+   "Revival",
+   "",
+   "Camelot",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1981",
+   "Revival",
+   "",
+   "The Little Foxes",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1982",
+   "Revival",
+   "",
+   "Othello",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1982",
+   "Revival",
+   "",
+   "A Taste of Honey",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1982",
+   "Revival",
+   "",
+   "Medea",
+   0,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "1982",
+   "Revival",
+   "",
+   "My Fair Lady",
+   0,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "1983",
+   "Revival",
+   "",
+   "On Your Toes",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1983",
+   "Revival",
+   "",
+   "All's Well That Ends Well",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1983",
+   "Revival",
+   "",
+   "A View From the Bridge",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1983",
+   "Revival",
+   "",
+   "The Caine Mutiny Court-Martial",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1984",
+   "Revival",
+   "",
+   "Death of a Salesman",
+   1,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "1984",
+   "Revival",
+   "",
+   "American Buffalo",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1984",
+   "Revival",
+   "",
+   "Heartbreak House",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1984",
+   "Revival",
+   "",
+   "A Moon for the Misbegotten",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1985",
+   "Revival",
+   "",
+   "Joe Egg",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1985",
+   "Revival",
+   "",
+   "Cyrano de Bergerac",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1985",
+   "Revival",
+   "",
+   "Much Ado about Nothing",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1985",
+   "Revival",
+   "",
+   "Strange Interlude",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1986",
+   "Revival",
+   "",
+   "Sweet Charity",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1986",
+   "Revival",
+   "",
+   "Hay Fever",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1986",
+   "Revival",
+   "",
+   "The Iceman Cometh",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1986",
+   "Revival",
+   "",
+   "Loot",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1987",
+   "Revival",
+   "",
+   "All My Sons",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1987",
+   "Revival",
+   "",
+   "The Front Page",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1987",
+   "Revival",
+   "",
+   "The Life and Adventures of Nicholas Nickleby",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1987",
+   "Revival",
+   "",
+   "Pygmalion",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1988",
+   "Revival",
+   "",
+   "Anything Goes",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1988",
+   "Revival",
+   "",
+   "A Streetcar Named Desire",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1988",
+   "Revival",
+   "",
+   "Cabaret",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1988",
+   "Revival",
+   "",
+   "Dreamgirls",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1989",
+   "Revival",
+   "",
+   "Our Town",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1989",
+   "Revival",
+   "",
+   "Ah, Wilderness!",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1989",
+   "Revival",
+   "",
+   "Ain't Misbehavin'",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1989",
+   "Revival",
+   "",
+   "Cafe Crown",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1990",
+   "Revival",
+   "",
+   "Gypsy",
+   1,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "1990",
+   "Revival",
+   "",
+   "Sweeney Todd",
+   0,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1990",
+   "Revival",
+   "",
+   "The Circle",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1990",
+   "Revival",
+   "",
+   "The Merchant of Venice",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1991",
+   "Revival",
+   "",
+   "Fiddler on the Roof",
+   1,
+   1,
+   3,
+   "More than 1 winning year"
+  ],
+  [
+   "1991",
+   "Revival",
+   "",
+   "The Miser",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1991",
+   "Revival",
+   "",
+   "Peter Pan",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1992",
+   "Revival",
+   "",
+   "Guys and Dolls",
+   1,
+   1,
+   2,
+   "More than 1 winning year"
+  ],
+  [
+   "1992",
+   "Revival",
+   "",
+   "The Most Happy Fella",
+   0,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1992",
+   "Revival",
+   "",
+   "On Borrowed Time",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1992",
+   "Revival",
+   "",
+   "The Visit",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1993",
+   "Revival",
+   "",
+   "Anna Christie",
+   1,
+   1,
+   1,
+   "1 winning year"
+  ],
+  [
+   "1993",
+   "Revival",
+   "",
+   "St. Joan",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1993",
+   "Revival",
+   "",
+   "The Price",
+   0,
+   1,
+   0,
+   ""
+  ],
+  [
+   "1993",
+   "Revival",
+   "",
+   "Wilder, Wilder, Wilder",
+   0,
+   1,
+   0,
+   ""
+  ]
+ ]
+}

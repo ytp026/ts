@@ -1,6 +1,6 @@
 {
  "dataThrough": "2026-10-25",
- "trainingSnapshot": "grosses_snapshot_20261101.csv",
+ "trainingSnapshot": "grosses_snapshot_20261102.csv",
  "question": "Do sentiment scores from Wikipedia critical-reception sections improve closing-risk and next-week gross forecasts over numeric features alone?",
  "method": "VADER lexicon sentiment (vaderSentiment) per sentence of each article's critical-reception section, after removing sentences about box office, closings, awards or ticket sales",
  "sentimentFeatures": [
@@ -11,49 +11,49 @@
  "coverage": {
   "showsSince1996": 1016,
   "showsWithSentiment": 364,
-  "showWeekShare": 0.5301
+  "showWeekShare": 0.5302
  },
  "closingWithin8Weeks": {
   "numericOnly": {
-   "rocAuc": 0.8208,
-   "averagePrecision": 0.4352,
-   "brier": 0.08824,
+   "rocAuc": 0.8183,
+   "averagePrecision": 0.4521,
+   "brier": 0.08565,
    "rounds": 800
   },
   "withSentiment": {
-   "rocAuc": 0.8737,
-   "averagePrecision": 0.5638,
-   "brier": 0.07938,
+   "rocAuc": 0.8753,
+   "averagePrecision": 0.559,
+   "brier": 0.07914,
    "rounds": 50
   },
-  "aucLift": 0.0529,
+  "aucLift": 0.057,
   "aucLiftCi95": [
-   0.0155,
-   0.0977
+   0.0147,
+   0.1061
   ],
-  "rows": 2470,
+  "rows": 2479,
   "shows": 54,
   "positiveRate": 0.1198
  },
  "nextWeekGross": {
   "numericOnly": {
-   "mape": 10.624,
-   "medianApe": 7.366,
-   "wape": 10.866,
+   "mape": 9.461,
+   "medianApe": 6.675,
+   "wape": 9.148,
    "rounds": 800
   },
   "withSentiment": {
-   "mape": 10.553,
-   "medianApe": 7.332,
-   "wape": 10.791,
+   "mape": 9.483,
+   "medianApe": 6.783,
+   "wape": 9.175,
    "rounds": 800
   },
-  "mapeChange": -0.071,
+  "mapeChange": 0.022,
   "mapeChangeCi95": [
-   -0.1571,
-   0.0088
+   -0.0457,
+   0.0842
   ],
-  "rows": 2579,
+  "rows": 2596,
   "shows": 54
  },
  "attribution": "Scores derived from the linked English Wikipedia articles, by Wikipedia contributors, CC BY-SA 4.0. Only derived scores are stored.",

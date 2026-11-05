@@ -1,5 +1,37 @@
 # Broadway dashboard data updates
 
+## Text contrast
+
+The light studio theme uses `--ink` for copy and chart labels on light
+surfaces, and `--inverse-ink` for copy on the remaining dark panels.
+Keep these text colors separate from chart series and background colors.
+`python -m unittest discover -s tests -p "test_text_contrast.py"` checks the
+affected text rules and their WCAG AA normal-text contrast (at least 4.5:1),
+including chart-row hover, focus, and selected colors.
+Navigation uses a separate white/charcoal palette with neutral gray hover and
+active states; its category structure and keyboard behavior are unchanged.
+Shared primary actions use violet `#6D5EF5` with white text, darkening to
+`#5146D6` on hover or keyboard focus. Secondary copy uses `--muted` (`#5C6578`)
+on white and pale-gray surfaces. Tony panels, filters, and archive forms follow
+the same light surface rules; green and crimson remain meaningful status colors.
+Chart legend and tooltip text uses charcoal independently of the original
+series-colored swatches and lines. Do not use a bright series hue as body text.
+When changing shared styles, check all ten HTML pages at desktop and mobile
+widths, including expanded menus, tooltips, form values, and selected states;
+the static contrast tests do not replace checking the rendered CSS cascade.
+
+## Typography
+
+Playfair Display is reserved for display headings and the wordmark; Inter is
+the shared body, control, table, and chart font, with system fallbacks. Body
+text is 16px at the default browser size, supporting labels and table copy are
+14px, and hero headings scale from 36px to 64px. Use relative text sizes for
+HTML rather than shrinking labels to fit a fixed-height card.
+Detailed SVG charts retain their design width inside keyboard-focusable,
+horizontally scrollable regions on narrow screens so axis labels do not shrink
+with the viewport. The chart legend and explanatory copy remain outside those
+regions. `node --test tests/models.test.js` covers the chart-frame markup.
+
 The static site reads committed JSON files, not a live database. The original
 gross snapshots were exported from a PBIP model (as credited in `index.html`).
 Repository history contains no PBIP source or reproducible gross generator.
@@ -259,9 +291,9 @@ Week counts, timeline segments, sorting and row selection behavior are unchanged
 
 ## Machine learning, causal inference and NLP
 
-The [ML Models page](https://ytp026.github.io/ts/models.html) and the causal section
-of the [Tony Awards page](https://ytp026.github.io/ts/tony-awards.html#causal-results)
-read JSON written by the scripts below. No result on the site is hand-entered.
+The [ML Models page](https://ytp026.github.io/ts/models.html) and the
+[Tony Effect Study page](https://ytp026.github.io/ts/tony-study.html), which explains
+the Tony results in plain language for non-technical readers, read JSON written by the scripts below. No result on the site is hand-entered.
 
 ### Data design: frozen training snapshot
 
@@ -279,7 +311,7 @@ read JSON written by the scripts below. No result on the site is hand-entered.
   weeks are used only to score next week's forecast, to fill in actuals for
   previously logged forecasts, and to measure drift against the snapshot.
 
-### 1. Quasi-experimental study: do Tony winners pull ahead?
+### 1. Quasi-experimental study: do Tony nominations and wins move grosses?
 
 `scripts/tony_causal.py` → `ml/tony-causal-results.json`
 
@@ -292,7 +324,9 @@ field from its own test results.
 - **Units:** productions nominated for Best Musical, Best Play, Best Revival of a
   Musical or Best Revival of a Play that were running on Tony night.
 - **Comparison:** winners (treated) vs same-season nominees that lost (control).
-- **Difference-in-differences:** the outcome is mean log weekly gross in weeks
+- **Difference-in-differences (a linear regression):** each show's change in log
+  gross (after minus before) is regressed on a won/nominated indicator plus
+  controls; the indicator's coefficient is the Tony bump. The outcome is mean log weekly gross in weeks
   1–8 after the ceremony minus weeks −7–0. OLS with year fixed effects
   (seasonality and market shocks) and controls for musical vs play, revival,
   pre-ceremony capacity, pre-ceremony log gross and log run age.
@@ -303,6 +337,40 @@ field from its own test results.
 - **Checks and secondary outcomes:** a placebo ceremony 8 weeks early, capacity
   points, closing within 26 weeks (linear probability model), and musicals vs
   plays.
+- **Nomination step:** shows that are new this season (opened within 52 weeks of
+  the ceremony) and nominated for a production award are compared with new shows
+  not nominated in any category. Acting- or design-only nominees are excluded. The
+  outcome is mean log gross from the announcement week through Tony night, minus
+  the 4 weeks before the announcement. The window stops at Tony night so that
+  winning is not mixed in. Controls are pre-period gross and capacity, run age and
+  year fixed effects. The placebo moves the announcement 5 weeks earlier.
+  Announcement dates for 14 seasons were checked against Wikipedia
+  (`data/tony-nomination-dates.json`, CC BY-SA). Other seasons use the median
+  5-week gap, and 2020/2021 are skipped because of the shutdown.
+- **Lifecycle view:** each show's average weekly gross over all weeks before the
+  nomination announcement is indexed to 100 (every show opened within 52 weeks of
+  nomination day), and the median
+  index is reported between nomination and Tony night and in the 8 weeks after
+  Tony night, for shows not nominated, nominated but lost, and won. The page draws
+  this as a box-plot timeline (p10/p25/median/p75/p90 per group and phase).
+- **Run length:** new shows of the season still open on Tony night are followed
+  until they close. Shows still open (last reported week within 13 weeks of the
+  latest data) are censored. Kaplan–Meier curves and log-rank tests compare the
+  groups. Linear probability models with year fixed effects and HC1 CIs then test
+  "still open after 13 / 26 / 52 weeks". The horizons bracket the group medians
+  (8, 11 and 52 weeks). Controls are pre-nomination log gross and capacity and log
+  run age, which stand in for demand and engagement type because contract and
+  limited-engagement data is not available. Winners vs losing nominees also adds
+  musical and revival controls, and a plays-only version checks limited runs.
+- **Model comparison (robustness):** each before/after gap is re-estimated with
+  post-double-selection lasso (lasso keeps controls that predict the outcome or
+  the treatment, then OLS on the union) and cross-fitted double machine learning
+  (5 folds, median of 5 splits) with scikit-learn gradient boosting and random
+  forest nuisance models, which allow non-linear control effects. Plain lasso is
+  not used for the effect itself because it shrinks the treatment coefficient, and
+  tree models give predictions rather than one effect size. XGBoost/LightGBM are
+  not installed on the build machine, so scikit-learn's histogram gradient
+  boosting stands in.
 - Statistics are implemented in numpy (`scripts/ml_stats.py`) and unit-tested
   against synthetic data with a known effect.
 
@@ -370,34 +438,76 @@ field from its own test results.
 ### Results
 
 <!-- ML-RESULTS:START -->
-Measured on the frozen snapshot `grosses_snapshot_20261101.csv` (54,529
+Measured on the frozen snapshot `grosses_snapshot_20261102.csv` (54,529
 show-weeks, 1985-06-09 to 2026-10-25). The test period is 2024-01-01 to 2026-10-25.
 
 | Study | Result |
 | --- | --- |
-| Tony win vs losing nominees, weeks 1–8 weekly gross (association) | **+30.8%** (95% CI 19.6% to 43.1%); 188 productions (121 winners, 67 losing nominees), 39 ceremonies |
-| Design checks | Pre-trend joint p = 0.39; placebo ceremony +3.7% (95% CI −4.9% to +13.0%); winners' grosses were already rising in the four weeks before the ceremony |
-| Tony win, capacity | +7.6 points (95% CI 4.7 to 10.4) |
-| Next-week gross MAPE | Model **11.84%** vs persistence 13.36% vs seasonal persistence 12.94% (difference vs persistence 95% CI −2.41 to −0.73 points) |
-| Closing within 8 weeks, ROC AUC | Model **0.891** vs logistic baseline 0.865 (difference 95% CI 0.001 to 0.060); average precision 0.706 vs 0.584 |
-| NLP: closing AUC, numeric vs + sentiment | 0.821 → **0.874** (lift +0.053, 95% CI 0.016 to 0.098), likely inflated by hindsight in Wikipedia text |
-| NLP: next-week gross MAPE | 10.62% → 10.55% (change −0.07, 95% CI −0.16 to +0.01, not significant) |
+| Tony win vs losing nominees, weeks 1–8 weekly gross (association) | **+21.36%** (95% CI 16.35% to 26.59%); 348 production-season records (119 winners, 229 non-winning nominees) |
+| Design checks | Pre-trend joint p = 0.000884; placebo ceremony +8.28% (95% CI 2.98% to 13.85%). Both flag pre-existing differences and limit causal interpretation |
+| Tony nomination vs not nominated, announcement → Tony night weekly gross (association) | **+18.70%** (95% CI 12.67% to 25.04%); 521 records; placebo +7.97% |
+| Lifecycle sample | 150 not nominated; 292 production nominees without a production win; 125 production winners. All nominees = 417, including winners |
+| Lifecycle (median index, weeks before nomination = 100) | Nomination → Tony night: 97.2 / 114.0 / 122.3; after Tony night: 90.2 / 118.1 / 145.5, in the same group order |
+| Run length after Tony night (Kaplan–Meier median) | Not nominated 8 weeks; non-winning nominees 12; winners 52 |
+| Still open after 6 months, adjusted (percentage points) | Won vs lost +24.3 (95% CI 15.5 to 33.0); plays only +27.4 (13.3 to 41.6) |
+| Model comparison (OLS / double-selection lasso / gradient-boosting DML / random-forest DML) | Win +21.36% / +17.14% / +20.69% / +20.16%; nomination +18.70% / +17.14% / +18.18% / +18.03% |
+| Next-week gross MAPE | Model **10.659%** vs persistence 12.824% vs seasonal persistence 12.095% |
+| Closing within 8 weeks, ROC AUC | Model **0.8943** vs logistic baseline 0.8629 |
+| NLP: closing AUC, numeric vs + sentiment | 0.8183 → **0.8753** (lift +0.057, 95% CI 0.0147 to 0.1061), likely inflated by hindsight in Wikipedia text |
+| NLP: next-week gross MAPE | 9.461% → 9.483% (change +0.022, 95% CI −0.0457 to +0.0842, not significant) |
 | Drift (latest 8 weeks vs prior 52 snapshot weeks) | PSI: gross 0.09, capacity 0.12, avg ticket 0.06, weekly change 0.08, run age 0.62 (alert); market gross −11.7% vs same weeks last year |
 
-The Tony result is an association, not a clean causal effect: winners are often
-the frontrunners, and their grosses were already rising before the ceremony.
+The Tony results are associations, not clean causal effects: nominees and winners
+are often the frontrunners, and winners' grosses were already rising before the
+ceremony. Nomination is measured against shows not nominated; winning is measured
+against non-winning nominees. These estimates use different filtered samples and
+should not simply be added together.
 <!-- ML-RESULTS:END -->
+
+### Production nominee title repair (2026-11-04)
+
+The old production-award extract contained 543 blank show titles (535 non-winning
+nominees and 8 winners). The official archive places older titles inside italic
+markup before producer credits; those titles had been lost in the local extract.
+`scripts/repair_tony_titles.py` rebuilds the five production categories from saved
+official archive pages, preserves all other categories, and records source URLs,
+hashes, extracted titles, category/year counts, and duplicate handling in
+`data/tony-production-provenance.json`. Original production rows are retained in
+`data/tony-production-before-repair.json`. There are now 891 distinct source-backed
+production nomination records and no missing production titles. Historical ties
+and the combined Revival category before 1994 are retained rather than forcing
+four winners in every year. The loader rejects future blank production titles.
+
+Reproduce the repair with `python scripts\repair_tony_titles.py --evidence PATH`,
+where PATH holds the archive HTML files named by the script. Then run
+`python scripts\tony_causal.py`, `python scripts\audit_tony_sample.py`,
+`python scripts\forecast.py --no-mlflow`, and `python scripts\nlp_lift.py`.
+The original snapshot, eligibility rules, model settings and bootstrap count
+remain unchanged. `data/tony-sample-audit.json` explains attrition: 441 non-winning
+nominations and 148 winners in covered ceremonies, then 305 and 130 matched near
+Tony night, then 229 and 119 with enough before/after observations. Lifecycle
+counts use a different nomination-day sample. This repair covers production
+awards only; remaining missing titles in other categories are not inferred.
 
 ### Limitations
 
 - Tony winners are not randomly assigned, so the Tony result is an association,
   not a clean causal effect. The DiD controls for level differences and the event
-  study checks pre-trends. The pre-period coefficients are jointly insignificant
-  but mostly negative, so winners were already gaining slightly before the
-  ceremony. Post-ceremony shocks that coincide with winning (for example,
+  study checks pre-trends. The corrected sample has a significant pre-trend test
+  and a nonzero placebo estimate, so the parallel-trends assumption is questionable.
+  Post-ceremony shocks that coincide with winning (for example,
   marketing pushes) cannot be ruled out. Many losing nominees had already closed
-  by Tony night, so the control group is smaller and made up of survivors.
+  by Tony night, so both comparison groups consist of surviving productions.
 - Productions not running on Tony night, or without matched grosses, are excluded.
+- Nominations are not random either. A show's weeks before nomination can include
+  discounted previews, and for spring openers the pre-nomination window can still be in
+  previews; run age is controlled for. Musical or revival status is unknown for
+  non-nominees, so the nomination model uses fewer controls. Lifecycle medians
+  after Tony night include only shows still running, so they favour survivors.
+- Run length is partly set by contracts and limited engagements, which the data
+  does not record. The winner advantage over losing nominees is clear at 3 and 6
+  months but not at 1 year or for plays alone, so longer runs are not proven to be
+  caused by winning.
 - Forecast accuracy on 2024 and later is not guaranteed to hold in future
   seasons. Drift monitoring is there to flag this.
 - Wikipedia reception sections are written with hindsight and exist mostly for

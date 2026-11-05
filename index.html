@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Theater Spotlight: interactive Broadway performance analytics.">
   <title>Overview | Theater Spotlight</title>
-  <link rel="stylesheet" href="styles.css?v=29">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=119">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-47RPC1XZKM"></script>
   <script>
@@ -21,6 +22,7 @@
       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "y83snmaz05");
   </script>
+  <script src="nav.js?v=3" defer></script>
 </head>
 <body class="theme-overview">
   <header class="site-header">
@@ -32,14 +34,36 @@
     </a>
 
     <nav class="navigation" aria-label="Main navigation">
-      <a class="active" href="index.html" aria-current="page">Overview</a>
-      <a href="history.html">40 Years of Broadway</a>
-      <a href="theatres.html">Theatre District</a>
-      <a href="tony-awards.html">Tony Awards Effect</a>
-      <a href="rush.html">Rush & Lottery</a>
-      <a href="game.html">Be More Chill</a>
-      <a href="memories.html">Back to the Future</a>
-      <a href="models.html">ML Models</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+        <span class="nav-toggle-label">Menu</span>
+      </button>
+            <ul class="nav-menu" id="nav-menu">
+        <li class="nav-group">
+          <button class="nav-link nav-trigger active" type="button" aria-expanded="false" aria-controls="nav-viz">Explore Broadway</button>
+          <ul class="nav-dropdown" id="nav-viz">
+            <li><a href="index.html" aria-current="page"><strong>Broadway at a Glance</strong><small>Current market snapshot</small></a></li>
+            <li><a href="history.html"><strong>Forty Years of Grosses</strong><small>Long-run Broadway performance</small></a></li>
+            <li><a href="theatres.html"><strong>Inside the Houses</strong><small>Venue scale, demand, and capacity</small></a></li>
+            <li><a href="tony-awards.html"><strong>Tony by the Numbers</strong><small>Winners, nominees, and box office</small></a></li>
+          </ul>
+        </li>
+        <li class="nav-group">
+          <button class="nav-link nav-trigger" type="button" aria-expanded="false" aria-controls="nav-study">Behind the Numbers</button>
+          <ul class="nav-dropdown" id="nav-study">
+            <li><a href="tony-study.html"><strong>The Tony Effect</strong><small>Causal effect of a win</small></a></li>
+            <li><a href="models.html"><strong>Forecasts &amp; Closing Risk</strong><small>Model performance, risk, and drift</small></a></li>
+          </ul>
+        </li>
+        <li class="nav-group">
+          <button class="nav-link nav-trigger" type="button" aria-expanded="false" aria-controls="nav-fun">Just for fun</button>
+          <ul class="nav-dropdown" id="nav-fun">
+            <li><a href="rush.html"><strong>Rush & lottery</strong><small>Discount tickets by show</small></a></li>
+            <li><a href="game.html"><strong>Be More Chill</strong><small>Guess the show from the clues</small></a></li>
+            <li><a href="memories.html"><strong>Back to the Future</strong><small>A personal Broadway timeline</small></a></li>
+          </ul>
+        </li>
+      </ul>
       <a class="nav-cta" href="#dashboard">View report</a>
     </nav>
   </header>
@@ -47,15 +71,15 @@
   <main>
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">Broadway intelligence, clearly staged</p>
-        <h1>See the business behind the curtain.</h1>
+        <p class="eyebrow">Broadway analytics portfolio</p>
+        <h1>From Broadway box office to clear decisions.</h1>
         <p class="intro">
-          Turn weekly grosses, attendance, ticket prices, and theatre activity into a
-          story you can explore.
+          Interactive analysis, predictive models, and causal reasoning built from 40
+          years of weekly Broadway performance.
         </p>
         <div class="hero-actions">
-          <a class="primary-button" href="#dashboard">Explore the dashboard</a>
-          <a class="text-link" href="#insights">Read the insights <span aria-hidden="true">→</span></a>
+          <a class="primary-button" href="#site-contents">Explore the site</a>
+          <a class="text-link" href="#dashboard">Explore the dashboard <span aria-hidden="true">→</span></a>
         </div>
       </div>
       <div class="data-art" aria-label="Growing weekly grosses graphic inspired by Evita">
@@ -72,11 +96,41 @@
       </div>
     </section>
 
-    <section class="feature-strip" aria-label="What you can explore">
-      <a href="history.html"><span>01</span><strong>Travel through 40 years</strong><small>Follow Broadway across four decades</small></a>
-      <a href="theatres.html"><span>02</span><strong>Explore the district</strong><small>See how venues shape performance</small></a>
-      <a href="tony-awards.html"><span>03</span><strong>Measure the Tony effect</strong><small>Explore the impact of Broadway's biggest honors</small></a>
+    <section class="reader-guide" id="site-contents" aria-labelledby="reader-path-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">What is inside</p>
+          <h2 id="reader-path-title">Four ways to explore Broadway</h2>
+        </div>
+        <p>Choose a market view, a research question, or a predictive tool.</p>
+      </div>
+      <div class="reader-guide-grid site-contents-grid">
+        <a href="history.html">
+          <span>01 · Market history</span>
+          <strong>Grosses, attendance, and long-term change</strong>
+          <small>Explore 40 years of weekly Broadway performance.</small>
+        </a>
+        <a href="theatres.html">
+          <span>02 · Venue context</span>
+          <strong>Theatres, capacity, and demand</strong>
+          <small>See how the room and show mix shape performance.</small>
+        </a>
+        <a href="tony-awards.html">
+          <span>03 · Awards and impact</span>
+          <strong>Tony records and the recognition effect</strong>
+          <small>Move from descriptive patterns to a causal study.</small>
+        </a>
+        <a href="models.html">
+          <span>04 · Models and risk</span>
+          <strong>Forecasts, closing risk, and monitoring</strong>
+          <small>Review model performance, current scores, and alerts.</small>
+        </a>
+      </div>
     </section>
+
+    <div class="editorial-intro">
+      <p><strong>Start here if you want the current picture:</strong> the overview connects headline gross, attendance, theatre, and Tony signals in one place.</p>
+    </div>
 
     <section class="report-section" id="dashboard" aria-labelledby="report-title">
       <div class="section-heading">
@@ -86,6 +140,7 @@
         </div>
         <p>Filter, compare, and follow the signals shaping the Broadway market.</p>
       </div>
+      <p id="broadway-data-status" class="dashboard-note" role="status">Checking the latest reported Broadway week…</p>
 
       <div class="report-frame javascript-dashboard-frame">
         <div class="javascript-dashboard">
@@ -177,27 +232,23 @@
     <article class="story" id="insights" aria-labelledby="overview-story-title">
       <div class="story-heading">
         <p class="section-label">Behind the numbers</p>
-        <h2 id="overview-story-title">The pulse of Broadway</h2>
-        <p class="story-lead">A market where storytelling, audience enthusiasm, and economics meet eight times a week.</p>
+        <h2 id="overview-story-title">Why I built Theater Spotlight</h2>
+        <p class="story-lead">I came to Broadway for the stories. My curiosity kept going after the curtain fell.</p>
       </div>
       <div class="story-copy">
         <p>
-          Broadway is more than a collection of glowing marquees; it is a living marketplace.
-          The Overview dashboard offers a fast way to read it. Begin with the headline indicators
-          to see whether attendance and grosses are climbing, holding steady, or cooling. Then
-          look beyond the totals. A strong week can be powered by a blockbuster, a holiday surge,
-          a new opening, or broad growth across many productions, and each possibility tells a
-          different story.
+          Musicals have always been a source of energy and inspiration for me. As a data scientist,
+          I began wondering what was happening beyond the stage: how ticket prices and weekly grosses
+          move, how full different theatres become, and what recognition at the Tony Awards can—and
+          cannot—tell us about a show's momentum.
         </p>
         <p>
-          Use the visuals as a map rather than a scoreboard. Compare recent results with earlier
-          periods, notice where ticket prices move differently from attendance, and watch for
-          shows that outperform the wider market. Tourism, awards, weather, and school calendars
-          can all change the district's rhythm. The most revealing insight may be the relationship
-          between measures, not the largest number on screen. When revenue, capacity, and demand
-          rise together, Broadway may be building momentum. When they separate, the dashboard
-          invites a deeper question. This page is your opening scene: a concise view of the
-          industry's energy and a guide to the details waiting in the other sections.
+          Theater Spotlight turns that curiosity into a transparent data project. The dashboards
+          describe the market, the Tony study examines stronger comparisons and uncertainty, and the
+          modeling work asks what can be forecast from the signals we already have. That includes a
+          closing-risk tracker that estimates the probability a production closes within eight weeks.
+          The goal is not to reduce a musical to a number, but to use data to understand the business
+          that keeps the stories on stage.
         </p>
       </div>
     </article>
@@ -238,6 +289,6 @@
     </p>
   </footer>
   <script src="broadway-data.js"></script>
-  <script src="dashboard.js?v=4"></script>
+  <script src="dashboard.js?v=5"></script>
 </body>
 </html>

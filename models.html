@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Broadway gross forecasting, closing-risk model, monitoring and review-sentiment NLP, retrained weekly with GitHub Actions.">
   <title>ML Models | Theater Spotlight</title>
-  <link rel="stylesheet" href="styles.css?v=10">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=119">
+  <link rel="stylesheet" href="ml-extras.css?v=6">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-47RPC1XZKM"></script>
   <script>
@@ -21,6 +23,7 @@
       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "y83snmaz05");
   </script>
+  <script src="nav.js?v=3" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -29,33 +32,82 @@
       <span>Theater Spotlight</span>
     </a>
     <nav class="navigation" aria-label="Main navigation">
-      <a href="index.html">Overview</a>
-      <a href="history.html">40 Years of Broadway</a>
-      <a href="theatres.html">Theatre District</a>
-      <a href="tony-awards.html">Tony Awards Effect</a>
-      <a href="rush.html">Rush & Lottery</a>
-      <a href="game.html">Be More Chill</a>
-      <a href="memories.html">Back to the Future</a>
-      <a class="active" href="models.html" aria-current="page">ML Models</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+        <span class="nav-toggle-label">Menu</span>
+      </button>
+            <ul class="nav-menu" id="nav-menu">
+        <li class="nav-group">
+          <button class="nav-link nav-trigger" type="button" aria-expanded="false" aria-controls="nav-viz">Explore Broadway</button>
+          <ul class="nav-dropdown" id="nav-viz">
+            <li><a href="index.html"><strong>Broadway at a Glance</strong><small>Current market snapshot</small></a></li>
+            <li><a href="history.html"><strong>Forty Years of Grosses</strong><small>Long-run Broadway performance</small></a></li>
+            <li><a href="theatres.html"><strong>Inside the Houses</strong><small>Venue scale, demand, and capacity</small></a></li>
+            <li><a href="tony-awards.html"><strong>Tony by the Numbers</strong><small>Winners, nominees, and box office</small></a></li>
+          </ul>
+        </li>
+        <li class="nav-group">
+          <button class="nav-link nav-trigger active" type="button" aria-expanded="false" aria-controls="nav-study">Behind the Numbers</button>
+          <ul class="nav-dropdown" id="nav-study">
+            <li><a href="tony-study.html"><strong>The Tony Effect</strong><small>Causal effect of a win</small></a></li>
+            <li><a href="models.html" aria-current="page"><strong>Forecasts &amp; Closing Risk</strong><small>Model performance, risk, and drift</small></a></li>
+          </ul>
+        </li>
+        <li class="nav-group">
+          <button class="nav-link nav-trigger" type="button" aria-expanded="false" aria-controls="nav-fun">Just for fun</button>
+          <ul class="nav-dropdown" id="nav-fun">
+            <li><a href="rush.html"><strong>Rush & lottery</strong><small>Discount tickets by show</small></a></li>
+            <li><a href="game.html"><strong>Be More Chill</strong><small>Guess the show from the clues</small></a></li>
+            <li><a href="memories.html"><strong>Back to the Future</strong><small>A personal Broadway timeline</small></a></li>
+          </ul>
+        </li>
+      </ul>
       <a class="nav-cta" href="#forecast">View models</a>
     </nav>
   </header>
 
   <main>
     <section class="report-section ml-section ml-intro">
-      <p class="eyebrow">Machine learning · MLOps · NLP</p>
-      <h1>Forecasting Broadway, honestly.</h1>
+      <p class="eyebrow">Forecasting · closing risk · model monitoring</p>
+      <h1>Forecast Broadway. Spot closing risk.</h1>
       <p class="intro">
-        Gradient-boosted models predict next week's gross and the chance a production closes
-        within 8 weeks. They are evaluated on a time-based holdout against simple baselines,
-        retrained every week by GitHub Actions on a frozen data snapshot, tracked with MLflow,
-        and monitored for drift and live error.
+        These models predict next week's gross and estimate the chance a production closes
+        within eight weeks. Results are compared with simple baselines, rescored weekly,
+        and monitored for drift and live error before being used.
       </p>
       <p class="ml-note">
         Every number below is loaded from JSON written by the pipeline in
         <a href="https://github.com/ytp026/ts/tree/main/scripts" target="_blank" rel="noopener">scripts/</a>;
         nothing is hand-entered.
       </p>
+      <p class="ml-meta">
+        <span>Data through <b id="ml-data-through">…</b></span>
+      </p>
+      <nav class="ml-toc" aria-label="On this page">
+        <span>On this page</span>
+        <ol>
+          <li><a href="#forecast">Can the model beat a simple guess?</a></li>
+          <li><a href="#predictions">Which productions need a closer look?</a></li>
+          <li><a href="#monitoring">Can we trust this week's model?</a></li>
+          <li><a href="#nlp">Do reviews improve the prediction?</a></li>
+          <li><a href="#methods">How is the system built and run?</a></li>
+        </ol>
+      </nav>
+    </section>
+
+    <section class="reader-guide" aria-labelledby="models-reader-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">Trust before action</p>
+          <h2 id="models-reader-title">Read the model in three passes</h2>
+        </div>
+        <p>Separate predictive quality, current output, and production health.</p>
+      </div>
+      <div class="reader-guide-grid">
+        <a href="#forecast"><span>01 · Is it useful?</span><strong>Compare with simple baselines</strong><small>Forecast error, classification lift, and feature dependence.</small></a>
+        <a href="#predictions"><span>02 · What should I inspect?</span><strong>Review this week's risk scores</strong><small>Production-level estimates with local explanations.</small></a>
+        <a href="#monitoring"><span>03 · Can I trust it now?</span><strong>Check drift and live error</strong><small>Operational signals before relying on current predictions.</small></a>
+      </div>
     </section>
 
     <section class="report-section ml-section" id="forecast" aria-labelledby="forecast-title">
@@ -78,8 +130,12 @@
           <div id="ml-show-chart"></div>
         </article>
         <article class="ml-panel">
-          <h3>Most important gross features</h3>
-          <p class="ml-note">Permutation importance on the test set (increase in error when shuffled).</p>
+          <h3>What drives the next-week gross forecast?</h3>
+          <p class="ml-note">
+            The score is the drop in predictive fit (R²) when that signal is scrambled on unseen
+            test weeks. A larger drop means the model relies on the signal more; it does not mean
+            the signal causes higher gross.
+          </p>
           <ol class="ml-features" id="ml-features"></ol>
         </article>
       </div>
@@ -89,17 +145,47 @@
       <div class="section-heading">
         <div>
           <p class="section-label">2 · Batch scoring</p>
-          <h2 id="predictions-title">Forecasts for the week ending <span id="ml-target-week">…</span></h2>
+          <h2 id="predictions-title">Closing-risk watchlist for the week ending <span id="ml-target-week">…</span></h2>
         </div>
-        <p>Scored weekly from the latest reported week. Closing risk is the predicted probability that the production's final performance falls within the next 8 weeks.</p>
+        <p>A ranked screening view for the next eight weeks. Start with the model's estimate, then read occupancy and the strongest drivers before deciding what deserves attention.</p>
       </div>
       <article class="ml-panel">
-        <div class="ml-table-wrap">
-          <table class="ml-table">
-            <thead><tr><th>Production</th><th>Last week</th><th>Forecast</th><th>Capacity</th><th>Closing risk</th></tr></thead>
+        <div class="ml-risk-intro">
+          <div>
+            <p class="ml-kpi-label">How to read the score</p>
+            <p>Closing risk is the model's estimated probability that the production's final performance occurs within the next eight weeks—not a closure announcement.</p>
+          </div>
+          <p class="ml-risk-base-note">The list is ranked from higher to lower estimated risk. Driver points show one-at-a-time changes versus a typical running show; they do not add to 100%.</p>
+        </div>
+        <div class="ml-risk-toolbar">
+          <label>
+            <span>Find a production</span>
+            <input id="ml-risk-search" type="search" placeholder="Search the watchlist">
+          </label>
+          <div class="ml-risk-list-controls">
+            <span id="ml-risk-count" role="status" aria-live="polite">Loading productions…</span>
+            <button id="ml-risk-toggle" type="button" hidden>Show all</button>
+          </div>
+        </div>
+        <div class="ml-risk-table-wrap" tabindex="0" role="region" aria-label="Closing-risk watchlist table; scroll horizontally on smaller screens">
+          <table class="ml-table ml-risk-table">
+            <thead>
+              <tr>
+                <th scope="col">Rank</th>
+                <th scope="col">Production</th>
+                <th scope="col" data-risk-sort-header="risk" aria-sort="descending">
+                  <button type="button" class="table-sort-button" data-risk-sort="risk">8-week closing risk <span aria-hidden="true">▼</span></button>
+                </th>
+                <th scope="col" data-risk-sort-header="capacity" aria-sort="none">
+                  <button type="button" class="table-sort-button" data-risk-sort="capacity">Seats filled <span aria-hidden="true"></span></button>
+                </th>
+                <th scope="col">Reasons for risk</th>
+              </tr>
+            </thead>
             <tbody id="ml-predictions"></tbody>
           </table>
         </div>
+        <p class="ml-note ml-reasons-note"><b class="up">&uarr;</b> pushes the estimate higher &nbsp; <b class="down">&darr;</b> pushes it lower. The model learns from past closings and cannot distinguish a planned limited engagement from a show in trouble, so new or smaller productions can rank high even when ticket sales are strong.</p>
       </article>
     </section>
 
@@ -109,7 +195,7 @@
           <p class="section-label">3 · Monitoring</p>
           <h2 id="monitoring-title">Drift and live error</h2>
         </div>
-        <p>Population stability index (PSI): below 0.1 stable, 0.1–0.25 moderate, above 0.25 major. Live error compares logged forecasts with reported grosses.</p>
+        <p>Is the model still safe to trust? Every week the GitHub Actions job runs two checks. <b>Drift:</b> are this week's inputs (gross, seats filled, ticket price, weekly change, show age) still shaped like the data the model learned from? Scored with the population stability index (PSI): under 0.1 = no real change, 0.1–0.25 = some change, over 0.25 = a big change worth checking. <b>Live error:</b> each forecast is saved when it is made, then compared with the gross actually reported a week later.</p>
       </div>
       <div class="ml-two-col">
         <article class="ml-panel">
@@ -172,11 +258,12 @@
           <ul class="ml-list">
             <li>A weekly GitHub Actions workflow runs the tests, retrains, logs the run to MLflow (artifact), batch-scores the latest week, and commits static JSON.</li>
             <li>GitHub Pages serves the JSON; there is no server or external host.</li>
-            <li>Code: <a href="https://github.com/ytp026/ts/blob/main/.github/workflows/ml-weekly.yml" target="_blank" rel="noopener">ml-weekly.yml</a>, <a href="https://github.com/ytp026/ts/blob/main/scripts/forecast.py" target="_blank" rel="noopener">forecast.py</a>, <a href="https://github.com/ytp026/ts/blob/main/scripts/nlp_lift.py" target="_blank" rel="noopener">nlp_lift.py</a>.</li>
+            <li>Code: <a href="https://github.com/ytp026/ts#2-forecasting-with-mlops-on-github-actions" target="_blank" rel="noopener">weekly workflow</a>, <a href="https://github.com/ytp026/ts/blob/main/scripts/forecast.py" target="_blank" rel="noopener">forecast.py</a>, <a href="https://github.com/ytp026/ts/blob/main/scripts/nlp_lift.py" target="_blank" rel="noopener">nlp_lift.py</a>.</li>
           </ul>
         </article>
       </div>
     </section>
+
   </main>
 
   <footer>
@@ -197,6 +284,6 @@
       legal, or business decisions.
     </p>
   </footer>
-  <script src="models.js?v=3"></script>
+  <script src="models.js?v=27"></script>
 </body>
 </html>

@@ -1,0 +1,20 @@
+{
+  "description": "Tony Award nomination announcement dates (factual dates only). Each date was checked against the sentence stating it in the cited English Wikipedia article revision. Years not listed are approximated in scripts/ml_data.py from the median gap between announcement week and ceremony week of the listed years, and are flagged as approximate in the results.",
+  "source": "English Wikipedia, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)",
+  "dates": {
+    "2006": {"date": "2006-05-16", "article": "60th Tony Awards", "revisionId": 1380683273},
+    "2007": {"date": "2007-05-15", "article": "61st Tony Awards", "revisionId": 1380683537},
+    "2008": {"date": "2008-05-13", "article": "62nd Tony Awards", "revisionId": 1380683613},
+    "2009": {"date": "2009-05-05", "article": "63rd Tony Awards", "revisionId": 1380683697},
+    "2011": {"date": "2011-05-03", "article": "65th Tony Awards", "revisionId": 1380684130},
+    "2014": {"date": "2014-04-29", "article": "68th Tony Awards", "revisionId": 1380684417},
+    "2015": {"date": "2015-04-28", "article": "69th Tony Awards", "revisionId": 1380684639},
+    "2016": {"date": "2016-05-03", "article": "70th Tony Awards", "revisionId": 1380685596},
+    "2017": {"date": "2017-05-02", "article": "71st Tony Awards", "revisionId": 1380685763},
+    "2018": {"date": "2018-05-01", "article": "72nd Tony Awards", "revisionId": 1380686022},
+    "2019": {"date": "2019-04-30", "article": "73rd Tony Awards", "revisionId": 1380686544},
+    "2024": {"date": "2024-04-30", "article": "77th Tony Awards", "revisionId": 1380688622},
+    "2025": {"date": "2025-05-01", "article": "78th Tony Awards", "revisionId": 1380688940},
+    "2026": {"date": "2026-05-05", "article": "79th Tony Awards", "revisionId": 1380689012}
+  }
+}

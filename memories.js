@@ -12,6 +12,7 @@ const musicFilter = document.querySelector("#memory-music-filter");
 const stageFilter = document.querySelector("#memory-stage-filter");
 const storyFilter = document.querySelector("#memory-story-filter");
 const priceSort = document.querySelector("#memory-price-sort");
+const categoryFilter = document.querySelector("#memory-category");
 const clearFilters = document.querySelector("#memory-clear-filters");
 const filterStatus = document.querySelector("#memory-filter-status");
 const empty = document.querySelector("#memory-empty");
@@ -48,11 +49,11 @@ function updateTimelineRail() {
     if (rail) rail.hidden = true;
     return;
   }
-  const firstMarker = entries[0].offsetLeft + 22;
-  const lastMarker = entries.at(-1).offsetLeft + 22;
+  const firstCenter = entries[0].offsetLeft + entries[0].offsetWidth / 2;
+  const lastCenter = entries.at(-1).offsetLeft + entries.at(-1).offsetWidth / 2;
   rail.hidden = false;
-  rail.style.left = `${firstMarker}px`;
-  rail.style.width = `${Math.max(4, lastMarker - firstMarker)}px`;
+  rail.style.left = `${firstCenter}px`;
+  rail.style.width = `${Math.max(4, lastCenter - firstCenter)}px`;
 }
 
 function scrollTimeline(direction) {
@@ -67,6 +68,7 @@ window.addEventListener("resize", () => {
   updateTimelineRail();
 });
 list.addEventListener("wheel", (event) => {
+  if (list.classList.contains("is-stacked")) return;
   if (Math.abs(event.deltaY) <= Math.abs(event.deltaX) || list.scrollWidth <= list.clientWidth) return;
   list.scrollLeft += event.deltaY;
   event.preventDefault();
@@ -76,8 +78,8 @@ list.addEventListener("keydown", (event) => {
   const current = event.target.closest(".memory-entry");
   const currentIndex = Math.max(0, entries.indexOf(current));
   let nextIndex;
-  if (event.key === "ArrowRight") nextIndex = Math.min(entries.length - 1, currentIndex + 1);
-  if (event.key === "ArrowLeft") nextIndex = Math.max(0, currentIndex - 1);
+  if (event.key === "ArrowRight" || event.key === "ArrowDown") nextIndex = Math.min(entries.length - 1, currentIndex + 1);
+  if (event.key === "ArrowLeft" || event.key === "ArrowUp") nextIndex = Math.max(0, currentIndex - 1);
   if (event.key === "Home") nextIndex = 0;
   if (event.key === "End") nextIndex = entries.length - 1;
   if (nextIndex !== undefined && entries[nextIndex]) {
@@ -134,15 +136,16 @@ const reactionLabels = {
 };
 
 const artworkPalettes = [
-  ["#182a52", "#d65b4a", "#f5cf72"],
-  ["#21453f", "#d69a45", "#f2ead8"],
-  ["#4a214f", "#d86678", "#f4d58c"],
-  ["#173f59", "#46a0a0", "#f3c969"],
-  ["#4f261f", "#bb6547", "#f0dfbd"],
-  ["#26384f", "#7b6fd0", "#f2c85b"],
-  ["#3c2548", "#bc5f91", "#f0dfca"],
-  ["#153e42", "#d97845", "#f1d897"]
+  ["#1E292E", "#3EC6E0", "#F2C14E"],
+  ["#24343C", "#F2C14E", "#F8F0C0"],
+  ["#1E292E", "#F07167", "#F2C14E"],
+  ["#24343C", "#B18CFF", "#F8F0C0"],
+  ["#1E292E", "#3DDC97", "#F2C14E"],
+  ["#24343C", "#3EC6E0", "#DDC79E"],
+  ["#1E292E", "#F2C14E", "#3EC6E0"],
+  ["#24343C", "#BFC17D", "#F8F0C0"]
 ];
+const themeArtworkColors = new Set(artworkPalettes.flat().map((color) => color.toUpperCase()));
 
 function showHash(show) {
   return [...show].reduce((hash, character) => (
@@ -288,7 +291,8 @@ function resolveArtworkConcept(memory, hash) {
 }
 
 function artworkColor(value, fallback) {
-  return /^#[0-9a-f]{6}$/i.test(value || "") ? value : fallback;
+  const color = String(value || "").toUpperCase();
+  return themeArtworkColors.has(color) ? color : fallback;
 }
 
 function artworkBackdrop(hash, accent, highlight) {
@@ -373,7 +377,7 @@ function artworkScene(scene, accent, highlight) {
     "double-heart": `<path d="M220 430C70 320 105 180 195 220c18 8 25 22 25 22s8-14 25-22c90-40 125 100-25 210zM380 430c-150-110-115-250-25-210 18 8 25 22 25 22s8-14 25-22c90-40 125 100-25 210z" fill="${accent}" stroke="${highlight}" stroke-width="8"/><path d="M300 105v350" ${thin}/>`,
     books: `<path d="M95 405h410v70H95zM125 315h350v70H125zM85 225h430v70H85zM145 135h310v70H145z" fill="${accent}" stroke="${highlight}" stroke-width="8"/><path d="M185 135v70M400 225v70M220 315v70M420 405v70" ${thin}/>`,
     "telekinetic-book": `<path d="M75 410c75-25 150-10 225 45 75-55 150-70 225-45v85c-75-28-150-12-225 38-75-50-150-66-225-38z" fill="${accent}" stroke="${highlight}" stroke-width="10"/><path d="M300 455v78M110 440c60-10 115 5 165 42M490 440c-60-10-115 5-165 42" ${thin}/><text x="130" y="260" fill="${highlight}" font-family="Georgia,serif" font-size="74" font-weight="900" transform="rotate(-12 130 260)">A</text><text x="390" y="220" fill="${highlight}" font-family="Georgia,serif" font-size="66" font-weight="900" transform="rotate(9 390 220)">B</text><path d="M245 285h75v55h-75zM330 120h65v90h-65z" fill="none" stroke="${accent}" stroke-width="9"/><path d="M282 285v55M350 120v90M95 325l35-18 18 35M475 300l-28-25-24 32M210 145l20-38 22 35" ${line}/><path d="M165 340c55-65 115-90 180-75M330 260c55-45 105-55 150-25" ${thin}/>` ,
-    "keyhole-eyes": `<path d="M300 75c-95 0-160 68-160 155 0 55 25 95 65 122l-42 128h274l-42-128c40-27 65-67 65-122 0-87-65-155-160-155z" fill="${accent}" opacity=".26" stroke="${highlight}" stroke-width="12"/><path d="M300 135c-55 0-92 40-92 92 0 37 18 66 48 82l-24 95h136l-24-95c30-16 48-45 48-82 0-52-37-92-92-92z" fill="#122f35" opacity=".92"/><path d="M235 240c28-30 62-30 90 0-28 30-62 30-90 0zM325 240c28-30 62-30 90 0-28 30-62 30-90 0z" fill="${highlight}"/><circle cx="280" cy="240" r="12" fill="${accent}"/><circle cx="370" cy="240" r="12" fill="${accent}"/><path d="M70 230h45M485 230h45M105 130l38 28M495 130l-38 28M300 25v35" ${thin}/>` ,
+    "keyhole-eyes": `<path d="M300 75c-95 0-160 68-160 155 0 55 25 95 65 122l-42 128h274l-42-128c40-27 65-67 65-122 0-87-65-155-160-155z" fill="${accent}" opacity=".26" stroke="${highlight}" stroke-width="12"/><path d="M300 135c-55 0-92 40-92 92 0 37 18 66 48 82l-24 95h136l-24-95c30-16 48-45 48-82 0-52-37-92-92-92z" fill="#F8F0C0" opacity=".92"/><path d="M235 240c28-30 62-30 90 0-28 30-62 30-90 0zM325 240c28-30 62-30 90 0-28 30-62 30-90 0z" fill="${highlight}"/><circle cx="280" cy="240" r="12" fill="${accent}"/><circle cx="370" cy="240" r="12" fill="${accent}"/><path d="M70 230h45M485 230h45M105 130l38 28M495 130l-38 28M300 25v35" ${thin}/>` ,
     "lecture-boundary": `<path d="M95 165h190v245H95zM130 410v65M250 410v65M355 315h150v95H355zM380 410v65M480 410v65" ${line}/><path d="M125 220h130M125 275h95M385 345h90M300 95v390" ${thin}/><circle cx="190" cy="130" r="35" fill="${accent}"/><circle cx="430" cy="270" r="35" fill="${highlight}"/><path d="M285 450L335 120" stroke="${accent}" stroke-width="16" stroke-linecap="round"/>`,
     "six-crowns": `<path d="M55 150l18 78h74l18-78-38 27-17-52-17 52zM215 150l18 78h74l18-78-38 27-17-52-17 52zM375 150l18 78h74l18-78-38 27-17-52-17 52zM55 330l18 78h74l18-78-38 27-17-52-17 52zM215 330l18 78h74l18-78-38 27-17-52-17 52zM375 330l18 78h74l18-78-38 27-17-52-17 52z" fill="${accent}" stroke="${highlight}" stroke-width="7"/>`,
     mask: `<path d="M95 190c125-60 285-60 410 0l-45 185c-35 95-115 75-160-10-45 85-125 105-160 10z" fill="${accent}" stroke="${highlight}" stroke-width="10"/><path d="M175 270c35-35 75-35 110 0M315 270c35-35 75-35 110 0" ${line}/>`,
@@ -415,11 +419,11 @@ function generatedArtwork(memory) {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" role="img" aria-label="${escapeXml(memory.show)} original memory illustration">
     <rect width="600" height="300" fill="${background}"/>
     <g opacity=".5">${artworkBackdrop(hash, accent, highlight)}</g>
-    <rect x="310" width="290" height="300" fill="#000" opacity=".2"/>
+    <rect x="310" width="290" height="300" fill="#F8F0C0"/>
     <path d="M310 34v232" stroke="${accent}" stroke-width="3" opacity=".8"/>
     <g transform="translate(5 18) scale(.5)">${artworkScene(scene, accent, highlight)}</g>
-    <text text-anchor="middle" fill="#fff" font-family="Georgia,serif" font-size="${titleSize}" font-weight="700">${titleMarkup}</text>
-    <text text-anchor="middle" fill="${highlight}" font-family="Aptos,Segoe UI,sans-serif" font-size="15" font-weight="800" letter-spacing=".7">${subtitleMarkup}</text>
+    <text text-anchor="middle" fill="#1E292E" font-family="Georgia,serif" font-size="${titleSize}" font-weight="700">${titleMarkup}</text>
+    <text text-anchor="middle" fill="#3D6474" font-family="Aptos,Segoe UI,sans-serif" font-size="15" font-weight="800" letter-spacing=".7">${subtitleMarkup}</text>
   </svg>`;
   return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
 }
@@ -535,6 +539,7 @@ function renderMemories() {
     && matchesReaction(memory.musicVibe, musicFilter)
     && matchesReaction(memory.stageMagic, stageFilter)
     && matchesReaction(memory.storyFeel, storyFilter)
+    && (!categoryFilter.value || memory.category === categoryFilter.value)
     && (!query || [memory.show, memory.theatre, memory.city, memory.seat]
       .some((value) => value.toLocaleLowerCase().includes(query)))
   )).sort((left, right) => {
@@ -549,14 +554,15 @@ function renderMemories() {
   const priceSorted = Boolean(priceSort.value);
   const initialFocusIndex = priceSorted ? 0 : filtered.length - 1;
 
+  const nodeColors = ["#3EC6E0", "#F2C14E", "#F07167", "#B18CFF", "#3DDC97", "#DDC79E"];
   const rail = document.createElement("div");
   rail.className = "memory-timeline-rail";
   rail.setAttribute("aria-hidden", "true");
   rail.setAttribute("role", "presentation");
   const renderedEntries = filtered.map((memory, index) => {
     const article = document.createElement("article");
-    article.className = `memory-entry ${index % 2 ? "memory-right" : "memory-left"}`;
-    article.style.setProperty("--memory-color", memory.color);
+    article.className = `memory-entry ${index % 2 ? "memory-below" : "memory-above"}`;
+    article.style.setProperty("--memory-color", nodeColors[index % nodeColors.length]);
     article.setAttribute("role", "listitem");
     article.setAttribute("aria-label", `${formatDate(memory.date)}: ${memory.show}`);
     article.tabIndex = index === initialFocusIndex ? 0 : -1;
@@ -572,9 +578,6 @@ function renderMemories() {
 
     const card = document.createElement("div");
     card.className = "memory-card";
-    const media = document.createElement("div");
-    media.className = "memory-photo";
-    media.appendChild(renderPhoto(memory));
     const copy = document.createElement("div");
     copy.className = "memory-copy";
     const title = document.createElement("h3");
@@ -588,17 +591,19 @@ function renderMemories() {
         document.createTextNode(memory.city)
       );
     }
-    copy.append(title, venue);
+    copy.append(date, title, venue);
     if (memory.seat || memory.price) {
       const seat = document.createElement("p");
       seat.className = "memory-seat";
-      const seatLabel = document.createElement("span");
-      seatLabel.textContent = memory.seat || "Seat not recorded";
-      seat.appendChild(seatLabel);
+      if (memory.seat) {
+        const seatLabel = document.createElement("span");
+        seatLabel.textContent = memory.seat;
+        seat.appendChild(seatLabel);
+      }
       if (memory.price) {
         const price = document.createElement("strong");
         price.className = "memory-price";
-        price.textContent = memory.price;
+        price.textContent = memory.seat ? ` · ${memory.price}` : memory.price;
         seat.appendChild(price);
       }
       copy.appendChild(seat);
@@ -649,14 +654,15 @@ function renderMemories() {
       if (categories.childElementCount) review.appendChild(categories);
       copy.appendChild(review);
     }
-    card.append(media, copy);
-    article.append(date, marker, card);
+    card.append(copy);
+    article.append(marker, card);
     return article;
   });
   list.replaceChildren(rail, ...renderedEntries);
   window.requestAnimationFrame(() => {
     const inlineScrollBehavior = list.style.scrollBehavior;
     list.style.scrollBehavior = "auto";
+    list.scrollTop = 0;
     list.scrollLeft = priceSorted ? 0 : list.scrollWidth;
     list.style.scrollBehavior = inlineScrollBehavior;
     updateTimelineRail();
@@ -681,7 +687,7 @@ function renderMemories() {
     : "Theatre memories, oldest to newest; opens at latest");
   timelineHelp.textContent = priceSorted
     ? "Sorted by ticket price. Swipe, scroll, or use the arrow keys to move through the results."
-    : "Oldest to newest; opens at latest. Swipe, scroll, or use the arrow keys to travel through time.";
+    : "Newest on the right. Move left for earlier nights, or use the arrow keys.";
   clearFilters.disabled = !search.value && !year.value
     && reactionFilters.every((filter) => !reactionRange(filter).active)
     && !priceSort.value;

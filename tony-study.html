@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Does a Tony nomination or win boost Broadway ticket sales? A plain-language study of 40 years of weekly grosses.">
+  <title>Tony Effect Study | Theater Spotlight</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=119">
+  <link rel="stylesheet" href="ml-extras.css?v=6">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-47RPC1XZKM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-47RPC1XZKM');
+  </script>
+  <script>
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "y83snmaz05");
+  </script>
+  <script src="nav.js?v=3" defer></script>
+</head>
+<body class="theme-tony">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Theater Spotlight home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span>Theater Spotlight</span>
+    </a>
+    <nav class="navigation" aria-label="Main navigation">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+        <span class="nav-toggle-label">Menu</span>
+      </button>
+            <ul class="nav-menu" id="nav-menu">
+        <li class="nav-group">
+          <button class="nav-link nav-trigger" type="button" aria-expanded="false" aria-controls="nav-viz">Explore Broadway</button>
+          <ul class="nav-dropdown" id="nav-viz">
+            <li><a href="index.html"><strong>Broadway at a Glance</strong><small>Current market snapshot</small></a></li>
+            <li><a href="history.html"><strong>Forty Years of Grosses</strong><small>Long-run Broadway performance</small></a></li>
+            <li><a href="theatres.html"><strong>Inside the Houses</strong><small>Venue scale, demand, and capacity</small></a></li>
+            <li><a href="tony-awards.html"><strong>Tony by the Numbers</strong><small>Winners, nominees, and box office</small></a></li>
+          </ul>
+        </li>
+        <li class="nav-group">
+          <button class="nav-link nav-trigger active" type="button" aria-expanded="false" aria-controls="nav-study">Behind the Numbers</button>
+          <ul class="nav-dropdown" id="nav-study">
+            <li><a href="tony-study.html" aria-current="page"><strong>The Tony Effect</strong><small>Causal effect of a win</small></a></li>
+            <li><a href="models.html"><strong>Forecasts &amp; Closing Risk</strong><small>Model performance, risk, and drift</small></a></li>
+          </ul>
+        </li>
+        <li class="nav-group">
+          <button class="nav-link nav-trigger" type="button" aria-expanded="false" aria-controls="nav-fun">Just for fun</button>
+          <ul class="nav-dropdown" id="nav-fun">
+            <li><a href="rush.html"><strong>Rush & lottery</strong><small>Discount tickets by show</small></a></li>
+            <li><a href="game.html"><strong>Be More Chill</strong><small>Guess the show from the clues</small></a></li>
+            <li><a href="memories.html"><strong>Back to the Future</strong><small>A personal Broadway timeline</small></a></li>
+          </ul>
+        </li>
+      </ul>
+      <a class="nav-cta" href="#causal-results">Jump to summary</a>
+    </nav>
+  </header>
+
+    <main>
+    <section class="hero ml-intro">
+      <div class="hero-copy">
+        <p class="eyebrow">Tony Effect Study</p>
+        <h1>Does a Tony nomination or win boost ticket sales?</h1>
+        <p class="intro">
+          We followed 40 years of weekly Broadway grosses through three moments in a show's life:
+          the weeks before Tony nominations, the weeks between nominations and Tony night, and the weeks after Tony night. The
+          question: does recognition actually move the box office, or do the best-selling shows simply
+          get recognized?
+        </p>
+        <div class="hero-actions">
+          <a class="primary-button" href="#causal-results">Summary</a>
+          <a class="text-link" href="tony-awards.html">Back to the Tony dashboard <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="ml-meta">
+          <span>Data through <b id="ml-data-through">…</b></span>
+        </p>
+      </div>
+    </section>
+
+    <section class="reader-guide" aria-labelledby="study-reader-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">Recommended reading path</p>
+          <h2 id="study-reader-title">Answer, then evidence, then caveats</h2>
+        </div>
+        <p>Read only as deeply as the decision requires.</p>
+      </div>
+      <div class="reader-guide-grid">
+        <a href="#causal-results"><span>01 · 2 minutes</span><strong>Read the executive takeaway</strong><small>Headline associations and practical interpretation.</small></a>
+        <a href="#step-nomination"><span>02 · 8 minutes</span><strong>Inspect the causal comparisons</strong><small>Nomination and winning analyzed separately.</small></a>
+        <a href="#checks"><span>03 · Technical</span><strong>Review validity checks</strong><small>Sample, pre-trends, placebo, and alternative models.</small></a>
+      </div>
+    </section>
+
+    <section class="report-section ml-section" id="causal-results" aria-labelledby="causal-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">Summary</p>
+          <h2 id="causal-title">What a Tony is worth at the box office</h2>
+        </div>
+      </div>
+      <div class="ml-bottomline">
+        <p class="ml-eyebrow">Decision summary</p>
+        <p><b>Nomination and winning are followed by meaningfully higher gross growth, but the study cannot fully isolate the award itself.</b>
+        Winners were already pulling ahead before Tony night, so use these estimates as strong market associations—not as a guaranteed return from a trophy.</p>
+      </div>
+      <div class="ml-stats ml-kpis" aria-label="Key results">
+        <div><span class="ml-kpi-label">After a nomination</span><b id="nomination-kpi">+18.7%</b><span>weekly gross association vs. same-season shows not nominated</span></div>
+        <div><span class="ml-kpi-label">After a win</span><b id="win-kpi">+21.4%</b><span>weekly gross association vs. non-winning production nominees</span></div>
+        <div><span class="ml-kpi-label">Median run after Tony night</span><b id="run-kpi">52 <small>vs.</small> 12</b><span>weeks still running: winners vs. nominees that lost</span></div>
+      </div>
+      <h3 class="ml-subhead">Key findings</h3>
+      <div class="ml-table-wrap" id="causal-headline" aria-live="polite"><p class="ml-empty">Loading results…</p></div>
+      <p class="ml-note">These numbers describe what usually happens next, not a guarantee for any one show.</p>
+      <h3 class="ml-subhead">What a producer can do with this</h3>
+      <div class="ml-actions">
+        <div><span class="ml-kpi-label">Nomination day</span><p>Demand starts to lift. Raise prices on the best seats and hold back premium inventory.</p></div>
+        <div><span class="ml-kpi-label">Tony night: won</span><p>Lean into higher prices, longer booking windows and a possible extension.</p></div>
+        <div><span class="ml-kpi-label">Tony night: lost</span><p>Plan for a short tail. Make discounting and closing decisions within weeks, not months.</p></div>
+      </div>
+      <details class="ml-method">
+        <summary>How we measured it</summary>
+        <p>A before-and-after regression on 40 years of weekly grosses. For each show we took the change in its
+        weekly gross (before vs. after nomination day, or before vs. after Tony night) and regressed it on whether
+        the show was nominated or won, holding season, earlier sales, seats filled and show age equal. Comparing
+        <em>changes</em> between recognized and unrecognized shows is called difference-in-differences. Results were
+        checked with lasso and gradient-boosting (double machine learning) models, and run lengths with a survival
+        analysis.</p>
+        <p class="ml-formula">change in weekly gross (log) = a + <b>b × Won</b> + earlier sales + seats filled + show age + season</p>
+      </details>
+    </section>
+
+    <section class="report-section ml-section" id="lifecycle" aria-labelledby="lifecycle-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">Before nominations · after nominations · after Tony night</p>
+          <h2 id="lifecycle-title">How sales move through award season</h2>
+        </div>
+        <div class="ml-index-note">
+          <p><strong>How to read the numbers:</strong> every show starts at <strong>100</strong>.</p>
+          <ul>
+            <li><strong>100</strong> = that show's own average weekly gross before nominations were announced.</li>
+            <li><strong>124</strong> = 24% more than its own pre-nomination average. A $500K-a-week show at 124 is
+              making about $620K a week.</li>
+            <li>Each number is the <strong>median</strong> show in its group. All shows opened within a year of
+              nomination day.</li>
+          </ul>
+        </div>
+      </div>
+      <article class="ml-panel">
+        <p class="ml-note">Each box covers the middle half of shows, the whiskers span 80% of shows, and the line and number mark the typical (median) show. Hover a box for details.</p>
+        <div id="causal-lifecycle"><p class="ml-empty">Loading…</p></div>
+        <ul class="ml-list ml-note">
+          <li><b>Read it left to right.</b> Each group is indexed to its own pre-nomination gross. Both nominated groups include production-award nominees; the winner group is separated from the non-winners, not counted outside the nominees.</li>
+          <li><b>Corrected source records.</b> Production titles were restored from the official Tony archive. The lifecycle sample now includes 150 not nominated, 292 nominated without a production win, and 125 production winners. <a href="data/tony-sample-audit.json">Counts at each filter</a> and <a href="data/tony-production-provenance.json">source provenance</a> are available. There are 417 nominated records in total, including the 125 winners.</li>
+          <li><b>Only open shows are counted.</b> The last step only includes shows still open then. Many shows that weren't nominated had already closed, so the remaining ones are the stronger ones. How long shows keep running is covered in its own section below.</li>
+          <li><b>Caution.</b> The "before nomination" weeks include discounted previews and early weeks, which can pull the baseline down for some shows. That's why we compare groups with each other rather than only with their own earlier weeks. The comparisons are in Steps 1 and 2 below.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="report-section ml-section" id="step-nomination" aria-labelledby="nomination-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">Step 1</p>
+          <h2 id="nomination-title">Does getting nominated help?</h2>
+        </div>
+        <p>
+          We compare new shows of the same season: those nominated for Best Musical, Best Play or a Best
+          Revival award, and those not nominated in any category. For each show, we measure how much its
+          weekly gross changed from the 4 weeks before the nomination announcement up to Tony night.
+          The window stops at Tony night so that winning isn't mixed in.
+        </p>
+      </div>
+      <div class="ml-card-grid" id="nomination-cards"></div>
+    </section>
+
+    <section class="report-section ml-section" id="step-winning" aria-labelledby="winning-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">Step 2</p>
+          <h2 id="winning-title">Does winning help, beyond being nominated?</h2>
+        </div>
+        <p>
+          Here every show was nominated, so the only difference is who won. We compare production-award
+          winners with nominees in the same categories that lost, from the 8 weeks before Tony night to
+          the 8 weeks after.
+        </p>
+      </div>
+      <div class="ml-card-grid" id="causal-cards"></div>
+      <article class="ml-panel">
+        <h3>Week by week: how far winners pulled ahead of the nominees that lost</h3>
+        <p class="ml-note">Tony week = 0%. Grey = before the ceremony, colored = after. Bars show where the true value most likely falls (95% confidence interval).</p>
+        <div id="causal-event-chart"></div>
+        <p class="ml-note" id="causal-event-caption"></p>
+      </article>
+    </section>
+
+    <section class="report-section ml-section" id="checks" aria-labelledby="checks-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">How we checked our work</p>
+          <h2 id="checks-title">Who is included and what could go wrong</h2>
+        </div>
+        <p>
+          A "fake-date check" (statisticians call it a placebo test) asks: if we pick a date when nothing
+          happened, does the method still find an effect? If it does, the method is picking up differences
+          that existed anyway. If it finds nothing, that's reassuring.
+        </p>
+      </div>
+      <div class="ml-two-col">
+        <article class="ml-panel">
+          <h3>Sample and checks</h3>
+          <ul class="ml-list ml-bullets" id="causal-sample"></ul>
+        </article>
+        <article class="ml-panel">
+          <h3>Can we say the Tony <em>caused</em> it?</h3>
+          <p>
+            Not with certainty. Nobody assigns nominations or wins at random: voters reward shows that
+            are already strong and talked about. The checks rule out the most obvious problems, but some
+            of the gap would probably have happened anyway. So we describe these results as a strong
+            <b>association</b>, not a proven cause.
+          </p>
+          <ul class="ml-list" id="causal-limits"></ul>
+        </article>
+      </div>
+      <article class="ml-panel">
+        <h3>Does the model choice matter?</h3>
+        <p class="ml-note">The same gap estimated four ways: linear regression, lasso, and two machine-learning models (gradient boosting and random forest). Small numbers give the 95% confidence interval.</p>
+        <div class="ml-table-wrap" id="model-comparison"></div>
+      </article>
+      <details class="ml-panel ml-details">
+        <summary>Technical method (for data readers)</summary>
+        <ul class="ml-list">
+          <li><b>Winning:</b> difference-in-differences on log weekly gross, with production winners and same-category losing nominees, using 8 weeks before vs 8 weeks after the ceremony week. Controls: musical/play, revival, pre-period capacity and gross, run age, and year fixed effects. Standard errors are clustered by production.</li>
+          <li><b>Event study:</b> unit and year×week fixed effects (which absorb seasonality and market shocks), with week 0 as the reference week, plus a joint Wald pre-trend test.</li>
+          <li><b>Nomination:</b> difference-in-differences of new-this-season shows, nominated vs. not nominated in any category. Pre = 4 weeks before the announcement week; post = the announcement through the ceremony week. Controls: pre-gross, pre-capacity, run age and year fixed effects. Announcement dates were checked against Wikipedia for 14 seasons; other seasons use the median 5-week gap.</li>
+          <li><b>Run length:</b> Kaplan–Meier curves of weeks open after Tony night (shows open within 13 weeks of the latest data are censored), log-rank tests, and linear probability models of "still open after 13/26/52 weeks" on Tony outcome, with pre-nomination log gross and capacity, log weeks already running on Tony night and season fixed effects (HC1 CIs). Shows whose outcome isn't known yet at a horizon are left out of that horizon.</li>
+          <li><b>Category groups:</b> new-this-season shows running in nomination week get nominated/won flags for production (Best Musical/Play/Revival), acting (and separately Actor vs. Actress categories) and creative/design (direction, choreography, score, book, orchestrations, design). All flags enter one regression with pre-gross, capacity, run age and season. Each effect is estimated by OLS with year fixed effects and by cross-fitted double ML (5 folds, median of 3 splits) with gradient-boosting nuisance models; pairwise Wald tests compare groups. Honorary and special awards are excluded.</li>
+          <li><b>Fake-date (placebo) checks:</b> the ceremony is shifted 8 weeks earlier for winning, and the announcement 5 weeks earlier for nomination.</li>
+        </ul>
+        <p class="ml-note">
+          Code: <a href="https://github.com/ytp026/ts/blob/main/scripts/tony_causal.py" target="_blank" rel="noopener">scripts/tony_causal.py</a> ·
+          Results: <a href="ml/tony-causal-results.json">tony-causal-results.json</a> ·
+          Nomination dates: <a href="data/tony-nomination-dates.json">tony-nomination-dates.json</a> (Wikipedia, CC BY-SA) ·
+          Other models: <a href="models.html">ML Models</a>
+        </p>
+      </details>
+    </section>
+
+    <section class="report-section ml-section" id="run-length" aria-labelledby="run-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">Step 3</p>
+          <h2 id="run-title">Do Tony shows stay open longer?</h2>
+        </div>
+        <p>
+          We follow every new show of the season that was still open on Tony night and count how many more
+          weeks it ran. Shows still open today are counted as "at least this long" (survival analysis), so
+          recent seasons aren't treated as closures.
+        </p>
+      </div>
+      <article class="ml-panel">
+        <h3>Share of shows still open after Tony night</h3>
+        <p class="ml-note">Each line drops when shows close. The "typical run" is when half the group has closed. Dotted lines mark 3 months, 6 months and 1 year.</p>
+        <div id="run-chart"><p class="ml-empty">Loading…</p></div>
+      </article>
+      <article class="ml-panel">
+        <h3>Does the Tony group still matter once we account for other things?</h3>
+        <div id="run-results"><p class="ml-empty">Loading…</p></div>
+      </article>
+    </section>
+
+    <section class="report-section ml-section" id="categories" aria-labelledby="categories-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">Step 4</p>
+          <h2 id="categories-title">Does the Tony category matter?</h2>
+        </div>
+        <p>
+          A show can be nominated in many categories at once. We put all of a show's nominations and wins
+          into one model, so each category's effect is measured with the others held equal.
+        </p>
+      </div>
+      <article class="ml-panel">
+        <h3>Which Tony categories matter: sales and run length</h3>
+        <div id="category-takeaways"></div>
+        <p class="ml-note">The charts show raw spreads, one show per data point, split into nominated vs. won within each category group. The takeaways above come from the adjusted model (each category held equal to the others, plus earlier sales, seats filled, show age and season), so they can differ a little from the raw medians. A show nominated in several groups appears in each.</p>
+        <div id="category-chart"><p class="ml-empty">Loading…</p></div>
+        <details class="ml-details">
+          <summary>Show the numbers and full notes</summary>
+          <div class="ml-table-wrap" id="category-table"></div>
+          <div id="category-results"></div>
+        </details>
+      </article>
+      <article class="ml-panel">
+        <h3>Actor vs. actress: change in weekly gross after Tony night</h3>
+        <p class="ml-note">Each show's average weekly gross in the 8 weeks after Tony night vs. the 8 weeks before. Box = middle half of shows, whiskers = 80%, number = median show. A show with both an actor and an actress nomination appears in both boxes.</p>
+        <div id="gender-box"><p class="ml-empty">Loading…</p></div>
+      </article>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>Theater Spotlight</span>
+    <p class="source-credit">
+      Data sources:
+      <a href="https://playbill.com/grosses" target="_blank" rel="noopener">Playbill Grosses</a>
+      and
+      <a href="https://www.tonyawards.com" target="_blank" rel="noopener">The Tony Awards</a>.
+      Weekly grosses are reported by The Broadway League; only factual figures are used, and
+      data will be removed on request via
+      <a href="https://github.com/ytp026/ts/issues" target="_blank" rel="noopener">GitHub issues</a>.
+    </p>
+    <p class="site-disclaimer">
+      <strong>Disclaimer:</strong> Theater Spotlight is an independent, non-commercial
+      educational project and is not affiliated with or endorsed by any theatre, production,
+      ticket provider, Playbill, Microsoft, or Power BI. I do not claim ownership of
+      third-party data, names, trademarks, or source material; all rights remain with their
+      respective owners. Text and summaries were created with AI assistance and may contain
+      errors. Verify information with the original sources before acting on it. Nothing on
+      this site grants permission to republish, resell, or commercially exploit third-party
+      material. The site is provided without warranties and is not intended for purchasing,
+      financial, legal, or business decisions.
+    </p>
+  </footer>
+  <script src="models.js?v=27"></script>
+</body>
+</html>

@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Explore four decades of Broadway performance history.">
   <title>40 Years of Broadway | Theater Spotlight</title>
-  <link rel="stylesheet" href="styles.css?v=51">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=119">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-47RPC1XZKM"></script>
   <script>
@@ -21,6 +22,7 @@
       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "y83snmaz05");
   </script>
+  <script src="nav.js?v=3" defer></script>
 </head>
 <body class="theme-history">
   <header class="site-header">
@@ -29,14 +31,36 @@
       <span>Theater Spotlight</span>
     </a>
     <nav class="navigation" aria-label="Main navigation">
-      <a href="index.html">Overview</a>
-      <a class="active" href="history.html" aria-current="page">40 Years of Broadway</a>
-      <a href="theatres.html">Theatre District</a>
-      <a href="tony-awards.html">Tony Awards Effect</a>
-      <a href="rush.html">Rush & Lottery</a>
-      <a href="game.html">Be More Chill</a>
-      <a href="memories.html">Back to the Future</a>
-      <a href="models.html">ML Models</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+        <span class="nav-toggle-label">Menu</span>
+      </button>
+            <ul class="nav-menu" id="nav-menu">
+        <li class="nav-group">
+          <button class="nav-link nav-trigger active" type="button" aria-expanded="false" aria-controls="nav-viz">Explore Broadway</button>
+          <ul class="nav-dropdown" id="nav-viz">
+            <li><a href="index.html"><strong>Broadway at a Glance</strong><small>Current market snapshot</small></a></li>
+            <li><a href="history.html" aria-current="page"><strong>Forty Years of Grosses</strong><small>Long-run Broadway performance</small></a></li>
+            <li><a href="theatres.html"><strong>Inside the Houses</strong><small>Venue scale, demand, and capacity</small></a></li>
+            <li><a href="tony-awards.html"><strong>Tony by the Numbers</strong><small>Winners, nominees, and box office</small></a></li>
+          </ul>
+        </li>
+        <li class="nav-group">
+          <button class="nav-link nav-trigger" type="button" aria-expanded="false" aria-controls="nav-study">Behind the Numbers</button>
+          <ul class="nav-dropdown" id="nav-study">
+            <li><a href="tony-study.html"><strong>The Tony Effect</strong><small>Causal effect of a win</small></a></li>
+            <li><a href="models.html"><strong>Forecasts &amp; Closing Risk</strong><small>Model performance, risk, and drift</small></a></li>
+          </ul>
+        </li>
+        <li class="nav-group">
+          <button class="nav-link nav-trigger" type="button" aria-expanded="false" aria-controls="nav-fun">Just for fun</button>
+          <ul class="nav-dropdown" id="nav-fun">
+            <li><a href="rush.html"><strong>Rush & lottery</strong><small>Discount tickets by show</small></a></li>
+            <li><a href="game.html"><strong>Be More Chill</strong><small>Guess the show from the clues</small></a></li>
+            <li><a href="memories.html"><strong>Back to the Future</strong><small>A personal Broadway timeline</small></a></li>
+          </ul>
+        </li>
+      </ul>
       <a class="nav-cta" href="#dashboard">View report</a>
     </nav>
   </header>
@@ -51,8 +75,8 @@
           across forty years of theatre history.
         </p>
         <div class="hero-actions">
-          <a class="primary-button" href="#dashboard">Explore the timeline</a>
-          <a class="text-link" href="#insights">Read the story <span aria-hidden="true">→</span></a>
+          <a class="primary-button" href="#dashboard">Explore the market</a>
+          <a class="text-link" href="#insights">Skip to interpretation <span aria-hidden="true">→</span></a>
         </div>
       </div>
 
@@ -68,6 +92,10 @@
         <div class="art-stats"><span>Perspective <b>40 years</b></span><span>Story <b>Still unfolding</b></span></div>
       </div>
     </section>
+
+    <div class="editorial-intro">
+      <p><strong>How to use this page:</strong> establish the market trend first, compare a focused year or production second, and read gross, attendance, and capacity together before drawing a conclusion.</p>
+    </div>
 
     <section class="report-section" id="dashboard" aria-labelledby="report-title">
       <div class="section-heading">
@@ -104,7 +132,9 @@
                   <button type="button" id="history-zoom-reset">Reset</button>
                 </div>
               </div>
-              <svg id="history-line-chart" class="dashboard-svg" viewBox="0 0 700 245" role="img" aria-label="Interactive weekly Broadway gross line chart"></svg>
+              <div class="chart-scroll" tabindex="0" role="region" aria-label="Weekly Broadway gross chart; scroll horizontally on smaller screens">
+                <svg id="history-line-chart" class="dashboard-svg" viewBox="0 0 700 245" role="img" aria-label="Interactive weekly Broadway gross line chart"></svg>
+              </div>
               <div class="history-chart-navigation">
                 <strong id="history-range-status"></strong>
                 <span>Zoom, then drag the chart or use the arrows to move through time.</span>
@@ -237,9 +267,9 @@
       financial, legal, or business decisions.
     </p>
   </footer>
-  <script src="dashboard-utils.js?v=3"></script>
+  <script src="dashboard-utils.js?v=4"></script>
   <script src="broadway-data.js"></script>
   <script src="history-seasonality.js?v=2"></script>
-  <script src="history-dashboard.js?v=46"></script>
+  <script src="history-dashboard.js?v=51"></script>
 </body>
 </html>

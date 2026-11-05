@@ -65,7 +65,7 @@ function formRecord() {
 
 function resetEditor() {
   memoryForm.reset();
-  memoryForm.elements.color.value = "#315bcf";
+  memoryForm.elements.color.value = "#38BDF8";
   memoryForm.elements.id.value = "";
   updateCalculatedRating();
   editorTitle.textContent = "Add a performance";
@@ -77,7 +77,7 @@ function editRow(row) {
   timelineColumns.forEach((column) => {
     if (!memoryForm.elements[column]) return;
     memoryForm.elements[column].value = column === "color"
-      ? (row[column] || "#315bcf")
+      ? (row[column] || "#38BDF8")
       : (row[column] ?? "");
   });
   updateCalculatedRating();

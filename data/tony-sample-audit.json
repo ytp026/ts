@@ -1,0 +1,28 @@
+{
+  "dataThrough": "2026-10-25",
+  "productionAwardRecordsInCoveredCeremonies": {
+    "winners": 148,
+    "nonWinningNominees": 441
+  },
+  "matchedProductionsRunningNearTonyNight": {
+    "winners": 130,
+    "nonWinningNominees": 305
+  },
+  "withAtLeastThreePreAndPostWeeks": {
+    "winners": 119,
+    "nonWinningNominees": 229
+  },
+  "lifecycleRecordsWithAtLeastTwoPreNominationWeeks": {
+    "notNominated": 150,
+    "nominatedLost": 292,
+    "won": 125
+  },
+  "definitions": [
+    "Source counts are category-year-title nominations, including winners.",
+    "Matched counts deduplicate each production run within each season.",
+    "Lifecycle includes productions opened within 52 weeks and running near nomination day.",
+    "Lifecycle excludes acting/design-only nominees and requires two pre-nomination gross weeks.",
+    "Win comparison requires a match near Tony night and three weeks of gross on each side.",
+    "Historical combined Revival and official ties are retained; do not enforce exactly four winners every year."
+  ]
+}

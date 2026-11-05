@@ -349,10 +349,12 @@ function finishRound(choice, button) {
     streak += 1;
     correctAnswers += 1;
     button.classList.add("correct");
+    feedbackElement.classList.add("is-correct");
     feedbackElement.textContent = `Correct! ${target.show} earns you ${points} point${points === 1 ? "" : "s"}.`;
   } else {
     streak = 0;
     button.classList.add("incorrect");
+    feedbackElement.classList.add("is-incorrect");
     feedbackElement.textContent = `The answer was ${target.show}.`;
   }
 
@@ -368,6 +370,7 @@ function startRound() {
   gameComplete = false;
   cluesShown = 1;
   feedbackElement.textContent = "";
+  feedbackElement.classList.remove("is-correct", "is-incorrect");
   resultElement.hidden = true;
   revealButton.hidden = false;
   nextButton.hidden = true;
@@ -403,6 +406,7 @@ function showFinalScore() {
   cluesElement.replaceChildren();
   choicesElement.replaceChildren();
   feedbackElement.textContent = "";
+  feedbackElement.classList.remove("is-correct", "is-incorrect");
   document.querySelector("#game-title").textContent = "Your final curtain call";
 
   let rating = "Promising understudy";

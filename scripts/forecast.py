@@ -387,6 +387,87 @@ def importance(model, frame, target, n=4000):
     return sorted(zip(FEATURES, result.importances_mean), key=lambda x: -x[1])[:10]
 
 
+# Correlated inputs are swapped together so a driver reads as one plain-English idea.
+# Market-wide inputs are identical for every show in a week, so they cannot explain
+# why one show is riskier than another and are left out.
+DRIVER_GROUPS = {
+    "size": ["log_available"],
+    "age": ["log_run_age"],
+    "gross": ["log_gross", "log_gross_l1", "log_gross_l2", "log_gross_l3", "roll4", "roll8"],
+    "trend": ["chg_1", "chg_4", "from_peak", "std8"],
+    "capacity": ["capacity", "capacity_l1", "capacity_chg4"],
+    "price": ["avg_ticket"],
+    "tony": ["tony_noms", "tony_wins", "weeks_since_tony"],
+    "season": ["target_woy"],
+}
+DRIVER_MIN_POINTS = 0.02
+
+
+def _money(value):
+    return f"${value / 1e6:.1f}M" if value >= 1e6 else f"${value / 1e3:.0f}K"
+
+
+def driver_text(group, row, typical, raises):
+    """Describe one driver group for one show, comparing it with the typical running show."""
+    if group == "size":
+        seats, base = np.exp(row["log_available"]), np.exp(typical["log_available"])
+        word = "Small" if seats < base else "Large"
+        return f"{word} house: {seats / 1e3:.1f}K seats on sale a week (typical {base / 1e3:.1f}K)"
+    if group == "age":
+        weeks, base = row["run_age"], np.expm1(typical["log_run_age"])
+        if weeks < base:
+            return f"New run: {weeks:.0f} weeks in (typical {base:.0f})"
+        return f"Long-running: {weeks / 52:.0f} years in" if weeks >= 104 else \
+            f"Established run: {weeks:.0f} weeks in"
+    if group == "gross":
+        word = "Low" if row["log_gross"] < typical["log_gross"] else "Strong"
+        return (f"{word} weekly gross: {_money(row['gross'])} "
+                f"(typical {_money(np.exp(typical['log_gross']))})")
+    if group == "trend":
+        change = np.expm1(row["chg_4"]) * 100 if pd.notna(row["chg_4"]) else None
+        word = "Sales trend" if change is None else ("Sales falling" if change < 0
+                                                      else "Sales rising")
+        return word if change is None else f"{word}: {change:+.0f}% vs 4 weeks ago"
+    if group == "capacity":
+        return f"{row['capacity'] * 100:.0f}% of seats filled"
+    if group == "price":
+        word = "Low" if row["avg_ticket"] < typical["avg_ticket"] else "High"
+        return f"{word} average ticket: ${row['avg_ticket']:.0f} (typical ${typical['avg_ticket']:.0f})"
+    if group == "tony":
+        noms = int(row["tony_noms"])
+        return "No Tony nominations" if noms == 0 else f"Tony-nominated ({noms} nominations)"
+    return "Time of year: weeks ahead historically see more closings" if raises else \
+        "Time of year: a historically steady stretch"
+
+
+def risk_drivers(model, current, top=2, min_points=DRIVER_MIN_POINTS):
+    """Top inputs pushing each show's closing risk away from the typical running show.
+
+    For each driver group, swap that show's values for the median of all shows running
+    this week and re-score. The change in probability is that group's contribution.
+    Swaps are one group at a time, so contributions are not additive.
+    """
+    typical = current[FEATURES].median()
+    base = predict(model, current)
+    effects = {}
+    for group, cols in DRIVER_GROUPS.items():
+        swapped = current.copy()
+        for col in cols:
+            swapped[col] = typical[col]
+        effects[group] = base - predict(model, swapped)
+    drivers = []
+    for i, (_, row) in enumerate(current.iterrows()):
+        ranked = sorted(((effects[g][i], g) for g in DRIVER_GROUPS), reverse=True)
+        raising = [(e, g) for e, g in ranked if e >= min_points][:top]
+        lowering = [(e, g) for e, g in sorted(ranked) if e <= -min_points][:top]
+        chosen = [(e, g, True) for e, g in raising] or [(e, g, False) for e, g in lowering]
+        drivers.append([{"factor": g, "direction": "raises" if up else "lowers",
+                         "points": ml_data.safe_float(e * 100, 1),
+                         "text": driver_text(g, row, typical, up)}
+                        for e, g, up in chosen])
+    return drivers
+
+
 def run(root=ml_data.ROOT, use_mlflow=True):
     """Train/evaluate on the frozen snapshot; score and monitor on live weekly data."""
     overview = ml_data.load_json(root, "broadway-overview-data.json")
@@ -413,11 +494,14 @@ def run(root=ml_data.ROOT, use_mlflow=True):
     current = live[live["week"] == latest].copy()
     current["pred_gross"] = np.exp(current["log_gross"] + predict(gross_model, current))
     current["p_close"] = predict(close_model, current)
+    current["drivers"] = pd.Series(risk_drivers(close_model, current), index=current.index,
+                                   dtype=object)
     target = (latest + pd.Timedelta(weeks=1)).strftime("%Y-%m-%d")
     scored = [{"show": r.show, "lastWeek": latest_week, "targetWeek": target,
                "lastGross": round(r.gross), "predictedGross": round(r.pred_gross),
                "capacity": ml_data.safe_float(r.capacity, 4),
-               "closeProbability": ml_data.safe_float(r.p_close, 4)}
+               "closeProbability": ml_data.safe_float(r.p_close, 4),
+               "riskDrivers": r.drivers}
               for r in current.sort_values("p_close", ascending=False).itertuples()]
 
     reference, recent, ref_start, ref_end = drift_windows(frame, live, latest)
