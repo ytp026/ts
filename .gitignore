@@ -2,3 +2,8 @@ pbip-inspect/
 __pycache__/
 *.py[cod]
 *.docx
+
+# Local ML environment, tracking store and CC BY-SA text cache (only derived scores are committed)
+.venv/
+mlruns/
+data/cache/

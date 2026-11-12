@@ -6,7 +6,7 @@
   <meta name="description" content="Theater Spotlight: interactive Broadway performance analytics.">
   <title>Overview | Theater Spotlight</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=119">
+  <link rel="stylesheet" href="styles.css?v=121">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-47RPC1XZKM"></script>
   <script>
@@ -23,6 +23,7 @@
     })(window, document, "clarity", "script", "y83snmaz05");
   </script>
   <script src="nav.js?v=3" defer></script>
+  <script src="analytics.js?v=2" defer></script>
 </head>
 <body class="theme-overview">
   <header class="site-header">
@@ -87,10 +88,22 @@
         <div class="art-number">$42.8M</div>
         <div class="art-caption">Weekly grosses take center stage.</div>
         <div class="art-chart" aria-hidden="true">
-          <i style="--height: 38%"></i><i style="--height: 55%"></i>
-          <i style="--height: 48%"></i><i style="--height: 72%"></i>
-          <i style="--height: 64%"></i><i style="--height: 88%"></i>
-          <i style="--height: 78%"></i><i style="--height: 96%"></i>
+          <svg viewBox="0 0 420 170" preserveAspectRatio="none" focusable="false">
+            <defs>
+              <linearGradient id="overview-area" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#6D5EF5" stop-opacity=".28"/>
+                <stop offset="1" stop-color="#6D5EF5" stop-opacity=".02"/>
+              </linearGradient>
+            </defs>
+            <path class="art-chart-grid" d="M0 25H420M0 70H420M0 115H420M0 160H420"/>
+            <path class="art-chart-area" d="M0 138L60 116L120 125L180 86L240 98L300 54L360 66L420 25V170H0Z"/>
+            <path class="art-chart-line" d="M0 138L60 116L120 125L180 86L240 98L300 54L360 66L420 25"/>
+            <g class="art-chart-points">
+              <circle cx="0" cy="138" r="5"/><circle cx="120" cy="125" r="5"/>
+              <circle cx="240" cy="98" r="5"/><circle cx="360" cy="66" r="5"/>
+              <circle cx="420" cy="25" r="7"/>
+            </g>
+          </svg>
         </div>
         <div class="art-stats"><span>Attendance <b>Up</b></span><span>Demand <b>Strong</b></span></div>
       </div>
