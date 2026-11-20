@@ -379,10 +379,6 @@ window.MlSite = {
   },
 
   featureDescriptions: {
-    log_gross: "Weekly gross captures the current scale of demand for a production.",
-    capacity: "The share of available seats sold shows how full the production is.",
-    avg_ticket: "Average ticket price reflects pricing, demand, and the mix of seats sold.",
-    log_run_age: "Weeks since opening separates established shows from newer productions.",
     target_woy: "Holiday, tourism, and seasonal patterns shift demand across the year.",
     log_available: "House size × scheduled performances sets the maximum sales capacity.",
     chg_1: "A recent acceleration or slowdown signals the direction of demand.",
@@ -392,14 +388,6 @@ window.MlSite = {
 
   featureDescription(name) {
     return this.featureDescriptions[name] || "A recent input used to estimate next week's gross.";
-  },
-
-  monitoringDescriptions: {
-    log_gross: "Current weekly revenue.",
-    capacity: "Share of available seats sold.",
-    avg_ticket: "Average price paid per ticket.",
-    chg_1: "Change from the prior week.",
-    log_run_age: "Weeks the production has been running.",
   },
 
   renderBacktest(doc, backtest) {
@@ -508,10 +496,7 @@ window.MlSite = {
   },
 
   renderMonitoring(doc, monitoring, metrics) {
-    const rows = monitoring.drift.map((d) => {
-      const description = this.monitoringDescriptions[d.feature] || this.featureDescription(d.feature);
-      return `<tr><td><strong>${this.escape(this.featureLabel(d.feature))}</strong><div class="ml-note">${this.escape(description)}</div></td><td>${this.number(d.psi)}</td><td><span class="ml-status ${this.driftLevel(d.psi)}">${this.driftLevel(d.psi)}</span></td></tr>`;
-    });
+    const rows = monitoring.drift.map((d) => `<tr><td>${this.escape(d.feature)}${d.note ? `<div class="ml-note">${this.escape(d.note)}</div>` : ""}</td><td>${this.number(d.psi)}</td><td><span class="ml-status ${this.driftLevel(d.psi)}">${this.driftLevel(d.psi)}</span></td></tr>`);
     const market = monitoring.marketCheck;
     if (market && market.percentChange !== null && market.percentChange !== undefined) {
       rows.push(`<tr><td>market gross<div class="ml-note">Weekly market total vs the same ${market.weeks} weeks last year (change %, not PSI; one value per week, so row-level PSI would be misleading).</div></td><td>${this.percent(market.percentChange, 1, true)}</td><td><span class="ml-status ${this.escape(market.status)}">${this.escape(market.status)}</span></td></tr>`);

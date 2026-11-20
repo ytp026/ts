@@ -1,9 +1,6 @@
 "use strict";
 
 const { createElement, formatCompact, formatPercent, populateDatalist, renderBars } = window.DashboardUtils;
-const {
-  canonicalizeRows, mergeTheatreMetadata, summarizeRun, theatreDetail, theatreLabel, theatreNote, theatreSearchText
-} = window.TheatreData;
 const theatreYear = document.querySelector("#theatre-year");
 const theatreName = document.querySelector("#theatre-name");
 const theatreShow = document.querySelector("#theatre-show");
@@ -42,7 +39,7 @@ function theatreBaseRows() {
 function theatreMetricRows(baseRows) {
   const theatreQuery = theatreName.value.trim().toLocaleLowerCase();
   return baseRows.filter((row) => (
-    (!theatreQuery || theatreSearchText(row.theatre).includes(theatreQuery))
+    (!theatreQuery || row.theatre.toLocaleLowerCase().includes(theatreQuery))
     && (!selectedTheatreName || row.theatre === selectedTheatreName)
   ));
 }
@@ -126,8 +123,8 @@ function renderTheatreMap(rows) {
     point.type = "button";
     point.classList.toggle("selected", row.theatre === selectedTheatreName);
     point.setAttribute("aria-pressed", String(row.theatre === selectedTheatreName));
-    point.setAttribute("aria-label", `${theatreLabel(row.theatre)}, ${formatCompact(row.gross, true)}`);
-    point.title = [theatreLabel(row.theatre), metadata.address, formatCompact(row.gross, true)].join("\n");
+    point.setAttribute("aria-label", `${row.theatre}, ${formatCompact(row.gross, true)}`);
+    point.title = `${row.theatre}\n${metadata.address}\n${formatCompact(row.gross, true)}`;
     const size = 10 + Math.sqrt(row.gross / maximum) * 24;
     point.style.width = `${size}px`;
     point.style.height = `${size}px`;
@@ -156,16 +153,8 @@ function renderTheatreSummary(rows) {
     tr.className = selected ? "selected" : "";
     tr.tabIndex = 0;
     tr.setAttribute("aria-selected", String(selected));
-    const nameCell = createElement("td", row.theatre);
-    const detail = theatreDetail(row.theatre);
-    if (detail) {
-      const small = createElement("small", ` (${detail})`, "theatre-former-names");
-      const note = theatreNote(row.theatre);
-      if (note) small.title = note;
-      nameCell.appendChild(small);
-    }
-    tr.appendChild(nameCell);
     [
+      row.theatre,
       formatCompact(row.gross, true),
       row.shows.size.toLocaleString("en-US"),
       formatPercent(row.available ? row.seats / row.available : Number.NaN)
@@ -229,27 +218,6 @@ function renderTheatreDashboard() {
   updateTheatreSortHeaders();
 }
 
-function renderHeroRun(rows, latestWeek) {
-  const run = summarizeRun(rows, "Hamilton", "Richard Rodgers Theatre");
-  if (!run.byYear.length) return;
-  const latestYear = latestWeek ? latestWeek.slice(0, 4) : "";
-  const yearLabel = (year) => (year === latestYear ? `${year} YTD` : year);
-  const list = document.querySelector("#hero-capacity-list");
-  list.replaceChildren(...run.byYear.slice(-3).map((year) => {
-    const item = document.createElement("div");
-    const track = createElement("i");
-    const fill = createElement("b");
-    fill.style.setProperty("--width", `${Math.min(100, Math.max(0, year.capacity * 100))}%`);
-    track.appendChild(fill);
-    item.append(createElement("span", yearLabel(year.year)), track, createElement("strong", formatPercent(year.capacity)));
-    return item;
-  }));
-  document.querySelector("#hero-capacity").textContent = formatPercent(run.capacity);
-  document.querySelector("#hero-gross").textContent = formatCompact(run.gross, true);
-  document.querySelector("#hero-source").textContent = `Seats sold \u00F7 seats available, Playbill weekly grosses ${run.firstYear}\u2013${yearLabel(run.lastYear)} `
-    + `(${Math.round(run.seats).toLocaleString("en-US")} seats sold). Above 100% reflects standing room.`;
-}
-
 theatreYear.addEventListener("change", () => {
   selectedTheatreName = "";
   renderTheatreDashboard();
@@ -284,11 +252,12 @@ BroadwayData.fetch("theatres-dashboard-data.json")
   })
   .then((data) => {
     BroadwayData.freshness(data);
-    theatreRows = canonicalizeRows(data.rows.map(([year, show, theatre, gross, seats, available]) => (
+    theatreRows = data.rows.map(([year, show, theatre, gross, seats, available]) => (
       { year, show, theatre, gross, seats, available }
+    ));
+    theatreMetadata = new Map(data.theatres.map(([name, address, current, x, y]) => (
+      [name, { address, current, x, y }]
     )));
-    theatreMetadata = mergeTheatreMetadata(data.theatres);
-    renderHeroRun(theatreRows, data.latestWeek);
     [...new Set(theatreRows.map((row) => row.year))]
       .sort((a, b) => b.localeCompare(a))
       .forEach((year) => theatreYear.appendChild(createElement("option", year)));
