@@ -107,7 +107,7 @@ function applyHistoryData(data) {
   historyShow.value = "";
   selectedHistoryShow = "";
   selectedHistoryWeek = "";
-  historyZoom = { start: 0, end: 1 };
+  historyZoom = historyZoomForYear(historyYear.value);
   renderHistoryDashboard();
 }
 
@@ -247,6 +247,23 @@ function historyBaseRows() {
     (!historyYear.value || row.year === historyYear.value)
     && (!query || row.show.toLocaleLowerCase().includes(query))
   ));
+}
+
+function historyTimelineRows() {
+  const query = historyShow.value.trim().toLocaleLowerCase();
+  return historyRows.filter((row) => !query || row.show.toLocaleLowerCase().includes(query));
+}
+
+function historyZoomForYear(year) {
+  const dates = [...new Set(historyTimelineRows().map((row) => row.date))].sort();
+  if (dates.length < 2) return { start: 0, end: 1 };
+  if (!year) return historyZoomForYear(dates.at(-1).slice(0, 4));
+  const first = dates.findIndex((date) => date.startsWith(`${year}-`));
+  if (first < 0) return { start: 0, end: 1 };
+  let last = first;
+  while (last + 1 < dates.length && dates[last + 1].startsWith(`${year}-`)) last += 1;
+  const denominator = dates.length - 1;
+  return { start: first / denominator, end: last / denominator };
 }
 
 function historyWeekRows(rows) {
@@ -423,6 +440,19 @@ function renderHistoryLine(rows) {
   const firstIndex = Math.floor(historyZoom.start * Math.max(allValues.length - 1, 0));
   const lastIndex = Math.ceil(historyZoom.end * Math.max(allValues.length - 1, 0));
   const values = allValues.slice(firstIndex, lastIndex + 1);
+  const atFullRange = historyZoom.start <= 0 && historyZoom.end >= 1;
+  const resetRange = historyZoomForYear(historyYear.value);
+  const atResetRange = Math.abs(historyZoom.start - resetRange.start) < .0001
+    && Math.abs(historyZoom.end - resetRange.end) < .0001;
+  const atStart = historyZoom.start <= 0;
+  const atEnd = historyZoom.end >= 1;
+  document.querySelector("#history-zoom-in").disabled = values.length <= 8;
+  document.querySelector("#history-zoom-out").disabled = atFullRange;
+  document.querySelector("#history-zoom-reset").disabled = atResetRange;
+  document.querySelector("#history-pan-left").disabled = atFullRange || atStart;
+  document.querySelector("#history-pan-right").disabled = atFullRange || atEnd;
+  document.querySelector("#history-pan-left").title = atFullRange ? "Zoom in to move through time" : "Move earlier";
+  document.querySelector("#history-pan-right").title = atFullRange ? "Zoom in to move through time" : "Move later";
   const rangeDate = (value) => new Date(`${value}T12:00:00`).toLocaleDateString("en-US", {
     month: "short",
     year: "numeric"
@@ -445,9 +475,13 @@ function renderHistoryLine(rows) {
   const path = values.map(([, value], index) => `${index ? "L" : "M"} ${x(index)} ${y(value)}`).join(" ");
   svg.appendChild(svgElement("path", { d: path, class: "pbi-line" }));
 
+  const singleYear = values[0][0].slice(0, 4) === values.at(-1)[0].slice(0, 4);
   [0, Math.floor((values.length - 1) / 2), values.length - 1].forEach((index) => {
     const date = new Date(`${values[index][0]}T00:00:00`);
-    svg.appendChild(svgElement("text", { x: x(index), y: height - 8, "text-anchor": index === 0 ? "start" : index === values.length - 1 ? "end" : "middle", class: "pbi-axis-text" }, date.getFullYear()));
+    const label = singleYear
+      ? date.toLocaleDateString("en-US", { month: "short", day: "numeric" })
+      : date.getFullYear();
+    svg.appendChild(svgElement("text", { x: x(index), y: height - 8, "text-anchor": index === 0 ? "start" : index === values.length - 1 ? "end" : "middle", class: "pbi-axis-text" }, label));
   });
 
   const hoverLayer = svgElement("g", { class: "history-line-hover", visibility: "hidden" });
@@ -484,6 +518,7 @@ function renderHistoryLine(rows) {
 
   const selectWeek = (index) => {
     const dateValue = values[index][0];
+    historyYear.value = dateValue.slice(0, 4);
     selectedHistoryWeek = selectedHistoryWeek === dateValue ? "" : dateValue;
     renderHistoryDashboard();
   };
@@ -502,7 +537,14 @@ function renderHistoryLine(rows) {
   let dragStart = null;
   let pendingZoom = null;
   let dragMoved = false;
+  const indexAtPointer = (event) => {
+    const bounds = interactionLayer.getBoundingClientRect();
+    const position = Math.max(0, Math.min(1, (event.clientX - bounds.left) / bounds.width));
+    return Math.round(position * (values.length - 1));
+  };
   interactionLayer.addEventListener("pointerdown", (event) => {
+    keyboardIndex = indexAtPointer(event);
+    showWeek(keyboardIndex);
     if (event.button !== 0 || historyZoom.end - historyZoom.start >= .999) return;
     dragStart = {
       x: event.clientX,
@@ -519,18 +561,13 @@ function renderHistoryLine(rows) {
       const bounds = svg.getBoundingClientRect();
       const span = dragStart.end - dragStart.start;
       const delta = -((event.clientX - dragStart.x) / bounds.width) * span;
-      dragMoved = dragMoved || Math.abs(event.clientX - dragStart.x) > 4;
+      dragMoved = dragMoved || Math.abs(event.clientX - dragStart.x) > 12;
       let start = dragStart.start + delta;
       start = Math.max(0, Math.min(1 - span, start));
       pendingZoom = { start, end: start + span };
       return;
     }
-    const bounds = svg.getBoundingClientRect();
-    const pointerX = ((event.clientX - bounds.left) / bounds.width) * width;
-    const index = Math.round(
-      ((pointerX - margin.left) / (width - margin.left - margin.right)) * (values.length - 1)
-    );
-    keyboardIndex = Math.max(0, Math.min(index, values.length - 1));
+    keyboardIndex = indexAtPointer(event);
     showWeek(keyboardIndex);
   });
   interactionLayer.addEventListener("wheel", (event) => {
@@ -575,11 +612,9 @@ function renderHistoryLine(rows) {
   };
   interactionLayer.addEventListener("pointerup", finishPan);
   interactionLayer.addEventListener("pointercancel", finishPan);
-  interactionLayer.addEventListener("click", () => {
-    if (dragMoved) {
-      dragMoved = false;
-      return;
-    }
+  interactionLayer.addEventListener("click", (event) => {
+    if (dragMoved) return;
+    if (event.detail > 0) keyboardIndex = indexAtPointer(event);
     selectWeek(keyboardIndex);
   });
   const initialSelectedIndex = values.findIndex(([date]) => date === selectedHistoryWeek);
@@ -889,7 +924,7 @@ function renderHistoryDashboard() {
   document.querySelector("#history-capacity").textContent = formatPercent(totals.available ? totals.seats / totals.available : Number.NaN);
   renderHistoryPremise();
 
-  renderHistoryLine(historyLineRows(baseRows));
+  renderHistoryLine(historyLineRows(historyTimelineRows()));
   renderHistorySeasonality(historyLineRows(baseRows));
   const selectShow = (show) => {
     selectedHistoryShow = historyTitlesMatch(selectedHistoryShow, show) ? "" : show;
@@ -906,13 +941,13 @@ function renderHistoryDashboard() {
 historyYear.addEventListener("change", () => {
   selectedHistoryShow = "";
   selectedHistoryWeek = "";
-  historyZoom = { start: 0, end: 1 };
+  historyZoom = historyZoomForYear(historyYear.value);
   renderHistoryDashboard();
 });
 historyShow.addEventListener("input", () => {
   selectedHistoryShow = "";
   selectedHistoryWeek = "";
-  historyZoom = { start: 0, end: 1 };
+  historyZoom = historyZoomForYear(historyYear.value);
   renderHistoryDashboard();
 });
 document.querySelector("#history-zoom-in").addEventListener("click", () => {
@@ -938,7 +973,8 @@ document.querySelector("#history-zoom-out").addEventListener("click", () => {
   renderHistoryDashboard();
 });
 document.querySelector("#history-zoom-reset").addEventListener("click", () => {
-  historyZoom = { start: 0, end: 1 };
+  selectedHistoryWeek = "";
+  historyZoom = historyZoomForYear(historyYear.value);
   renderHistoryDashboard();
 });
 function panHistoryChart(direction) {
