@@ -6,7 +6,7 @@
   <meta name="description" content="Theater Spotlight: interactive Broadway performance analytics.">
   <title>Overview | Theater Spotlight</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=119">
+  <link rel="stylesheet" href="styles.css?v=121">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-47RPC1XZKM"></script>
   <script>
@@ -23,6 +23,7 @@
     })(window, document, "clarity", "script", "y83snmaz05");
   </script>
   <script src="nav.js?v=3" defer></script>
+  <script src="analytics.js?v=2" defer></script>
 </head>
 <body class="theme-overview">
   <header class="site-header">
@@ -87,42 +88,24 @@
         <div class="art-number">$42.8M</div>
         <div class="art-caption">Weekly grosses take center stage.</div>
         <div class="art-chart" aria-hidden="true">
-          <i style="--height: 38%"></i><i style="--height: 55%"></i>
-          <i style="--height: 48%"></i><i style="--height: 72%"></i>
-          <i style="--height: 64%"></i><i style="--height: 88%"></i>
-          <i style="--height: 78%"></i><i style="--height: 96%"></i>
+          <svg viewBox="0 0 420 170" preserveAspectRatio="none" focusable="false">
+            <defs>
+              <linearGradient id="overview-area" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#6D5EF5" stop-opacity=".28"/>
+                <stop offset="1" stop-color="#6D5EF5" stop-opacity=".02"/>
+              </linearGradient>
+            </defs>
+            <path class="art-chart-grid" d="M0 25H420M0 70H420M0 115H420M0 160H420"/>
+            <path class="art-chart-area" d="M0 138L60 116L120 125L180 86L240 98L300 54L360 66L420 25V170H0Z"/>
+            <path class="art-chart-line" d="M0 138L60 116L120 125L180 86L240 98L300 54L360 66L420 25"/>
+            <g class="art-chart-points">
+              <circle cx="0" cy="138" r="5"/><circle cx="120" cy="125" r="5"/>
+              <circle cx="240" cy="98" r="5"/><circle cx="360" cy="66" r="5"/>
+              <circle cx="420" cy="25" r="7"/>
+            </g>
+          </svg>
         </div>
         <div class="art-stats"><span>Attendance <b>Up</b></span><span>Demand <b>Strong</b></span></div>
-      </div>
-    </section>
-
-    <section class="reader-guide" id="reviewer-tour" aria-labelledby="reviewer-tour-title">
-      <div class="section-heading">
-        <div>
-          <p class="section-label">For résumé reviewers</p>
-          <h2 id="reviewer-tour-title">Visiting from my résumé? A five-minute tour.</h2>
-        </div>
-        <p>An independent portfolio project by a senior data scientist — forecasting,
-           causal inference, and model monitoring on 40 years of weekly Broadway
-           grosses (54,415 show-weeks).</p>
-      </div>
-      <div class="reader-guide-grid">
-        <a href="models.html#forecast">
-          <span>01 · 2 min — Forecasting &amp; risk</span>
-          <strong>MAPE 10.7% vs. 12.1% seasonal baseline · Closing-risk AUC 0.894</strong>
-          <small>Held-out test 2024–2026, compared against simple baselines with bootstrap CIs.</small>
-        </a>
-        <a href="tony-study.html#causal-results">
-          <span>02 · 2 min — Causal inference</span>
-          <strong>Tony nomination +18.7% · Win +21.4% (associations, with CIs)</strong>
-          <small>Difference-in-differences over 39 seasons — including the placebo and
-                 pre-trend checks that do not pass.</small>
-        </a>
-        <a href="models.html#monitoring">
-          <span>03 · 1 min — MLOps &amp; monitoring</span>
-          <strong>Weekly retraining, PSI drift and live-error alerts</strong>
-          <small>The monitor currently flags the model itself: live MAPE 19.3% vs. 10.7% backtest.</small>
-        </a>
       </div>
     </section>
 
@@ -263,17 +246,22 @@
       <div class="story-heading">
         <p class="section-label">Behind the numbers</p>
         <h2 id="overview-story-title">Why I built Theater Spotlight</h2>
-        <p class="story-lead">Cats began my love of musicals. Growing up in Taiwan, Broadway in New York and London's West End felt like distant dreamlands.</p>
+        <p class="story-lead">I came to Broadway for the stories. My curiosity kept going after the curtain fell.</p>
       </div>
       <div class="story-copy">
         <p>
-          Even now, I leave a theatre with questions. Will the show keep running? Was the ticket
-          worth it? What do the prices, crowds, and empty seats tell us about what is happening
-          beyond the stage?
+          Musicals have always been a source of energy and inspiration for me. As a data scientist,
+          I began wondering what was happening beyond the stage: how ticket prices and weekly grosses
+          move, how full different theatres become, and what recognition at the Tony Awards can—and
+          cannot—tell us about a show's momentum.
         </p>
         <p>
-          I have always enjoyed exploring questions like these with data. Theater Spotlight is my
-          place to do that and to share what I learn with other people who love musicals and theatre.
+          Theater Spotlight turns that curiosity into a transparent data project. The dashboards
+          describe the market, the Tony study examines stronger comparisons and uncertainty, and the
+          modeling work asks what can be forecast from the signals we already have. That includes a
+          closing-risk tracker that estimates the probability a production closes within eight weeks.
+          The goal is not to reduce a musical to a number, but to use data to understand the business
+          that keeps the stories on stage.
         </p>
       </div>
     </article>
@@ -286,7 +274,7 @@
       </div>
       <a
         class="email-button"
-        href="https://github.com/ytp026/ts/issues"
+        href="mailto:tsy235711@gmail.com?subject=Theater%20Spotlight%20feedback"
       >
         Send feedback
       </a>
