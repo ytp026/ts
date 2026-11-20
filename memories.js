@@ -19,14 +19,7 @@ const empty = document.querySelector("#memory-empty");
 const timelinePrevious = document.querySelector("#memory-timeline-previous");
 const timelineNext = document.querySelector("#memory-timeline-next");
 const timelineHelp = document.querySelector("#memory-timeline-help");
-const zoomOut = document.querySelector("#memory-zoom-out");
-const zoomIn = document.querySelector("#memory-zoom-in");
-const zoomStatus = document.querySelector("#memory-zoom-status");
 const reactionFilters = [ratingFilter, castFilter, musicFilter, stageFilter, storyFilter];
-
-function selectedCategory() {
-  return categoryFilter.querySelector('input[name="memory-category"]:checked')?.value || "";
-}
 
 function reactionRange(filter) {
   const minimum = Number(filter.querySelector('[data-range-bound="min"]').value);
@@ -67,64 +60,6 @@ function scrollTimeline(direction) {
   list.scrollBy({ left: direction * Math.max(260, list.clientWidth * .82), behavior: "smooth" });
 }
 
-const zoomLevels = [
-  { key: "overview", label: "Years", zoom: .38 },
-  { key: "comfortable", label: "Months", zoom: 1 },
-  { key: "detail", label: "Shows", zoom: 1 }
-];
-let zoomIndex = 0;
-
-function updateTimelineZoom() {
-  const level = zoomLevels[zoomIndex];
-  list.dataset.zoom = level.key;
-  list.style.setProperty("--memory-canvas-zoom", level.zoom);
-  zoomStatus.textContent = level.label;
-  zoomOut.disabled = zoomIndex === 0;
-  zoomIn.disabled = zoomIndex === zoomLevels.length - 1;
-  requestAnimationFrame(() => {
-    updateTimelineNavigation();
-    updateTimelineRail();
-  });
-}
-
-zoomOut.addEventListener("click", () => {
-  zoomIndex = Math.max(0, zoomIndex - 1);
-  updateTimelineZoom();
-});
-zoomIn.addEventListener("click", () => {
-  zoomIndex = Math.min(zoomLevels.length - 1, zoomIndex + 1);
-  updateTimelineZoom();
-});
-
-let draggingCanvas = false;
-let dragStart = { x: 0, y: 0, left: 0, top: 0 };
-list.addEventListener("pointerdown", (event) => {
-  if (event.button !== 0 || event.target.closest("a, button, input, select, textarea")) return;
-  draggingCanvas = true;
-  dragStart = { x: event.clientX, y: event.clientY, left: list.scrollLeft, top: list.scrollTop };
-  list.classList.add("is-dragging");
-  list.setPointerCapture(event.pointerId);
-});
-list.addEventListener("pointermove", (event) => {
-  if (!draggingCanvas) return;
-  list.scrollLeft = dragStart.left - (event.clientX - dragStart.x);
-  list.scrollTop = dragStart.top - (event.clientY - dragStart.y);
-});
-const stopDragging = () => {
-  draggingCanvas = false;
-  list.classList.remove("is-dragging");
-};
-list.addEventListener("pointerup", stopDragging);
-list.addEventListener("pointercancel", stopDragging);
-list.addEventListener("wheel", (event) => {
-  if (!event.ctrlKey) return;
-  event.preventDefault();
-  zoomIndex = event.deltaY < 0
-    ? Math.min(zoomLevels.length - 1, zoomIndex + 1)
-    : Math.max(0, zoomIndex - 1);
-  updateTimelineZoom();
-}, { passive: false });
-
 timelinePrevious.addEventListener("click", () => scrollTimeline(-1));
 timelineNext.addEventListener("click", () => scrollTimeline(1));
 list.addEventListener("scroll", updateTimelineNavigation, { passive: true });
@@ -133,7 +68,6 @@ window.addEventListener("resize", () => {
   updateTimelineRail();
 });
 list.addEventListener("wheel", (event) => {
-  if (event.ctrlKey) return;
   if (list.classList.contains("is-stacked")) return;
   if (Math.abs(event.deltaY) <= Math.abs(event.deltaX) || list.scrollWidth <= list.clientWidth) return;
   list.scrollLeft += event.deltaY;
@@ -171,35 +105,6 @@ function normalizeDate(value) {
   return /^\d{4}-\d{2}-\d{2}$/.test(text) ? text : "";
 }
 
-const memoryPlays = new Set([
-    "freak the mighty",
-    "harry potter and the cursed child",
-    "harry potter and the cursed child: part one",
-    "life of pi",
-    "my neighbor totoro",
-    "othello",
-    "romeo & juliet",
-    "sexual misconduct of the middle classes",
-    "sleep no more",
-    "the mousetrap",
-    "witness for the prosecution"
-]);
-
-const memoryConcerts = new Set([
-    "broadway in the park",
-    "hugh jackman: from new york, with love",
-    "old friends"
-]);
-
-function memoryCategory(show, existing = "") {
-  const normalized = String(existing || "").trim().toLocaleLowerCase();
-  if (["musical", "play", "concert"].includes(normalized)) return normalized;
-  const title = String(show || "").trim().toLocaleLowerCase();
-  if (memoryConcerts.has(title)) return "concert";
-  if (memoryPlays.has(title)) return "play";
-  return "musical";
-}
-
 function formatDate(value) {
   if (!value) return "Date not recorded";
   return new Date(`${value}T12:00:00`).toLocaleDateString("en-US", {
@@ -231,17 +136,16 @@ const reactionLabels = {
 };
 
 const artworkPalettes = [
-  ["#F1EFFF", "#6D5EF5", "#2C3142"],
-  ["#EAF8FC", "#3EC6E0", "#2C3142"],
-  ["#FFF0ED", "#F07167", "#2C3142"],
-  ["#FFF6E5", "#F2A541", "#2C3142"],
-  ["#ECFAF4", "#2FCB8A", "#2C3142"],
-  ["#F6F1FF", "#8B6CFF", "#2C3142"],
-  ["#EDF9FC", "#24AFC9", "#2C3142"],
-  ["#FFF2F5", "#D95C78", "#2C3142"]
+  ["#1E292E", "#3EC6E0", "#F2C14E"],
+  ["#24343C", "#F2C14E", "#F8F0C0"],
+  ["#1E292E", "#F07167", "#F2C14E"],
+  ["#24343C", "#B18CFF", "#F8F0C0"],
+  ["#1E292E", "#3DDC97", "#F2C14E"],
+  ["#24343C", "#3EC6E0", "#DDC79E"],
+  ["#1E292E", "#F2C14E", "#3EC6E0"],
+  ["#24343C", "#BFC17D", "#F8F0C0"]
 ];
 const themeArtworkColors = new Set(artworkPalettes.flat().map((color) => color.toUpperCase()));
-const showArtworkCache = new Map();
 
 function showHash(show) {
   return [...show].reduce((hash, character) => (
@@ -473,7 +377,7 @@ function artworkScene(scene, accent, highlight) {
     "double-heart": `<path d="M220 430C70 320 105 180 195 220c18 8 25 22 25 22s8-14 25-22c90-40 125 100-25 210zM380 430c-150-110-115-250-25-210 18 8 25 22 25 22s8-14 25-22c90-40 125 100-25 210z" fill="${accent}" stroke="${highlight}" stroke-width="8"/><path d="M300 105v350" ${thin}/>`,
     books: `<path d="M95 405h410v70H95zM125 315h350v70H125zM85 225h430v70H85zM145 135h310v70H145z" fill="${accent}" stroke="${highlight}" stroke-width="8"/><path d="M185 135v70M400 225v70M220 315v70M420 405v70" ${thin}/>`,
     "telekinetic-book": `<path d="M75 410c75-25 150-10 225 45 75-55 150-70 225-45v85c-75-28-150-12-225 38-75-50-150-66-225-38z" fill="${accent}" stroke="${highlight}" stroke-width="10"/><path d="M300 455v78M110 440c60-10 115 5 165 42M490 440c-60-10-115 5-165 42" ${thin}/><text x="130" y="260" fill="${highlight}" font-family="Georgia,serif" font-size="74" font-weight="900" transform="rotate(-12 130 260)">A</text><text x="390" y="220" fill="${highlight}" font-family="Georgia,serif" font-size="66" font-weight="900" transform="rotate(9 390 220)">B</text><path d="M245 285h75v55h-75zM330 120h65v90h-65z" fill="none" stroke="${accent}" stroke-width="9"/><path d="M282 285v55M350 120v90M95 325l35-18 18 35M475 300l-28-25-24 32M210 145l20-38 22 35" ${line}/><path d="M165 340c55-65 115-90 180-75M330 260c55-45 105-55 150-25" ${thin}/>` ,
-    "keyhole-eyes": `<path d="M300 75c-95 0-160 68-160 155 0 55 25 95 65 122l-42 128h274l-42-128c40-27 65-67 65-122 0-87-65-155-160-155z" fill="${accent}" opacity=".26" stroke="${highlight}" stroke-width="12"/><path d="M300 135c-55 0-92 40-92 92 0 37 18 66 48 82l-24 95h136l-24-95c30-16 48-45 48-82 0-52-37-92-92-92z" fill="${highlight}" opacity=".92"/><path d="M235 240c28-30 62-30 90 0-28 30-62 30-90 0zM325 240c28-30 62-30 90 0-28 30-62 30-90 0z" fill="${highlight}"/><circle cx="280" cy="240" r="12" fill="${accent}"/><circle cx="370" cy="240" r="12" fill="${accent}"/><path d="M70 230h45M485 230h45M105 130l38 28M495 130l-38 28M300 25v35" ${thin}/>` ,
+    "keyhole-eyes": `<path d="M300 75c-95 0-160 68-160 155 0 55 25 95 65 122l-42 128h274l-42-128c40-27 65-67 65-122 0-87-65-155-160-155z" fill="${accent}" opacity=".26" stroke="${highlight}" stroke-width="12"/><path d="M300 135c-55 0-92 40-92 92 0 37 18 66 48 82l-24 95h136l-24-95c30-16 48-45 48-82 0-52-37-92-92-92z" fill="#F8F0C0" opacity=".92"/><path d="M235 240c28-30 62-30 90 0-28 30-62 30-90 0zM325 240c28-30 62-30 90 0-28 30-62 30-90 0z" fill="${highlight}"/><circle cx="280" cy="240" r="12" fill="${accent}"/><circle cx="370" cy="240" r="12" fill="${accent}"/><path d="M70 230h45M485 230h45M105 130l38 28M495 130l-38 28M300 25v35" ${thin}/>` ,
     "lecture-boundary": `<path d="M95 165h190v245H95zM130 410v65M250 410v65M355 315h150v95H355zM380 410v65M480 410v65" ${line}/><path d="M125 220h130M125 275h95M385 345h90M300 95v390" ${thin}/><circle cx="190" cy="130" r="35" fill="${accent}"/><circle cx="430" cy="270" r="35" fill="${highlight}"/><path d="M285 450L335 120" stroke="${accent}" stroke-width="16" stroke-linecap="round"/>`,
     "six-crowns": `<path d="M55 150l18 78h74l18-78-38 27-17-52-17 52zM215 150l18 78h74l18-78-38 27-17-52-17 52zM375 150l18 78h74l18-78-38 27-17-52-17 52zM55 330l18 78h74l18-78-38 27-17-52-17 52zM215 330l18 78h74l18-78-38 27-17-52-17 52zM375 330l18 78h74l18-78-38 27-17-52-17 52z" fill="${accent}" stroke="${highlight}" stroke-width="7"/>`,
     mask: `<path d="M95 190c125-60 285-60 410 0l-45 185c-35 95-115 75-160-10-45 85-125 105-160 10z" fill="${accent}" stroke="${highlight}" stroke-width="10"/><path d="M175 270c35-35 75-35 110 0M315 270c35-35 75-35 110 0" ${line}/>`,
@@ -491,57 +395,37 @@ function artworkScene(scene, accent, highlight) {
 }
 
 function generatedArtwork(memory) {
-  const cacheKey = memory.show.trim().toLocaleLowerCase("en-US");
-  if (showArtworkCache.has(cacheKey)) return showArtworkCache.get(cacheKey);
   const hash = showHash(memory.show);
   const [background, paletteAccent, highlight] = artworkPalettes[hash % artworkPalettes.length];
   const accent = artworkColor(memory.color, paletteAccent);
   const [scene, subtitle] = resolveArtworkConcept(memory, hash);
   const titleLines = artworkTitleLines(memory.show);
-  const subtitleLines = wrapArtworkText(subtitle, 20, 2);
+  const subtitleLines = artworkSubtitleLines(subtitle);
   const longestTitleLine = Math.max(...titleLines.map((line) => line.length));
-  const titleSize = Math.max(15, Math.min(
-    [26, 26, 23, 19, 17][titleLines.length] || 17,
-    Math.floor(168 / (Math.max(longestTitleLine, 1) * .56))
+  const preferredTitleSize = [31, 31, 27, 23, 20][titleLines.length] || 20;
+  const titleSize = Math.max(18, Math.min(
+    preferredTitleSize,
+    Math.floor(245 / (Math.max(longestTitleLine, 1) * .6))
   ));
-  const titleLineHeight = titleSize + 4;
-  const blockHeight = titleLines.length * titleLineHeight + 12 + subtitleLines.length * 15;
-  const titleStart = 150 - blockHeight / 2 + titleSize * .8;
+  const titleLineHeight = titleSize + 3;
+  const titleStart = 124 - ((titleLines.length - 1) * titleLineHeight) / 2;
   const titleMarkup = titleLines.map((line, index) => (
-    `<tspan x="218" y="${titleStart + index * titleLineHeight}">${escapeXml(line)}</tspan>`
+    `<tspan x="448" y="${titleStart + index * titleLineHeight}">${escapeXml(line)}</tspan>`
   )).join("");
-  const subtitleStart = titleStart + (titleLines.length - 1) * titleLineHeight + 22;
+  const subtitleStart = 205 - ((subtitleLines.length - 1) * 17) / 2;
   const subtitleMarkup = subtitleLines.map((line, index) => (
-    `<tspan x="218" y="${subtitleStart + index * 15}">${escapeXml(line)}</tspan>`
+    `<tspan x="448" y="${subtitleStart + index * 17}">${escapeXml(line)}</tspan>`
   )).join("");
-  const monogram = escapeXml(memory.show
-    .split(/\s+/)
-    .filter((word) => /^[A-Za-z0-9]/.test(word) && !/^(the|and|of|a|an|with|in|on|at|to|for)$/i.test(word))
-    .slice(0, 2)
-    .map((word) => word[0].toUpperCase())
-    .join("") || memory.show.slice(0, 1).toUpperCase());
-  const clipId = `art-${hash}`;
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" role="img" aria-label="${escapeXml(memory.show)} original memory illustration">
     <rect width="600" height="300" fill="${background}"/>
-    <g opacity=".35">${artworkBackdrop(hash, accent, highlight)}</g>
-    <rect x="26" y="30" width="548" height="240" rx="18" fill="#FFFFFF"/>
-    <circle cx="414" cy="30" r="13" fill="${background}"/>
-    <circle cx="414" cy="270" r="13" fill="${background}"/>
-    <path d="M414 50v200" stroke="#D9DEF0" stroke-width="2" stroke-dasharray="6 7"/>
-    <rect x="26" y="30" width="8" height="240" rx="4" fill="${accent}"/>
-    <circle cx="122" cy="150" r="74" fill="${accent}" opacity=".14"/>
-    <circle cx="122" cy="150" r="74" fill="none" stroke="${accent}" stroke-width="2" opacity=".55"/>
-    <clipPath id="${clipId}"><circle cx="122" cy="150" r="72"/></clipPath>
-    <g clip-path="url(#${clipId})"><g transform="translate(44 75) scale(.26)">${artworkScene(scene, accent, highlight)}</g></g>
-    <text text-anchor="start" fill="#2C3142" font-family="Georgia,serif" font-size="${titleSize}" font-weight="700">${titleMarkup}</text>
-    <text text-anchor="start" fill="${accent}" font-family="Aptos,Segoe UI,sans-serif" font-size="12" font-weight="800" letter-spacing="1.2">${subtitleMarkup}</text>
-    <text x="494" y="86" text-anchor="middle" fill="#5C6578" font-family="Aptos,Segoe UI,sans-serif" font-size="11" font-weight="800" letter-spacing="2.4">ADMIT ONE</text>
-    <circle cx="494" cy="152" r="40" fill="none" stroke="${accent}" stroke-width="2"/>
-    <text x="494" y="164" text-anchor="middle" fill="#2C3142" font-family="Georgia,serif" font-size="32" font-weight="700">${monogram}</text>
-    <path d="M466 222h56" stroke="${accent}" stroke-width="3" stroke-linecap="round"/>
-  </svg>`;  const artwork = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
-  showArtworkCache.set(cacheKey, artwork);
-  return artwork;
+    <g opacity=".5">${artworkBackdrop(hash, accent, highlight)}</g>
+    <rect x="310" width="290" height="300" fill="#F8F0C0"/>
+    <path d="M310 34v232" stroke="${accent}" stroke-width="3" opacity=".8"/>
+    <g transform="translate(5 18) scale(.5)">${artworkScene(scene, accent, highlight)}</g>
+    <text text-anchor="middle" fill="#1E292E" font-family="Georgia,serif" font-size="${titleSize}" font-weight="700">${titleMarkup}</text>
+    <text text-anchor="middle" fill="#3D6474" font-family="Aptos,Segoe UI,sans-serif" font-size="15" font-weight="800" letter-spacing=".7">${subtitleMarkup}</text>
+  </svg>`;
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
 }
 
 function reactionScore(value) {
@@ -655,7 +539,7 @@ function renderMemories() {
     && matchesReaction(memory.musicVibe, musicFilter)
     && matchesReaction(memory.stageMagic, stageFilter)
     && matchesReaction(memory.storyFeel, storyFilter)
-    && (!selectedCategory() || memory.category === selectedCategory())
+    && (!categoryFilter.value || memory.category === categoryFilter.value)
     && (!query || [memory.show, memory.theatre, memory.city, memory.seat]
       .some((value) => value.toLocaleLowerCase().includes(query)))
   )).sort((left, right) => {
@@ -679,9 +563,6 @@ function renderMemories() {
     const article = document.createElement("article");
     article.className = `memory-entry ${index % 2 ? "memory-below" : "memory-above"}`;
     article.style.setProperty("--memory-color", nodeColors[index % nodeColors.length]);
-    article.dataset.memoryYear = memory.date.slice(0, 4);
-    article.dataset.memoryQuarter = String(Math.floor((Number(memory.date.slice(5, 7)) - 1) / 3) + 1);
-    article.dataset.memoryMonth = memory.date.slice(0, 7);
     article.setAttribute("role", "listitem");
     article.setAttribute("aria-label", `${formatDate(memory.date)}: ${memory.show}`);
     article.tabIndex = index === initialFocusIndex ? 0 : -1;
@@ -697,10 +578,6 @@ function renderMemories() {
 
     const card = document.createElement("div");
     card.className = "memory-card";
-    const photo = document.createElement("div");
-    photo.className = "memory-photo";
-    const artwork = renderPhoto(memory);
-    photo.replaceChildren(artwork);
     const copy = document.createElement("div");
     copy.className = "memory-copy";
     const title = document.createElement("h3");
@@ -777,96 +654,16 @@ function renderMemories() {
       if (categories.childElementCount) review.appendChild(categories);
       copy.appendChild(review);
     }
-    card.append(photo, copy);
+    card.append(copy);
     article.append(marker, card);
     return article;
   });
-  if (priceSorted) {
-    list.classList.add("is-flat");
-    list.replaceChildren(rail, ...renderedEntries);
-  } else {
-    list.classList.remove("is-flat");
-    const observedYears = filtered.map((memory) => Number(memory.date.slice(0, 4)));
-    const firstYear = Math.min(...observedYears);
-    const lastYear = Math.max(...observedYears);
-    const years = Number.isFinite(firstYear) && Number.isFinite(lastYear)
-      ? Array.from({ length: lastYear - firstYear + 1 }, (_, index) => String(firstYear + index))
-      : [];
-    const groups = years.map((yearValue) => {
-      const yearEntries = renderedEntries.filter((entry) => entry.dataset.memoryYear === yearValue);
-      const yearGroup = document.createElement("section");
-      yearGroup.className = "memory-year";
-      yearGroup.dataset.year = yearValue;
-      const activeMonthCount = new Set(yearEntries.map((entry) => entry.dataset.memoryMonth)).size;
-      yearGroup.style.setProperty("--active-month-count", Math.max(1, activeMonthCount));
-      const yearHeader = document.createElement("button");
-      yearHeader.type = "button";
-      yearHeader.className = "memory-year-focus";
-      yearHeader.innerHTML = `<span>${yearValue}</span><strong>${yearEntries.length}</strong><small>${yearEntries.length === 1 ? "show" : "shows"}</small>`;
-      yearHeader.setAttribute("aria-label", `Zoom into ${yearValue}: ${yearEntries.length} performances`);
-      yearHeader.addEventListener("click", () => focusMemoryPeriod(yearGroup, 1));
-      yearGroup.appendChild(yearHeader);
-
-      const quarterGrid = document.createElement("div");
-      quarterGrid.className = "memory-quarter-grid";
-      for (let quarter = 1; quarter <= 4; quarter += 1) {
-        const quarterEntries = yearEntries.filter((entry) => entry.dataset.memoryQuarter === String(quarter));
-        const quarterGroup = document.createElement("section");
-        quarterGroup.className = "memory-quarter";
-        quarterGroup.dataset.quarter = String(quarter);
-        const quarterHeader = document.createElement("button");
-        quarterHeader.type = "button";
-        quarterHeader.className = "memory-quarter-focus";
-        quarterHeader.innerHTML = `<span>Q${quarter}</span><strong>${quarterEntries.length}</strong><small>${quarterEntries.length === 1 ? "show" : "shows"}</small>`;
-        quarterHeader.setAttribute("aria-label", `Zoom into quarter ${quarter} of ${yearValue}: ${quarterEntries.length} performances`);
-        quarterHeader.addEventListener("click", () => focusMemoryPeriod(quarterGroup, 1));
-        quarterGroup.appendChild(quarterHeader);
-
-        const months = [...new Set(quarterEntries.map((entry) => entry.dataset.memoryMonth))].sort();
-        const monthGrid = document.createElement("div");
-        monthGrid.className = "memory-month-grid";
-        months.forEach((monthValue) => {
-          const monthEntries = quarterEntries
-            .filter((entry) => entry.dataset.memoryMonth === monthValue)
-            .sort((left, right) => left.querySelector("time").dateTime.localeCompare(
-              right.querySelector("time").dateTime
-            ));
-          const monthGroup = document.createElement("section");
-          monthGroup.className = "memory-month";
-          monthGroup.dataset.month = monthValue;
-          monthGroup.style.gridColumn = String(Number(monthValue.slice(5, 7)));
-          const monthDate = new Date(`${monthValue}-01T12:00:00`);
-          const monthHeader = document.createElement("button");
-          monthHeader.type = "button";
-          monthHeader.className = "memory-month-focus";
-          monthHeader.innerHTML = `<span>${monthDate.toLocaleDateString("en-US", { month: "short" })}</span><strong>${monthEntries.length}</strong>`;
-          monthHeader.setAttribute("aria-label", `Zoom into ${monthDate.toLocaleDateString("en-US", { month: "long", year: "numeric" })}: ${monthEntries.length} performances`);
-          monthHeader.addEventListener("click", () => focusMemoryPeriod(monthGroup, 2));
-          const shows = document.createElement("div");
-          shows.className = "memory-month-shows";
-          shows.append(...monthEntries);
-          monthGroup.append(monthHeader, shows);
-          monthGrid.appendChild(monthGroup);
-        });
-        quarterGroup.appendChild(monthGrid);
-        quarterGrid.appendChild(quarterGroup);
-      }
-      if (!yearEntries.length) {
-        const emptyYear = document.createElement("p");
-        emptyYear.className = "memory-year-empty";
-        emptyYear.textContent = "No recorded performances";
-        quarterGrid.appendChild(emptyYear);
-      }
-      yearGroup.appendChild(quarterGrid);
-      return yearGroup;
-    });
-    list.replaceChildren(rail, ...groups);
-  }
+  list.replaceChildren(rail, ...renderedEntries);
   window.requestAnimationFrame(() => {
     const inlineScrollBehavior = list.style.scrollBehavior;
     list.style.scrollBehavior = "auto";
     list.scrollTop = 0;
-    list.scrollLeft = priceSorted ? 0 : 0;
+    list.scrollLeft = priceSorted ? 0 : list.scrollWidth;
     list.style.scrollBehavior = inlineScrollBehavior;
     updateTimelineRail();
     updateTimelineNavigation();
@@ -890,35 +687,10 @@ function renderMemories() {
     : "Theatre memories, oldest to newest; opens at latest");
   timelineHelp.textContent = priceSorted
     ? "Sorted by ticket price. Swipe, scroll, or use the arrow keys to move through the results."
-    : "Click a year to see months, then click a month to see shows. Use +/− or Ctrl + mouse wheel to move between time scales.";
+    : "Newest on the right. Move left for earlier nights, or use the arrow keys.";
   clearFilters.disabled = !search.value && !year.value
     && reactionFilters.every((filter) => !reactionRange(filter).active)
-    && !priceSort.value && !selectedCategory();
-}
-
-function focusMemoryPeriod(node, level) {
-  zoomIndex = Math.max(zoomIndex, level);
-  if (node.classList.contains("memory-month")) {
-    list.querySelectorAll(".memory-month.is-active-month").forEach((month) => month.classList.remove("is-active-month"));
-    list.querySelectorAll(".memory-year.is-active-year").forEach((year) => year.classList.remove("is-active-year"));
-    node.classList.add("is-active-month");
-    node.closest(".memory-year")?.classList.add("is-active-year");
-  } else if (node.classList.contains("memory-year") && zoomIndex === zoomLevels.length - 1) {
-    list.querySelectorAll(".memory-year.is-active-year").forEach((year) => year.classList.remove("is-active-year"));
-    list.querySelectorAll(".memory-month.is-active-month").forEach((month) => month.classList.remove("is-active-month"));
-    node.classList.add("is-active-year");
-    node.querySelector(".memory-month")?.classList.add("is-active-month");
-  }
-  updateTimelineZoom();
-  window.requestAnimationFrame(() => {
-    if (zoomIndex === zoomLevels.length - 1) {
-      list.scrollTo({ top: 0, left: list.scrollWidth, behavior: "smooth" });
-    } else {
-      node.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
-    }
-    node.classList.add("is-focused-period");
-    window.setTimeout(() => node.classList.remove("is-focused-period"), 800);
-  });
+    && !priceSort.value;
 }
 
 function mostFrequent(values) {
@@ -1047,7 +819,7 @@ function initializeMemories() {
   const averageRating = rated.length
     ? rated.reduce((sum, memory) => sum + memory.rating, 0) / rated.length
     : Number.NaN;
-  const infographic = document.querySelector("#encore-report");
+  const infographic = document.querySelector(".encore-infographic");
   infographic.style.setProperty(
     "--average-rating",
     Number.isFinite(averageRating) ? `${(averageRating / 5) * 100}%` : "0%"
@@ -1098,7 +870,6 @@ function initializeMemories() {
   updateReactionRange(stageFilter, memories.map((memory) => memory.stageMagic));
   updateReactionRange(storyFilter, memories.map((memory) => memory.storyFeel));
   renderMemories();
-  updateTimelineZoom();
 }
 
 search.addEventListener("input", renderMemories);
@@ -1115,12 +886,10 @@ reactionFilters.forEach((filter) => filter.addEventListener("input", (event) => 
   renderMemories();
 }));
 priceSort.addEventListener("change", renderMemories);
-categoryFilter.addEventListener("change", renderMemories);
 clearFilters.addEventListener("click", () => {
   search.value = "";
   year.value = "";
   priceSort.value = "";
-  categoryFilter.querySelector('input[name="memory-category"][value=""]').checked = true;
   reactionFilters.forEach(resetReactionFilter);
   reactionFilters.forEach((filter) => updateReactionRange(filter, reactionValues.get(filter)()));
   renderMemories();
@@ -1150,7 +919,6 @@ function normalizeMemoryRows(rows) {
         date: normalizeDate(memory.date || ""),
         rating,
         show,
-        category: memoryCategory(show, memory.category),
         theatre: (memory.theatre || "").trim(),
         city: (memory.city || "").trim(),
         seat: (memory.seat || "").trim(),
